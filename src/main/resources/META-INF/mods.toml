@@ -1,0 +1,25 @@
+modLoader="javafml"
+loaderVersion="${loader_version_range}"
+license="${mod_license}"
+
+[[mods]]
+modId="mekanismscience"
+version="1.0"
+displayName="Mekanism: Science"
+authors="FixedDolphin927"
+mixins="mixin.mekanismscience.json"
+
+description='''${mod_description}'''
+[[dependencies.mekanismscience]]
+modId="forge"
+mandatory=true
+versionRange="${forge_version_range}"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.mekanismscience]]
+modId="minecraft"
+mandatory=true
+versionRange="${minecraft_version_range}"
+ordering="NONE"
+side="BOTH"

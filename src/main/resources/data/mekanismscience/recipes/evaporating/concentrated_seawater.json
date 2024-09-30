@@ -1,0 +1,13 @@
+{
+  "type":"mekanism:evaporating",
+  "input":
+  {
+    "amount":1,
+    "fluid":"mekanismscience:seawater"
+  },
+  "output":
+  {
+    "amount":1,
+    "fluid":"mekanismscience:concentrated_seawater"
+  }
+}

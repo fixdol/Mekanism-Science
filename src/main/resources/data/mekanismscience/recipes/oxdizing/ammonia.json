@@ -1,0 +1,15 @@
+{
+  "type":"mekanism:oxidizing",
+  "input":
+  {
+    "ingredient":
+    {
+      "item":"minecraft:porkchop"
+    }
+  },
+  "output":
+  {
+    "amount":100,
+    "gas":"mekanismscience:ammonia"
+  }
+}

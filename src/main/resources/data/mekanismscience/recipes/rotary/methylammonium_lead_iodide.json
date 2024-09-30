@@ -1,0 +1,19 @@
+{
+  "type": "mekanism:rotary",
+  "fluidInput": {
+    "fluid": "mekanismscience:methylammonium_lead_iodide",
+    "amount": 1
+  },
+  "gasOutput": {
+    "gas": "mekanismscience:methylammonium_lead_iodide",
+    "amount": 1
+  },
+  "gasInput": {
+    "gas": "mekanismscience:methylammonium_lead_iodide",
+    "amount": 1
+  },
+  "fluidOutput": {
+    "fluid": "mekanismscience:methylammonium_lead_iodide",
+    "amount": 1
+  }
+}

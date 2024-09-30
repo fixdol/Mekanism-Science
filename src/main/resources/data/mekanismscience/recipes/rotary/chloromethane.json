@@ -1,0 +1,19 @@
+{
+  "type": "mekanism:rotary",
+  "fluidInput": {
+    "fluid": "mekanismscience:chloromethane",
+    "amount": 1
+  },
+  "gasOutput": {
+    "gas": "mekanismscience:chloromethane",
+    "amount": 1
+  },
+  "gasInput": {
+    "gas": "mekanismscience:chloromethane",
+    "amount": 1
+  },
+  "fluidOutput": {
+    "fluid": "mekanismscience:chloromethane",
+    "amount": 1
+  }
+}

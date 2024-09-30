@@ -1,0 +1,13 @@
+{
+  "type":"mekanism:crystallizing",
+  "chemicalType":"gas",
+  "input":
+  {
+    "amount":500,
+    "gas":"mekanismscience:lactose"
+  },
+  "output":
+  {
+    "item":"mekanismscience:excipient"
+  }
+}

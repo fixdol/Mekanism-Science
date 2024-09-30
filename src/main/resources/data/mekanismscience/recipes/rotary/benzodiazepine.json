@@ -1,0 +1,19 @@
+{
+  "type": "mekanism:rotary",
+  "fluidInput": {
+    "fluid": "mekanismscience:benzodiazepine",
+    "amount": 1
+  },
+  "gasOutput": {
+    "gas": "mekanismscience:benzodiazepine",
+    "amount": 1
+  },
+  "gasInput": {
+    "gas": "mekanismscience:benzodiazepine",
+    "amount": 1
+  },
+  "fluidOutput": {
+    "fluid": "mekanismscience:benzodiazepine",
+    "amount": 1
+  }
+}

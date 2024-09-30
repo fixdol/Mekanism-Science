@@ -1,0 +1,27 @@
+{
+  "type":"mekanism:reaction",
+  "duration":50,
+  "fluidInput":
+  {
+    "amount":100,
+    "fluid":"mekanismscience:iodine"
+  },
+  "gasInput":
+  {
+    "amount":50,
+    "gas":"mekanismscience:methylamine"
+  },
+  "gasOutput":
+  {
+    "amount":100,
+    "gas":"mekanismscience:methylammonium_lead_iodide"
+  },
+  "itemInput":
+  {
+    "amount":1,
+    "ingredient":
+    {
+      "tag":"forge:dusts/lead"
+    }
+  }
+}

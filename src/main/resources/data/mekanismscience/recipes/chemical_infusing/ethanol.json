@@ -1,0 +1,18 @@
+{
+  "type":"mekanism:chemical_infusing",
+  "leftInput":
+  {
+    "amount":1,
+    "gas":"mekanism:water_vapor"
+  },
+  "output":
+  {
+    "amount":1,
+    "gas":"mekanismscience:ethanol"
+  },
+  "rightInput":
+  {
+    "amount":1,
+    "gas":"mekanism:ethene"
+  }
+}

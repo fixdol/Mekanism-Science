@@ -1,0 +1,19 @@
+{
+  "type": "mekanism:rotary",
+  "fluidInput": {
+    "fluid": "mekanismscience:lactose",
+    "amount": 1
+  },
+  "gasOutput": {
+    "gas": "mekanismscience:lactose",
+    "amount": 1
+  },
+  "gasInput": {
+    "gas": "mekanismscience:lactose",
+    "amount": 1
+  },
+  "fluidOutput": {
+    "fluid": "mekanismscience:lactose",
+    "amount": 1
+  }
+}

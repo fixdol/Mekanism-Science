@@ -1,0 +1,19 @@
+{
+  "type": "mekanism:rotary",
+  "fluidInput": {
+    "fluid": "mekanismscience:milk",
+    "amount": 2
+  },
+  "gasOutput": {
+    "gas": "mekanismscience:whey",
+    "amount": 1
+  },
+  "gasInput": {
+    "gas": "mekanismscience:whey",
+    "amount": 1
+  },
+  "fluidOutput": {
+    "fluid": "mekanismscience:whey",
+    "amount": 1
+  }
+}
