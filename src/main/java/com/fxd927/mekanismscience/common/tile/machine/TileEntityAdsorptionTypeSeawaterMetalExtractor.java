@@ -1,9 +1,7 @@
 package com.fxd927.mekanismscience.common.tile.machine;
 
 import com.fxd927.mekanismscience.common.registries.MSBlocks;
-import com.fxd927.mekanismscience.common.registries.MSFluids;
 import mekanism.api.*;
-import mekanism.api.math.FloatingLong;
 import mekanism.common.capabilities.Capabilities;
 import mekanism.common.capabilities.energy.MachineEnergyContainer;
 import mekanism.common.capabilities.fluid.BasicFluidTank;
@@ -20,26 +18,15 @@ import mekanism.common.inventory.slot.EnergyInventorySlot;
 import mekanism.common.inventory.slot.FluidInventorySlot;
 import mekanism.common.inventory.slot.OutputInventorySlot;
 import mekanism.common.lib.transmitter.TransmissionType;
-import mekanism.common.registries.MekanismItems;
-import mekanism.common.resource.PrimaryResource;
-import mekanism.common.resource.ResourceType;
-import mekanism.common.tags.MekanismTags;
-import mekanism.common.tile.base.SubstanceType;
 import mekanism.common.tile.component.TileComponentConfig;
 import mekanism.common.tile.component.TileComponentEjector;
 import mekanism.common.tile.prefab.TileEntityConfigurableMachine;
 import mekanism.common.util.MekanismUtils;
-import mekanism.common.util.UpgradeUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.capability.IFluidHandler;
-import org.jetbrains.annotations.Nullable;
 
 import javax.annotation.Nonnull;
 import java.util.List;
@@ -68,12 +55,16 @@ public class TileEntityAdsorptionTypeSeawaterMetalExtractor extends TileEntityCo
 
     public TileEntityAdsorptionTypeSeawaterMetalExtractor(BlockPos pos, BlockState state) {
         super(MSBlocks.ADSORPTION_TYPE_SEAWATER_METAL_EXTRACTOR, pos, state);
-        configComponent = new TileComponentConfig(this, TransmissionType.ITEM, TransmissionType.FLUID, TransmissionType.ENERGY);
-        ejectorComponent = new TileComponentEjector(this);
-        ejectorComponent.setOutputData(configComponent, TransmissionType.ITEM,TransmissionType.FLUID, TransmissionType.ENERGY)
-                .setCanEject(type -> MekanismUtils.canFunction(this));
         addCapabilityResolver(BasicCapabilityResolver.constant(Capabilities.CONFIGURABLE, this));
+        addCapabilityResolver(BasicCapabilityResolver.constant(Capabilities.CONFIG_CARD, this));
+        configComponent = new TileComponentConfig(this, TransmissionType.ITEM, TransmissionType.FLUID, TransmissionType.ENERGY);
+        configComponent.setupItemIOConfig(List.of(inputSlot),List.of(firstOutputSlot,secondOutputSlot),energySlot,true);
+        configComponent.setupIOConfig(TransmissionType.FLUID , fluidTank , RelativeSide.LEFT);
+        configComponent.setupIOConfig(TransmissionType.ENERGY , energyContainer , RelativeSide.BACK);
 
+        ejectorComponent = new TileComponentEjector(this);
+        ejectorComponent.setOutputData(configComponent,TransmissionType.ITEM,TransmissionType.ITEM)
+                .setCanEject(type -> MekanismUtils.canFunction(this));
     }
     @Nonnull
     @Override
@@ -91,14 +82,15 @@ public class TileEntityAdsorptionTypeSeawaterMetalExtractor extends TileEntityCo
         return builder.build();
     }
 
+    //インベントリGUI
     @Nonnull
     @Override
     protected IInventorySlotHolder getInitialInventory(IContentsListener listener) {
         InventorySlotHelper builder = InventorySlotHelper.forSide(this::getDirection);
-        builder.addSlot(inputSlot = FluidInventorySlot.drain(fluidTank, listener, 28, 20));
-        builder.addSlot(firstOutputSlot = OutputInventorySlot.at(listener, 28, 51));
-        builder.addSlot(secondOutputSlot = OutputInventorySlot.at(listener, 28, 61));
-        builder.addSlot(energySlot = EnergyInventorySlot.fillOrConvert(energyContainer, this::getLevel, listener, 143, 35));
+        builder.addSlot(inputSlot = FluidInventorySlot.drain(fluidTank, listener, 0, 20));
+        builder.addSlot(firstOutputSlot = OutputInventorySlot.at(listener, 20, 20));
+        builder.addSlot(secondOutputSlot = OutputInventorySlot.at(listener, 40, 20));
+        builder.addSlot(energySlot = EnergyInventorySlot.fillOrConvert(energyContainer, this::getLevel, listener, 60, 20));
         return builder.build();
     }
 

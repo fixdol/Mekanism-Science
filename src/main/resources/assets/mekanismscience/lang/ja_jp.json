@@ -6,6 +6,7 @@
   "advancements.mekanismscience.seawater_pump.description": "海水汲上ポンプをクラフトする",
   "advancements.mekanismscience.seawater_pump.title": "海の恵み",
 
+  "block.mekanismscience.adsorption_type_seawater_metal_extractor": "吸着式海水金属抽出機",
   "block.mekanismscience.concentrated_seawater": "濃縮海水",
   "block.mekanismscience.ammonia": "液体アンモニア",
   "block.mekanismscience.benzodiazepine": "液体ベンゾジアゼピン",
