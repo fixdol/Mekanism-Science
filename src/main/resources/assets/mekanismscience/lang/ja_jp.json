@@ -32,9 +32,11 @@
 
   "constants.mekanismscience.mod_name": "Mekanism: Science",
 
+  "container.mekanismscience.adsorption_type_seawater_metal_extractor": "吸着式海水金属抽出機",
   "container.mekanismscience.organic_liquid_extractor": "有機液体抽出機",
   "container.mekanismscience.seawater_pump": "海水汲上ポンプ",
 
+  "description.mekanismscience.adsorption_type_seawater_metal_extractor": "海水中に含まれる微量な金属を吸着させて抽出できます。",
   "description.mekanismscience.organic_liquid_extractor": "モブから有機液体を取り出す機械です。",
   "description.mekanismscience.seawater_pump": "このポンプを使うことで海バイオームの水を海水として吸い上げることができます。",
 
