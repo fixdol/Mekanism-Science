@@ -15,6 +15,7 @@ import net.minecraftforge.registries.RegisterEvent;
 
 @Mod.EventBusSubscriber(modid = MekanismScience.MODID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class MSClientRegistration {
+
     @SubscribeEvent(priority = EventPriority.LOW)
     public static void registerContainers(RegisterEvent event) {
         event.register(Registries.MENU, helper -> {

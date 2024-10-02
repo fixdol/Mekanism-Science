@@ -91,7 +91,6 @@ public class TileEntityAdsorptionTypeSeawaterMetalExtractor extends TileEntityCo
         return builder.build();
     }
 
-    //インベントリGUI
     @Nonnull
     @Override
     protected IInventorySlotHolder getInitialInventory(IContentsListener listener) {
