@@ -1,5 +1,6 @@
 package com.fxd927.mekanismscience.client;
 
+import com.fxd927.mekanismscience.client.gui.machine.GuiAdsorptionTypeSeawaterMetalExtractor;
 import com.fxd927.mekanismscience.client.gui.machine.GuiOrganicLiquidExtractor;
 import com.fxd927.mekanismscience.client.gui.machine.GuiSeawaterPump;
 import com.fxd927.mekanismscience.common.MekanismScience;
@@ -17,6 +18,7 @@ public class MSClientRegistration {
     @SubscribeEvent(priority = EventPriority.LOW)
     public static void registerContainers(RegisterEvent event) {
         event.register(Registries.MENU, helper -> {
+            ClientRegistrationUtil.registerScreen(MSContainerTypes.ADSORPTION_TYPE_SEAWATER_METAL_EXTRACTOR, GuiAdsorptionTypeSeawaterMetalExtractor::new);
             ClientRegistrationUtil.registerScreen(MSContainerTypes.ORGANIC_LIQUID_EXTRACTOR, GuiOrganicLiquidExtractor::new);
             ClientRegistrationUtil.registerScreen(MSContainerTypes.SEAWATER_PUMP, GuiSeawaterPump::new);
         });
