@@ -36,7 +36,7 @@
   "container.mekanismscience.organic_liquid_extractor": "Organic Liquid Extractor",
   "container.mekanismscience.seawater_pump": "Seawater Pump",
 
-  "description.mekanismscience.adsorption_type_seawater_metal_extractor": "A machine can adsorb and obtain trace amounts of metals in seawater, such as uranium and osmium.",
+  "description.mekanismscience.adsorption_type_seawater_metal_extractor": "A machine can adsorb and obtain trace amounts of metals in seawater.",
   "description.mekanismscience.organic_liquid_extractor": "A machine to extract organic liquids from mobs.",
   "description.mekanismscience.seawater_pump": "This pump can be used to extract seawater in the ocean biome.",
 
