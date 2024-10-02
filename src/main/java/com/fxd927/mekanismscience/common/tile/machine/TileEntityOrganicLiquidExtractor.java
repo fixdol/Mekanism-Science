@@ -19,8 +19,12 @@ import mekanism.common.integration.computer.annotation.WrappingComputerMethod;
 import mekanism.common.inventory.slot.EnergyInventorySlot;
 import mekanism.common.inventory.slot.FluidInventorySlot;
 import mekanism.common.inventory.slot.OutputInventorySlot;
+import mekanism.common.lib.transmitter.TransmissionType;
 import mekanism.common.tile.base.SubstanceType;
 import mekanism.common.tile.base.TileEntityMekanism;
+import mekanism.common.tile.component.TileComponentConfig;
+import mekanism.common.tile.component.TileComponentEjector;
+import mekanism.common.tile.prefab.TileEntityConfigurableMachine;
 import mekanism.common.util.FluidUtils;
 import mekanism.common.util.MekanismUtils;
 import mekanism.common.util.UpgradeUtils;
@@ -44,7 +48,7 @@ import javax.annotation.Nonnull;
 import java.util.Collections;
 import java.util.List;
 
-public class TileEntityOrganicLiquidExtractor extends TileEntityMekanism implements IConfigurable {
+public class TileEntityOrganicLiquidExtractor extends TileEntityConfigurableMachine implements IConfigurable {
     private static final int BASE_TICKS_REQUIRED = 19;
 
     @WrappingComputerMethod(wrapper = SpecialComputerMethodWrapper.ComputerFluidTankWrapper.class, methodNames = {"getFluid", "getFluidCapacity", "getFluidNeeded", "getFluidFilledPercentage"}, docPlaceholder = "buffer tank")
@@ -68,6 +72,16 @@ public class TileEntityOrganicLiquidExtractor extends TileEntityMekanism impleme
         super(MSBlocks.ORGANIC_LIQUID_EXTRACTOR, pos, state);
         addCapabilityResolver(BasicCapabilityResolver.constant(Capabilities.CONFIGURABLE, this));
         addCapabilityResolver(BasicCapabilityResolver.constant(Capabilities.CONFIG_CARD, this));
+        configComponent = new TileComponentConfig(this, TransmissionType.ITEM, TransmissionType.FLUID, TransmissionType.ENERGY);
+        configComponent.setupItemIOConfig(List.of(inputSlot),List.of(outputSlot),energySlot,true);
+        configComponent.setupOutputConfig(TransmissionType.FLUID , fluidTank);
+        configComponent.setupInputConfig(TransmissionType.ENERGY , energyContainer);
+
+        ejectorComponent = new TileComponentEjector(this);
+        ejectorComponent.setOutputData(configComponent,TransmissionType.ITEM)
+                .setCanEject(type -> MekanismUtils.canFunction(this));
+        ejectorComponent.setOutputData(configComponent,TransmissionType.FLUID)
+                .setCanEject(type -> MekanismUtils.canFunction(this));
     }
 
     @Nonnull

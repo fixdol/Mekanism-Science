@@ -1,6 +1,7 @@
 package com.fxd927.mekanismscience.client.gui.machine;
 
 import com.fxd927.mekanismscience.common.tile.machine.TileEntitySeawaterPump;
+import mekanism.client.gui.GuiConfigurableTile;
 import mekanism.client.gui.GuiMekanismTile;
 import mekanism.client.gui.element.GuiInnerScreen;
 import mekanism.client.gui.element.bar.GuiVerticalPowerBar;
@@ -22,7 +23,7 @@ import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GuiSeawaterPump extends GuiMekanismTile<TileEntitySeawaterPump, MekanismTileContainer<TileEntitySeawaterPump>> {
+public class GuiSeawaterPump extends GuiConfigurableTile<TileEntitySeawaterPump, MekanismTileContainer<TileEntitySeawaterPump>> {
     public GuiSeawaterPump(MekanismTileContainer<TileEntitySeawaterPump> container, Inventory inv, Component title) {
         super(container, inv, title);
         inventoryLabelY += 2;

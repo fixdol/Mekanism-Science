@@ -2,6 +2,7 @@ package com.fxd927.mekanismscience.client.gui.machine;
 
 import com.fxd927.mekanismscience.common.tile.machine.TileEntityOrganicLiquidExtractor;
 import com.fxd927.mekanismscience.common.tile.machine.TileEntitySeawaterPump;
+import mekanism.client.gui.GuiConfigurableTile;
 import mekanism.client.gui.GuiMekanismTile;
 import mekanism.client.gui.element.GuiInnerScreen;
 import mekanism.client.gui.element.bar.GuiVerticalPowerBar;
@@ -23,7 +24,7 @@ import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GuiOrganicLiquidExtractor  extends GuiMekanismTile<TileEntityOrganicLiquidExtractor, MekanismTileContainer<TileEntityOrganicLiquidExtractor>> {
+public class GuiOrganicLiquidExtractor  extends GuiConfigurableTile<TileEntityOrganicLiquidExtractor, MekanismTileContainer<TileEntityOrganicLiquidExtractor>> {
     public GuiOrganicLiquidExtractor(MekanismTileContainer<TileEntityOrganicLiquidExtractor> container, Inventory inv, Component title) {
         super(container, inv, title);
         inventoryLabelY += 2;
