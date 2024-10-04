@@ -6,8 +6,8 @@ license="${mod_license}"
 modId="mekanismscience"
 version="1.0"
 displayName="Mekanism: Science"
-authors="FixedDolphin927"
-mixins="mixin.mekanismscience.json"
+authors="FixedDolphin927, code-onigiri"
+mixins="mekanismscience.mixins.json"
 
 description='''${mod_description}'''
 [[dependencies.mekanismscience]]

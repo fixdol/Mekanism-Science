@@ -64,8 +64,8 @@ public class TileEntityAdsorptionTypeSeawaterMetalExtractor extends TileEntityCo
         addCapabilityResolver(BasicCapabilityResolver.constant(Capabilities.CONFIG_CARD, this));
         configComponent = new TileComponentConfig(this, TransmissionType.ITEM, TransmissionType.FLUID, TransmissionType.ENERGY);
         configComponent.setupItemIOConfig(List.of(inputSlot),List.of(firstOutputSlot,secondOutputSlot),energySlot,true);
-        configComponent.setupIOConfig(TransmissionType.FLUID , fluidTank , RelativeSide.LEFT);
-        configComponent.setupIOConfig(TransmissionType.ENERGY , energyContainer , RelativeSide.BACK);
+        configComponent.setupInputConfig(TransmissionType.FLUID , fluidTank);
+        configComponent.setupInputConfig(TransmissionType.ENERGY , energyContainer);
 
         ejectorComponent = new TileComponentEjector(this);
         ejectorComponent.setOutputData(configComponent,TransmissionType.ITEM,TransmissionType.ITEM)
