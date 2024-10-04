@@ -1,7 +1,9 @@
 package com.fxd927.mekanismscience.common.tile.machine;
 
 import com.fxd927.mekanismscience.common.registries.MSBlocks;
+import com.fxd927.mekanismscience.common.registries.MSFluids;
 import mekanism.api.*;
+import mekanism.api.math.FloatingLong;
 import mekanism.common.capabilities.Capabilities;
 import mekanism.common.capabilities.energy.MachineEnergyContainer;
 import mekanism.common.capabilities.fluid.BasicFluidTank;
@@ -18,6 +20,7 @@ import mekanism.common.inventory.slot.EnergyInventorySlot;
 import mekanism.common.inventory.slot.FluidInventorySlot;
 import mekanism.common.inventory.slot.OutputInventorySlot;
 import mekanism.common.lib.transmitter.TransmissionType;
+import mekanism.common.registries.MekanismItems;
 import mekanism.common.tile.component.TileComponentConfig;
 import mekanism.common.tile.component.TileComponentEjector;
 import mekanism.common.tile.prefab.TileEntityConfigurableMachine;
@@ -26,7 +29,9 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.fluids.capability.IFluidHandler;
 
 import javax.annotation.Nonnull;
 import java.util.List;
@@ -87,10 +92,10 @@ public class TileEntityAdsorptionTypeSeawaterMetalExtractor extends TileEntityCo
     @Override
     protected IInventorySlotHolder getInitialInventory(IContentsListener listener) {
         InventorySlotHelper builder = InventorySlotHelper.forSide(this::getDirection);
-        builder.addSlot(inputSlot = FluidInventorySlot.drain(fluidTank, listener, 0, 20));
+        builder.addSlot(inputSlot = FluidInventorySlot.drain(fluidTank, listener, 8, 65));
         builder.addSlot(firstOutputSlot = OutputInventorySlot.at(listener, 20, 20));
         builder.addSlot(secondOutputSlot = OutputInventorySlot.at(listener, 40, 20));
-        builder.addSlot(energySlot = EnergyInventorySlot.fillOrConvert(energyContainer, this::getLevel, listener, 60, 20));
+        builder.addSlot(energySlot = EnergyInventorySlot.fillOrConvert(energyContainer, this::getLevel, listener, 152, 5));
         return builder.build();
     }
 
