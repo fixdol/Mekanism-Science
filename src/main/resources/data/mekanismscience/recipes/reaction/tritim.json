@@ -1,20 +1,20 @@
 {
   "type":"mekanism:reaction",
-  "duration":50,
+  "duration":10,
   "energyRequired":1000,
   "fluidInput":
   {
-    "amount":1000,
+    "amount":100,
     "fluid":"minecraft:water"
   },
   "gasInput":
   {
-    "amount":1000,
+    "amount":100,
     "gas":"mekanism:lithium"
   },
   "gasOutput":
   {
-    "amount":3000,
+    "amount":300,
     "gas":"mekanismgenerators:tritium"
   },
   "itemInput":
