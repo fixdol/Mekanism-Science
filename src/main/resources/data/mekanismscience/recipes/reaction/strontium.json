@@ -1,6 +1,6 @@
 {
   "type":"mekanism:reaction",
-  "duration":10,
+  "duration":5,
   "energyRequired":10000,
   "fluidInput":
   {
@@ -14,7 +14,7 @@
   },
   "gasOutput":
   {
-    "amount":300,
+    "amount":500,
     "gas":"mekanismscience:strontium"
   },
   "itemInput":
