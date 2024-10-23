@@ -59,7 +59,7 @@ public class TileEntityAdsorptionTypeSeawaterMetalExtractor extends TileEntityCo
     EnergyInventorySlot energySlot;
 
     public TileEntityAdsorptionTypeSeawaterMetalExtractor(BlockPos pos, BlockState state) {
-        super(MSBlocks.ADSORPTION_TYPE_SEAWATER_METAL_EXTRACTOR, pos, state);
+        super(null, pos, state);
         addCapabilityResolver(BasicCapabilityResolver.constant(Capabilities.CONFIGURABLE, this));
         addCapabilityResolver(BasicCapabilityResolver.constant(Capabilities.CONFIG_CARD, this));
         configComponent = new TileComponentConfig(this, TransmissionType.ITEM, TransmissionType.FLUID, TransmissionType.ENERGY);

@@ -14,7 +14,7 @@
       "tag": "forge:glass"
     },
     "G": {
-      "item": "mekanismscience:dust_calcium_oxide"
+      "tag": "forge:dusts/calcium_oxide"
     }
   }
 }

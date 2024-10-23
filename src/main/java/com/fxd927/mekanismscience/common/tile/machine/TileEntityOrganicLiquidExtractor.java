@@ -69,7 +69,7 @@ public class TileEntityOrganicLiquidExtractor extends TileEntityConfigurableMach
     private EnergyInventorySlot energySlot;
 
     public TileEntityOrganicLiquidExtractor(BlockPos pos, BlockState state) {
-        super(MSBlocks.ORGANIC_LIQUID_EXTRACTOR, pos, state);
+        super(null, pos, state);
         addCapabilityResolver(BasicCapabilityResolver.constant(Capabilities.CONFIGURABLE, this));
         addCapabilityResolver(BasicCapabilityResolver.constant(Capabilities.CONFIG_CARD, this));
         configComponent = new TileComponentConfig(this, TransmissionType.ITEM, TransmissionType.FLUID, TransmissionType.ENERGY);
