@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "mekanismscience:block/cyan_high_quality_concrete",
+    "side": "mekanismscience:block/cyan_high_quality_concrete",
+    "top": "mekanismscience:block/cyan_high_quality_concrete"
+  }
+}
