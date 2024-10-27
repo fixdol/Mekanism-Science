@@ -7,6 +7,8 @@ import mekanism.api.text.EnumColor;
 import mekanism.common.registration.impl.ItemDeferredRegister;
 import mekanism.common.registration.impl.ItemRegistryObject;
 import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.item.DyeItem;
 import net.minecraft.world.item.Item;
 
 public class MSItems {
@@ -15,6 +17,8 @@ public class MSItems {
     public static final ItemRegistryObject<Item> NEUTRON_SOURCE_PELLET;
     //public static final ItemRegistryObject<Item> HIGH_DENSITY_NEUTRON_SOURCE_PELLET = ITEMS.register("pellet_high-density_neutron_source", () -> new HighDensityNeutronSourcePellet(new Item.Properties(), EnumColor.PURPLE));
     public static final ItemRegistryObject<Item> DUST_CALCIUM_OXIDE;
+    //public static final ItemRegistryObject<Item> AQUA_DYE;
+    //public static final ItemRegistryObject<Item> DARK_RED_DYE;
     //public static final ItemRegistryObject<Item> DUST_YTTRIUM = ITEMS.register("dust_yttrium");
     //public static final ItemRegistryObject<Item> REFINED_CALIFORNIUM_INGOT = ITEMS.register("ingot_refined_californium", EnumColor.ORANGE);
     //public static final ItemRegistryObject<Item> EXCIPIENT = ITEMS.register("excipient");
@@ -28,6 +32,8 @@ public class MSItems {
     static {
         NEUTRON_SOURCE_PELLET = ITEMS.register("pellet_neutron_source", () -> new NeutronSourcePellet(new Item.Properties(), EnumColor.YELLOW));
         DUST_CALCIUM_OXIDE = ITEMS.register("dust_calcium_oxide");
+        //AQUA_DYE = ITEMS.register("aqua_dye", () -> new DyeItem(DyeColor.LIGHT_BLUE, new Item.Properties()));
+        //DARK_RED_DYE = ITEMS.register("dark_red_dye", () ->  new DyeItem(DyeColor.RED, new Item.Properties()));
     }
 
     private MSItems(){

@@ -1,0 +1,19 @@
+{
+  "type":"mekanism:injecting",
+  "chemicalInput":
+  {
+    "amount":1,
+    "tag":"mekanism:water_vapor"
+  },
+  "itemInput":
+  {
+    "ingredient":
+    {
+      "item":"mekanismscience:light_gray_high_quality_concrete_powder"
+    }
+  },
+  "output":
+  {
+    "item":"mekanismscience:light_gray_high_quality_concrete"
+  }
+}

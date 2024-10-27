@@ -1,0 +1,13 @@
+{
+  "type":"mekanism:crystallizing",
+  "chemicalType":"pigment",
+  "input":
+  {
+    "amount":200,
+    "pigment":"mekanism:aqua"
+  },
+  "output":
+  {
+    "item":"mekanismscience:aqua_dye"
+  }
+}
