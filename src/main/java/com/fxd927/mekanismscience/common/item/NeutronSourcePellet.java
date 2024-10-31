@@ -23,7 +23,7 @@ public class NeutronSourcePellet extends Item{
     @Override
     public void inventoryTick(ItemStack stack, Level world, Entity entity, int slot, boolean selected) {
         if (!world.isClientSide && entity instanceof Player player) {
-            double magnitude = 10.0;
+            double magnitude = 2.0;
             forceRadiate(player, magnitude);
         }
         super.inventoryTick(stack, world, entity, slot, selected);
