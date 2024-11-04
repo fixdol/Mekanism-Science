@@ -25,7 +25,7 @@ public class MSItems {
     //public static final ItemRegistryObject<Item> EXCIPIENT = ITEMS.register("excipient");
     //public static final ItemRegistryObject<Item> TABLET_ANESTHETIC = ITEMS.register("tablet_anesthetic", () -> new AnestheticTablet(new Item.Properties().food(new FoodProperties.Builder().nutrition(0).saturationMod(0.0F).build())));
     //public static final ItemRegistryObject<Item> TABLET_FIRE_RESISTANCE = ITEMS.register("tablet_fire_resistance", () -> new FireResistanceTablet(new Item.Properties().food(new FoodProperties.Builder().nutrition(0).saturationMod(0.0F).build())));
-    //public static final ItemRegistryObject<Item> TABLET_IODINE = ITEMS.register("tablet_iodine", () -> new IodineTablet(new Item.Properties().food(new FoodProperties.Builder().nutrition(0).saturationMod(0.0F).build())));
+    public static final ItemRegistryObject<Item> TABLET_IODINE;
     //public static final ItemRegistryObject<Item> TABLET_MUSCLE_ENHANCEMENT = ITEMS.register("tablet_muscle_enhancement", () -> new MuscleEnhancementTablet(new Item.Properties().food(new FoodProperties.Builder().nutrition(0).saturationMod(0.0F).build())));
     //public static final ItemRegistryObject<Item> TABLET_POISON = ITEMS.register("tablet_poison", () -> new PoisonTablet(new Item.Properties().food(new FoodProperties.Builder().nutrition(0).saturationMod(0.0F).build())));
     //public static final ItemRegistryObject<Item> TABLET_SLEEP_INDUCING = ITEMS.register("tablet_sleep_inducing", () -> new SleepInducingTablet(new Item.Properties().food(new FoodProperties.Builder().nutrition(0).saturationMod(0.0F).build())));
@@ -34,6 +34,7 @@ public class MSItems {
         NEUTRON_SOURCE_PELLET = ITEMS.register("pellet_neutron_source", () -> new NeutronSourcePellet(new Item.Properties(), EnumColor.YELLOW));
         DUST_BARIUM_SULFATE = ITEMS.register("dust_barium_sulfate");
         DUST_CALCIUM_OXIDE = ITEMS.register("dust_calcium_oxide");
+        TABLET_IODINE = ITEMS.register("tablet_iodine", () -> new IodineTablet(new Item.Properties().food(new FoodProperties.Builder().nutrition(0).saturationMod(0.0F).build())));
         //AQUA_DYE = ITEMS.register("aqua_dye", () -> new DyeItem(DyeColor.LIGHT_BLUE, new Item.Properties()));
         //DARK_RED_DYE = ITEMS.register("dark_red_dye", () ->  new DyeItem(DyeColor.RED, new Item.Properties()));
     }
