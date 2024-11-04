@@ -1,0 +1,13 @@
+{
+  "type":"mekanism:activating",
+  "input":
+  {
+    "amount":2,
+    "gas":"mekanism:fissile_fuel"
+  },
+  "output":
+  {
+    "amount":1,
+    "gas":"mekanismscience:barium"
+  }
+}

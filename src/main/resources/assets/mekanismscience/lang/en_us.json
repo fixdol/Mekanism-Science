@@ -9,6 +9,8 @@
   "block.mekanismscience.adsorption_type_seawater_metal_extractor": "Adsorption Type Seawater Metal Extractor",
   "block.mekanismscience.concentrated_seawater": "Concentrated Seawater",
   "block.mekanismscience.ammonia": "Liquid Ammonia",
+  "block.mekanismscience.barium": "Liquid Barium",
+  "block.mekanismscience.barium_sulfate": "Liquid Barium Sulfate",
   "block.mekanismscience.benzodiazepine": "Liquid Benzodiazepine",
   "block.mekanismscience.beryllium": "Liquid Beryllium",
   "block.mekanismscience.bromine": "Liquid Bromine",
@@ -110,7 +112,7 @@
   "block.mekanismscience.brown_high_quality_concrete_powder": "Brown High-Quality Concrete Powder",
   "block.mekanismscience.pink_high_quality_concrete_powder": "Pink High-Quality Concrete Powder",
 
-  "block.mekanismscience.radiation_shielding_concrete": "放射線遮蔽コンクリート",
+  "block.mekanismscience.radiation_shielding_concrete": "Radiation Shielding Concrete",
 
   "constants.mekanismscience.mod_name": "Mekanism: Science",
 
@@ -128,6 +130,8 @@
 
   "gas.mekanismscience.americium": "Americium",
   "gas.mekanismscience.ammonia": "Ammonia",
+  "gas.mekanismscience.barium": "Barium",
+  "gas.mekanismscience.barium_sulfate": "Barium Sulfate",
   "gas.mekanismscience.benzodiazepine": "Benzodiazepine",
   "gas.mekanismscience.beryllium": "Beryllium",
   "gas.mekanismscience.bromine": "Bromine",
@@ -157,6 +161,8 @@
   "item.mekanismscience.pellet_high-density_neutron_source": "High-Density Neutron Source Pellet",
   "item.mekanismscience.ingot_refined_californium": "Refined Californium Ingot",
   "item.mekanismscience.ammonia_bucket": "Liquid Ammonia Bucket",
+  "item.mekanismscience.barium_bucket": "Liquid Barium Bucket",
+  "item.mekanismscience.barium_sulfate_bucket": "Liquid Barium Sulfate Bucket",
   "item.mekanismscience.benzodiazepine_bucket": "Liquid Benzodiazepine Bucket",
   "item.mekanismscience.beryllium_bucket": "Liquid Beryllium Bucket",
   "item.mekanismscience.bromine_bucket": "Liquid Bromine Bucket",

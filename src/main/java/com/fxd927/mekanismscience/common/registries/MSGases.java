@@ -13,6 +13,8 @@ public class MSGases {
 
     public static final GasRegistryObject<Gas> AMERICIUM;
     //public static final GasRegistryObject<Gas> AMMONIA;
+    public static final GasRegistryObject<Gas> BARIUM;
+    public static final GasRegistryObject<Gas> BARIUM_SULFATE;
     //public static final GasRegistryObject<Gas> BENZODIAZEPINE;
     //public static final GasRegistryObject<Gas> BROMINE;
     public static final GasRegistryObject<Gas> BERYLLIUM;
@@ -36,6 +38,8 @@ public class MSGases {
     static {
         AMERICIUM = GASES.register("americium", 13983840, new GasAttributes.Radiation(0.05));
         //AMMONIA = GASES.register(MSChemicalConstants.AMMONIA);
+        BARIUM = GASES.register(MSChemicalConstants.BARIUM);
+        BARIUM_SULFATE = GASES.register(MSChemicalConstants.BARIUM_SULFATE);
         //BENZODIAZEPINE = GASES.register(MSChemicalConstants.BENZODIAZEPINE);
         //BROMINE = GASES.register(MSChemicalConstants.BROMINE);
         BERYLLIUM = GASES.register(MSChemicalConstants.BERYLLIUM);

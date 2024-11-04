@@ -1,0 +1,13 @@
+{
+  "type":"mekanism:crystallizing",
+  "chemicalType":"pigment",
+  "input":
+  {
+    "amount":100,
+    "pigment":"mekanismscience:barium_sulfate"
+  },
+  "output":
+  {
+    "item":"mekanismscience:dust_barium_sulfate"
+  }
+}
