@@ -7,6 +7,9 @@ import mekanism.common.lib.radiation.RadiationManager;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.animal.Animal;
+import net.minecraft.world.entity.animal.Fox;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -23,7 +26,7 @@ public class NeutronSourcePellet extends Item{
     @Override
     public void inventoryTick(ItemStack stack, Level world, Entity entity, int slot, boolean selected) {
         if (!world.isClientSide && entity instanceof Player player) {
-            double magnitude = 2.0;
+            double magnitude = 0.5;
             forceRadiate(player, magnitude);
         }
         super.inventoryTick(stack, world, entity, slot, selected);
