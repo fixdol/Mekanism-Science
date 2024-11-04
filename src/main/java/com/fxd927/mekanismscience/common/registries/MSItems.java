@@ -15,7 +15,8 @@ public class MSItems {
     public static final ItemDeferredRegister ITEMS = new ItemDeferredRegister(MekanismScience.MODID);
 
     public static final ItemRegistryObject<Item> NEUTRON_SOURCE_PELLET;
-    //public static final ItemRegistryObject<Item> HIGH_DENSITY_NEUTRON_SOURCE_PELLET = ITEMS.register("pellet_high-density_neutron_source", () -> new HighDensityNeutronSourcePellet(new Item.Properties(), EnumColor.PURPLE));
+    //public static final ItemRegistryObject<Item> HIGH_DENSITY_NEUTRON_SOURCE_PELLET = ITEMS.register("pellet_high-density_neutron_source", () -> new HighDensityNeutronSourcePellet(new Item.Properties(), EnumColor.PURPLE));    public static final ItemRegistryObject<Item> DUST_CALCIUM_OXIDE;
+    public static final ItemRegistryObject<Item> DUST_BARIUM_SULFATE;
     public static final ItemRegistryObject<Item> DUST_CALCIUM_OXIDE;
     //public static final ItemRegistryObject<Item> AQUA_DYE;
     //public static final ItemRegistryObject<Item> DARK_RED_DYE;
@@ -31,6 +32,7 @@ public class MSItems {
 
     static {
         NEUTRON_SOURCE_PELLET = ITEMS.register("pellet_neutron_source", () -> new NeutronSourcePellet(new Item.Properties(), EnumColor.YELLOW));
+        DUST_BARIUM_SULFATE = ITEMS.register("dust_barium_sulfate");
         DUST_CALCIUM_OXIDE = ITEMS.register("dust_calcium_oxide");
         //AQUA_DYE = ITEMS.register("aqua_dye", () -> new DyeItem(DyeColor.LIGHT_BLUE, new Item.Properties()));
         //DARK_RED_DYE = ITEMS.register("dark_red_dye", () ->  new DyeItem(DyeColor.RED, new Item.Properties()));
