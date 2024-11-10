@@ -24,15 +24,18 @@ public class MSGases {
     //public static final GasRegistryObject<Gas> ETHANOL;
     public static final GasRegistryObject<Gas> HELIUM;
     public static final GasRegistryObject<Gas> SUPERHEATED_HELIUM;
-    //public static final GasRegistryObject<Gas> IODINE;
+    public static final GasRegistryObject<Gas> IODINE;
     //public static final GasRegistryObject<Gas> LACTOSE;
     //public static final GasRegistryObject<Gas> METHANOL;
     //public static final GasRegistryObject<Gas> METHYLAMINE;
     //public static final GasRegistryObject<Gas> METHYLAMMONIUM_LEAD_IODIDE;
+    public static final GasRegistryObject<Gas> POTASSIUM;
+    public static final GasRegistryObject<Gas> POTASSIUM_IODIDE;
     //public static final GasRegistryObject<Gas> SEAWATER;
     public static final GasRegistryObject<Gas> STRONTIUM;
     //public static final GasRegistryObject<Gas> TETRODOTOXIN;
     //public static final GasRegistryObject<Gas> WHEY;
+    public static final GasRegistryObject<Gas> XENON;
     public static final GasRegistryObject<Gas> YTTRIUM;
 
     static {
@@ -49,15 +52,18 @@ public class MSGases {
         //ETHANOL = GASES.register(MSChemicalConstants.ETHANOL);
         HELIUM = GASES.register(MSChemicalConstants.HELIUM, Coolants.HELIUM_COOLANT);
         SUPERHEATED_HELIUM = GASES.register(MSChemicalConstants.SUPERHEATED_HELIUM, Coolants.HEATED_HELIUM_COOLANT);
-        //IODINE = GASES.register(MSChemicalConstants.IODINE);
+        IODINE = GASES.register(MSChemicalConstants.IODINE);
         //LACTOSE = GASES.register(MSChemicalConstants.LACTOSE);
         //METHANOL = GASES.register(MSChemicalConstants.METHANOL);
         //METHYLAMINE = GASES.register(MSChemicalConstants.METHYLAMINE);
         //METHYLAMMONIUM_LEAD_IODIDE = GASES.register(MSChemicalConstants.METHYLAMMONIUM_LEAD_IODIDE);
+        POTASSIUM = GASES.register(MSChemicalConstants.POTASSIUM);
+        POTASSIUM_IODIDE = GASES.register(MSChemicalConstants.POTASSIUM_IODIDE);
         //SEAWATER = GASES.register(MSChemicalConstants.SEAWATER);
         STRONTIUM = GASES.register(MSChemicalConstants.STRONTIUM);
         //TETRODOTOXIN = GASES.register(MSChemicalConstants.TETRODOTOXIN);
         //WHEY = GASES.register(MSChemicalConstants.WHEY);
+        XENON = GASES.register(MSChemicalConstants.XENON);
         YTTRIUM = GASES.register(MSChemicalConstants.YTTRIUM);
     }
 

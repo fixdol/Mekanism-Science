@@ -1,6 +1,7 @@
 package com.fxd927.mekanismscience.common.item.tablet;
 
 import com.fxd927.mekanismscience.common.registries.MSEffects;
+import mekanism.common.capabilities.Capabilities;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
@@ -24,17 +25,17 @@ public class IodineTablet extends Item {
         if (!level.isClientSide && entity instanceof Player) {
             Player player = (Player) entity;
 
-            //MobEffectInstance currentEffect = player.getEffect(MSEffects.RADIATION_RESISTANCE.get());
+            MobEffectInstance currentEffect = player.getEffect(MSEffects.RADIATION_RESISTANCE.get());
             player.getCooldowns().addCooldown(this,3600);
 
             int newDuration;
-            //if (currentEffect != null) {
-            //newDuration = currentEffect.getDuration() + BASE_DURATION;
-            //} else {
-            //newDuration = BASE_DURATION;
-            //}
+            if (currentEffect != null) {
+            newDuration = currentEffect.getDuration() + BASE_DURATION;
+            } else {
+            newDuration = BASE_DURATION;
+            }
 
-            //player.addEffect(new MobEffectInstance(MSEffects.RADIATION_RESISTANCE.get(), newDuration, 0));
+            player.addEffect(new MobEffectInstance(MSEffects.RADIATION_RESISTANCE.get(), newDuration, 0));
 
             player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, REGENERATION_DURATION, REGENERATION_AMPLIFIER));
         }

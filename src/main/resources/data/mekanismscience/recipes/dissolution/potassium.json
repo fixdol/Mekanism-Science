@@ -1,0 +1,21 @@
+{
+  "type":"mekanism:dissolution",
+  "gasInput":
+  {
+    "amount":1,
+    "gas":"mekanism:sulfuric_acid"
+  },
+  "itemInput":
+  {
+    "ingredient":
+    {
+      "item":"minecraft:granite"
+    }
+  },
+  "output":
+  {
+    "amount":500,
+    "chemicalType":"gas",
+    "gas":"mekanismscience:potassium"
+  }
+}

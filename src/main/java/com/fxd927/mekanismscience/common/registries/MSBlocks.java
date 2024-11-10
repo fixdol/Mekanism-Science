@@ -1,35 +1,24 @@
 package com.fxd927.mekanismscience.common.registries;
 
 import com.fxd927.mekanismscience.common.MekanismScience;
+import com.fxd927.mekanismscience.common.block.XenonLight;
 import com.fxd927.mekanismscience.common.content.blocktype.MSMachine;
-import com.fxd927.mekanismscience.common.tile.machine.TileEntityAdsorptionTypeSeawaterMetalExtractor;
-import com.fxd927.mekanismscience.common.tile.machine.TileEntityOrganicLiquidExtractor;
-import com.fxd927.mekanismscience.common.tile.machine.TileEntitySeawaterPump;
-import mekanism.api.text.EnumColor;
-import mekanism.common.block.interfaces.IColoredBlock;
+import com.fxd927.mekanismscience.common.tile.misc.TileEntityXenonLight;
 import mekanism.common.block.prefab.BlockTile;
-import mekanism.common.block.states.BlockStateHelper;
-import mekanism.common.item.block.ItemBlockColoredName;
 import mekanism.common.item.block.machine.ItemBlockMachine;
 import mekanism.common.registration.impl.BlockDeferredRegister;
 import mekanism.common.registration.impl.BlockRegistryObject;
 import mekanism.common.resource.BlockResourceInfo;
-import mekanism.common.util.EnumUtils;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
-import net.minecraftforge.registries.RegistryObject;
-
-import java.util.EnumMap;
-import java.util.Map;
-import java.util.function.Function;
-import java.util.function.UnaryOperator;
 
 public class MSBlocks {
     public static final BlockDeferredRegister BLOCKS = new BlockDeferredRegister(MekanismScience.MODID);
+
+    //public static final BlockRegistryObject<BlockTile.BlockTileModel<TileEntityXenonLight, MSMachine<TileEntityXenonLight>>, ItemBlockMachine> XENON_LIGHT;
 
     public static final BlockRegistryObject<Block,BlockItem> HIGH_QUALITY_CONCRETE ;
     public static final BlockRegistryObject<Block,BlockItem> AQUA_HIGH_QUALITY_CONCRETE;
@@ -112,6 +101,8 @@ public class MSBlocks {
     public static final BlockRegistryObject<Block,BlockItem> PINK_HIGH_QUALITY_CONCRETE_POWDER;
 
     static {
+         //XENON_LIGHT = BLOCKS.register("xenon_light",() -> new BlockTile.BlockTileModel<>(MSBlockTypes.XENON_LIGHT, properties -> properties.mapColor(BlockResourceInfo.STEEL.getMapColor())),ItemBlockMachine::new);
+
         HIGH_QUALITY_CONCRETE = BLOCKS.register("high_quality_concrete", () -> new Block(BlockBehaviour.Properties.of().mapColor(DyeColor.LIGHT_GRAY).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(5.0F, 6.0F)));
         AQUA_HIGH_QUALITY_CONCRETE = BLOCKS.register("aqua_high_quality_concrete", () -> new Block(BlockBehaviour.Properties.of().mapColor(DyeColor.LIGHT_BLUE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(5.0F, 6.0F)));
         BLACK_HIGH_QUALITY_CONCRETE = BLOCKS.register("black_high_quality_concrete", () -> new Block(BlockBehaviour.Properties.of().mapColor(DyeColor.BLACK).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(5.0F, 6.0F)));

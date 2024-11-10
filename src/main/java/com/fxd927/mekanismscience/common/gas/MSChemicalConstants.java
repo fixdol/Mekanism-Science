@@ -15,6 +15,8 @@ public enum MSChemicalConstants implements IChemicalConstant {
     HELIUM("helium", 0xFFE0F0FF, 0, 4.22F, 124.9F),
     SUPERHEATED_HELIUM("superheated_helium", 0xFFFFDDB5, 0, 2_000F, 124.9F),
     IODINE("iodine",0xFF8536B2,0,363.7F,4933F),
+    POTASSIUM("potassium", 0xFFFF82D1,0,1302F,890F),
+    POTASSIUM_IODIDE("potassium_iodide", 0xFFC25CC1,0,1603.15F,3130F),
     STRONTIUM("strontium", 0xFFFFC1B2, 0, 1050.15F, 2375F),
     LACTOSE("lactose",0xFFFFFFEF,0,941.05F,1525F),
     METHANOL("methanol",0xFF66DE9E,0, 338F,791.8F),
@@ -24,6 +26,7 @@ public enum MSChemicalConstants implements IChemicalConstant {
     SEAWATER("seawater",0xFF06C9E6,0,373.15F,1000F),
     TETRODOTOXIN("tetrodotoxin",0xFF5DC86F,0,593.15F,1000F),
     WHEY("whey",0xFFF7FFA2,0,373.15F,1030F),
+    XENON("xenon",0xFF665BFF,0,373.15F,1030F ),
     YTTRIUM("yttrium", 0xFFCCE5FF, 0, 1799.15F, 4240F);
 
     private final String name;
