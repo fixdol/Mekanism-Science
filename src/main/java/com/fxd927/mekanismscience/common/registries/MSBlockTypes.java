@@ -6,19 +6,12 @@ import com.fxd927.mekanismscience.common.content.blocktype.MSMachine;
 import com.fxd927.mekanismscience.common.tile.machine.TileEntityAdsorptionTypeSeawaterMetalExtractor;
 import com.fxd927.mekanismscience.common.tile.machine.TileEntityOrganicLiquidExtractor;
 import com.fxd927.mekanismscience.common.tile.machine.TileEntitySeawaterPump;
-import com.fxd927.mekanismscience.common.tile.misc.TileEntityXenonLight;
 import mekanism.api.Upgrade;
 import mekanism.common.block.attribute.Attributes;
 
 import java.util.EnumSet;
 
 public class MSBlockTypes {
-    public static final MSMachine<TileEntityXenonLight> XENON_LIGHT = MSMachine.MSMachineBuilder
-        .createMSMachine(() -> MSTileEntityTypes.XENON_LIGHT, MSLang.ADSORPTION_TYPE_SEAWATER_METAL_EXTRACTOR)
-        .withEnergyConfig(MSConfig.usageConfig.adsorptionTypeSeawaterMetalExtractor, MSConfig.storageConfig.adsorptionTypeSeawaterMetalExtractor)
-        .withComputerSupport("xenonLight")
-        .replace(Attributes.ACTIVE)
-        .build();
 
     //public static final MSMachine<TileEntityAdsorptionTypeSeawaterMetalExtractor> ADSORPTION_TYPE_SEAWATER_METAL_EXTRACTOR = MSMachine.MSMachineBuilder
             //.createMSMachine(() -> MSTileEntityTypes.ADSORPTION_TYPE_SEAWATER_METAL_EXTRACTOR, MSLang.ADSORPTION_TYPE_SEAWATER_METAL_EXTRACTOR)

@@ -1,9 +1,7 @@
 package com.fxd927.mekanismscience.common.registries;
 
 import com.fxd927.mekanismscience.common.MekanismScience;
-import com.fxd927.mekanismscience.common.block.XenonLight;
 import com.fxd927.mekanismscience.common.content.blocktype.MSMachine;
-import com.fxd927.mekanismscience.common.tile.misc.TileEntityXenonLight;
 import mekanism.common.block.prefab.BlockTile;
 import mekanism.common.item.block.machine.ItemBlockMachine;
 import mekanism.common.registration.impl.BlockDeferredRegister;
@@ -17,8 +15,6 @@ import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 
 public class MSBlocks {
     public static final BlockDeferredRegister BLOCKS = new BlockDeferredRegister(MekanismScience.MODID);
-
-    //public static final BlockRegistryObject<BlockTile.BlockTileModel<TileEntityXenonLight, MSMachine<TileEntityXenonLight>>, ItemBlockMachine> XENON_LIGHT;
 
     public static final BlockRegistryObject<Block,BlockItem> HIGH_QUALITY_CONCRETE ;
     public static final BlockRegistryObject<Block,BlockItem> AQUA_HIGH_QUALITY_CONCRETE;
@@ -101,8 +97,6 @@ public class MSBlocks {
     public static final BlockRegistryObject<Block,BlockItem> PINK_HIGH_QUALITY_CONCRETE_POWDER;
 
     static {
-         //XENON_LIGHT = BLOCKS.register("xenon_light",() -> new BlockTile.BlockTileModel<>(MSBlockTypes.XENON_LIGHT, properties -> properties.mapColor(BlockResourceInfo.STEEL.getMapColor())),ItemBlockMachine::new);
-
         HIGH_QUALITY_CONCRETE = BLOCKS.register("high_quality_concrete", () -> new Block(BlockBehaviour.Properties.of().mapColor(DyeColor.LIGHT_GRAY).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(5.0F, 6.0F)));
         AQUA_HIGH_QUALITY_CONCRETE = BLOCKS.register("aqua_high_quality_concrete", () -> new Block(BlockBehaviour.Properties.of().mapColor(DyeColor.LIGHT_BLUE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(5.0F, 6.0F)));
         BLACK_HIGH_QUALITY_CONCRETE = BLOCKS.register("black_high_quality_concrete", () -> new Block(BlockBehaviour.Properties.of().mapColor(DyeColor.BLACK).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(5.0F, 6.0F)));
