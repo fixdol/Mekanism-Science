@@ -4,6 +4,7 @@ import com.fxd927.mekanismscience.common.MSLang;
 import com.fxd927.mekanismscience.common.config.MSConfig;
 import com.fxd927.mekanismscience.common.content.blocktype.MSMachine;
 import com.fxd927.mekanismscience.common.tile.machine.TileEntityAdsorptionTypeSeawaterMetalExtractor;
+import com.fxd927.mekanismscience.common.tile.machine.TileEntityAirCompressor;
 import com.fxd927.mekanismscience.common.tile.machine.TileEntityOrganicLiquidExtractor;
 import com.fxd927.mekanismscience.common.tile.machine.TileEntitySeawaterPump;
 import mekanism.api.Upgrade;
@@ -12,6 +13,14 @@ import mekanism.common.block.attribute.Attributes;
 import java.util.EnumSet;
 
 public class MSBlockTypes {
+    public static final MSMachine<TileEntityAirCompressor> AIR_COMPRESSOR = MSMachine.MSMachineBuilder
+            .createMSMachine(() -> MSTileEntityTypes.AIR_COMPRESSOR, MSLang.DESCRIPTION_AIR_COMPRESSOR)
+            .withGui(() -> MSContainerTypes.AIR_COMPRESSOR)
+            .withEnergyConfig(MSConfig.usageConfig.airCompressor, MSConfig.storageConfig.airCompressor)
+            .withSupportedUpgrades(EnumSet.of(Upgrade.SPEED, Upgrade.ENERGY))
+            .withComputerSupport("airCompressor")
+            .replace(Attributes.ACTIVE)
+            .build();
 
     //public static final MSMachine<TileEntityAdsorptionTypeSeawaterMetalExtractor> ADSORPTION_TYPE_SEAWATER_METAL_EXTRACTOR = MSMachine.MSMachineBuilder
             //.createMSMachine(() -> MSTileEntityTypes.ADSORPTION_TYPE_SEAWATER_METAL_EXTRACTOR, MSLang.ADSORPTION_TYPE_SEAWATER_METAL_EXTRACTOR)

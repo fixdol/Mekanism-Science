@@ -11,8 +11,9 @@ import mekanism.common.registration.impl.GasRegistryObject;
 public class MSGases {
     public static final GasDeferredRegister GASES = new GasDeferredRegister(MekanismScience.MODID);
 
+    public static final GasRegistryObject<Gas> ACTIVATED_CARBON;
     public static final GasRegistryObject<Gas> AMERICIUM;
-    //public static final GasRegistryObject<Gas> AMMONIA;
+    public static final GasRegistryObject<Gas> AMMONIA;
     public static final GasRegistryObject<Gas> BARIUM;
     public static final GasRegistryObject<Gas> BARIUM_SULFATE;
     //public static final GasRegistryObject<Gas> BENZODIAZEPINE;
@@ -20,6 +21,7 @@ public class MSGases {
     public static final GasRegistryObject<Gas> BERYLLIUM;
     //public static final GasRegistryObject<Gas> CALIFORNIUM;
     //public static final GasRegistryObject<Gas> CHLOROMETHANE;
+    public static final GasRegistryObject<Gas> COMPRESSED_AIR;
     //public static final GasRegistryObject<Gas> CONCENTRATED_SEAWATER;
     //public static final GasRegistryObject<Gas> ETHANOL;
     public static final GasRegistryObject<Gas> HELIUM;
@@ -29,6 +31,10 @@ public class MSGases {
     //public static final GasRegistryObject<Gas> METHANOL;
     //public static final GasRegistryObject<Gas> METHYLAMINE;
     //public static final GasRegistryObject<Gas> METHYLAMMONIUM_LEAD_IODIDE;
+    public static final GasRegistryObject<Gas> NITRIC_ACID;
+    public static final GasRegistryObject<Gas> NITROGEN;
+    public static final GasRegistryObject<Gas> NITROGEN_DIOXIDE;
+    public static final GasRegistryObject<Gas> NITROGEN_OXIDE;
     public static final GasRegistryObject<Gas> POTASSIUM;
     public static final GasRegistryObject<Gas> POTASSIUM_IODIDE;
     //public static final GasRegistryObject<Gas> SEAWATER;
@@ -39,8 +45,9 @@ public class MSGases {
     public static final GasRegistryObject<Gas> YTTRIUM;
 
     static {
+        ACTIVATED_CARBON = GASES.register("activated_carbon", 0x3F3232);
         AMERICIUM = GASES.register("americium", 13983840, new GasAttributes.Radiation(0.05));
-        //AMMONIA = GASES.register(MSChemicalConstants.AMMONIA);
+        AMMONIA = GASES.register(MSChemicalConstants.AMMONIA);
         BARIUM = GASES.register(MSChemicalConstants.BARIUM);
         BARIUM_SULFATE = GASES.register(MSChemicalConstants.BARIUM_SULFATE);
         //BENZODIAZEPINE = GASES.register(MSChemicalConstants.BENZODIAZEPINE);
@@ -48,6 +55,7 @@ public class MSGases {
         BERYLLIUM = GASES.register(MSChemicalConstants.BERYLLIUM);
         //CALIFORNIUM = GASES.register("californium", 0xFFF08B00, new GasAttributes.Radiation(0.1));
         //CHLOROMETHANE = GASES.register(MSChemicalConstants.CHLOROMETHANE);
+        COMPRESSED_AIR = GASES.register(MSChemicalConstants.COMPRESSED_AIR);
         //CONCENTRATED_SEAWATER = GASES.register(MSChemicalConstants.CONCENTRATED_SEAWATER);
         //ETHANOL = GASES.register(MSChemicalConstants.ETHANOL);
         HELIUM = GASES.register(MSChemicalConstants.HELIUM, Coolants.HELIUM_COOLANT);
@@ -57,6 +65,10 @@ public class MSGases {
         //METHANOL = GASES.register(MSChemicalConstants.METHANOL);
         //METHYLAMINE = GASES.register(MSChemicalConstants.METHYLAMINE);
         //METHYLAMMONIUM_LEAD_IODIDE = GASES.register(MSChemicalConstants.METHYLAMMONIUM_LEAD_IODIDE);
+        NITRIC_ACID = GASES.register(MSChemicalConstants.NITRIC_ACID);
+        NITROGEN = GASES.register(MSChemicalConstants.NITROGEN);
+        NITROGEN_DIOXIDE = GASES.register(MSChemicalConstants.NITROGEN_DIOXIDE);
+        NITROGEN_OXIDE = GASES.register(MSChemicalConstants.NITROGEN_OXIDE);
         POTASSIUM = GASES.register(MSChemicalConstants.POTASSIUM);
         POTASSIUM_IODIDE = GASES.register(MSChemicalConstants.POTASSIUM_IODIDE);
         //SEAWATER = GASES.register(MSChemicalConstants.SEAWATER);

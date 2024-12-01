@@ -117,10 +117,12 @@
 
   "constants.mekanismscience.mod_name": "Mekanism: Science",
 
+  "container.mekanismscience.air_compressor": "Air Compressor",
   "container.mekanismscience.adsorption_type_seawater_metal_extractor": "Adsorption Type Seawater Metal Extractor",
   "container.mekanismscience.organic_liquid_extractor": "Organic Liquid Extractor",
   "container.mekanismscience.seawater_pump": "Seawater Pump",
 
+  "description.mekanismscience.air_compressor": "This machine can suck in ambient air and compress it into a gaseous state.",
   "description.mekanismscience.adsorption_type_seawater_metal_extractor": "A machine can adsorb and obtain trace amounts of metals in seawater.",
   "description.mekanismscience.organic_liquid_extractor": "A machine to extract organic liquids from mobs.",
   "description.mekanismscience.seawater_pump": "This pump can be used to extract seawater in the ocean biome.",
@@ -129,6 +131,7 @@
   "effect.mekanismscience.radiation_resistance": "Radiation Resistance",
   "effect.mekanismscience.sensory_paralysis": "Sensory Paralysis",
 
+  "gas.mekanismscience.activated_carbon": "Activated Carbon",
   "gas.mekanismscience.americium": "Americium",
   "gas.mekanismscience.ammonia": "Ammonia",
   "gas.mekanismscience.barium": "Barium",
@@ -137,6 +140,7 @@
   "gas.mekanismscience.beryllium": "Beryllium",
   "gas.mekanismscience.bromine": "Bromine",
   "gas.mekanismscience.californium": "Californium",
+  "gas.mekanismscience.compressed_air": "Compressed Air",
   "gas.mekanismscience.concentrated_seawater": "Gaseous Concentrated Seawater",
   "gas.mekanismscience.chloromethane": "Chloromethane",
   "gas.mekanismscience.ethanol": "Ethanol",
@@ -148,7 +152,11 @@
   "gas.mekanismscience.lactose": "Lactose",
   "gas.mekanismscience.methanol": "Methanol",
   "gas.mekanismscience.methylamine": "Methylamine",
-  "gas.mekanismscience.methylammonium_lead_iodide": "Methylammonium_lead_iodide",
+  "gas.mekanismscience.methylammonium_lead_iodide": "Methylammonium Lead Iodide",
+  "gas.mekanismscience.nitric_acid": "Nitric Acid",
+  "gas.mekanismscience.nitrogen": "Nitrogen",
+  "gas.mekanismscience.nitrogen_dioxide": "Nitrogen Dioxide",
+  "gas.mekanismscience.nitrogen_oxide": "Nitrogen Oxide",
   "gas.mekanismscience.seawater": "Gaseous Seawater",
   "gas.mekanismscience.strontium": "Strontium",
   "gas.mekanismscience.tetrodotoxin": "Tetrodotoxin",

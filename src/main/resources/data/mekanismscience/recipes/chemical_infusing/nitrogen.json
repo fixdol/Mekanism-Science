@@ -1,0 +1,18 @@
+{
+  "type":"mekanism:chemical_infusing",
+  "leftInput":
+  {
+    "amount":5,
+    "gas":"mekanismscience:compressed_air"
+  },
+  "output":
+  {
+    "amount":4,
+    "gas":"mekanismscience:nitrogen"
+  },
+  "rightInput":
+  {
+    "amount":5,
+    "gas":"mekanismscience:activated_carbon"
+  }
+}
