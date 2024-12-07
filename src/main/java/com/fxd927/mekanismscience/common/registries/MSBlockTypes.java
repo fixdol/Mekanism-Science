@@ -9,6 +9,7 @@ import com.fxd927.mekanismscience.common.tile.machine.TileEntityOrganicLiquidExt
 import com.fxd927.mekanismscience.common.tile.machine.TileEntitySeawaterPump;
 import mekanism.api.Upgrade;
 import mekanism.common.block.attribute.Attributes;
+import mekanism.generators.common.registries.GeneratorsSounds;
 
 import java.util.EnumSet;
 
@@ -19,7 +20,7 @@ public class MSBlockTypes {
             .withEnergyConfig(MSConfig.usageConfig.airCompressor, MSConfig.storageConfig.airCompressor)
             .withSupportedUpgrades(EnumSet.of(Upgrade.SPEED, Upgrade.ENERGY))
             .withComputerSupport("airCompressor")
-            .replace(Attributes.ACTIVE)
+            .replace(Attributes.ACTIVE_LIGHT)
             .build();
 
     //public static final MSMachine<TileEntityAdsorptionTypeSeawaterMetalExtractor> ADSORPTION_TYPE_SEAWATER_METAL_EXTRACTOR = MSMachine.MSMachineBuilder

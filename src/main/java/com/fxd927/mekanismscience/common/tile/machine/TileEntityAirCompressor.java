@@ -20,8 +20,8 @@ import mekanism.common.capabilities.resolver.BasicCapabilityResolver;
 import mekanism.common.integration.computer.SpecialComputerMethodWrapper;
 import mekanism.common.integration.computer.annotation.WrappingComputerMethod;
 import mekanism.common.inventory.container.slot.ContainerSlotType;
+import mekanism.common.inventory.container.slot.SlotOverlay;
 import mekanism.common.inventory.slot.EnergyInventorySlot;
-import mekanism.common.inventory.slot.FluidInventorySlot;
 import mekanism.common.inventory.slot.chemical.GasInventorySlot;
 import mekanism.common.lib.transmitter.TransmissionType;
 import mekanism.common.tile.base.SubstanceType;
@@ -94,8 +94,13 @@ public class TileEntityAirCompressor extends TileEntityConfigurableMachine imple
     @Override
     protected IEnergyContainerHolder getInitialEnergyContainers(IContentsListener listener) {
         EnergyContainerHelper builder = EnergyContainerHelper.forSide(this::getDirection);
-        builder.addContainer(energyContainer = MachineEnergyContainer.input(this, listener), RelativeSide.BACK);
+        builder.addContainer(energyContainer = MachineEnergyContainer.input(this, listener));
         return builder.build();
+    }
+
+    @Override
+    public boolean getActive() {
+        return super.getActive();
     }
 
 
@@ -105,8 +110,10 @@ public class TileEntityAirCompressor extends TileEntityConfigurableMachine imple
         InventorySlotHelper builder = InventorySlotHelper.forSide(this::getDirection);
         builder.addSlot(inputSlot = GasInventorySlot.drain(gasTank, listener, 28, 20));
         builder.addSlot(outputSlot = GasInventorySlot.drain(gasTank, listener, 28, 51));
-        builder.addSlot(energySlot = EnergyInventorySlot.fillOrConvert(energyContainer, this::getLevel, listener, 143, 35), RelativeSide.BACK);
+        builder.addSlot(energySlot = EnergyInventorySlot.fillOrConvert(energyContainer, this::getLevel, listener, 143, 35));
         outputSlot.setSlotType(ContainerSlotType.OUTPUT);
+        inputSlot.setSlotOverlay(SlotOverlay.MINUS);
+        outputSlot.setSlotOverlay(SlotOverlay.PLUS);
         return builder.build();
     }
 
@@ -115,7 +122,14 @@ public class TileEntityAirCompressor extends TileEntityConfigurableMachine imple
         super.onUpdateServer();
         energySlot.fillContainerOrConvert();
         outputSlot.drainTank();
-        if (MekanismUtils.canFunction(this) && COMPRESSED_AIR_STACK.getAmount() <= gasTank.getNeeded()) {
+
+        boolean isGeneratingCompressedAir = false;
+
+        Direction frontDirection = RelativeSide.FRONT.getDirection(getDirection());
+        BlockPos frontPos = getBlockPos().relative(frontDirection);
+        boolean isBlocked = !level.isEmptyBlock(frontPos);
+
+        if (!isBlocked && MekanismUtils.canFunction(this) && COMPRESSED_AIR_STACK.getAmount() <= gasTank.getNeeded()) {
             FloatingLong energyPerTick = energyContainer.getEnergyPerTick();
             if (energyContainer.extract(energyPerTick, Action.SIMULATE, AutomationType.INTERNAL).equals(energyPerTick)) {
                 operatingTicks++;
@@ -123,12 +137,16 @@ public class TileEntityAirCompressor extends TileEntityConfigurableMachine imple
                     operatingTicks = 0;
                     energyContainer.extract(energyPerTick, Action.EXECUTE, AutomationType.INTERNAL);
                     gasTank.insert(COMPRESSED_AIR_STACK, Action.EXECUTE, AutomationType.INTERNAL);
+                    isGeneratingCompressedAir = true;
                 }
             }
         }
+
         if (!gasTank.isEmpty()) {
             ChemicalUtil.emit(Collections.singleton(Direction.UP), gasTank, this, 256L * (1 + upgradeComponent.getUpgrades(Upgrade.SPEED)));
         }
+
+        setActive(isGeneratingCompressedAir);
     }
 
     @Override
