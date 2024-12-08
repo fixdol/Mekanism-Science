@@ -7,6 +7,7 @@
   "advancements.mekanismscience.seawater_pump.title": "海の恵み",
 
   "block.mekanismscience.air_compressor": "空気圧縮機",
+  "block.mekanismscience.neutron_irradiator": "中性子照射機",
   "block.mekanismscience.adsorption_type_seawater_metal_extractor": "吸着式海水金属抽出機",
   "block.mekanismscience.concentrated_seawater": "濃縮海水",
   "block.mekanismscience.ammonia": "液体アンモニア",
@@ -26,6 +27,9 @@
   "block.mekanismscience.methylamine": "液体メチルアミン",
   "block.mekanismscience.methylammonium_lead_iodide": "液体ヨウ化鉛メチルアンモニウム",
   "block.mekanismscience.milk": "ミルク",
+  "block.mekanismscience.nitrogen": "液体窒素",
+  "block.mekanismscience.nitrogen_oxide": "液体一酸化窒素",
+  "block.mekanismscience.nitrogen_dioxide": "液体二酸化窒素",
   "block.mekanismscience.organic_liquid_extractor": "有機液体抽出機",
   "block.mekanismscience.strontium": "液体ストロンチウム",
   "block.mekanismscience.tetrodotoxin": "液体テトロドトキシン",
@@ -119,6 +123,7 @@
   "constants.mekanismscience.mod_name": "Mekanism: Science",
 
   "container.mekanismscience.air_compressor": "空気圧縮機",
+  "container.mekanismscience.neutron_irradiator": "中性子照射機",
   "container.mekanismscience.adsorption_type_seawater_metal_extractor": "吸着式海水金属抽出機",
   "container.mekanismscience.organic_liquid_extractor": "有機液体抽出機",
   "container.mekanismscience.seawater_pump": "海水汲上ポンプ",
@@ -135,6 +140,7 @@
   "gas.mekanismscience.activated_carbon": "活性炭",
   "gas.mekanismscience.americium": "アメリシウム",
   "gas.mekanismscience.ammonia": "アンモニア",
+  "gas.mekanismscience.ammonium_nitrate": "硝酸アンモニウム",
   "gas.mekanismscience.barium": "バリウム",
   "gas.mekanismscience.barium_sulfate": "硫酸バリウム",
   "gas.mekanismscience.benzodiazepine": "ベンゾジアゼピン",
@@ -200,5 +206,7 @@
   "item.mekanismscience.tablet_iodine": "ヨウ素剤",
   "item.mekanismscience.tablet_poison": "毒素剤",
   "item.mekanismscience.tablet_sleep_inducing": "睡眠導入剤",
-  "item.mekanismscience.seawater_bucket": "海水入りバケツ"
+  "item.mekanismscience.seawater_bucket": "海水入りバケツ",
+
+  "sound_event.mekanismscience.tile.machine.air_compressor": "空気圧縮機の羽が回転する"
 }

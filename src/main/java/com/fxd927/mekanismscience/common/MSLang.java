@@ -8,6 +8,7 @@ import net.minecraft.Util;
 
 public enum MSLang implements ILangEntry {
     DESCRIPTION_AIR_COMPRESSOR("description", "air_compressor"),
+    DESCRIPTION_NEUTRON_IRRADIATOR("description","neutron_irradiator"),
     ADSORPTION_TYPE_SEAWATER_METAL_EXTRACTOR("description", "adsorption_type_seawater_metal_extractor"),
     DESCRIPTION_ORGANIC_LIQUID_EXTRACTOR("description","organic_liquid_extractor"),
     DESCRIPTION_SEAWATER_PUMP("description", "seawater_pump"),

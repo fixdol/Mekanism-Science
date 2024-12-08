@@ -3,12 +3,10 @@ package com.fxd927.mekanismscience.common.registries;
 import com.fxd927.mekanismscience.common.MSLang;
 import com.fxd927.mekanismscience.common.config.MSConfig;
 import com.fxd927.mekanismscience.common.content.blocktype.MSMachine;
-import com.fxd927.mekanismscience.common.tile.machine.TileEntityAdsorptionTypeSeawaterMetalExtractor;
-import com.fxd927.mekanismscience.common.tile.machine.TileEntityAirCompressor;
-import com.fxd927.mekanismscience.common.tile.machine.TileEntityOrganicLiquidExtractor;
-import com.fxd927.mekanismscience.common.tile.machine.TileEntitySeawaterPump;
+import com.fxd927.mekanismscience.common.tile.machine.*;
 import mekanism.api.Upgrade;
 import mekanism.common.block.attribute.Attributes;
+import mekanism.common.registries.MekanismSounds;
 import mekanism.generators.common.registries.GeneratorsSounds;
 
 import java.util.EnumSet;
@@ -17,9 +15,19 @@ public class MSBlockTypes {
     public static final MSMachine<TileEntityAirCompressor> AIR_COMPRESSOR = MSMachine.MSMachineBuilder
             .createMSMachine(() -> MSTileEntityTypes.AIR_COMPRESSOR, MSLang.DESCRIPTION_AIR_COMPRESSOR)
             .withGui(() -> MSContainerTypes.AIR_COMPRESSOR)
+            .withSound(MSSounds.AIR_COMPRESSOR)
             .withEnergyConfig(MSConfig.usageConfig.airCompressor, MSConfig.storageConfig.airCompressor)
-            .withSupportedUpgrades(EnumSet.of(Upgrade.SPEED, Upgrade.ENERGY))
+            .withSupportedUpgrades(EnumSet.of(Upgrade.SPEED, Upgrade.ENERGY, Upgrade.MUFFLING))
             .withComputerSupport("airCompressor")
+            .replace(Attributes.ACTIVE_LIGHT)
+            .build();
+    public static final MSMachine<TileEntityNeutronIrradiator> NEUTRON_IRRADIATOR = MSMachine.MSMachineBuilder
+            .createMSMachine(() -> MSTileEntityTypes.NEUTRON_IRRADIATOR, MSLang.DESCRIPTION_NEUTRON_IRRADIATOR)
+            .withGui(() -> MSContainerTypes.NEUTRON_IRRADIATOR)
+            .withSound(GeneratorsSounds.FISSION_REACTOR)
+            .withEnergyConfig(MSConfig.usageConfig.neutronIrradiator, MSConfig.storageConfig.neutronIrradiator)
+            .withSupportedUpgrades(EnumSet.of(Upgrade.SPEED, Upgrade.ENERGY, Upgrade.MUFFLING, Upgrade.GAS))
+            .withComputerSupport("neutronIrradiator")
             .replace(Attributes.ACTIVE_LIGHT)
             .build();
 

@@ -4,6 +4,7 @@ import mekanism.common.base.IChemicalConstant;
 
 public enum MSChemicalConstants implements IChemicalConstant {
     AMMONIA("ammonia",0xFFC8B3FF,0,240F,0.6942F),
+    AMMONIUM_NITRATE("ammonium_nitrate",0xFF5E89FF,0,483.15F,1700F),
     BARIUM("barium",0xFF6B9BA1,0,1910F,3510F),
     BARIUM_SULFATE("barium_sulfate",0xFF86C4C0,0,1873.15F,4500F),
     BENZODIAZEPINE("benzodiazepine",0xFF66D0BA,0,573F,900F),

@@ -1,0 +1,10 @@
+{
+  "tile.machine.air_compressor":
+  {
+    "sounds":
+    [
+      "mekanismscience:tile/air_compressor"
+    ],
+    "subtitle":"sound_event.mekanismscience.tile.machine.air_compressor"
+  }
+}

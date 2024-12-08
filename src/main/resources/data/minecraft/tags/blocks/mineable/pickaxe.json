@@ -1,6 +1,8 @@
 {
   "values":
   [
+    "mekanismscience:air_compressor",
+    "mekanismscience:neutron_irradiator",
     "mekanismscience:high_quality_concrete",
     "mekanismscience:aqua_high_quality_concrete",
     "mekanismscience:black_high_quality_concrete",

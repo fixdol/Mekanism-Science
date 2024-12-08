@@ -7,6 +7,7 @@
   "advancements.mekanismscience.seawater_pump.title": "I Sea What You Did There",
 
   "block.mekanismscience.air_compressor": "Air Compressor",
+  "block.mekanismscience.neutron_irradiator": "Neutron Irradiator",
   "block.mekanismscience.adsorption_type_seawater_metal_extractor": "Adsorption Type Seawater Metal Extractor",
   "block.mekanismscience.concentrated_seawater": "Concentrated Seawater",
   "block.mekanismscience.ammonia": "Liquid Ammonia",
@@ -26,6 +27,9 @@
   "block.mekanismscience.methylamine": "Liquid Methylamine",
   "block.mekanismscience.methylammonium_lead_iodide": "Liquid Methylammonium Lead Iodide",
   "block.mekanismscience.milk": "Milk",
+  "block.mekanismscience.nitrogen": "Liquid Nitrogen",
+  "block.mekanismscience.nitrogen_oxide": "Liquid Nitrogen Oxide",
+  "block.mekanismscience.nitrogen_dioxide": "Liquid Nitrogen Dioxide",
   "block.mekanismscience.organic_liquid_extractor": "Organic Liquid Extractor",
   "block.mekanismscience.strontium": "Liquid Strontium",
   "block.mekanismscience.tetrodotoxin": "Liquid Tetrodotoxin",
@@ -119,6 +123,7 @@
   "constants.mekanismscience.mod_name": "Mekanism: Science",
 
   "container.mekanismscience.air_compressor": "Air Compressor",
+  "container.mekanismscience.neutron_irradiator": "Neutron Irradiator",
   "container.mekanismscience.adsorption_type_seawater_metal_extractor": "Adsorption Type Seawater Metal Extractor",
   "container.mekanismscience.organic_liquid_extractor": "Organic Liquid Extractor",
   "container.mekanismscience.seawater_pump": "Seawater Pump",
@@ -135,6 +140,7 @@
   "gas.mekanismscience.activated_carbon": "Activated Carbon",
   "gas.mekanismscience.americium": "Americium",
   "gas.mekanismscience.ammonia": "Ammonia",
+  "gas.mekanismscience.ammonium_nitrate": "Ammonium Nitrate",
   "gas.mekanismscience.barium": "Barium",
   "gas.mekanismscience.barium_sulfate": "Barium Sulfate",
   "gas.mekanismscience.benzodiazepine": "Benzodiazepine",
@@ -201,5 +207,7 @@
   "item.mekanismscience.tablet_poison": "Poison Tablet",
   "item.mekanismscience.tablet_sleep_inducing": "Sleep Inducing Tablet",
 
-  "item.mekanismscience.seawater_bucket": "Seawater Bucket"
+  "item.mekanismscience.seawater_bucket": "Seawater Bucket",
+
+  "sound_event.mekanismscience.tile.machine.air_compressor": "Spin Air Compressor Blades"
 }

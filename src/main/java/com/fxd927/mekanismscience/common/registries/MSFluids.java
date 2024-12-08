@@ -12,6 +12,7 @@ public class MSFluids {
     public static final FluidDeferredRegister FLUIDS = new FluidDeferredRegister(MekanismScience.MODID);
 
     public static final FluidRegistryObject<FluidDeferredRegister.MekanismFluidType, ForgeFlowingFluid.Source, ForgeFlowingFluid.Flowing, LiquidBlock, BucketItem> AMMONIA = FLUIDS.registerLiquidChemical(MSChemicalConstants.AMMONIA);
+    public static final FluidRegistryObject<FluidDeferredRegister.MekanismFluidType, ForgeFlowingFluid.Source, ForgeFlowingFluid.Flowing, LiquidBlock, BucketItem> AMMONIUM_NITRATE = FLUIDS.registerLiquidChemical(MSChemicalConstants.AMMONIUM_NITRATE);
     public static final FluidRegistryObject<FluidDeferredRegister.MekanismFluidType, ForgeFlowingFluid.Source, ForgeFlowingFluid.Flowing, LiquidBlock, BucketItem> BARIUM = FLUIDS.registerLiquidChemical(MSChemicalConstants.BARIUM);
     public static final FluidRegistryObject<FluidDeferredRegister.MekanismFluidType, ForgeFlowingFluid.Source, ForgeFlowingFluid.Flowing, LiquidBlock, BucketItem> BARIUM_SULFATE = FLUIDS.registerLiquidChemical(MSChemicalConstants.BARIUM_SULFATE);
     //public static final FluidRegistryObject<FluidDeferredRegister.MekanismFluidType, ForgeFlowingFluid.Source, ForgeFlowingFluid.Flowing, LiquidBlock, BucketItem> BENZODIAZEPINE = FLUIDS.registerLiquidChemical(MSChemicalConstants.BENZODIAZEPINE);

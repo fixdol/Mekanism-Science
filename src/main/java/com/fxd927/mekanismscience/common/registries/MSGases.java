@@ -14,6 +14,7 @@ public class MSGases {
     public static final GasRegistryObject<Gas> ACTIVATED_CARBON;
     public static final GasRegistryObject<Gas> AMERICIUM;
     public static final GasRegistryObject<Gas> AMMONIA;
+    public static final GasRegistryObject<Gas> AMMONIUM_NITRATE;
     public static final GasRegistryObject<Gas> BARIUM;
     public static final GasRegistryObject<Gas> BARIUM_SULFATE;
     //public static final GasRegistryObject<Gas> BENZODIAZEPINE;
@@ -48,6 +49,7 @@ public class MSGases {
         ACTIVATED_CARBON = GASES.register("activated_carbon", 0x3F3232);
         AMERICIUM = GASES.register("americium", 13983840, new GasAttributes.Radiation(0.05));
         AMMONIA = GASES.register(MSChemicalConstants.AMMONIA);
+        AMMONIUM_NITRATE = GASES.register(MSChemicalConstants.AMMONIUM_NITRATE);
         BARIUM = GASES.register(MSChemicalConstants.BARIUM);
         BARIUM_SULFATE = GASES.register(MSChemicalConstants.BARIUM_SULFATE);
         //BENZODIAZEPINE = GASES.register(MSChemicalConstants.BENZODIAZEPINE);

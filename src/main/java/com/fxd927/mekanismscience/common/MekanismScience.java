@@ -1,6 +1,7 @@
 package com.fxd927.mekanismscience.common;
 
 import com.fxd927.mekanismscience.common.config.MSConfig;
+import com.fxd927.mekanismscience.common.recipe.MSRecipeType;
 import com.fxd927.mekanismscience.common.registries.*;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
@@ -35,6 +36,9 @@ public class MekanismScience
         MSContainerTypes.CONTAINER_TYPES.register(modEventBus);
         MSTileEntityTypes.TILE_ENTITY_TYPES.register(modEventBus);
         MSEffects.MOB_EFFECTS.register(modEventBus);
+        MSRecipeType.RECIPE_TYPES.register(modEventBus);
+        MSRecipeSerializers.RECIPE_SERIALIZERS.register(modEventBus);
+        MSSounds.SOUND_EVENTS.register(modEventBus);
 
         MSGases.Coolants.init();
 
@@ -43,7 +47,7 @@ public class MekanismScience
     }
 
     public static ResourceLocation rl(String path){
-        return new ResourceLocation(MekanismScience.MODID,path);
+        return new ResourceLocation(MekanismScience.MODID, path);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)

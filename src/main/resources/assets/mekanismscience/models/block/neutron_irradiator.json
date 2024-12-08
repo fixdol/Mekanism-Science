@@ -1,0 +1,13 @@
+{
+  "parent":"mekanism:block/machine",
+  "textures":
+  {
+    "sides":"mekanismscience:block/neutron_irradiator/side",
+    "front":"mekanismscience:block/neutron_irradiator/front",
+    "west":"mekanismscience:block/neutron_irradiator/side",
+    "east":"mekanismscience:block/neutron_irradiator/side",
+    "south":"mekanismscience:block/neutron_irradiator/back",
+    "up":"mekanismscience:block/neutron_irradiator/top",
+    "down":"mekanismscience:block/neutron_irradiator/bottom"
+  }
+}

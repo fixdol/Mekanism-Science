@@ -10,6 +10,7 @@ public class MSStorageConfig extends BaseMekanismConfig {
     private final ForgeConfigSpec configSpec;
 
     public final CachedFloatingLongValue airCompressor;
+    public final CachedFloatingLongValue neutronIrradiator;
     public final CachedFloatingLongValue adsorptionTypeSeawaterMetalExtractor;
     public final CachedFloatingLongValue seawaterPump;
     public final CachedFloatingLongValue organicLiquidExtractor;
@@ -19,6 +20,9 @@ public class MSStorageConfig extends BaseMekanismConfig {
         builder.comment("Science Energy Storage Config. This config is synced from server to client.").push("storage");
 
         airCompressor = CachedFloatingLongValue.define(this, builder, "Base energy storage (Joules).", "airCompressor",
+                FloatingLong.createConst(40_000));
+
+        neutronIrradiator = CachedFloatingLongValue.define(this, builder, "Base energy storage (Joules).", "airCompressor",
                 FloatingLong.createConst(40_000));
 
         adsorptionTypeSeawaterMetalExtractor = CachedFloatingLongValue.define(this, builder, "Base energy storage (Joules).", "adsorptionTypeSeawaterMetalExtractor",
