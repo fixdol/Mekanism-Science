@@ -1,9 +1,11 @@
 package com.fxd927.mekanismscience.client;
 
-import com.fxd927.mekanismscience.api.recipes.NeutronIrradiatingRecipe;
+import com.fxd927.mekanismscience.api.recipes.AdsorptionRecipe;
+import com.fxd927.mekanismscience.api.recipes.RadiationIrradiatingRecipe;
 import com.fxd927.mekanismscience.common.registries.MSBlocks;
 import mekanism.client.jei.MekanismJEIRecipeType;
 
 public class MSJEIRecipeType{
-    public static final MekanismJEIRecipeType<NeutronIrradiatingRecipe> NEUTRON_IRRADIATING = new MekanismJEIRecipeType<>(MSBlocks.NEUTRON_IRRADIATOR, NeutronIrradiatingRecipe.class);
+    public static final MekanismJEIRecipeType<AdsorptionRecipe> ADSORPTION_SEPARATOR = new MekanismJEIRecipeType<>(MSBlocks.ADSORPTION_SEPARATOR, AdsorptionRecipe.class);
+    public static final MekanismJEIRecipeType<RadiationIrradiatingRecipe> RADIATION_IRRADIATOR = new MekanismJEIRecipeType<>(MSBlocks.RADIATION_IRRADIATOR, RadiationIrradiatingRecipe.class);
 }

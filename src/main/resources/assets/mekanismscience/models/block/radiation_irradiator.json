@@ -1,0 +1,13 @@
+{
+  "parent":"mekanism:block/machine",
+  "textures":
+  {
+    "sides":"mekanismscience:block/radiation_irradiator/side",
+    "front":"mekanismscience:block/radiation_irradiator/front",
+    "west":"mekanismscience:block/radiation_irradiator/side",
+    "east":"mekanismscience:block/radiation_irradiator/side",
+    "south":"mekanismscience:block/radiation_irradiator/back",
+    "up":"mekanismscience:block/radiation_irradiator/top",
+    "down":"mekanismscience:block/radiation_irradiator/bottom"
+  }
+}

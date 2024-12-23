@@ -5,6 +5,7 @@ import mekanism.common.base.IChemicalConstant;
 public enum MSChemicalConstants implements IChemicalConstant {
     AMMONIA("ammonia",0xFFC8B3FF,0,240F,0.6942F),
     AMMONIUM_NITRATE("ammonium_nitrate",0xFF5E89FF,0,483.15F,1700F),
+    AQUA_REGIA("aqua_regia",0xFFF3DC44,0,381F,1210F),
     BARIUM("barium",0xFF6B9BA1,0,1910F,3510F),
     BARIUM_SULFATE("barium_sulfate",0xFF86C4C0,0,1873.15F,4500F),
     BENZODIAZEPINE("benzodiazepine",0xFF66D0BA,0,573F,900F),
@@ -17,6 +18,7 @@ public enum MSChemicalConstants implements IChemicalConstant {
     HELIUM("helium", 0xFFE0F0FF, 0, 4.22F, 124.9F),
     SUPERHEATED_HELIUM("superheated_helium", 0xFFFFDDB5, 0, 2_000F, 124.9F),
     IODINE("iodine",0xFF8536B2,0,363.7F,4933F),
+    NETHERITE_ACID("netherite_acid",0xFF4D4C4C,0,381F,1210F),
     NITRIC_ACID("nitric_acid",0xFFB5BCFF,0,363.7F,4933F),
     NITROGEN("nitrogen",0xFFFA8FF0,0,	77.36F,1.251F),
     NITROGEN_OXIDE("nitrogen_oxide",0xFE19DF2,0,	77.36F,1.251F),

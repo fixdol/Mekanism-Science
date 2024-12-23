@@ -46,7 +46,7 @@ import java.util.List;
 
 public class TileEntitySeawaterPump extends TileEntityConfigurableMachine implements IConfigurable {
     private static final int BASE_TICKS_REQUIRED = 19;
-    public static final FluidStack SEAWATER_STACK = new FluidStack(MSFluids.HELIUM.getFluid(), 100);
+    public static final FluidStack SEAWATER_STACK = new FluidStack(MSFluids.SEAWATER.getFluid(), 100);
 
     @WrappingComputerMethod(wrapper = SpecialComputerMethodWrapper.ComputerFluidTankWrapper.class, methodNames = {"getFluid", "getFluidCapacity", "getFluidNeeded", "getFluidFilledPercentage"}, docPlaceholder = "buffer tank")
     public BasicFluidTank fluidTank;
@@ -66,7 +66,7 @@ public class TileEntitySeawaterPump extends TileEntityConfigurableMachine implem
     private EnergyInventorySlot energySlot;
 
     public TileEntitySeawaterPump(BlockPos pos, BlockState state) {
-        super(null, pos, state);
+        super(MSBlocks.SEAWATER_PUMP, pos, state);
         addCapabilityResolver(BasicCapabilityResolver.constant(Capabilities.CONFIGURABLE, this));
         addCapabilityResolver(BasicCapabilityResolver.constant(Capabilities.CONFIG_CARD, this));
         configComponent = new TileComponentConfig(this, TransmissionType.ITEM, TransmissionType.FLUID, TransmissionType.ENERGY);
@@ -127,7 +127,7 @@ public class TileEntitySeawaterPump extends TileEntityConfigurableMachine implem
                         if (operatingTicks >= ticksRequired) {
                             operatingTicks = 0;
                             energyContainer.extract(energyPerTick, Action.EXECUTE, AutomationType.INTERNAL);
-                            //fluidTank.insert(SEAWATER_STACK, Action.EXECUTE, AutomationType.INTERNAL);
+                            fluidTank.insert(SEAWATER_STACK, Action.EXECUTE, AutomationType.INTERNAL);
                         }
                     }
                 }

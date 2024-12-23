@@ -14,7 +14,7 @@
   },
   "output":
   {
-    "amount":500,
+    "amount":1000,
     "chemicalType":"gas",
     "gas":"mekanismscience:beryllium"
   }

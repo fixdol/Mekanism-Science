@@ -1,9 +1,9 @@
 {
   "type":"mekanism:reaction",
-  "duration":50,
+  "duration":25,
   "fluidInput":
   {
-    "amount":1000,
+    "amount":100,
     "fluid":"mekanismscience:beryllium"
   },
   "gasInput":

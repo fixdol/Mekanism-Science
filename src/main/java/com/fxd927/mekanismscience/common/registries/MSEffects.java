@@ -1,8 +1,6 @@
 package com.fxd927.mekanismscience.common.registries;
 
 import com.fxd927.mekanismscience.common.MekanismScience;
-import com.fxd927.mekanismscience.common.effect.GoodSleep;
-import com.fxd927.mekanismscience.common.effect.SensoryParalysis;
 import com.fxd927.mekanismscience.common.effect.RadiationResistance;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;

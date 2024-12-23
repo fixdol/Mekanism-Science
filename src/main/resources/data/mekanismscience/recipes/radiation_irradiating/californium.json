@@ -1,0 +1,22 @@
+{
+  "type":"mekanismscience:radiation_irradiating",
+  "gasInput":
+  {
+    "amount":4,
+    "gas":"mekanismscience:curium"
+  },
+  "itemInput":
+  {
+    "amount": 4,
+    "ingredient":
+    {
+      "item":"mekanismscience:pellet_neutron_source"
+    }
+  },
+  "output":
+  {
+    "amount":100,
+    "chemicalType":"gas",
+    "gas":"mekanismscience:californium"
+  }
+}

@@ -9,8 +9,8 @@ import net.minecraftforge.fml.config.ModConfig;
 public class MSUsageConfig extends BaseMekanismConfig {
 
     public final CachedFloatingLongValue airCompressor;
-    public final CachedFloatingLongValue neutronIrradiator;
-    public final CachedFloatingLongValue adsorptionTypeSeawaterMetalExtractor;
+    public final CachedFloatingLongValue radiationIrradiator;
+    public final CachedFloatingLongValue adsorptionSeparator;
     public final CachedFloatingLongValue seawaterPump;
     public final CachedFloatingLongValue organicLiquidExtractor;
 
@@ -21,8 +21,8 @@ public class MSUsageConfig extends BaseMekanismConfig {
         builder.comment("MS Energy Usage Config. This config is synced from server to client.").push("storage");
 
         airCompressor = CachedFloatingLongValue.define(this, builder, "Energy per operation tick (Joules).", "airCompressor", FloatingLong.createConst(100));
-        neutronIrradiator = CachedFloatingLongValue.define(this, builder, "Energy per operation tick (Joules).", "airCompressor", FloatingLong.createConst(100));
-        adsorptionTypeSeawaterMetalExtractor = CachedFloatingLongValue.define(this, builder, "Energy per operation tick (Joules).", "adsorptionTypeSeawaterMetalExtractor", FloatingLong.createConst(100));
+        radiationIrradiator = CachedFloatingLongValue.define(this, builder, "Energy per operation tick (Joules).", "airCompressor", FloatingLong.createConst(100));
+        adsorptionSeparator = CachedFloatingLongValue.define(this, builder, "Energy per operation tick (Joules).", "adsorptionTypeSeawaterMetalExtractor", FloatingLong.createConst(100));
         organicLiquidExtractor = CachedFloatingLongValue.define(this, builder, "Energy per operation tick (Joules).", "organicLiquidExtractor", FloatingLong.createConst(100));
         seawaterPump = CachedFloatingLongValue.define(this, builder, "Energy per operation tick (Joules).", "seawaterPump", FloatingLong.createConst(100));
 

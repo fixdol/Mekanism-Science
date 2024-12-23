@@ -2,8 +2,10 @@ package com.fxd927.mekanismscience.common.registries;
 
 import com.fxd927.mekanismscience.common.MekanismScience;
 import com.fxd927.mekanismscience.common.content.blocktype.MSMachine;
+import com.fxd927.mekanismscience.common.tile.machine.TileEntityAdsorptionSeparator;
 import com.fxd927.mekanismscience.common.tile.machine.TileEntityAirCompressor;
-import com.fxd927.mekanismscience.common.tile.machine.TileEntityNeutronIrradiator;
+import com.fxd927.mekanismscience.common.tile.machine.TileEntityRadiationIrradiator;
+import com.fxd927.mekanismscience.common.tile.machine.TileEntitySeawaterPump;
 import mekanism.common.block.prefab.BlockTile;
 import mekanism.common.item.block.machine.ItemBlockMachine;
 import mekanism.common.registration.impl.BlockDeferredRegister;
@@ -18,8 +20,10 @@ import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 public class MSBlocks {
     public static final BlockDeferredRegister BLOCKS = new BlockDeferredRegister(MekanismScience.MODID);
 
+    public static final BlockRegistryObject<BlockTile.BlockTileModel<TileEntityAdsorptionSeparator,MSMachine<TileEntityAdsorptionSeparator>>,ItemBlockMachine> ADSORPTION_SEPARATOR;
     public static final BlockRegistryObject<BlockTile.BlockTileModel<TileEntityAirCompressor,MSMachine<TileEntityAirCompressor>>,ItemBlockMachine> AIR_COMPRESSOR;
-    public static final BlockRegistryObject<BlockTile.BlockTileModel<TileEntityNeutronIrradiator,MSMachine<TileEntityNeutronIrradiator>>,ItemBlockMachine> NEUTRON_IRRADIATOR;
+    public static final BlockRegistryObject<BlockTile.BlockTileModel<TileEntityRadiationIrradiator,MSMachine<TileEntityRadiationIrradiator>>,ItemBlockMachine> RADIATION_IRRADIATOR;
+    public static final BlockRegistryObject<BlockTile.BlockTileModel<TileEntitySeawaterPump,MSMachine<TileEntitySeawaterPump>>,ItemBlockMachine> SEAWATER_PUMP;
 
     public static final BlockRegistryObject<Block,BlockItem> HIGH_QUALITY_CONCRETE ;
     public static final BlockRegistryObject<Block,BlockItem> AQUA_HIGH_QUALITY_CONCRETE;
@@ -102,8 +106,10 @@ public class MSBlocks {
     public static final BlockRegistryObject<Block,BlockItem> PINK_HIGH_QUALITY_CONCRETE_POWDER;
 
     static {
+        ADSORPTION_SEPARATOR = BLOCKS.register("adsorption_separator",() -> new BlockTile.BlockTileModel<>(MSBlockTypes.ADSORPTION_SEPARATOR, properties -> properties.mapColor(BlockResourceInfo.STEEL.getMapColor())),ItemBlockMachine::new);
         AIR_COMPRESSOR = BLOCKS.register("air_compressor",() -> new BlockTile.BlockTileModel<>(MSBlockTypes.AIR_COMPRESSOR, properties -> properties.mapColor(BlockResourceInfo.STEEL.getMapColor())),ItemBlockMachine::new);
-        NEUTRON_IRRADIATOR = BLOCKS.register("neutron_irradiator", () -> new BlockTile.BlockTileModel<>(MSBlockTypes.NEUTRON_IRRADIATOR, properties -> properties.mapColor(BlockResourceInfo.STEEL.getMapColor())),ItemBlockMachine::new);
+        RADIATION_IRRADIATOR = BLOCKS.register("radiation_irradiator", () -> new BlockTile.BlockTileModel<>(MSBlockTypes.RADIATION_IRRADIATOR, properties -> properties.mapColor(BlockResourceInfo.STEEL.getMapColor())),ItemBlockMachine::new);
+        SEAWATER_PUMP = BLOCKS.register("seawater_pump", () -> new BlockTile.BlockTileModel<>(MSBlockTypes.SEAWATER_PUMP, properties -> properties.mapColor(BlockResourceInfo.STEEL.getMapColor())),ItemBlockMachine::new);
 
         HIGH_QUALITY_CONCRETE = BLOCKS.register("high_quality_concrete", () -> new Block(BlockBehaviour.Properties.of().mapColor(DyeColor.LIGHT_GRAY).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(5.0F, 6.0F)));
         AQUA_HIGH_QUALITY_CONCRETE = BLOCKS.register("aqua_high_quality_concrete", () -> new Block(BlockBehaviour.Properties.of().mapColor(DyeColor.LIGHT_BLUE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(5.0F, 6.0F)));

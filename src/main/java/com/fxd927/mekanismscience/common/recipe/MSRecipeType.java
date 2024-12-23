@@ -1,6 +1,7 @@
 package com.fxd927.mekanismscience.common.recipe;
 
-import com.fxd927.mekanismscience.api.recipes.NeutronIrradiatingRecipe;
+import com.fxd927.mekanismscience.api.recipes.AdsorptionRecipe;
+import com.fxd927.mekanismscience.api.recipes.RadiationIrradiatingRecipe;
 import com.fxd927.mekanismscience.common.MekanismScience;
 import com.fxd927.mekanismscience.common.recipe.lookup.cache.MSInputRecipeCache;
 import com.fxd927.mekanismscience.common.registration.MSRecipeTypeDeferredRegister;
@@ -14,6 +15,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.Container;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.material.Fluid;
+import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.loading.FMLEnvironment;
 import net.minecraftforge.server.ServerLifecycleHooks;
 import org.jetbrains.annotations.NotNull;
@@ -28,10 +31,11 @@ public class MSRecipeType<RECIPE extends MekanismRecipe, INPUT_CACHE extends IIn
         IMSRecipeTypeProvider<RECIPE, INPUT_CACHE> {
     public static final MSRecipeTypeDeferredRegister RECIPE_TYPES = new MSRecipeTypeDeferredRegister(MekanismScience.MODID);
 
-    public static final MSRecipeTypeRegistryObject<NeutronIrradiatingRecipe, MSInputRecipeCache.ItemChemical<Gas, GasStack, NeutronIrradiatingRecipe>> NEUTRON_IRRADIATING =
-            register("neutron_irradiating", recipeType -> new MSInputRecipeCache.ItemChemical<>(recipeType, NeutronIrradiatingRecipe::getItemInput, NeutronIrradiatingRecipe::getGasInput));
-
-    private static <RECIPE extends MekanismRecipe, INPUT_CACHE extends IInputRecipeCache> MSRecipeTypeRegistryObject<RECIPE, INPUT_CACHE> register(String name,
+    public static final MSRecipeTypeRegistryObject<RadiationIrradiatingRecipe, MSInputRecipeCache.ItemChemical<Gas, GasStack, RadiationIrradiatingRecipe>> RADIATION_IRRADIATING =
+            register("radiation_irradiating", recipeType -> new MSInputRecipeCache.ItemChemical<>(recipeType, RadiationIrradiatingRecipe::getItemInput, RadiationIrradiatingRecipe::getGasInput));
+    public static final MSRecipeTypeRegistryObject<AdsorptionRecipe, MSInputRecipeCache.ItemChemical<Gas, GasStack, AdsorptionRecipe>> ADSORPTION =
+            register("adsorption", recipeType -> new MSInputRecipeCache.ItemChemical<>(recipeType, AdsorptionRecipe::getItemInput, AdsorptionRecipe::getGasInput));
+   public static <RECIPE extends MekanismRecipe, INPUT_CACHE extends IInputRecipeCache> MSRecipeTypeRegistryObject<RECIPE, INPUT_CACHE> register(String name,
                                                                                                                                                    Function<MSRecipeType<RECIPE, INPUT_CACHE>, INPUT_CACHE> inputCacheCreator) {
         return RECIPE_TYPES.register(name, () -> new MSRecipeType<>(name, inputCacheCreator));
     }

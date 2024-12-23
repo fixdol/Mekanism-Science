@@ -3,15 +3,26 @@ package com.fxd927.mekanismscience.common.registries;
 import com.fxd927.mekanismscience.common.MSLang;
 import com.fxd927.mekanismscience.common.config.MSConfig;
 import com.fxd927.mekanismscience.common.content.blocktype.MSMachine;
-import com.fxd927.mekanismscience.common.tile.machine.*;
+import com.fxd927.mekanismscience.common.tile.machine.TileEntityAdsorptionSeparator;
+import com.fxd927.mekanismscience.common.tile.machine.TileEntityAirCompressor;
+import com.fxd927.mekanismscience.common.tile.machine.TileEntityRadiationIrradiator;
+import com.fxd927.mekanismscience.common.tile.machine.TileEntitySeawaterPump;
 import mekanism.api.Upgrade;
 import mekanism.common.block.attribute.Attributes;
-import mekanism.common.registries.MekanismSounds;
 import mekanism.generators.common.registries.GeneratorsSounds;
 
 import java.util.EnumSet;
 
 public class MSBlockTypes {
+    public static final MSMachine<TileEntityAdsorptionSeparator> ADSORPTION_SEPARATOR = MSMachine.MSMachineBuilder
+            .createMSMachine(() -> MSTileEntityTypes.ADSORPTION_SEPARATOR, MSLang.DESCRIPTION_ADSORPTION_SEPARATOR)
+            .withGui(() -> MSContainerTypes.ADSORPTION_SEPARATOR)
+            .withSound(MSSounds.AIR_COMPRESSOR)
+            .withEnergyConfig(MSConfig.usageConfig.adsorptionSeparator, MSConfig.storageConfig.adsorptionSeparator)
+            .withSupportedUpgrades(EnumSet.of(Upgrade.SPEED, Upgrade.ENERGY, Upgrade.MUFFLING))
+            .withComputerSupport("adsorptionSeparator")
+            .replace(Attributes.ACTIVE_LIGHT)
+            .build();
     public static final MSMachine<TileEntityAirCompressor> AIR_COMPRESSOR = MSMachine.MSMachineBuilder
             .createMSMachine(() -> MSTileEntityTypes.AIR_COMPRESSOR, MSLang.DESCRIPTION_AIR_COMPRESSOR)
             .withGui(() -> MSContainerTypes.AIR_COMPRESSOR)
@@ -21,24 +32,15 @@ public class MSBlockTypes {
             .withComputerSupport("airCompressor")
             .replace(Attributes.ACTIVE_LIGHT)
             .build();
-    public static final MSMachine<TileEntityNeutronIrradiator> NEUTRON_IRRADIATOR = MSMachine.MSMachineBuilder
-            .createMSMachine(() -> MSTileEntityTypes.NEUTRON_IRRADIATOR, MSLang.DESCRIPTION_NEUTRON_IRRADIATOR)
-            .withGui(() -> MSContainerTypes.NEUTRON_IRRADIATOR)
+    public static final MSMachine<TileEntityRadiationIrradiator> RADIATION_IRRADIATOR = MSMachine.MSMachineBuilder
+            .createMSMachine(() -> MSTileEntityTypes.RADIATION_IRRADIATOR, MSLang.DESCRIPTION_RADIATION_IRRADIATOR)
+            .withGui(() -> MSContainerTypes.RADIATION_IRRADIATOR)
             .withSound(GeneratorsSounds.FISSION_REACTOR)
-            .withEnergyConfig(MSConfig.usageConfig.neutronIrradiator, MSConfig.storageConfig.neutronIrradiator)
-            .withSupportedUpgrades(EnumSet.of(Upgrade.SPEED, Upgrade.ENERGY, Upgrade.MUFFLING, Upgrade.GAS))
+            .withEnergyConfig(MSConfig.usageConfig.radiationIrradiator, MSConfig.storageConfig.radiationIrradiator)
+            .withSupportedUpgrades(EnumSet.of(Upgrade.SPEED, Upgrade.ENERGY, Upgrade.MUFFLING))
             .withComputerSupport("neutronIrradiator")
             .replace(Attributes.ACTIVE_LIGHT)
             .build();
-
-    //public static final MSMachine<TileEntityAdsorptionTypeSeawaterMetalExtractor> ADSORPTION_TYPE_SEAWATER_METAL_EXTRACTOR = MSMachine.MSMachineBuilder
-            //.createMSMachine(() -> MSTileEntityTypes.ADSORPTION_TYPE_SEAWATER_METAL_EXTRACTOR, MSLang.ADSORPTION_TYPE_SEAWATER_METAL_EXTRACTOR)
-            //.withGui(() -> MSContainerTypes.ADSORPTION_TYPE_SEAWATER_METAL_EXTRACTOR)
-            //.withEnergyConfig(MSConfig.usageConfig.adsorptionTypeSeawaterMetalExtractor, MSConfig.storageConfig.adsorptionTypeSeawaterMetalExtractor)
-            //.withComputerSupport("adsorptionTypeSeawaterMetalExtractor")
-            //.replace(Attributes.ACTIVE)
-            //.build();
-
     // public static final MSMachine<TileEntityOrganicLiquidExtractor> ORGANIC_LIQUID_EXTRACTOR = MSMachine.MSMachineBuilder
             //.createMSMachine(() -> MSTileEntityTypes.ORGANIC_LIQUID_EXTRACTOR, MSLang.DESCRIPTION_ORGANIC_LIQUID_EXTRACTOR)
             //.withGui(() -> MSContainerTypes.ORGANIC_LIQUID_EXTRACTOR)
@@ -47,14 +49,14 @@ public class MSBlockTypes {
             //.withComputerSupport("organicLiquidExtractor")
             //.replace(Attributes.ACTIVE)
             //.build();
-    //public static final MSMachine<TileEntitySeawaterPump> SEAWATER_PUMP = MSMachine.MSMachineBuilder
-        //.createMSMachine(() -> MSTileEntityTypes.SEAWATER_PUMP, MSLang.DESCRIPTION_SEAWATER_PUMP)
-            //.withGui(() -> MSContainerTypes.SEAWATER_PUMP)
-                    //.withEnergyConfig(MSConfig.usageConfig.seawaterPump, MSConfig.storageConfig.seawaterPump)
-                    //.withSupportedUpgrades(EnumSet.of(Upgrade.SPEED, Upgrade.ENERGY))
-                    //.withComputerSupport("seawaterPump")
-                    //.replace(Attributes.ACTIVE)
-    //.build();
+    public static final MSMachine<TileEntitySeawaterPump> SEAWATER_PUMP = MSMachine.MSMachineBuilder
+            .createMSMachine(() -> MSTileEntityTypes.SEAWATER_PUMP, MSLang.DESCRIPTION_SEAWATER_PUMP)
+            .withGui(() -> MSContainerTypes.SEAWATER_PUMP)
+            .withEnergyConfig(MSConfig.usageConfig.seawaterPump, MSConfig.storageConfig.seawaterPump)
+            .withSupportedUpgrades(EnumSet.of(Upgrade.SPEED, Upgrade.ENERGY))
+            .withComputerSupport("seawaterPump")
+            .replace(Attributes.ACTIVE)
+    .build();
 
     private MSBlockTypes(){
     }

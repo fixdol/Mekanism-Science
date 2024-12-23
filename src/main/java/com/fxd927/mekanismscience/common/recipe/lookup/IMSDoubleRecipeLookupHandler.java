@@ -7,7 +7,6 @@ import mekanism.api.chemical.ChemicalStack;
 import mekanism.api.recipes.MekanismRecipe;
 import mekanism.api.recipes.inputs.IInputHandler;
 import mekanism.common.recipe.lookup.cache.DoubleInputRecipeCache;
-import mekanism.common.recipe.lookup.cache.InputRecipeCache;
 import mekanism.common.util.ChemicalUtil;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -133,7 +132,6 @@ public interface IMSDoubleRecipeLookupHandler <INPUT_A, INPUT_B, RECIPE extends 
     interface ItemChemicalRecipeLookupHandler<CHEMICAL extends Chemical<CHEMICAL>, STACK extends ChemicalStack<CHEMICAL>, RECIPE extends MekanismRecipe &
             BiPredicate<ItemStack, STACK>> extends IMSDoubleRecipeLookupHandler.ObjectChemicalRecipeLookupHandler<ItemStack, CHEMICAL, STACK, RECIPE, MSInputRecipeCache.ItemChemical<CHEMICAL, STACK, RECIPE>> {
     }
-
     /**
      * Helper interface to make the generics that we have to pass to {@link IMSDoubleRecipeLookupHandler} not as messy.
      */
