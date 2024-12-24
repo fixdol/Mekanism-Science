@@ -53,7 +53,14 @@ public abstract class MSTileEntityRecipeMachine<RECIPE extends MekanismRecipe> e
         this.errorTypes = List.copyOf(errorTypes);
         recheckAllRecipeErrors = shouldRecheckAllErrors(this);
         trackedErrors = new boolean[this.errorTypes.size()];
-       recipeCacheSaveOnlyListener = null;
+        recipeCacheSaveOnlyListener = null;
+    }
+
+    public static BooleanSupplier shouldRecheckAllErrors(TileEntityMekanism tile) {
+        // Choose a random offset to check for all errors. We do this to ensure that not every tile tries to recheck errors for every
+        // recipe the same tick and thus create uneven spikes of CPU usage
+        int checkOffset = ThreadLocalRandom.current().nextInt(RECIPE_CHECK_FREQUENCY);
+        return () -> !tile.playersUsing.isEmpty() && tile.hasLevel() && tile.getLevel().getGameTime() % RECIPE_CHECK_FREQUENCY == checkOffset;
     }
 
     @Override
@@ -103,13 +110,6 @@ public abstract class MSTileEntityRecipeMachine<RECIPE extends MekanismRecipe> e
             return () -> false;
         }
         return () -> trackedErrors[errorIndex];
-    }
-
-    public static BooleanSupplier shouldRecheckAllErrors(TileEntityMekanism tile) {
-        // Choose a random offset to check for all errors. We do this to ensure that not every tile tries to recheck errors for every
-        // recipe the same tick and thus create uneven spikes of CPU usage
-        int checkOffset = ThreadLocalRandom.current().nextInt(RECIPE_CHECK_FREQUENCY);
-        return () -> !tile.playersUsing.isEmpty() && tile.hasLevel() && tile.getLevel().getGameTime() % RECIPE_CHECK_FREQUENCY == checkOffset;
     }
 
     @Nullable

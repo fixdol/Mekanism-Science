@@ -27,18 +27,21 @@ import static mekanism.common.tile.machine.TileEntityChemicalInfuser.MAX_GAS;
 
 @Mixin(value = TileEntityChemicalInfuser.class, remap = false)
 public abstract class MixinTilEntityChemicalInfuser extends TileEntityRecipeMachine<ChemicalInfuserRecipe> implements IEitherSideRecipeLookupHandler.EitherSideChemicalRecipeLookupHandler<Gas, GasStack, ChemicalInfuserRecipe> {
-    @Shadow public IGasTank leftTank;
-    @Shadow public IGasTank rightTank;
-    @Shadow public IGasTank centerTank;
+    @Shadow
+    public IGasTank leftTank;
+    @Shadow
+    public IGasTank rightTank;
+    @Shadow
+    public IGasTank centerTank;
 
     protected MixinTilEntityChemicalInfuser(IBlockProvider blockProvider, BlockPos pos, BlockState state, List<CachedRecipe.OperationTracker.RecipeError> errorTypes) {
         super(blockProvider, pos, state, errorTypes);
     }
 
     @Redirect(method = "getInitialGasTanks", at = @At(value = "INVOKE", target = "Lmekanism/common/capabilities/holder/chemical/ChemicalTankHelper;build()Lmekanism/common/capabilities/holder/chemical/IChemicalTankHolder;"))
-    public IChemicalTankHolder<Gas, GasStack, IGasTank> getInitialGasTanksRedirect(ChemicalTankHelper instance,  IContentsListener listener, IContentsListener recipeCacheListener)  {
+    public IChemicalTankHolder<Gas, GasStack, IGasTank> getInitialGasTanksRedirect(ChemicalTankHelper instance, IContentsListener listener, IContentsListener recipeCacheListener) {
         ChemicalTankHelper<Gas, GasStack, IGasTank> builder = ChemicalTankHelper.forSideGasWithConfig(this::getDirection, this::getConfig);
-        builder.addTank(leftTank = ChemicalTankBuilder.GAS.create(MAX_GAS, ChemicalTankHelper.radioactiveInputTankPredicate(() -> centerTank), ChemicalTankBuilder.GAS.alwaysTrueBi,this::containsRecipe, ChemicalAttributeValidator.ALWAYS_ALLOW, recipeCacheListener));
+        builder.addTank(leftTank = ChemicalTankBuilder.GAS.create(MAX_GAS, ChemicalTankHelper.radioactiveInputTankPredicate(() -> centerTank), ChemicalTankBuilder.GAS.alwaysTrueBi, this::containsRecipe, ChemicalAttributeValidator.ALWAYS_ALLOW, recipeCacheListener));
         builder.addTank(rightTank = ChemicalTankBuilder.GAS.create(MAX_GAS, ChemicalTankHelper.radioactiveInputTankPredicate(() -> centerTank), ChemicalTankBuilder.GAS.alwaysTrueBi, this::containsRecipe, ChemicalAttributeValidator.ALWAYS_ALLOW, recipeCacheListener));
         builder.addTank(centerTank = ChemicalTankBuilder.GAS.output(MAX_GAS, listener));
         return builder.build();

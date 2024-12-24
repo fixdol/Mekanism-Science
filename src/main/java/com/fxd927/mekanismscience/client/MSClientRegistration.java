@@ -1,6 +1,9 @@
 package com.fxd927.mekanismscience.client;
 
-import com.fxd927.mekanismscience.client.gui.machine.*;
+import com.fxd927.mekanismscience.client.gui.machine.GuiAdsorptionSeparator;
+import com.fxd927.mekanismscience.client.gui.machine.GuiAirCompressor;
+import com.fxd927.mekanismscience.client.gui.machine.GuiRadiationIrradiator;
+import com.fxd927.mekanismscience.client.gui.machine.GuiSeawaterPump;
 import com.fxd927.mekanismscience.common.MekanismScience;
 import com.fxd927.mekanismscience.common.registries.MSContainerTypes;
 import mekanism.client.ClientRegistrationUtil;
@@ -14,6 +17,9 @@ import net.minecraftforge.registries.RegisterEvent;
 @Mod.EventBusSubscriber(modid = MekanismScience.MODID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class MSClientRegistration {
 
+    private MSClientRegistration() {
+    }
+
     @SubscribeEvent(priority = EventPriority.LOW)
     public static void registerContainers(RegisterEvent event) {
         event.register(Registries.MENU, helper -> {
@@ -25,8 +31,5 @@ public class MSClientRegistration {
             //ClientRegistrationUtil.registerScreen(MSContainerTypes.ORGANIC_LIQUID_EXTRACTOR, GuiOrganicLiquidExtractor::new);
             ClientRegistrationUtil.registerScreen(MSContainerTypes.SEAWATER_PUMP, GuiSeawaterPump::new);
         });
-    }
-
-    private MSClientRegistration(){
     }
 }

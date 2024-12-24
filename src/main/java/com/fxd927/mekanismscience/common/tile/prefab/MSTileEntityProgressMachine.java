@@ -19,9 +19,9 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 public abstract class MSTileEntityProgressMachine<RECIPE extends MekanismRecipe> extends MSTileEntityRecipeMachine<RECIPE> {
-    private int operatingTicks;
-    protected int baseTicksRequired;
     public int ticksRequired;
+    protected int baseTicksRequired;
+    private int operatingTicks;
 
     protected MSTileEntityProgressMachine(IBlockProvider blockProvider, BlockPos pos, BlockState state, List<CachedRecipe.OperationTracker.RecipeError> errorTypes, int baseTicksRequired) {
         super(blockProvider, pos, state, errorTypes);
@@ -33,13 +33,13 @@ public abstract class MSTileEntityProgressMachine<RECIPE extends MekanismRecipe>
         return getOperatingTicks() / (double) ticksRequired;
     }
 
-    protected void setOperatingTicks(int ticks) {
-        this.operatingTicks = ticks;
-    }
-
     @ComputerMethod(nameOverride = "getRecipeProgress")
     public int getOperatingTicks() {
         return operatingTicks;
+    }
+
+    protected void setOperatingTicks(int ticks) {
+        this.operatingTicks = ticks;
     }
 
     @ComputerMethod

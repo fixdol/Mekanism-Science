@@ -9,19 +9,19 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
 
-public class MuscleEnhancementTablet extends Item{
+public class MuscleEnhancementTablet extends Item {
     private static final int BASE_DURATION = 12000;
 
-    public MuscleEnhancementTablet(Item.Properties properties){
+    public MuscleEnhancementTablet(Item.Properties properties) {
         super(properties);
     }
+
     @Override
     public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
-        if (!level.isClientSide && entity instanceof Player) {
-            Player player = (Player) entity;
+        if (!level.isClientSide && entity instanceof Player player) {
 
             MobEffectInstance currentEffect = player.getEffect(MobEffects.DAMAGE_BOOST);
-            player.getCooldowns().addCooldown(this,6000);
+            player.getCooldowns().addCooldown(this, 6000);
 
             int newDuration;
             if (currentEffect != null) {

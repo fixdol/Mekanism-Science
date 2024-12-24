@@ -1,8 +1,5 @@
 package com.fxd927.mekanismscience.common.item.tablet;
 
-import com.fxd927.mekanismscience.common.registries.MSEffects;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -19,11 +16,10 @@ public class SleepInducingTablet extends Item {
 
     @Override
     public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
-        if (!level.isClientSide && entity instanceof Player) {
-            Player player = (Player) entity;
+        if (!level.isClientSide && entity instanceof Player player) {
 
             //MobEffectInstance currentEffect = player.getEffect(MSEffects.GOOD_SLEEP.get());
-            player.getCooldowns().addCooldown(this,12000);
+            player.getCooldowns().addCooldown(this, 12000);
 
             int newDuration;
             //if (currentEffect != null) {

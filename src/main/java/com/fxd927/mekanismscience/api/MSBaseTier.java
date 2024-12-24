@@ -26,6 +26,15 @@ public enum MSBaseTier implements StringRepresentable, SupportsColorMap {
     }
 
     /**
+     * Gets a tier by index.
+     *
+     * @param index Index of the tier.
+     */
+    public static MSBaseTier byIndexStatic(int index) {
+        return MathUtils.getByIndexMod(TIERS, index);
+    }
+
+    /**
      * Gets the name of this tier.
      */
     public String getSimpleName() {
@@ -62,7 +71,6 @@ public enum MSBaseTier implements StringRepresentable, SupportsColorMap {
      * {@inheritDoc}
      *
      * @apiNote This method is mostly for <strong>INTERNAL</strong> usage.
-     *
      * @since 10.4.0
      */
     @Override
@@ -84,14 +92,5 @@ public enum MSBaseTier implements StringRepresentable, SupportsColorMap {
     @Override
     public String getSerializedName() {
         return name().toLowerCase(Locale.ROOT);
-    }
-
-    /**
-     * Gets a tier by index.
-     *
-     * @param index Index of the tier.
-     */
-    public static MSBaseTier byIndexStatic(int index) {
-        return MathUtils.getByIndexMod(TIERS, index);
     }
 }

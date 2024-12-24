@@ -8,7 +8,6 @@ import mekanism.api.recipes.inputs.IInputHandler;
 import mekanism.api.recipes.inputs.ILongInputHandler;
 import mekanism.api.recipes.outputs.BoxedChemicalOutputHandler;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.fluids.FluidStack;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
@@ -27,16 +26,16 @@ public class AdsorptionCachedRecipe extends CachedRecipe<AdsorptionRecipe> {
     private BoxedChemicalStack output = BoxedChemicalStack.EMPTY;
 
     /**
-     * @param recipe           Recipe.
-     * @param recheckAllErrors Returns {@code true} if processing should be continued even if an error is hit in order to gather all the errors. It is recommended to not
-     *                         do this every tick or if there is no one viewing recipes.
-     * @param itemInputHandler Item input handler.
-     * @param fluidInputHandler  Chemical input handler.
-     * @param fluidUsage         Gas usage multiplier.
-     * @param outputHandler    Output handler.
+     * @param recipe            Recipe.
+     * @param recheckAllErrors  Returns {@code true} if processing should be continued even if an error is hit in order to gather all the errors. It is recommended to not
+     *                          do this every tick or if there is no one viewing recipes.
+     * @param itemInputHandler  Item input handler.
+     * @param fluidInputHandler Chemical input handler.
+     * @param fluidUsage        Gas usage multiplier.
+     * @param outputHandler     Output handler.
      */
     public AdsorptionCachedRecipe(AdsorptionRecipe recipe, BooleanSupplier recheckAllErrors, IInputHandler<@NotNull ItemStack> itemInputHandler,
-                                            ILongInputHandler<@NotNull GasStack> fluidInputHandler, LongSupplier fluidUsage, BoxedChemicalOutputHandler outputHandler) {
+                                  ILongInputHandler<@NotNull GasStack> fluidInputHandler, LongSupplier fluidUsage, BoxedChemicalOutputHandler outputHandler) {
         super(recipe, recheckAllErrors);
         this.itemInputHandler = Objects.requireNonNull(itemInputHandler, "Item input handler cannot be null.");
         this.fluidInputHandler = Objects.requireNonNull(fluidInputHandler, "Gas input handler cannot be null.");

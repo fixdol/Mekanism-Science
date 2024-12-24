@@ -1,7 +1,6 @@
 package com.fxd927.mekanismscience.client.gui.machine;
 
 import com.fxd927.mekanismscience.common.tile.machine.TileEntityAdsorptionSeparator;
-import com.fxd927.mekanismscience.common.tile.machine.TileEntityRadiationIrradiator;
 import mekanism.api.recipes.cache.CachedRecipe;
 import mekanism.client.gui.GuiConfigurableTile;
 import mekanism.client.gui.element.bar.GuiHorizontalPowerBar;

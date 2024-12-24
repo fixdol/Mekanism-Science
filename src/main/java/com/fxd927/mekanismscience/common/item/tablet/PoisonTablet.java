@@ -12,16 +12,16 @@ import net.minecraft.world.level.Level;
 public class PoisonTablet extends Item {
     private static final int BASE_DURATION = 3600;
 
-    public PoisonTablet(Properties properties){
+    public PoisonTablet(Properties properties) {
         super(properties);
     }
+
     @Override
     public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
-        if (!level.isClientSide && entity instanceof Player) {
-            Player player = (Player) entity;
+        if (!level.isClientSide && entity instanceof Player player) {
 
             MobEffectInstance currentEffect = player.getEffect(MobEffects.POISON);
-            player.getCooldowns().addCooldown(this,4800);
+            player.getCooldowns().addCooldown(this, 4800);
 
             int newDuration;
             if (currentEffect != null) {

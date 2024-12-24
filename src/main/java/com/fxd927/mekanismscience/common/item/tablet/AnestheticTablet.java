@@ -1,7 +1,5 @@
 package com.fxd927.mekanismscience.common.item.tablet;
 
-import com.fxd927.mekanismscience.common.registries.MSEffects;
-import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -16,11 +14,10 @@ public class AnestheticTablet extends Item {
 
     @Override
     public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
-        if (!level.isClientSide && entity instanceof Player) {
-            Player player = (Player) entity;
+        if (!level.isClientSide && entity instanceof Player player) {
 
             //player.addEffect(new MobEffectInstance(MSEffects.SENSORY_PARALYSIS.get(),600,0));
-            player.getCooldowns().addCooldown(this,9000);
+            player.getCooldowns().addCooldown(this, 9000);
 
             long invulnerableEndTime = player.level().getGameTime() + 600;
 

@@ -11,6 +11,9 @@ import net.minecraft.client.multiplayer.ClientLevel;
 import java.util.List;
 
 public class MSRecipeRegistryHelper {
+    private MSRecipeRegistryHelper() {
+    }
+
     public static <RECIPE extends MekanismRecipe> void register(IRecipeRegistration registry, MekanismJEIRecipeType<RECIPE> recipeType,
                                                                 IMSRecipeTypeProvider<RECIPE, ?> type) {
         register(registry, recipeType, type.getRecipes(getWorld()));
@@ -22,8 +25,5 @@ public class MSRecipeRegistryHelper {
 
     private static ClientLevel getWorld() {
         return Minecraft.getInstance().level;
-    }
-
-    private MSRecipeRegistryHelper(){
     }
 }

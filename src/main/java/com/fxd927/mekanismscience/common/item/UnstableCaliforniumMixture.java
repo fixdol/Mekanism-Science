@@ -15,7 +15,7 @@ public class UnstableCaliforniumMixture extends Item {
     protected EnumColor color;
 
     public UnstableCaliforniumMixture(Item.Properties properties, EnumColor color) {
-            super(properties);
+        super(properties);
         this.color = color;
     }
 

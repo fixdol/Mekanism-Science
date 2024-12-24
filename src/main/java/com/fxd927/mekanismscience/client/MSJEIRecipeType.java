@@ -5,7 +5,7 @@ import com.fxd927.mekanismscience.api.recipes.RadiationIrradiatingRecipe;
 import com.fxd927.mekanismscience.common.registries.MSBlocks;
 import mekanism.client.jei.MekanismJEIRecipeType;
 
-public class MSJEIRecipeType{
+public class MSJEIRecipeType {
     public static final MekanismJEIRecipeType<AdsorptionRecipe> ADSORPTION_SEPARATOR = new MekanismJEIRecipeType<>(MSBlocks.ADSORPTION_SEPARATOR, AdsorptionRecipe.class);
     public static final MekanismJEIRecipeType<RadiationIrradiatingRecipe> RADIATION_IRRADIATOR = new MekanismJEIRecipeType<>(MSBlocks.RADIATION_IRRADIATOR, RadiationIrradiatingRecipe.class);
 }
