@@ -33,6 +33,7 @@ public class MekanismScience
         MSGases.GASES.register(modEventBus);
         MSItems.ITEMS.register(modEventBus);
         MSBlocks.BLOCKS.register(modEventBus);
+        MSBlocks.BUILDING_BLOCKS.register(modEventBus);
         MSContainerTypes.CONTAINER_TYPES.register(modEventBus);
         MSTileEntityTypes.TILE_ENTITY_TYPES.register(modEventBus);
         MSEffects.MOB_EFFECTS.register(modEventBus);

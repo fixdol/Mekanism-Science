@@ -1,6 +1,7 @@
 package com.fxd927.mekanismscience.common.recipe;
 
 import com.fxd927.mekanismscience.api.recipes.AdsorptionRecipe;
+import com.fxd927.mekanismscience.api.recipes.ChemicalDemolitionRecipe;
 import com.fxd927.mekanismscience.api.recipes.RadiationIrradiatingRecipe;
 import com.fxd927.mekanismscience.common.MekanismScience;
 import com.fxd927.mekanismscience.common.recipe.lookup.cache.MSInputRecipeCache;
@@ -35,6 +36,8 @@ public class MSRecipeType<RECIPE extends MekanismRecipe, INPUT_CACHE extends IIn
             register("radiation_irradiating", recipeType -> new MSInputRecipeCache.ItemChemical<>(recipeType, RadiationIrradiatingRecipe::getItemInput, RadiationIrradiatingRecipe::getGasInput));
     public static final MSRecipeTypeRegistryObject<AdsorptionRecipe, MSInputRecipeCache.ItemChemical<Gas, GasStack, AdsorptionRecipe>> ADSORPTION =
             register("adsorption", recipeType -> new MSInputRecipeCache.ItemChemical<>(recipeType, AdsorptionRecipe::getItemInput, AdsorptionRecipe::getGasInput));
+    public static final MSRecipeTypeRegistryObject<ChemicalDemolitionRecipe, MSInputRecipeCache.ItemChemical<Gas, GasStack, ChemicalDemolitionRecipe>> CHEMICAL_DEMOLITION =
+            register("chemical_demolition", recipeType -> new MSInputRecipeCache.ItemChemical<>(recipeType, ChemicalDemolitionRecipe::getItemInput, ChemicalDemolitionRecipe::getGasInput));
    public static <RECIPE extends MekanismRecipe, INPUT_CACHE extends IInputRecipeCache> MSRecipeTypeRegistryObject<RECIPE, INPUT_CACHE> register(String name,
                                                                                                                                                    Function<MSRecipeType<RECIPE, INPUT_CACHE>, INPUT_CACHE> inputCacheCreator) {
         return RECIPE_TYPES.register(name, () -> new MSRecipeType<>(name, inputCacheCreator));

@@ -21,8 +21,8 @@ public class MSUsageConfig extends BaseMekanismConfig {
         builder.comment("MS Energy Usage Config. This config is synced from server to client.").push("storage");
 
         airCompressor = CachedFloatingLongValue.define(this, builder, "Energy per operation tick (Joules).", "airCompressor", FloatingLong.createConst(100));
-        radiationIrradiator = CachedFloatingLongValue.define(this, builder, "Energy per operation tick (Joules).", "airCompressor", FloatingLong.createConst(100));
-        adsorptionSeparator = CachedFloatingLongValue.define(this, builder, "Energy per operation tick (Joules).", "adsorptionTypeSeawaterMetalExtractor", FloatingLong.createConst(100));
+        radiationIrradiator = CachedFloatingLongValue.define(this, builder, "Energy per operation tick (Joules).", "radiationIrradiator", FloatingLong.createConst(1_000));
+        adsorptionSeparator = CachedFloatingLongValue.define(this, builder, "Energy per operation tick (Joules).", "adsorptionTypeSeawaterMetalExtractor", FloatingLong.createConst(500));
         organicLiquidExtractor = CachedFloatingLongValue.define(this, builder, "Energy per operation tick (Joules).", "organicLiquidExtractor", FloatingLong.createConst(100));
         seawaterPump = CachedFloatingLongValue.define(this, builder, "Energy per operation tick (Joules).", "seawaterPump", FloatingLong.createConst(100));
 

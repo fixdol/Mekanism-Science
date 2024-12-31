@@ -15,21 +15,16 @@ public class SensoryParalysis extends MobEffect {
 
     @Override
     public void applyEffectTick(LivingEntity entity, int amplifier) {
-        if (entity instanceof Player player) {
-            if (!player.isInvulnerable()) {
-                player.setInvulnerable(true);
-            }
+        if (!entity.isInvulnerable()) {
+            entity.setInvulnerable(true);
         }
     }
 
     @Override
     public void removeAttributeModifiers(LivingEntity entity, AttributeMap attributeMap, int amplifier) {
         super.removeAttributeModifiers(entity, attributeMap, amplifier);
-
-        if (entity instanceof Player player) {
-            if (player.isInvulnerable()) {
-                player.setInvulnerable(false);
-            }
+        if (entity.isInvulnerable()) {
+            entity.setInvulnerable(false);
         }
     }
 

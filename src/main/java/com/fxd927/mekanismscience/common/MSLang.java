@@ -13,7 +13,8 @@ public enum MSLang implements ILangEntry {
     ADSORPTION_TYPE_SEAWATER_METAL_EXTRACTOR("description", "adsorption_type_seawater_metal_extractor"),
     DESCRIPTION_ORGANIC_LIQUID_EXTRACTOR("description","organic_liquid_extractor"),
     DESCRIPTION_SEAWATER_PUMP("description", "seawater_pump"),
-    MEKANISM_SCIENCE("constants","mod_name");
+    MEKANISM_SCIENCE("constants","mod_name"),
+    MEKANISM_SCIENCE_BUILDING("constants","building");
 
     private final String key;
 

@@ -14,7 +14,7 @@
   },
   "output":
   {
-    "amount":1,
+    "amount":5,
     "chemicalType":"slurry",
     "slurry":"mekanism:dirty_tin"
   }

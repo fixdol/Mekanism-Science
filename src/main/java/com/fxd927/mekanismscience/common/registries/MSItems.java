@@ -1,9 +1,13 @@
 package com.fxd927.mekanismscience.common.registries;
 
 import com.fxd927.mekanismscience.common.MekanismScience;
+import com.fxd927.mekanismscience.common.item.IodineTablet;
 import com.fxd927.mekanismscience.common.item.NeutronSourcePellet;
 import com.fxd927.mekanismscience.common.item.RefinedCaliforniumIngot;
 import com.fxd927.mekanismscience.common.item.UnstableCaliforniumMixture;
+import com.fxd927.mekanismscience.common.item.syringe.AnestheticSyringe;
+import com.fxd927.mekanismscience.common.item.syringe.FlameRetardantSyringe;
+import com.fxd927.mekanismscience.common.item.syringe.LevitationSyringe;
 import com.fxd927.mekanismscience.common.item.tablet.*;
 import mekanism.api.text.EnumColor;
 import mekanism.common.registration.impl.ItemDeferredRegister;
@@ -14,6 +18,10 @@ import net.minecraft.world.item.Item;
 public class MSItems {
     public static final ItemDeferredRegister ITEMS = new ItemDeferredRegister(MekanismScience.MODID);
 
+    public static final ItemRegistryObject<Item> SYRINGE;
+    public static final ItemRegistryObject<Item> ANESTHETIC_SYRINGE;
+    public static final ItemRegistryObject<Item> FLAME_RETARDANT_SYRINGE;
+    public static final ItemRegistryObject<Item> LEVITATION_SYRINGE;
     public static final ItemRegistryObject<Item> HIGH_PERFORMANCE_ADSORBENT;
     public static final ItemRegistryObject<Item> HIGH_PERFORMANCE_ADSORBENT_BERYLLIUM;
     public static final ItemRegistryObject<Item> HIGH_PERFORMANCE_ADSORBENT_COPPER;
@@ -42,6 +50,10 @@ public class MSItems {
 
 
     static {
+        SYRINGE = ITEMS.register("syringe");
+        ANESTHETIC_SYRINGE = ITEMS.register("syringe_anesthetic", () -> new AnestheticSyringe(new Item.Properties()));
+        FLAME_RETARDANT_SYRINGE = ITEMS.register("syringe_flame_retardant", () -> new FlameRetardantSyringe(new Item.Properties()));
+        LEVITATION_SYRINGE = ITEMS.register("syringe_levitation", () -> new LevitationSyringe(new Item.Properties()));
         HIGH_PERFORMANCE_ADSORBENT = ITEMS.register("high_performance_adsorbent");
         HIGH_PERFORMANCE_ADSORBENT_BERYLLIUM = ITEMS.register("high_performance_adsorbent_beryllium");
         HIGH_PERFORMANCE_ADSORBENT_COPPER = ITEMS.register("high_performance_adsorbent_copper");
