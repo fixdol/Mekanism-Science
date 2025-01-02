@@ -6,13 +6,17 @@
     {
       "item":"mekanism:pellet_polonium"
     },
+    "S":
+    {
+      "item":"mekanism:laser"
+    },
     "C":
     {
-      "item":"mekanismscience:high_quality_concrete"
+      "item":"mekanismscience:clump_high_quality_concrete"
     },
     "X":
     {
-      "item":"mekanism:basic_chemical_tank"
+      "item":"mekanism:steel_casing"
     },
     "_":
     {
@@ -20,9 +24,9 @@
     }
   },"pattern":
 [
-  "ACA",
+  "CSC",
   "_X_",
-  "ACA"
+  "CAC"
 ],
   "result":
   {

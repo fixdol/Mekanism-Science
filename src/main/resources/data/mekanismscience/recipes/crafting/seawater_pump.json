@@ -4,15 +4,7 @@
   {
     "A":
     {
-      "tag":"forge:ingots/steel"
-    },
-    "C":
-    {
-      "item":"minecraft:bucket"
-    },
-    "X":
-    {
-      "item":"mekanism:steel_casing"
+      "tag":"forge:ingots/osmium"
     },
     "_":
     {
@@ -24,9 +16,9 @@
     }
   },"pattern":
 [
-  "ACA",
-  "_X_",
-  "AEA"
+  "AAA",
+  "_E_",
+  "AAA"
 ],
   "result":
   {

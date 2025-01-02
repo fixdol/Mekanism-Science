@@ -3,12 +3,12 @@
   "duration":50,
   "fluidInput":
   {
-    "amount":1000,
+    "amount":3000,
     "fluid":"mekanismscience:netherite_acid"
   },
   "gasInput":
   {
-    "amount":1000,
+    "amount":3000,
     "gas":"mekanismscience:californium"
   },
   "itemInput":

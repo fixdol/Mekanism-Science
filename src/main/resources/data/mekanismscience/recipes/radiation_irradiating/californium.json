@@ -7,7 +7,7 @@
   },
   "itemInput":
   {
-    "amount": 4,
+    "amount": 5,
     "ingredient":
     {
       "item":"mekanismscience:pellet_neutron_source"
@@ -15,7 +15,7 @@
   },
   "output":
   {
-    "amount":100,
+    "amount":50,
     "chemicalType":"gas",
     "gas":"mekanismscience:californium"
   }

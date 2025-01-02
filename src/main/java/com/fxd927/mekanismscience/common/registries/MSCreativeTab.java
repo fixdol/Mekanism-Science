@@ -20,6 +20,7 @@ public class MSCreativeTab {
                           CreativeTabDeferredRegister.addToDisplay(MSItems.ITEMS, output);
                           CreativeTabDeferredRegister.addToDisplay(MSBlocks.BLOCKS, output);
                           CreativeTabDeferredRegister.addToDisplay(MSFluids.FLUIDS, output);
+                          CreativeTabDeferredRegister.addToDisplay(MSItems.BUILDING_ITEMS, output);
                           CreativeTabDeferredRegister.addToDisplay(MSBlocks.BUILDING_BLOCKS, output);
                       })
     );

@@ -32,6 +32,7 @@ public class MekanismScience
         MSFluids.FLUIDS.register(modEventBus);
         MSGases.GASES.register(modEventBus);
         MSItems.ITEMS.register(modEventBus);
+        MSItems.BUILDING_ITEMS.register(modEventBus);
         MSBlocks.BLOCKS.register(modEventBus);
         MSBlocks.BUILDING_BLOCKS.register(modEventBus);
         MSContainerTypes.CONTAINER_TYPES.register(modEventBus);

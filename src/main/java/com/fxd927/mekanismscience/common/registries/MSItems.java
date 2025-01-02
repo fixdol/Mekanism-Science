@@ -17,6 +17,7 @@ import net.minecraft.world.item.Item;
 
 public class MSItems {
     public static final ItemDeferredRegister ITEMS = new ItemDeferredRegister(MekanismScience.MODID);
+    public static final ItemDeferredRegister BUILDING_ITEMS = new ItemDeferredRegister(MekanismScience.MODID);
 
     public static final ItemRegistryObject<Item> SYRINGE;
     public static final ItemRegistryObject<Item> ANESTHETIC_SYRINGE;
@@ -31,19 +32,52 @@ public class MSItems {
     public static final ItemRegistryObject<Item> HIGH_PERFORMANCE_ADSORBENT_OSMIUM;
     public static final ItemRegistryObject<Item> HIGH_PERFORMANCE_ADSORBENT_TIN;
     public static final ItemRegistryObject<Item> HIGH_PERFORMANCE_ADSORBENT_URANIUM;
+
     public static final ItemRegistryObject<Item> NEUTRON_SOURCE_PELLET;
-    //public static final ItemRegistryObject<Item> HIGH_DENSITY_NEUTRON_SOURCE_PELLET = ITEMS.register("pellet_high-density_neutron_source", () -> new HighDensityNeutronSourcePellet(new Item.Properties(), EnumColor.PURPLE));    public static final ItemRegistryObject<Item> DUST_CALCIUM_OXIDE;
-    public static final ItemRegistryObject<Item> DUST_BARIUM_SULFATE;
     public static final ItemRegistryObject<Item> DUST_CALCIUM_OXIDE;
-    //public static final ItemRegistryObject<Item> AQUA_DYE;
-    //public static final ItemRegistryObject<Item> DARK_RED_DYE;
     //public static final ItemRegistryObject<Item> DUST_YTTRIUM = ITEMS.register("dust_yttrium");
     public static final ItemRegistryObject<Item> UNSTABLE_CALIFORNIUM_MIXTURE;
     public static final ItemRegistryObject<Item> REFINED_CALIFORNIUM_INGOT;
-    //public static final ItemRegistryObject<Item> EXCIPIENT = ITEMS.register("excipient");
-    //public static final ItemRegistryObject<Item> TABLET_ANESTHETIC = ITEMS.register("tablet_anesthetic", () -> new AnestheticTablet(new Item.Properties().food(new FoodProperties.Builder().nutrition(0).saturationMod(0.0F).build())));
-    //public static final ItemRegistryObject<Item> TABLET_FIRE_RESISTANCE = ITEMS.register("tablet_fire_resistance", () -> new FireResistanceTablet(new Item.Properties().food(new FoodProperties.Builder().nutrition(0).saturationMod(0.0F).build())));
     public static final ItemRegistryObject<Item> TABLET_IODINE;
+
+    public static final ItemRegistryObject<Item> HIGH_QUALITY_CONCRETE_CLUMP;
+    public static final ItemRegistryObject<Item> HIGH_QUALITY_CONCRETE_CLUMP_AQUA;
+    public static final ItemRegistryObject<Item> HIGH_QUALITY_CONCRETE_CLUMP_BLACK;
+    public static final ItemRegistryObject<Item> HIGH_QUALITY_CONCRETE_CLUMP_BLUE;
+    public static final ItemRegistryObject<Item> HIGH_QUALITY_CONCRETE_CLUMP_BROWN;
+    public static final ItemRegistryObject<Item> HIGH_QUALITY_CONCRETE_CLUMP_CYAN;
+    public static final ItemRegistryObject<Item> HIGH_QUALITY_CONCRETE_CLUMP_DARK_RED;
+    public static final ItemRegistryObject<Item> HIGH_QUALITY_CONCRETE_CLUMP_GRAY;
+    public static final ItemRegistryObject<Item> HIGH_QUALITY_CONCRETE_CLUMP_GREEN;
+    public static final ItemRegistryObject<Item> HIGH_QUALITY_CONCRETE_CLUMP_LIGHT_BLUE;
+    public static final ItemRegistryObject<Item> HIGH_QUALITY_CONCRETE_CLUMP_LIGHT_GRAY;
+    public static final ItemRegistryObject<Item> HIGH_QUALITY_CONCRETE_CLUMP_LIME;
+    public static final ItemRegistryObject<Item> HIGH_QUALITY_CONCRETE_CLUMP_MAGENTA;
+    public static final ItemRegistryObject<Item> HIGH_QUALITY_CONCRETE_CLUMP_ORANGE;
+    public static final ItemRegistryObject<Item> HIGH_QUALITY_CONCRETE_CLUMP_PINK;
+    public static final ItemRegistryObject<Item> HIGH_QUALITY_CONCRETE_CLUMP_PURPLE;
+    public static final ItemRegistryObject<Item> HIGH_QUALITY_CONCRETE_CLUMP_RED;
+    public static final ItemRegistryObject<Item> HIGH_QUALITY_CONCRETE_CLUMP_WHITE;
+    public static final ItemRegistryObject<Item> HIGH_QUALITY_CONCRETE_CLUMP_YELLOW;
+    public static final ItemRegistryObject<Item> HIGH_QUALITY_CONCRETE_POWDER;
+    public static final ItemRegistryObject<Item> HIGH_QUALITY_CONCRETE_POWDER_AQUA;
+    public static final ItemRegistryObject<Item> HIGH_QUALITY_CONCRETE_POWDER_BLACK;
+    public static final ItemRegistryObject<Item> HIGH_QUALITY_CONCRETE_POWDER_BLUE;
+    public static final ItemRegistryObject<Item> HIGH_QUALITY_CONCRETE_POWDER_BROWN;
+    public static final ItemRegistryObject<Item> HIGH_QUALITY_CONCRETE_POWDER_CYAN;
+    public static final ItemRegistryObject<Item> HIGH_QUALITY_CONCRETE_POWDER_DARK_RED;
+    public static final ItemRegistryObject<Item> HIGH_QUALITY_CONCRETE_POWDER_GRAY;
+    public static final ItemRegistryObject<Item> HIGH_QUALITY_CONCRETE_POWDER_GREEN;
+    public static final ItemRegistryObject<Item> HIGH_QUALITY_CONCRETE_POWDER_LIGHT_BLUE;
+    public static final ItemRegistryObject<Item> HIGH_QUALITY_CONCRETE_POWDER_LIGHT_GRAY;
+    public static final ItemRegistryObject<Item> HIGH_QUALITY_CONCRETE_POWDER_LIME;
+    public static final ItemRegistryObject<Item> HIGH_QUALITY_CONCRETE_POWDER_MAGENTA;
+    public static final ItemRegistryObject<Item> HIGH_QUALITY_CONCRETE_POWDER_ORANGE;
+    public static final ItemRegistryObject<Item> HIGH_QUALITY_CONCRETE_POWDER_PINK;
+    public static final ItemRegistryObject<Item> HIGH_QUALITY_CONCRETE_POWDER_PURPLE;
+    public static final ItemRegistryObject<Item> HIGH_QUALITY_CONCRETE_POWDER_RED;
+    public static final ItemRegistryObject<Item> HIGH_QUALITY_CONCRETE_POWDER_WHITE;
+    public static final ItemRegistryObject<Item> HIGH_QUALITY_CONCRETE_POWDER_YELLOW;
     //public static final ItemRegistryObject<Item> TABLET_MUSCLE_ENHANCEMENT = ITEMS.register("tablet_muscle_enhancement", () -> new MuscleEnhancementTablet(new Item.Properties().food(new FoodProperties.Builder().nutrition(0).saturationMod(0.0F).build())));
     //public static final ItemRegistryObject<Item> TABLET_POISON = ITEMS.register("tablet_poison", () -> new PoisonTablet(new Item.Properties().food(new FoodProperties.Builder().nutrition(0).saturationMod(0.0F).build())));
     //public static final ItemRegistryObject<Item> TABLET_SLEEP_INDUCING = ITEMS.register("tablet_sleep_inducing", () -> new SleepInducingTablet(new Item.Properties().food(new FoodProperties.Builder().nutrition(0).saturationMod(0.0F).build())));
@@ -64,12 +98,50 @@ public class MSItems {
         HIGH_PERFORMANCE_ADSORBENT_TIN = ITEMS.register("high_performance_adsorbent_tin");
         HIGH_PERFORMANCE_ADSORBENT_URANIUM = ITEMS.register("high_performance_adsorbent_uranium");
         NEUTRON_SOURCE_PELLET = ITEMS.register("pellet_neutron_source", () -> new NeutronSourcePellet(new Item.Properties(), EnumColor.YELLOW));
-        DUST_BARIUM_SULFATE = ITEMS.register("dust_barium_sulfate");
         DUST_CALCIUM_OXIDE = ITEMS.register("dust_calcium_oxide");
+        HIGH_QUALITY_CONCRETE_CLUMP = ITEMS.register("clump_high_quality_concrete");
+        HIGH_QUALITY_CONCRETE_POWDER = ITEMS.register("powder_high_quality_concrete");
         UNSTABLE_CALIFORNIUM_MIXTURE = ITEMS.register("unstable_californium_mixture", ()-> new UnstableCaliforniumMixture(new Item.Properties(), EnumColor.ORANGE));
         REFINED_CALIFORNIUM_INGOT = ITEMS.register("ingot_refined_californium", ()-> new RefinedCaliforniumIngot(new Item.Properties(), EnumColor.ORANGE));
         TABLET_IODINE = ITEMS.register("tablet_iodine", () -> new IodineTablet(new Item.Properties().food(new FoodProperties.Builder().nutrition(0).saturationMod(0.0F).build())));
-        }
+
+        HIGH_QUALITY_CONCRETE_CLUMP_AQUA = BUILDING_ITEMS.register("clump_high_quality_concrete_aqua");
+        HIGH_QUALITY_CONCRETE_CLUMP_BLACK = BUILDING_ITEMS.register("clump_high_quality_concrete_black");
+        HIGH_QUALITY_CONCRETE_CLUMP_BLUE = BUILDING_ITEMS.register("clump_high_quality_concrete_blue");
+        HIGH_QUALITY_CONCRETE_CLUMP_BROWN = BUILDING_ITEMS.register("clump_high_quality_concrete_brown");
+        HIGH_QUALITY_CONCRETE_CLUMP_CYAN = BUILDING_ITEMS.register("clump_high_quality_concrete_cyan");
+        HIGH_QUALITY_CONCRETE_CLUMP_DARK_RED = BUILDING_ITEMS.register("clump_high_quality_concrete_dark_red");
+        HIGH_QUALITY_CONCRETE_CLUMP_GRAY = BUILDING_ITEMS.register("clump_high_quality_concrete_gray");
+        HIGH_QUALITY_CONCRETE_CLUMP_GREEN = BUILDING_ITEMS.register("clump_high_quality_concrete_green");
+        HIGH_QUALITY_CONCRETE_CLUMP_LIGHT_BLUE = BUILDING_ITEMS.register("clump_high_quality_concrete_light_blue");
+        HIGH_QUALITY_CONCRETE_CLUMP_LIGHT_GRAY = BUILDING_ITEMS.register("clump_high_quality_concrete_light_gray");
+        HIGH_QUALITY_CONCRETE_CLUMP_LIME = BUILDING_ITEMS.register("clump_high_quality_concrete_lime");
+        HIGH_QUALITY_CONCRETE_CLUMP_MAGENTA = BUILDING_ITEMS.register("clump_high_quality_concrete_magenta");
+        HIGH_QUALITY_CONCRETE_CLUMP_ORANGE = BUILDING_ITEMS.register("clump_high_quality_concrete_orange");
+        HIGH_QUALITY_CONCRETE_CLUMP_PINK = BUILDING_ITEMS.register("clump_high_quality_concrete_pink");
+        HIGH_QUALITY_CONCRETE_CLUMP_PURPLE = BUILDING_ITEMS.register("clump_high_quality_concrete_purple");
+        HIGH_QUALITY_CONCRETE_CLUMP_RED = BUILDING_ITEMS.register("clump_high_quality_concrete_red");
+        HIGH_QUALITY_CONCRETE_CLUMP_WHITE = BUILDING_ITEMS.register("clump_high_quality_concrete_white");
+        HIGH_QUALITY_CONCRETE_CLUMP_YELLOW = BUILDING_ITEMS.register("clump_high_quality_concrete_yellow");
+        HIGH_QUALITY_CONCRETE_POWDER_AQUA = BUILDING_ITEMS.register("powder_high_quality_concrete_aqua");
+        HIGH_QUALITY_CONCRETE_POWDER_BLACK = BUILDING_ITEMS.register("powder_high_quality_concrete_black");
+        HIGH_QUALITY_CONCRETE_POWDER_BLUE = BUILDING_ITEMS.register("powder_high_quality_concrete_blue");
+        HIGH_QUALITY_CONCRETE_POWDER_BROWN = BUILDING_ITEMS.register("powder_high_quality_concrete_brown");
+        HIGH_QUALITY_CONCRETE_POWDER_CYAN = BUILDING_ITEMS.register("powder_high_quality_concrete_cyan");
+        HIGH_QUALITY_CONCRETE_POWDER_DARK_RED = BUILDING_ITEMS.register("powder_high_quality_concrete_dark_red");
+        HIGH_QUALITY_CONCRETE_POWDER_GRAY = BUILDING_ITEMS.register("powder_high_quality_concrete_gray");
+        HIGH_QUALITY_CONCRETE_POWDER_GREEN = BUILDING_ITEMS.register("powder_high_quality_concrete_green");
+        HIGH_QUALITY_CONCRETE_POWDER_LIGHT_BLUE = BUILDING_ITEMS.register("powder_high_quality_concrete_light_blue");
+        HIGH_QUALITY_CONCRETE_POWDER_LIGHT_GRAY = BUILDING_ITEMS.register("powder_high_quality_concrete_light_gray");
+        HIGH_QUALITY_CONCRETE_POWDER_LIME = BUILDING_ITEMS.register("powder_high_quality_concrete_lime");
+        HIGH_QUALITY_CONCRETE_POWDER_MAGENTA = BUILDING_ITEMS.register("powder_high_quality_concrete_magenta");
+        HIGH_QUALITY_CONCRETE_POWDER_ORANGE = BUILDING_ITEMS.register("powder_high_quality_concrete_orange");
+        HIGH_QUALITY_CONCRETE_POWDER_PINK = BUILDING_ITEMS.register("powder_high_quality_concrete_pink");
+        HIGH_QUALITY_CONCRETE_POWDER_PURPLE = BUILDING_ITEMS.register("powder_high_quality_concrete_purple");
+        HIGH_QUALITY_CONCRETE_POWDER_RED = BUILDING_ITEMS.register("powder_high_quality_concrete_red");
+        HIGH_QUALITY_CONCRETE_POWDER_WHITE = BUILDING_ITEMS.register("powder_high_quality_concrete_white");
+        HIGH_QUALITY_CONCRETE_POWDER_YELLOW = BUILDING_ITEMS.register("powder_high_quality_concrete_yellow");
+    }
 
     private MSItems(){
     }

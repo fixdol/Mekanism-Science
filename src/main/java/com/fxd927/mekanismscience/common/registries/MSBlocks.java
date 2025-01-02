@@ -86,33 +86,13 @@ public class MSBlocks {
     public static final BlockRegistryObject<Block,BlockItem> BROWN_HIGH_QUALITY_CONCRETE_SLABS;
     public static final BlockRegistryObject<Block,BlockItem> PINK_HIGH_QUALITY_CONCRETE_SLABS;
 
-    public static final BlockRegistryObject<Block,BlockItem> HIGH_QUALITY_CONCRETE_POWDER;
-    public static final BlockRegistryObject<Block,BlockItem> AQUA_HIGH_QUALITY_CONCRETE_POWDER;
-    public static final BlockRegistryObject<Block,BlockItem> BLACK_HIGH_QUALITY_CONCRETE_POWDER;
-    public static final BlockRegistryObject<Block,BlockItem> BLUE_HIGH_QUALITY_CONCRETE_POWDER;
-    public static final BlockRegistryObject<Block,BlockItem> GREEN_HIGH_QUALITY_CONCRETE_POWDER;
-    public static final BlockRegistryObject<Block,BlockItem> CYAN_HIGH_QUALITY_CONCRETE_POWDER;
-    public static final BlockRegistryObject<Block,BlockItem> DARK_RED_HIGH_QUALITY_CONCRETE_POWDER;
-    public static final BlockRegistryObject<Block,BlockItem> PURPLE_HIGH_QUALITY_CONCRETE_POWDER;
-    public static final BlockRegistryObject<Block,BlockItem> ORANGE_HIGH_QUALITY_CONCRETE_POWDER;
-    public static final BlockRegistryObject<Block,BlockItem> LIGHT_GRAY_HIGH_QUALITY_CONCRETE_POWDER;
-    public static final BlockRegistryObject<Block,BlockItem> GRAY_HIGH_QUALITY_CONCRETE_POWDER;
-    public static final BlockRegistryObject<Block,BlockItem> LIGHT_BLUE_HIGH_QUALITY_CONCRETE_POWDER;
-    public static final BlockRegistryObject<Block,BlockItem> LIME_HIGH_QUALITY_CONCRETE_POWDER;
-    public static final BlockRegistryObject<Block,BlockItem> RED_HIGH_QUALITY_CONCRETE_POWDER;
-    public static final BlockRegistryObject<Block,BlockItem> MAGENTA_HIGH_QUALITY_CONCRETE_POWDER;
-    public static final BlockRegistryObject<Block,BlockItem> YELLOW_HIGH_QUALITY_CONCRETE_POWDER;
-    public static final BlockRegistryObject<Block,BlockItem> WHITE_HIGH_QUALITY_CONCRETE_POWDER;
-    public static final BlockRegistryObject<Block,BlockItem> BROWN_HIGH_QUALITY_CONCRETE_POWDER;
-    public static final BlockRegistryObject<Block,BlockItem> PINK_HIGH_QUALITY_CONCRETE_POWDER;
-
     static {
         ADSORPTION_SEPARATOR = BLOCKS.register("adsorption_separator",() -> new BlockTile.BlockTileModel<>(MSBlockTypes.ADSORPTION_SEPARATOR, properties -> properties.mapColor(BlockResourceInfo.STEEL.getMapColor())),ItemBlockMachine::new);
         AIR_COMPRESSOR = BLOCKS.register("air_compressor",() -> new BlockTile.BlockTileModel<>(MSBlockTypes.AIR_COMPRESSOR, properties -> properties.mapColor(BlockResourceInfo.STEEL.getMapColor())),ItemBlockMachine::new);
         RADIATION_IRRADIATOR = BLOCKS.register("radiation_irradiator", () -> new BlockTile.BlockTileModel<>(MSBlockTypes.RADIATION_IRRADIATOR, properties -> properties.mapColor(BlockResourceInfo.STEEL.getMapColor())),ItemBlockMachine::new);
         SEAWATER_PUMP = BLOCKS.register("seawater_pump", () -> new BlockTile.BlockTileModel<>(MSBlockTypes.SEAWATER_PUMP, properties -> properties.mapColor(BlockResourceInfo.STEEL.getMapColor())),ItemBlockMachine::new);
 
-        HIGH_QUALITY_CONCRETE = BLOCKS.register("high_quality_concrete", () -> new Block(BlockBehaviour.Properties.of().mapColor(DyeColor.LIGHT_GRAY).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(5.0F, 1200.0F)));
+        HIGH_QUALITY_CONCRETE = BUILDING_BLOCKS.register("high_quality_concrete", () -> new Block(BlockBehaviour.Properties.of().mapColor(DyeColor.LIGHT_GRAY).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(5.0F, 1200.0F)));
         AQUA_HIGH_QUALITY_CONCRETE = BUILDING_BLOCKS.register("aqua_high_quality_concrete", () -> new Block(BlockBehaviour.Properties.of().mapColor(DyeColor.LIGHT_BLUE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(5.0F, 1200.0F)));
         BLACK_HIGH_QUALITY_CONCRETE = BUILDING_BLOCKS.register("black_high_quality_concrete", () -> new Block(BlockBehaviour.Properties.of().mapColor(DyeColor.BLACK).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(5.0F, 1200.0F)));
         BLUE_HIGH_QUALITY_CONCRETE = BUILDING_BLOCKS.register("blue_high_quality_concrete", () -> new Block(BlockBehaviour.Properties.of().mapColor(DyeColor.BLUE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(5.0F, 1200.0F)));
@@ -171,26 +151,6 @@ public class MSBlocks {
         WHITE_HIGH_QUALITY_CONCRETE_SLABS = BUILDING_BLOCKS.register("white_high_quality_concrete_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(HIGH_QUALITY_CONCRETE.getBlock())));
         BROWN_HIGH_QUALITY_CONCRETE_SLABS = BUILDING_BLOCKS.register("brown_high_quality_concrete_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(HIGH_QUALITY_CONCRETE.getBlock())));
         PINK_HIGH_QUALITY_CONCRETE_SLABS = BUILDING_BLOCKS.register("pink_high_quality_concrete_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(HIGH_QUALITY_CONCRETE.getBlock())));
-
-        HIGH_QUALITY_CONCRETE_POWDER = BLOCKS.register("high_quality_concrete_powder", () -> new ConcretePowderBlock(HIGH_QUALITY_CONCRETE.getBlock(), BlockBehaviour.Properties.of().mapColor(DyeColor.LIGHT_GRAY).instrument(NoteBlockInstrument.SNARE).strength(1.8F).sound(SoundType.SAND)));
-        AQUA_HIGH_QUALITY_CONCRETE_POWDER = BUILDING_BLOCKS.register("aqua_high_quality_concrete_powder", () -> new ConcretePowderBlock(AQUA_HIGH_QUALITY_CONCRETE.getBlock(), BlockBehaviour.Properties.of().mapColor(DyeColor.BLUE).instrument(NoteBlockInstrument.SNARE).strength(1.8F).sound(SoundType.SAND)));
-        BLACK_HIGH_QUALITY_CONCRETE_POWDER = BUILDING_BLOCKS.register("black_high_quality_concrete_powder", () -> new ConcretePowderBlock(BLACK_HIGH_QUALITY_CONCRETE.getBlock(), BlockBehaviour.Properties.of().mapColor(DyeColor.BLACK).instrument(NoteBlockInstrument.SNARE).strength(1.8F).sound(SoundType.SAND)));
-        BLUE_HIGH_QUALITY_CONCRETE_POWDER = BUILDING_BLOCKS.register("blue_high_quality_concrete_powder", () -> new ConcretePowderBlock(BLUE_HIGH_QUALITY_CONCRETE.getBlock(), BlockBehaviour.Properties.of().mapColor(DyeColor.BLUE).instrument(NoteBlockInstrument.SNARE).strength(1.8F).sound(SoundType.SAND)));
-        GREEN_HIGH_QUALITY_CONCRETE_POWDER = BUILDING_BLOCKS.register("green_high_quality_concrete_powder", () -> new ConcretePowderBlock(GREEN_HIGH_QUALITY_CONCRETE.getBlock(), BlockBehaviour.Properties.of().mapColor(DyeColor.GREEN).instrument(NoteBlockInstrument.SNARE).strength(1.8F).sound(SoundType.SAND)));
-        CYAN_HIGH_QUALITY_CONCRETE_POWDER = BUILDING_BLOCKS.register("cyan_high_quality_concrete_powder", () -> new ConcretePowderBlock(CYAN_HIGH_QUALITY_CONCRETE.getBlock(), BlockBehaviour.Properties.of().mapColor(DyeColor.CYAN).instrument(NoteBlockInstrument.SNARE).strength(1.8F).sound(SoundType.SAND)));
-        DARK_RED_HIGH_QUALITY_CONCRETE_POWDER = BUILDING_BLOCKS.register("dark_red_high_quality_concrete_powder", () -> new ConcretePowderBlock(DARK_RED_HIGH_QUALITY_CONCRETE.getBlock(), BlockBehaviour.Properties.of().mapColor(DyeColor.RED).instrument(NoteBlockInstrument.SNARE).strength(1.8F).sound(SoundType.SAND)));
-        PURPLE_HIGH_QUALITY_CONCRETE_POWDER = BUILDING_BLOCKS.register("purple_high_quality_concrete_powder", () -> new ConcretePowderBlock(PURPLE_HIGH_QUALITY_CONCRETE.getBlock(), BlockBehaviour.Properties.of().mapColor(DyeColor.PURPLE).instrument(NoteBlockInstrument.SNARE).strength(1.8F).sound(SoundType.SAND)));
-        ORANGE_HIGH_QUALITY_CONCRETE_POWDER = BUILDING_BLOCKS.register("orange_high_quality_concrete_powder", () -> new ConcretePowderBlock(ORANGE_HIGH_QUALITY_CONCRETE.getBlock(), BlockBehaviour.Properties.of().mapColor(DyeColor.ORANGE).instrument(NoteBlockInstrument.SNARE).strength(1.8F).sound(SoundType.SAND)));
-        LIGHT_GRAY_HIGH_QUALITY_CONCRETE_POWDER = BUILDING_BLOCKS.register("light_gray_high_quality_concrete_powder", () -> new ConcretePowderBlock(LIGHT_GRAY_HIGH_QUALITY_CONCRETE.getBlock(), BlockBehaviour.Properties.of().mapColor(DyeColor.LIGHT_GRAY).instrument(NoteBlockInstrument.SNARE).strength(1.8F).sound(SoundType.SAND)));
-        GRAY_HIGH_QUALITY_CONCRETE_POWDER = BUILDING_BLOCKS.register("gray_high_quality_concrete_powder", () -> new ConcretePowderBlock(GRAY_HIGH_QUALITY_CONCRETE.getBlock(), BlockBehaviour.Properties.of().mapColor(DyeColor.GRAY).instrument(NoteBlockInstrument.SNARE).strength(1.8F).sound(SoundType.SAND)));
-        LIGHT_BLUE_HIGH_QUALITY_CONCRETE_POWDER = BUILDING_BLOCKS.register("light_blue_high_quality_concrete_powder", () -> new ConcretePowderBlock(LIGHT_BLUE_HIGH_QUALITY_CONCRETE.getBlock(), BlockBehaviour.Properties.of().mapColor(DyeColor.LIGHT_BLUE).instrument(NoteBlockInstrument.SNARE).strength(1.8F).sound(SoundType.SAND)));
-        LIME_HIGH_QUALITY_CONCRETE_POWDER = BUILDING_BLOCKS.register("lime_high_quality_concrete_powder", () -> new ConcretePowderBlock(LIME_HIGH_QUALITY_CONCRETE.getBlock(), BlockBehaviour.Properties.of().mapColor(DyeColor.LIME).instrument(NoteBlockInstrument.SNARE).strength(1.8F).sound(SoundType.SAND)));
-        RED_HIGH_QUALITY_CONCRETE_POWDER = BUILDING_BLOCKS.register("red_high_quality_concrete_powder", () -> new ConcretePowderBlock(RED_HIGH_QUALITY_CONCRETE.getBlock(), BlockBehaviour.Properties.of().mapColor(DyeColor.RED).instrument(NoteBlockInstrument.SNARE).strength(1.8F).sound(SoundType.SAND)));
-        MAGENTA_HIGH_QUALITY_CONCRETE_POWDER = BUILDING_BLOCKS.register("magenta_high_quality_concrete_powder", () -> new ConcretePowderBlock(MAGENTA_HIGH_QUALITY_CONCRETE.getBlock(), BlockBehaviour.Properties.of().mapColor(DyeColor.MAGENTA).instrument(NoteBlockInstrument.SNARE).strength(1.8F).sound(SoundType.SAND)));
-        YELLOW_HIGH_QUALITY_CONCRETE_POWDER = BUILDING_BLOCKS.register("yellow_high_quality_concrete_powder", () -> new ConcretePowderBlock(YELLOW_HIGH_QUALITY_CONCRETE.getBlock(), BlockBehaviour.Properties.of().mapColor(DyeColor.YELLOW).instrument(NoteBlockInstrument.SNARE).strength(1.8F).sound(SoundType.SAND)));
-        WHITE_HIGH_QUALITY_CONCRETE_POWDER = BUILDING_BLOCKS.register("white_high_quality_concrete_powder", () -> new ConcretePowderBlock(WHITE_HIGH_QUALITY_CONCRETE.getBlock(), BlockBehaviour.Properties.of().mapColor(DyeColor.WHITE).instrument(NoteBlockInstrument.SNARE).strength(1.8F).sound(SoundType.SAND)));
-        BROWN_HIGH_QUALITY_CONCRETE_POWDER = BUILDING_BLOCKS.register("brown_high_quality_concrete_powder", () -> new ConcretePowderBlock(BROWN_HIGH_QUALITY_CONCRETE.getBlock(), BlockBehaviour.Properties.of().mapColor(DyeColor.BROWN).instrument(NoteBlockInstrument.SNARE).strength(1.8F).sound(SoundType.SAND)));
-        PINK_HIGH_QUALITY_CONCRETE_POWDER = BUILDING_BLOCKS.register("pink_high_quality_concrete_powder", () -> new ConcretePowderBlock(PINK_HIGH_QUALITY_CONCRETE.getBlock(), BlockBehaviour.Properties.of().mapColor(DyeColor.PINK).instrument(NoteBlockInstrument.SNARE).strength(1.8F).sound(SoundType.SAND)));
     }
 
     //public static final BlockRegistryObject<BlockTile.BlockTileModel<TileEntityAdsorptionTypeSeawaterMetalExtractor,MSMachine<TileEntityAdsorptionTypeSeawaterMetalExtractor>>,ItemBlockMachine> ADSORPTION_TYPE_SEAWATER_METAL_EXTRACTOR = BLOCKS.register("adsorption_type_seawater_metal_extractor",() -> new BlockTile.BlockTileModel<>(MSBlockTypes.ADSORPTION_TYPE_SEAWATER_METAL_EXTRACTOR, properties -> properties.mapColor(BlockResourceInfo.STEEL.getMapColor())),ItemBlockMachine::new);

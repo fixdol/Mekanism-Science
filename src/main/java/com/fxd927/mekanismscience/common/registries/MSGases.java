@@ -17,8 +17,6 @@ public class MSGases {
     public static final GasRegistryObject<Gas> AMMONIA;
     public static final GasRegistryObject<Gas> AMMONIUM_NITRATE;
     public static final GasRegistryObject<Gas> AQUA_REGIA;
-    public static final GasRegistryObject<Gas> BARIUM;
-    public static final GasRegistryObject<Gas> BARIUM_SULFATE;
     public static final GasRegistryObject<Gas> BROMINE;
     public static final GasRegistryObject<Gas> BERYLLIUM;
     public static final GasRegistryObject<Gas> CALIFORNIUM;
@@ -46,8 +44,6 @@ public class MSGases {
         AMMONIA = GASES.register(MSChemicalConstants.AMMONIA, new GasAttributes.Fuel(()-> 100, ()-> FloatingLong.createConst(600000)));
         AMMONIUM_NITRATE = GASES.register(MSChemicalConstants.AMMONIUM_NITRATE);
         AQUA_REGIA = GASES.register(MSChemicalConstants.AQUA_REGIA);
-        BARIUM = GASES.register(MSChemicalConstants.BARIUM);
-        BARIUM_SULFATE = GASES.register(MSChemicalConstants.BARIUM_SULFATE);
         BROMINE = GASES.register(MSChemicalConstants.BROMINE);
         BERYLLIUM = GASES.register(MSChemicalConstants.BERYLLIUM);
         CALIFORNIUM = GASES.register("californium", 0xFFF08B00, new GasAttributes.Radiation(0.1));

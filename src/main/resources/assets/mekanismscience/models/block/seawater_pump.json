@@ -1,0 +1,13 @@
+{
+  "parent":"mekanism:block/machine",
+  "textures":
+  {
+    "sides":"mekanismscience:block/seawater_pump/side",
+    "front":"mekanismscience:block/seawater_pump/front",
+    "west":"mekanismscience:block/seawater_pump/side",
+    "east":"mekanismscience:block/seawater_pump/side",
+    "south":"mekanismscience:block/seawater_pump/back",
+    "up":"mekanismscience:block/seawater_pump/top",
+    "down":"mekanismscience:block/seawater_pump/bottom"
+  }
+}

@@ -3,12 +3,12 @@
   "duration":1000,
   "gasInput":
   {
-    "amount":500,
+    "amount":1000,
     "gas":"mekanism:antimatter"
   },
   "itemInput":
   {
-    "amount": 3,
+    "amount": 8,
     "ingredient":
     {
       "item":"mekanismscience:unstable_californium_mixture"
