@@ -23,7 +23,7 @@ public class MSBlockTypes {
             .withCustomShape(MSBlockShapes.ADSORPTION_SEPARATOR)
             .withSupportedUpgrades(EnumSet.of(Upgrade.SPEED, Upgrade.ENERGY, Upgrade.MUFFLING))
             .withComputerSupport("adsorptionSeparator")
-            .replace(Attributes.ACTIVE_LIGHT)
+            .replace(Attributes.ACTIVE_FULL_LIGHT)
             .build();
     public static final MSMachine<TileEntityAirCompressor> AIR_COMPRESSOR = MSMachine.MSMachineBuilder
             .createMSMachine(() -> MSTileEntityTypes.AIR_COMPRESSOR, MSLang.DESCRIPTION_AIR_COMPRESSOR)
@@ -40,8 +40,8 @@ public class MSBlockTypes {
             .withSound(GeneratorsSounds.FISSION_REACTOR)
             .withEnergyConfig(MSConfig.usageConfig.radiationIrradiator, MSConfig.storageConfig.radiationIrradiator)
             .withSupportedUpgrades(EnumSet.of(Upgrade.SPEED, Upgrade.ENERGY, Upgrade.MUFFLING))
-            .withComputerSupport("neutronIrradiator")
-            .replace(Attributes.ACTIVE_LIGHT)
+            .withComputerSupport("radiationIrradiator")
+            .replace(Attributes.ACTIVE_FULL_LIGHT)
             .build();
     // public static final MSMachine<TileEntityOrganicLiquidExtractor> ORGANIC_LIQUID_EXTRACTOR = MSMachine.MSMachineBuilder
             //.createMSMachine(() -> MSTileEntityTypes.ORGANIC_LIQUID_EXTRACTOR, MSLang.DESCRIPTION_ORGANIC_LIQUID_EXTRACTOR)

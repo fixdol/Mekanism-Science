@@ -73,7 +73,7 @@ public class TileEntityAdsorptionSeparator extends MSTileEntityProgressMachine<A
                 CachedRecipe.OperationTracker.RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT
         );
         private static final long MAX_CHEMICAL = 10_000;
-        public static final int BASE_TICKS_REQUIRED = 50;
+        public static final int BASE_TICKS_REQUIRED = 100;
 
         @WrappingComputerMethod(wrapper = SpecialComputerMethodWrapper.ComputerChemicalTankWrapper.class, methodNames = {"getGasInput", "getGasInputCapacity", "getGasInputNeeded",
                 "getGasInputFilledPercentage"}, docPlaceholder = "gas input tank")

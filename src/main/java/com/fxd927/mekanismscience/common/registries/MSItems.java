@@ -103,7 +103,7 @@ public class MSItems {
         HIGH_QUALITY_CONCRETE_POWDER = ITEMS.register("powder_high_quality_concrete");
         //UNSTABLE_CALIFORNIUM_MIXTURE = ITEMS.register("unstable_californium_mixture", ()-> new UnstableCaliforniumMixture(new Item.Properties(), EnumColor.ORANGE));
         //REFINED_CALIFORNIUM_INGOT = ITEMS.register("ingot_refined_californium", ()-> new RefinedCaliforniumIngot(new Item.Properties(), EnumColor.ORANGE));
-        TABLET_IODINE = ITEMS.register("tablet_iodine", () -> new IodineTablet(new Item.Properties().food(new FoodProperties.Builder().nutrition(0).saturationMod(0.0F).build())));
+        TABLET_IODINE = ITEMS.register("tablet_iodine", () -> new IodineTablet(new Item.Properties().food(new FoodProperties.Builder().nutrition(0).saturationMod(0.0F).alwaysEat().build())));
 
         HIGH_QUALITY_CONCRETE_CLUMP_AQUA = BUILDING_ITEMS.register("clump_high_quality_concrete_aqua");
         HIGH_QUALITY_CONCRETE_CLUMP_BLACK = BUILDING_ITEMS.register("clump_high_quality_concrete_black");

@@ -3,11 +3,11 @@
   "chemicalType":"gas",
   "input":
   {
-    "amount":500,
-    "gas":"mekanismscience:lactose"
+    "amount":1000,
+    "gas":"mekanismscience:iodine"
   },
   "output":
   {
-    "item":"mekanismscience:excipient"
+    "item":"chemlib:iodine"
   }
 }

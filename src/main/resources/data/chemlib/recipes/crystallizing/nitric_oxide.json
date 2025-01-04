@@ -1,0 +1,13 @@
+{
+  "type":"mekanism:crystallizing",
+  "chemicalType":"gas",
+  "input":
+  {
+    "amount":1000,
+    "gas":"mekanismscience:nitric_oxide"
+  },
+  "output":
+  {
+    "item":"chemlib:nitric_oxide"
+  }
+}

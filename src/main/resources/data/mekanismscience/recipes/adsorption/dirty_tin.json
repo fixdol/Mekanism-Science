@@ -2,7 +2,7 @@
   "type":"mekanismscience:adsorption",
   "gasInput":
   {
-    "amount":4,
+    "amount":2,
     "gas":"mekanismscience:seawater"
   },
   "itemInput":

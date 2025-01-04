@@ -21,7 +21,7 @@ import net.minecraft.resources.ResourceLocation;
 public class MSRecipeSerializers {
     public static final RecipeSerializerDeferredRegister RECIPE_SERIALIZERS = new RecipeSerializerDeferredRegister(MekanismScience.MODID);
 
-    public static final RecipeSerializerRegistryObject<AdsorptionRecipe> ADSORPTION_SEPARATOR = RECIPE_SERIALIZERS.register("adsorption", () -> new AdsorptionRecipeSerializer<>((ResourceLocation id, ItemStackIngredient itemInput, ChemicalStackIngredient.GasStackIngredient fluidInput, ChemicalStack<?> output) -> new AdsorptionIRecipe(id, itemInput, fluidInput, output)));
+    public static final RecipeSerializerRegistryObject<AdsorptionRecipe> ADSORPTION_SEPARATOR = RECIPE_SERIALIZERS.register("adsorption", () -> new AdsorptionRecipeSerializer<>(AdsorptionIRecipe::new));
     public static final RecipeSerializerRegistryObject<RadiationIrradiatingRecipe> RADIATION_IRRADIATOR = RECIPE_SERIALIZERS.register("radiation_irradiating", () -> new RadiationIrradiatorRecipeSerializer<>(RadiationIrradiatingIRecipe::new));
     public static final RecipeSerializerRegistryObject<ChemicalDemolitionRecipe> CHEMICAL_DEMOLITION = RECIPE_SERIALIZERS.register("chemical_demolition", () -> new ChemicalDemolitionRecipeSerializer<>(ChemicalDemolitionIRecipe::new));
 

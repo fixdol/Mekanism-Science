@@ -4,10 +4,10 @@
   "input":
   {
     "amount":1000,
-    "gas":"mekanismscience:barium"
+    "gas":"mekanismscience:potassium_chloride"
   },
   "output":
   {
-    "item":"chemlib:barium_dust"
+    "item":"chemlib:potassium_chloride_dust"
   }
 }
