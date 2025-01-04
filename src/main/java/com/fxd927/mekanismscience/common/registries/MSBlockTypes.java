@@ -2,6 +2,7 @@ package com.fxd927.mekanismscience.common.registries;
 
 import com.fxd927.mekanismscience.common.MSLang;
 import com.fxd927.mekanismscience.common.config.MSConfig;
+import com.fxd927.mekanismscience.common.content.blocktype.MSBlockShapes;
 import com.fxd927.mekanismscience.common.content.blocktype.MSMachine;
 import com.fxd927.mekanismscience.common.tile.machine.TileEntityAdsorptionSeparator;
 import com.fxd927.mekanismscience.common.tile.machine.TileEntityAirCompressor;
@@ -19,6 +20,7 @@ public class MSBlockTypes {
             .withGui(() -> MSContainerTypes.ADSORPTION_SEPARATOR)
             .withSound(MSSounds.AIR_COMPRESSOR)
             .withEnergyConfig(MSConfig.usageConfig.adsorptionSeparator, MSConfig.storageConfig.adsorptionSeparator)
+            .withCustomShape(MSBlockShapes.ADSORPTION_SEPARATOR)
             .withSupportedUpgrades(EnumSet.of(Upgrade.SPEED, Upgrade.ENERGY, Upgrade.MUFFLING))
             .withComputerSupport("adsorptionSeparator")
             .replace(Attributes.ACTIVE_LIGHT)

@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "mekanismscience:neutron_irradiator"
+          "name": "mekanismscience:adsorption_separator"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "mekanismscience:blocks/neutron_irradiator"
+  "random_sequence": "mekanismscience:blocks/adsorption_separator"
 }

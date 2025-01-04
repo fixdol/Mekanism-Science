@@ -1,8 +1,10 @@
 {
   "values":
   [
+    "mekanismscience:adsorption_separator",
     "mekanismscience:air_compressor",
-    "mekanismscience:neutron_irradiator",
+    "mekanismscience:radiation_irradiator",
+    "mekanismscience:seawater_pump",
     "mekanismscience:high_quality_concrete",
     "mekanismscience:aqua_high_quality_concrete",
     "mekanismscience:black_high_quality_concrete",

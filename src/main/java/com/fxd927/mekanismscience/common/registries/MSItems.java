@@ -36,8 +36,8 @@ public class MSItems {
     public static final ItemRegistryObject<Item> NEUTRON_SOURCE_PELLET;
     public static final ItemRegistryObject<Item> DUST_CALCIUM_OXIDE;
     //public static final ItemRegistryObject<Item> DUST_YTTRIUM = ITEMS.register("dust_yttrium");
-    public static final ItemRegistryObject<Item> UNSTABLE_CALIFORNIUM_MIXTURE;
-    public static final ItemRegistryObject<Item> REFINED_CALIFORNIUM_INGOT;
+    //public static final ItemRegistryObject<Item> UNSTABLE_CALIFORNIUM_MIXTURE;
+    //public static final ItemRegistryObject<Item> REFINED_CALIFORNIUM_INGOT;
     public static final ItemRegistryObject<Item> TABLET_IODINE;
 
     public static final ItemRegistryObject<Item> HIGH_QUALITY_CONCRETE_CLUMP;
@@ -101,8 +101,8 @@ public class MSItems {
         DUST_CALCIUM_OXIDE = ITEMS.register("dust_calcium_oxide");
         HIGH_QUALITY_CONCRETE_CLUMP = ITEMS.register("clump_high_quality_concrete");
         HIGH_QUALITY_CONCRETE_POWDER = ITEMS.register("powder_high_quality_concrete");
-        UNSTABLE_CALIFORNIUM_MIXTURE = ITEMS.register("unstable_californium_mixture", ()-> new UnstableCaliforniumMixture(new Item.Properties(), EnumColor.ORANGE));
-        REFINED_CALIFORNIUM_INGOT = ITEMS.register("ingot_refined_californium", ()-> new RefinedCaliforniumIngot(new Item.Properties(), EnumColor.ORANGE));
+        //UNSTABLE_CALIFORNIUM_MIXTURE = ITEMS.register("unstable_californium_mixture", ()-> new UnstableCaliforniumMixture(new Item.Properties(), EnumColor.ORANGE));
+        //REFINED_CALIFORNIUM_INGOT = ITEMS.register("ingot_refined_californium", ()-> new RefinedCaliforniumIngot(new Item.Properties(), EnumColor.ORANGE));
         TABLET_IODINE = ITEMS.register("tablet_iodine", () -> new IodineTablet(new Item.Properties().food(new FoodProperties.Builder().nutrition(0).saturationMod(0.0F).build())));
 
         HIGH_QUALITY_CONCRETE_CLUMP_AQUA = BUILDING_ITEMS.register("clump_high_quality_concrete_aqua");
