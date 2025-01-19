@@ -34,7 +34,9 @@ public class MSItems {
     public static final ItemRegistryObject<Item> HIGH_PERFORMANCE_ADSORBENT_URANIUM;
 
     public static final ItemRegistryObject<Item> NEUTRON_SOURCE_PELLET;
+    //public static final ItemRegistryObject<Item> DUST_BERYLLIUM;
     public static final ItemRegistryObject<Item> DUST_CALCIUM_OXIDE;
+    //public static final ItemRegistryObject<Item> INGOT_BERYLLIUM;
     //public static final ItemRegistryObject<Item> DUST_YTTRIUM = ITEMS.register("dust_yttrium");
     //public static final ItemRegistryObject<Item> UNSTABLE_CALIFORNIUM_MIXTURE;
     //public static final ItemRegistryObject<Item> REFINED_CALIFORNIUM_INGOT;
@@ -99,6 +101,8 @@ public class MSItems {
         HIGH_PERFORMANCE_ADSORBENT_URANIUM = ITEMS.register("high_performance_adsorbent_uranium");
         NEUTRON_SOURCE_PELLET = ITEMS.register("pellet_neutron_source", () -> new NeutronSourcePellet(new Item.Properties(), EnumColor.YELLOW));
         DUST_CALCIUM_OXIDE = ITEMS.register("dust_calcium_oxide");
+        //DUST_BERYLLIUM = ITEMS.register("dust_beryllium");
+        //INGOT_BERYLLIUM = ITEMS.register("ingot_beryllium");
         HIGH_QUALITY_CONCRETE_CLUMP = ITEMS.register("clump_high_quality_concrete");
         HIGH_QUALITY_CONCRETE_POWDER = ITEMS.register("powder_high_quality_concrete");
         //UNSTABLE_CALIFORNIUM_MIXTURE = ITEMS.register("unstable_californium_mixture", ()-> new UnstableCaliforniumMixture(new Item.Properties(), EnumColor.ORANGE));

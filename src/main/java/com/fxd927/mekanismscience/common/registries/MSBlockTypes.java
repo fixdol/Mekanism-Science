@@ -4,10 +4,7 @@ import com.fxd927.mekanismscience.common.MSLang;
 import com.fxd927.mekanismscience.common.config.MSConfig;
 import com.fxd927.mekanismscience.common.content.blocktype.MSBlockShapes;
 import com.fxd927.mekanismscience.common.content.blocktype.MSMachine;
-import com.fxd927.mekanismscience.common.tile.machine.TileEntityAdsorptionSeparator;
-import com.fxd927.mekanismscience.common.tile.machine.TileEntityAirCompressor;
-import com.fxd927.mekanismscience.common.tile.machine.TileEntityRadiationIrradiator;
-import com.fxd927.mekanismscience.common.tile.machine.TileEntitySeawaterPump;
+import com.fxd927.mekanismscience.common.tile.machine.*;
 import mekanism.api.Upgrade;
 import mekanism.common.block.attribute.Attributes;
 import mekanism.generators.common.registries.GeneratorsSounds;
@@ -23,7 +20,7 @@ public class MSBlockTypes {
             .withCustomShape(MSBlockShapes.ADSORPTION_SEPARATOR)
             .withSupportedUpgrades(EnumSet.of(Upgrade.SPEED, Upgrade.ENERGY, Upgrade.MUFFLING))
             .withComputerSupport("adsorptionSeparator")
-            .replace(Attributes.ACTIVE_FULL_LIGHT)
+            .replace(Attributes.ACTIVE_LIGHT)
             .build();
     public static final MSMachine<TileEntityAirCompressor> AIR_COMPRESSOR = MSMachine.MSMachineBuilder
             .createMSMachine(() -> MSTileEntityTypes.AIR_COMPRESSOR, MSLang.DESCRIPTION_AIR_COMPRESSOR)
@@ -32,6 +29,14 @@ public class MSBlockTypes {
             .withEnergyConfig(MSConfig.usageConfig.airCompressor, MSConfig.storageConfig.airCompressor)
             .withSupportedUpgrades(EnumSet.of(Upgrade.SPEED, Upgrade.ENERGY, Upgrade.MUFFLING))
             .withComputerSupport("airCompressor")
+            .replace(Attributes.ACTIVE_LIGHT)
+            .build();
+    public static final MSMachine<TileEntityChemicalDemolitionMachine> CHEMICAL_DEMOLITION_MACHINE = MSMachine.MSMachineBuilder
+            .createMSMachine(() -> MSTileEntityTypes.CHEMICAL_DEMOLITION_MACHINE, MSLang.DESCRIPTION_ADSORPTION_SEPARATOR)
+            .withGui(() -> MSContainerTypes.CHEMICAL_DEMOLITION_MACHINE)
+            .withEnergyConfig(MSConfig.usageConfig.adsorptionSeparator, MSConfig.storageConfig.adsorptionSeparator)
+            .withSupportedUpgrades(EnumSet.of(Upgrade.SPEED, Upgrade.ENERGY, Upgrade.MUFFLING))
+            .withComputerSupport("chemicalDemolitionMachine")
             .replace(Attributes.ACTIVE_LIGHT)
             .build();
     public static final MSMachine<TileEntityRadiationIrradiator> RADIATION_IRRADIATOR = MSMachine.MSMachineBuilder

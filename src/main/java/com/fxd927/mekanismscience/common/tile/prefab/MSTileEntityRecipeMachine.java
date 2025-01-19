@@ -57,9 +57,7 @@ public abstract class MSTileEntityRecipeMachine<RECIPE extends MekanismRecipe> e
     }
 
     public static BooleanSupplier shouldRecheckAllErrors(TileEntityMekanism tile) {
-        // Choose a random offset to check for all errors. We do this to ensure that not every tile tries to recheck errors for every
-        // recipe the same tick and thus create uneven spikes of CPU usage
-        int checkOffset = ThreadLocalRandom.current().nextInt(RECIPE_CHECK_FREQUENCY);
+       int checkOffset = ThreadLocalRandom.current().nextInt(RECIPE_CHECK_FREQUENCY);
         return () -> !tile.playersUsing.isEmpty() && tile.hasLevel() && tile.getLevel().getGameTime() % RECIPE_CHECK_FREQUENCY == checkOffset;
     }
 

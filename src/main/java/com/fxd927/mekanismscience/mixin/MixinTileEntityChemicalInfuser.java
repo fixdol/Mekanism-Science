@@ -26,7 +26,7 @@ import java.util.List;
 import static mekanism.common.tile.machine.TileEntityChemicalInfuser.MAX_GAS;
 
 @Mixin(value = TileEntityChemicalInfuser.class, remap = false)
-public abstract class MixinTilEntityChemicalInfuser extends TileEntityRecipeMachine<ChemicalInfuserRecipe> implements IEitherSideRecipeLookupHandler.EitherSideChemicalRecipeLookupHandler<Gas, GasStack, ChemicalInfuserRecipe> {
+public abstract class MixinTileEntityChemicalInfuser extends TileEntityRecipeMachine<ChemicalInfuserRecipe> implements IEitherSideRecipeLookupHandler.EitherSideChemicalRecipeLookupHandler<Gas, GasStack, ChemicalInfuserRecipe> {
     @Shadow
     public IGasTank leftTank;
     @Shadow
@@ -34,7 +34,7 @@ public abstract class MixinTilEntityChemicalInfuser extends TileEntityRecipeMach
     @Shadow
     public IGasTank centerTank;
 
-    protected MixinTilEntityChemicalInfuser(IBlockProvider blockProvider, BlockPos pos, BlockState state, List<CachedRecipe.OperationTracker.RecipeError> errorTypes) {
+    protected MixinTileEntityChemicalInfuser(IBlockProvider blockProvider, BlockPos pos, BlockState state, List<CachedRecipe.OperationTracker.RecipeError> errorTypes) {
         super(blockProvider, pos, state, errorTypes);
     }
 

@@ -1,9 +1,6 @@
 package com.fxd927.mekanismscience.client;
 
-import com.fxd927.mekanismscience.client.gui.machine.GuiAdsorptionSeparator;
-import com.fxd927.mekanismscience.client.gui.machine.GuiAirCompressor;
-import com.fxd927.mekanismscience.client.gui.machine.GuiRadiationIrradiator;
-import com.fxd927.mekanismscience.client.gui.machine.GuiSeawaterPump;
+import com.fxd927.mekanismscience.client.gui.machine.*;
 import com.fxd927.mekanismscience.common.MekanismScience;
 import com.fxd927.mekanismscience.common.registries.MSContainerTypes;
 import mekanism.client.ClientRegistrationUtil;
@@ -25,6 +22,7 @@ public class MSClientRegistration {
         event.register(Registries.MENU, helper -> {
             ClientRegistrationUtil.registerScreen(MSContainerTypes.ADSORPTION_SEPARATOR, GuiAdsorptionSeparator::new);
             ClientRegistrationUtil.registerScreen(MSContainerTypes.AIR_COMPRESSOR, GuiAirCompressor::new);
+            ClientRegistrationUtil.registerScreen(MSContainerTypes.CHEMICAL_DEMOLITION_MACHINE, GuiChemicalDemolitionMachine::new);
             ClientRegistrationUtil.registerScreen(MSContainerTypes.RADIATION_IRRADIATOR, GuiRadiationIrradiator::new);
 
             //ClientRegistrationUtil.registerScreen(MSContainerTypes.ADSORPTION_TYPE_SEAWATER_METAL_EXTRACTOR, GuiAdsorptionTypeSeawaterMetalExtractor::new);

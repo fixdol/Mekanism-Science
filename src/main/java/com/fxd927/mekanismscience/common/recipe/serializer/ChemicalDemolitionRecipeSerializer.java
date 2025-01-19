@@ -34,8 +34,8 @@ public class ChemicalDemolitionRecipeSerializer <RECIPE extends ChemicalDemoliti
         JsonElement fluidInput = GsonHelper.isArrayNode(json, JsonConstants.GAS_INPUT) ? GsonHelper.getAsJsonArray(json, JsonConstants.GAS_INPUT) :
                 GsonHelper.getAsJsonObject(json, JsonConstants.GAS_INPUT);
         ChemicalStackIngredient.GasStackIngredient fluidIngredient = IngredientCreatorAccess.gas().deserialize(fluidInput);
-        ItemStack firstOutput = SerializerHelper.getItemStack(json, JsonConstants.OUTPUT);
-        ItemStack secondOutput = SerializerHelper.getItemStack(json, JsonConstants.OUTPUT);
+        ItemStack firstOutput = SerializerHelper.getItemStack(json, JsonConstants.MAIN_OUTPUT);
+        ItemStack secondOutput = SerializerHelper.getItemStack(json, JsonConstants.SECONDARY_OUTPUT);
 
         if (firstOutput.isEmpty()) {
             throw new JsonSyntaxException("Recipe output must not be empty.");
@@ -51,7 +51,6 @@ public class ChemicalDemolitionRecipeSerializer <RECIPE extends ChemicalDemoliti
         try {
             ItemStackIngredient itemInput = IngredientCreatorAccess.item().read(buffer);
             ChemicalStackIngredient.GasStackIngredient fluidInput = IngredientCreatorAccess.gas().read(buffer);
-            ChemicalType chemicalType = buffer.readEnum(ChemicalType.class);
             ItemStack firstOutput = buffer.readItem();
             ItemStack secondOutput = buffer.readItem();
             return this.factory.create(recipeId, itemInput, fluidInput, firstOutput, secondOutput);

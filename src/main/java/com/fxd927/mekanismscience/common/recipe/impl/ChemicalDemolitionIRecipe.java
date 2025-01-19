@@ -1,11 +1,9 @@
 package com.fxd927.mekanismscience.common.recipe.impl;
 
-import com.fxd927.mekanismscience.api.recipes.AdsorptionRecipe;
 import com.fxd927.mekanismscience.api.recipes.ChemicalDemolitionRecipe;
 import com.fxd927.mekanismscience.common.recipe.MSRecipeType;
 import com.fxd927.mekanismscience.common.registries.MSBlocks;
 import com.fxd927.mekanismscience.common.registries.MSRecipeSerializers;
-import mekanism.api.chemical.ChemicalStack;
 import mekanism.api.recipes.ingredients.ChemicalStackIngredient;
 import mekanism.api.recipes.ingredients.ItemStackIngredient;
 import net.minecraft.resources.ResourceLocation;

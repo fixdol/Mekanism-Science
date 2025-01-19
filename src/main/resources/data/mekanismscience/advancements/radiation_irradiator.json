@@ -10,7 +10,7 @@
           {
             "items":
             [
-              "mekanismscience:neutron_irradiator"
+              "mekanismscience:radiation_irradiator"
             ]
           }
         ]
@@ -22,15 +22,15 @@
   {
     "description":
     {
-      "translate":"advancements.mekanismscience.neutron_irradiator.description"
+      "translate":"advancements.mekanismscience.radiation_irradiator.description"
     },
     "icon":
     {
-      "item":"mekanismscience:neutron_irradiator"
+      "item":"mekanismscience:radiation_irradiator"
     },
     "title":
     {
-      "translate":"advancements.mekanismscience.neutron_irradiator.title"
+      "translate":"advancements.mekanismscience.radiation_irradiator.title"
     }
   },
   "sends_telemetry_event":true

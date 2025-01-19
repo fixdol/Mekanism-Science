@@ -14,7 +14,8 @@ import java.util.function.BooleanSupplier;
 import java.util.function.LongSupplier;
 
 public class ChemicalDemolitionCachedRecipe extends CachedRecipe<ChemicalDemolitionRecipe> {
-    private final IOutputHandler outputHandler;
+    private final IOutputHandler firstOutputHandler;
+    private final IOutputHandler secondOutputHandler;
     private final IInputHandler<@NotNull ItemStack> itemInputHandler;
     private final ILongInputHandler<@NotNull GasStack> gasInputHandler;
     private final LongSupplier gasUsage;
@@ -32,15 +33,16 @@ public class ChemicalDemolitionCachedRecipe extends CachedRecipe<ChemicalDemolit
      * @param itemInputHandler Item input handler.
      * @param gasInputHandler  Chemical input handler.
      * @param gasUsage         Gas usage multiplier.
-     * @param outputHandler    Output handler.
+     * @param firstOutputHandler    Output handler.
      */
     public ChemicalDemolitionCachedRecipe(ChemicalDemolitionRecipe recipe, BooleanSupplier recheckAllErrors, IInputHandler<@NotNull ItemStack> itemInputHandler,
-                                            ILongInputHandler<@NotNull GasStack> gasInputHandler, LongSupplier gasUsage, IOutputHandler outputHandler) {
+                                            ILongInputHandler<@NotNull GasStack> gasInputHandler, LongSupplier gasUsage, IOutputHandler firstOutputHandler, IOutputHandler secondOutputHandler) {
         super(recipe, recheckAllErrors);
         this.itemInputHandler = Objects.requireNonNull(itemInputHandler, "Item input handler cannot be null.");
         this.gasInputHandler = Objects.requireNonNull(gasInputHandler, "Gas input handler cannot be null.");
         this.gasUsage = Objects.requireNonNull(gasUsage, "Gas usage cannot be null.");
-        this.outputHandler = Objects.requireNonNull(outputHandler, "Input handler cannot be null.");
+        this.firstOutputHandler = Objects.requireNonNull(firstOutputHandler, "First Input handler cannot be null.");
+        this.secondOutputHandler = Objects.requireNonNull(secondOutputHandler, "Second Input handler cannot be null.");
     }
 
     @Override
@@ -69,8 +71,8 @@ public class ChemicalDemolitionCachedRecipe extends CachedRecipe<ChemicalDemolit
                     if (tracker.shouldContinueChecking()) {
                         firstOutput = recipe.getFirstOutput(recipeItem, recipeGas);
                         secondOutput = recipe.getSecondOutput(recipeItem, recipeGas);
-                        outputHandler.calculateOperationsCanSupport(tracker, firstOutput);
-                        outputHandler.calculateOperationsCanSupport(tracker, secondOutput);
+                        firstOutputHandler.calculateOperationsCanSupport(tracker, firstOutput);
+                        secondOutputHandler.calculateOperationsCanSupport(tracker, secondOutput);
                     }
                 }
             }
@@ -108,8 +110,8 @@ public class ChemicalDemolitionCachedRecipe extends CachedRecipe<ChemicalDemolit
             if (gasUsageMultiplier > 0) {
                 gasInputHandler.use(recipeGas, operations * gasUsageMultiplier);
             }
-            outputHandler.handleOutput(firstOutput, operations);
-            outputHandler.handleOutput(secondOutput, operations);
+            firstOutputHandler.handleOutput(firstOutput, operations);
+            secondOutputHandler.handleOutput(secondOutput, operations);
         }
     }
 }
