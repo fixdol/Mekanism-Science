@@ -1,0 +1,19 @@
+{
+  "type": "mekanism:rotary",
+  "fluid_input": {
+    "fluid": "mekanismscience:aqua_regia",
+    "amount": 1
+  },
+  "gasOutput": {
+    "gas": "mekanismscience:aqua_regia",
+    "amount": 1
+  },
+  "gasInput": {
+    "gas": "mekanismscience:aqua_regia",
+    "amount": 1
+  },
+  "fluidOutput": {
+    "fluid": "mekanismscience:aqua_regia",
+    "amount": 1
+  }
+}

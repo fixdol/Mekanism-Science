@@ -1,0 +1,18 @@
+{
+  "type":"mekanism:chemical_infusing",
+  "left_input":
+  {
+    "amount":3,
+    "chemical":"mekanismscience:nitrogen_dioxide"
+  },
+  "output":
+  {
+    "amount":2,
+    "id":"mekanismscience:nitric_acid"
+  },
+  "right_input":
+  {
+    "amount":1,
+    "chemical":"mekanism:water_vapor"
+  }
+}

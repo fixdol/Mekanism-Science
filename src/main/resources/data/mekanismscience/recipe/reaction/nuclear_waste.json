@@ -1,0 +1,24 @@
+{
+  "type": "mekanism:reaction",
+  "item_input": {
+    "count": 4,
+    "item": "mekanismscience:pellet_neutron_source"
+  },
+  "fluid_input": {
+    "amount": 100,
+    "tag": "minecraft:water"
+  },
+  "chemical_input":{
+    "amount": 100,
+    "chemical": "mekanism:fissile_fuel"
+  },
+  "duration": 100,
+  "item_output": {
+    "id": "mekanism:dust_steel",
+    "count": 4
+  },
+  "chemical_output": {
+    "id": "mekanism:nuclear_waste",
+    "amount": 25
+  }
+}

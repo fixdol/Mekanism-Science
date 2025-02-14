@@ -1,0 +1,11 @@
+{
+  "type": "mekanism:centrifuging",
+  "input": {
+    "amount": 100,
+    "chemical": "mekanismscience:dissolved_spent_nuclear_waste"
+  },
+  "output": {
+    "chemical": "mekanismscience:curium",
+    "amount": 1
+  }
+}

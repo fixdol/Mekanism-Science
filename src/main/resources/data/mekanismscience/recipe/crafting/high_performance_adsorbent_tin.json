@@ -1,0 +1,27 @@
+{
+  "type":"minecraft:crafting_shaped",
+  "key":
+  {
+    "A":
+    {
+      "item":"mekanism:pellet_antimatter"
+    },
+    "X":
+    {
+      "item":"mekanismscience:high_performance_adsorbent"
+    },
+    "C":
+    {
+      "tag":"c:ingots/tin"
+    }
+  },"pattern":
+[
+  "ACA",
+  "CXC",
+  "ACA"
+],
+  "result":
+  {
+    "item":"mekanismscience:high_performance_adsorbent_tin"
+  }
+}

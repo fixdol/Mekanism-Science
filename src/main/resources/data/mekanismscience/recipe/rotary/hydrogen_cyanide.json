@@ -1,0 +1,19 @@
+{
+  "type": "mekanism:rotary",
+  "fluid_input": {
+    "fluid": "mekanismscience:hydrogen_cyanide",
+    "amount": 1
+  },
+  "gasOutput": {
+    "gas": "mekanismscience:hydrogen_cyanide",
+    "amount": 1
+  },
+  "gasInput": {
+    "gas": "mekanismscience:hydrogen_cyanide",
+    "amount": 1
+  },
+  "fluidOutput": {
+    "fluid": "mekanismscience:hydrogen_cyanide",
+    "amount": 1
+  }
+}

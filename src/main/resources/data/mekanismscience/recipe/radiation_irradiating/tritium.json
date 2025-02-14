@@ -1,0 +1,21 @@
+{
+  "type":"mekanismscience:radiation_irradiating",
+  "chemical_input":
+  {
+    "amount":4,
+    "chemical":"mekanism:lithium"
+  },
+  "item_input":
+  {
+    "ingredient":
+    {
+      "item":"mekanismscience:pellet_neutron_source"
+    }
+  },
+  "output":
+  {
+    "amount":500,
+    "id":"mekanismgenerators:tritium"
+  },
+  "per_tick_usage": true
+}

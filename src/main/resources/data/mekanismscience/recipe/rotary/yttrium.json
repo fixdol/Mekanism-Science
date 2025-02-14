@@ -1,0 +1,19 @@
+{
+  "type": "mekanism:rotary",
+  "fluid_input": {
+    "fluid": "mekanismscience:yttrium",
+    "amount": 1
+  },
+  "chemical_output": {
+    "id": "mekanismscience:yttrium",
+    "amount": 1
+  },
+  "chemical_input": {
+    "chemical": "mekanismscience:yttrium",
+    "amount": 1
+  },
+  "fluid_output": {
+    "id": "mekanismscience:yttrium",
+    "amount": 1
+  }
+}

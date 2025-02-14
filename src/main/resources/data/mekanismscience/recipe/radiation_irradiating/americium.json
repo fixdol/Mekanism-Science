@@ -1,0 +1,16 @@
+{
+  "type": "mekanismscience:radiation_irradiating",
+  "chemical_input": {
+    "amount": 1,
+    "chemical": "mekanism:plutonium"
+  },
+  "item_input": {
+    "count": 1,
+    "item": "mekanismscience:pellet_neutron_source"
+  },
+  "output": {
+    "amount": 500,
+    "id": "mekanismscience:americium"
+  },
+  "per_tick_usage": true
+}

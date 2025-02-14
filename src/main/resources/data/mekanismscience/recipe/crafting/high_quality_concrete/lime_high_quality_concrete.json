@@ -1,0 +1,20 @@
+{
+  "type":"minecraft:crafting_shaped",
+  "key":
+  {
+    "#":
+    {
+      "item":"mekanismscience:clump_high_quality_concrete_lime"
+    }
+  },
+  "pattern":
+  [
+    "##",
+    "##"
+  ],
+  "result":
+  {
+    "count": 4,
+    "id":"mekanismscience:lime_high_quality_concrete"
+  }
+}

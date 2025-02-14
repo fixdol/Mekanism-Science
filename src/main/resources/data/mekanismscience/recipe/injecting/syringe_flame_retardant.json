@@ -1,0 +1,19 @@
+{
+  "type":"mekanism:injecting",
+  "chemical_input":
+  {
+    "amount":1,
+    "chemical":"mekanismscience:bromine"
+  },
+  "item_input":
+  {
+    "ingredient":
+    {
+      "item":"mekanismscience:syringe"
+    }
+  },
+  "output":
+  {
+    "id":"mekanismscience:syringe_flame_retardant"
+  }
+}

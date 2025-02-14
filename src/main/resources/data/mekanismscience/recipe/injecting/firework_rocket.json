@@ -1,0 +1,20 @@
+{
+  "type":"mekanism:injecting",
+  "chemical_input":
+  {
+    "amount":5,
+    "chemical":"mekanismscience:ammonium_nitrate"
+  },
+  "item_input":
+  {
+    "ingredient":
+    {
+      "item":"minecraft:firework_rocket"
+    }
+  },
+  "output":
+  {
+    "count": 8,
+    "id":"minecraft:firework_rocket"
+  }
+}

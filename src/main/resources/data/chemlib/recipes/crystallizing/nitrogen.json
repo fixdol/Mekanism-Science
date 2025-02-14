@@ -1,0 +1,12 @@
+{
+  "type":"mekanism:crystallizing",
+  "input":
+  {
+    "amount":1000,
+    "chemical":"mekanismscience:nitrogen"
+  },
+  "output":
+  {
+    "id":"chemlib:nitrogen"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "type":"mekanismscience:adsorption",
+  "gasInput":
+  {
+    "amount":1,
+    "gas":"mekanismscience:seawater"
+  },
+  "itemInput":
+  {
+    "ingredient":
+    {
+      "item": "minecraft:kelp"
+    }
+  },
+  "output":
+  {
+    "amount":10,
+    "chemicalType":"gas",
+    "gas":"mekanismscience:iodine"
+  }
+}

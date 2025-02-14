@@ -1,0 +1,21 @@
+{
+  "type":"mekanismscience:adsorption",
+  "gasInput":
+  {
+    "amount":1,
+    "gas":"mekanismscience:seawater"
+  },
+  "itemInput":
+  {
+    "ingredient":
+    {
+      "item":"mekanismscience:high_performance_adsorbent_uranium"
+    }
+  },
+  "output":
+  {
+    "amount":5,
+    "chemicalType":"slurry",
+    "slurry":"mekanism:dirty_uranium"
+  }
+}
