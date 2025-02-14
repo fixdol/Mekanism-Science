@@ -8,7 +8,7 @@
     "amount": 100,
     "tag": "minecraft:water"
   },
-  "chemical_input":{
+  "chemical_input": {
     "amount": 100,
     "chemical": "mekanism:fissile_fuel"
   },
