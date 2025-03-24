@@ -3,14 +3,12 @@ package com.fxd927.mekanismscience.common.tile.machine;
 import com.fxd927.mekanismscience.api.recipes.RadiationIrradiatingRecipe;
 import com.fxd927.mekanismscience.api.recipes.cache.MSItemStackConstantChemicalToObjectCachedRecipe;
 import com.fxd927.mekanismscience.api.recipes.cache.MSTwoInputCachedRecipe;
-import com.fxd927.mekanismscience.client.recipe_viewer.type.IMSRecipeViewerRecipeType;
 import com.fxd927.mekanismscience.client.recipe_viewer.type.MSRecipeViewerRecipeType;
 import com.fxd927.mekanismscience.common.recipe.IMSRecipeTypeProvider;
 import com.fxd927.mekanismscience.common.recipe.MSRecipeType;
 import com.fxd927.mekanismscience.common.recipe.lookup.IMSDoubleRecipeLookupHandler;
 import com.fxd927.mekanismscience.common.recipe.lookup.IMSRecipeLookupHandler;
 import com.fxd927.mekanismscience.common.recipe.lookup.cache.MSInputRecipeCache;
-import com.fxd927.mekanismscience.common.registries.MSBlocks;
 import com.fxd927.mekanismscience.common.tile.prefab.MSTileEntityProgressMachine;
 import mekanism.api.*;
 import mekanism.api.chemical.BasicChemicalTank;
@@ -24,6 +22,7 @@ import mekanism.api.recipes.inputs.InputHelper;
 import mekanism.api.recipes.outputs.IOutputHandler;
 import mekanism.api.recipes.outputs.OutputHelper;
 import mekanism.api.recipes.vanilla_input.SingleItemChemicalRecipeInput;
+import mekanism.client.recipe_viewer.type.IRecipeViewerRecipeType;
 import mekanism.common.capabilities.energy.MachineEnergyContainer;
 import mekanism.common.capabilities.holder.chemical.ChemicalTankHelper;
 import mekanism.common.capabilities.holder.chemical.IChemicalTankHolder;
@@ -154,7 +153,7 @@ public class TileEntityAdsorptionSeparator extends MSTileEntityProgressMachine<R
     }
 
     @Override
-    public IMSRecipeViewerRecipeType<RadiationIrradiatingRecipe> recipeViewerType() {
+    public IRecipeViewerRecipeType<RadiationIrradiatingRecipe> recipeViewerType() {
         return MSRecipeViewerRecipeType.RADIATION_IRRADIATING;
     }
 

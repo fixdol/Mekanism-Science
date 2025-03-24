@@ -1,7 +1,6 @@
 package com.fxd927.mekanismscience.client.gui.element.progress;
 
 import com.fxd927.mekanismscience.client.recipe_viewer.interfaces.IMSRecipeViewerRecipeArea;
-import com.fxd927.mekanismscience.client.recipe_viewer.type.IMSRecipeViewerRecipeType;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.*;
 import mekanism.client.gui.IGuiWrapper;
@@ -9,6 +8,7 @@ import mekanism.client.gui.element.GuiTexturedElement;
 import mekanism.client.gui.element.progress.GuiProgress;
 import mekanism.client.gui.element.progress.IProgressInfoHandler;
 import mekanism.client.gui.element.progress.ProgressType;
+import mekanism.client.recipe_viewer.type.IRecipeViewerRecipeType;
 import mekanism.client.render.MekanismRenderer;
 import mekanism.common.inventory.warning.ISupportsWarning;
 import mekanism.common.inventory.warning.WarningTracker;
@@ -24,7 +24,7 @@ import java.util.function.BooleanSupplier;
 public class MSGuiProgress extends GuiTexturedElement implements IMSRecipeViewerRecipeArea<MSGuiProgress>, ISupportsWarning<MSGuiProgress> {
     protected final IProgressInfoHandler handler;
     protected final ProgressType type;
-    private IMSRecipeViewerRecipeType<?>[] recipeCategories;
+    private IRecipeViewerRecipeType<?>[] recipeCategories;
     @Nullable
     private GuiProgress.ColorDetails colorDetails;
     @Nullable
@@ -99,14 +99,14 @@ public class MSGuiProgress extends GuiTexturedElement implements IMSRecipeViewer
 
     @NotNull
     @Override
-    public MSGuiProgress recipeViewerCategories(@NotNull IMSRecipeViewerRecipeType<?>... recipeCategories) {
+    public MSGuiProgress recipeViewerCategories(@NotNull IRecipeViewerRecipeType<?>... recipeCategories) {
         this.recipeCategories = recipeCategories;
         return this;
     }
 
     @Nullable
     @Override
-    public IMSRecipeViewerRecipeType<?>[] getRecipeCategories() {
+    public IRecipeViewerRecipeType<?>[] getRecipeCategories() {
         return recipeCategories;
     }
 

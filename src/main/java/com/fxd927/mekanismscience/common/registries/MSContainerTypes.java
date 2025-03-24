@@ -10,7 +10,7 @@ public class MSContainerTypes {
     public static final ContainerTypeDeferredRegister CONTAINER_TYPES = new ContainerTypeDeferredRegister(MekanismScience.MODID);
 
 
-    //public static final ContainerTypeRegistryObject<MekanismTileContainer<TileEntityRadiationIrradiator>> RADIATION_IRRADIATOR;
+    public static final ContainerTypeRegistryObject<MekanismTileContainer<TileEntityRadiationIrradiator>> RADIATION_IRRADIATOR;
 
 
     //public static final ContainerTypeRegistryObject<MekanismTileContainer<TileEntityAdsorptionTypeSeawaterMetalExtractor>> ADSORPTION_TYPE_SEAWATER_METAL_EXTRACTOR = CONTAINER_TYPES.register(MSBlocks.ADSORPTION_TYPE_SEAWATER_METAL_EXTRACTOR, TileEntityAdsorptionTypeSeawaterMetalExtractor.class);
@@ -18,7 +18,7 @@ public class MSContainerTypes {
     //public static final ContainerTypeRegistryObject<MekanismTileContainer<TileEntitySeawaterPump>> SEAWATER_PUMP = CONTAINER_TYPES.register(MSBlocks.SEAWATER_PUMP, TileEntitySeawaterPump.class);
 
     static {
-        //RADIATION_IRRADIATOR = CONTAINER_TYPES.register(MSBlocks.RADIATION_IRRADIATOR, TileEntityRadiationIrradiator.class);
+        RADIATION_IRRADIATOR = CONTAINER_TYPES.register(MSBlocks.RADIATION_IRRADIATOR, TileEntityRadiationIrradiator.class);
     }
 
     private MSContainerTypes(){

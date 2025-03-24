@@ -22,25 +22,16 @@ import mekanism.generators.common.registries.GeneratorsSounds;
 import java.util.EnumSet;
 
 public class MSBlockTypes {
-    //public static final Machine<TileEntityRadiationIrradiator> RADIATION_IRRADIATOR = Machine.MachineBuilder
-            //.createMachine(() -> MSTileEntityTypes.RADIATION_IRRADIATOR, MSLang.DESCRIPTION_RADIATION_IRRADIATOR)
-            //.withGui(() -> MSContainerTypes.RADIATION_IRRADIATOR)
-            //.withSound(GeneratorsSounds.FISSION_REACTOR)
-            //.withEnergyConfig(MSConfig.usageConfig.radiationIrradiator, MSConfig.storageConfig.radiationIrradiator)
-            //.with(AttributeUpgradeSupport.DEFAULT_ADVANCED_MACHINE_UPGRADES)
-            //.with(AttributeSideConfig.ADVANCED_ELECTRIC_MACHINE)
-            //.withComputerSupport("radiationIrradiator")
-            //.replace(Attributes.ACTIVE)
-    //.build();
-    // public static final MSMachine<TileEntityOrganicLiquidExtractor> ORGANIC_LIQUID_EXTRACTOR = MSMachine.MSMachineBuilder
-            //.createMSMachine(() -> MSTileEntityTypes.ORGANIC_LIQUID_EXTRACTOR, MSLang.DESCRIPTION_ORGANIC_LIQUID_EXTRACTOR)
-            //.withGui(() -> MSContainerTypes.ORGANIC_LIQUID_EXTRACTOR)
-            //.withEnergyConfig(MSConfig.usageConfig.organicLiquidExtractor, MSConfig.storageConfig.organicLiquidExtractor)
-            //.withSupportedUpgrades(EnumSet.of(Upgrade.SPEED, Upgrade.ENERGY))
-            //.withComputerSupport("organicLiquidExtractor")
-            //.replace(Attributes.ACTIVE)g
-            //.build();
-
+    public static final Machine<TileEntityRadiationIrradiator> RADIATION_IRRADIATOR = Machine.MachineBuilder
+            .createMachine(() -> MSTileEntityTypes.RADIATION_IRRADIATOR, MSLang.DESCRIPTION_RADIATION_IRRADIATOR)
+            .withGui(() -> MSContainerTypes.RADIATION_IRRADIATOR)
+            .withSound(GeneratorsSounds.FISSION_REACTOR)
+            .withEnergyConfig(MSConfig.usageConfig.radiationIrradiator, MSConfig.storageConfig.radiationIrradiator)
+            .with(AttributeUpgradeSupport.DEFAULT_ADVANCED_MACHINE_UPGRADES)
+            .with(AttributeSideConfig.ADVANCED_ELECTRIC_MACHINE)
+            .withComputerSupport("radiationIrradiator")
+            .replace(Attributes.ACTIVE_FULL_LIGHT)
+    .build();
     private MSBlockTypes(){
     }
 }

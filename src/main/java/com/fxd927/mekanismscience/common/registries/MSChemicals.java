@@ -19,7 +19,7 @@ public class MSChemicals {
     //public static DeferredChemical<Chemical> BROMINE;
     public static DeferredChemical<Chemical> BERYLLIUM;
     //public static DeferredChemical<Chemical> CALIFORNIUM;
-    //public static DeferredChemical<Chemical> COMPRESSED_AIR;
+    public static DeferredChemical<Chemical> COMPRESSED_AIR;
     //public static DeferredChemical<Chemical> CURIUM;
     //public static DeferredChemical<Chemical> DISSOLVED_SPENT_NUCLEAR_WASTE;
     public static DeferredChemical<Chemical> HELIUM;
@@ -49,7 +49,7 @@ public class MSChemicals {
         //BROMINE = CHEMICALS.register(MSChemicalConstants.BROMINE);
         BERYLLIUM = CHEMICALS.register(MSChemicalConstants.BERYLLIUM);
         //CALIFORNIUM = CHEMICALS.register("californium", 0xFFF08B00, new GasAttributes.Radiation(0.1));
-        //COMPRESSED_AIR = CHEMICALS.register(MSChemicalConstants.COMPRESSED_AIR);
+        COMPRESSED_AIR = CHEMICALS.register(MSChemicalConstants.COMPRESSED_AIR);
         //CURIUM = CHEMICALS.register("curium",15725501,new GasAttributes.Radiation(0.07));
         //DISSOLVED_SPENT_NUCLEAR_WASTE = CHEMICALS.register("dissolved_spent_nuclear_waste",0x8588b1);
         HELIUM = CHEMICALS.register(MSChemicalConstants.HELIUM, Coolants.HELIUM_COOLANT);
@@ -78,7 +78,7 @@ public class MSChemicals {
     public static class Coolants{
 
         public static final ChemicalAttributes.CooledCoolant HELIUM_COOLANT = makeCoolant(ChemicalAttributes.CooledCoolant::new, () -> SUPERHEATED_HELIUM.get(), 100, 1.5);
-        public static final ChemicalAttributes.HeatedCoolant HEATED_HELIUM_COOLANT = makeCoolant(ChemicalAttributes.HeatedCoolant::new, () -> SUPERHEATED_HELIUM.get(), 100, 1.5);
+        public static final ChemicalAttributes.HeatedCoolant HEATED_HELIUM_COOLANT = makeCoolant(ChemicalAttributes.HeatedCoolant::new, () -> HELIUM.get(), 100, 1.5);
 
         @FunctionalInterface
         private interface CoolantFactory<C extends ChemicalAttributes.Coolant> {

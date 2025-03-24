@@ -8,6 +8,6 @@ public class MSRecipeViewerRecipeType {
     private MSRecipeViewerRecipeType() {
     }
 
-    public static final MSRVRecipeTypeWrapper<?, RadiationIrradiatingRecipe, ?> RADIATION_IRRADIATING = new MSRVRecipeTypeWrapper<>(MSRecipeType.RADIATION_IRRADIATING, RadiationIrradiatingRecipe.class, -3, -3, 170, 79,null);
+    public static final MSRVRecipeTypeWrapper<?, RadiationIrradiatingRecipe, ?> RADIATION_IRRADIATING = new MSRVRecipeTypeWrapper<>(MSRecipeType.RADIATION_IRRADIATING, RadiationIrradiatingRecipe.class, -3, -3, 170, 79, MSBlocks.RADIATION_IRRADIATOR);
 
 }

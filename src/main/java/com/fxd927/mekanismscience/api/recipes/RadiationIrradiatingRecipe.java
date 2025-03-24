@@ -27,8 +27,8 @@ public abstract class RadiationIrradiatingRecipe extends ItemStackChemicalToObje
         return "radiation_irradiator";
     }
 
-    // @Override
-    //public ItemStack getToastSymbol() {
-    //   return new ItemStack(MSBlocks.RADIATION_IRRADIATOR);
-    //}
+    @Override
+    public ItemStack getToastSymbol() {
+       return new ItemStack(MSBlocks.RADIATION_IRRADIATOR);
+    }
 }

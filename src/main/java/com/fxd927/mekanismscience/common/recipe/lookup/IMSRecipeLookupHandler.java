@@ -1,10 +1,10 @@
 package com.fxd927.mekanismscience.common.recipe.lookup;
 
-import com.fxd927.mekanismscience.client.recipe_viewer.type.IMSRecipeViewerRecipeType;
 import com.fxd927.mekanismscience.common.recipe.IMSRecipeTypeProvider;
 import mekanism.api.IContentsListener;
 import mekanism.api.recipes.MekanismRecipe;
 import mekanism.api.recipes.cache.CachedRecipe;
+import mekanism.client.recipe_viewer.type.IRecipeViewerRecipeType;
 import mekanism.common.recipe.lookup.cache.IInputRecipeCache;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
@@ -24,7 +24,7 @@ public interface IMSRecipeLookupHandler<RECIPE extends MekanismRecipe<?>> extend
     IMSRecipeTypeProvider<?, RECIPE, ?> getMSRecipeType();
 
     @Nullable
-    default IMSRecipeViewerRecipeType<RECIPE> recipeViewerType() {
+    default IRecipeViewerRecipeType<RECIPE> recipeViewerType() {
         return null;
     }
 

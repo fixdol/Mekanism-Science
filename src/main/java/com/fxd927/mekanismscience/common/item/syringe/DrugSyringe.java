@@ -31,32 +31,33 @@ public abstract class DrugSyringe extends Item {
         player.hurt(player.damageSources().magic(),1);
         ItemStack itemStack = player.getItemInHand(hand);
         if (!level.isClientSide) {
-            //CompoundTag tag = itemStack.getOrCreateTag();
-            //int useCount = tag.getInt(USE_COUNT_TAG);
+            CompoundTag tag = itemStack.getOrCreateTag();
+            int useCount = tag.getInt(USE_COUNT_TAG);
 
-            //if (useCount < maxUses) {
-            //useCount++;
-            //tag.putInt(USE_COUNT_TAG, useCount);
-            //applyEffect(level, player, itemStack);
-                //level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.THORNS_HIT, SoundSource.PLAYERS, 1.0F, 1.0F);
-            //} else {
-            //ItemStack filledSyringe = getEmptySyringe();
-            //player.setItemInHand(hand, filledSyringe);
-                //level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.THORNS_HIT, SoundSource.PLAYERS, 1.0F, 1.0F);
+            if (useCount < maxUses) {
+            useCount++;
+            tag.putInt(USE_COUNT_TAG, useCount);
+            applyEffect(level, player, itemStack);
+                level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.THORNS_HIT, SoundSource.PLAYERS, 1.0F, 1.0F);
+            } else {
+            ItemStack filledSyringe = getEmptySyringe();
+            player.setItemInHand(hand, filledSyringe);
+                level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.THORNS_HIT, SoundSource.PLAYERS, 1.0F, 1.0F);
             }
-        //}
-    //return InteractionResultHolder.sidedSuccess(itemStack, level.isClientSide);
-        //}
+        }
+    return InteractionResultHolder.sidedSuccess(itemStack, level.isClientSide);
+    }
 
-        // @Override
-        //public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        //Level level = target.getCommandSenderWorld();
-        //if (!level.isClientSide) {
-        // CompoundTag tag = stack.getOrCreateTag();
-        //int useCount = tag.getInt(USE_COUNT_TAG);
+         @Override
+        public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
+        Level level = target.getCommandSenderWorld();
+        if (!level.isClientSide) {
+            CompoundTag tag = stack.getOrCreateTag();
+        }
+        int useCount = tag.getInt(USE_COUNT_TAG);
 
-        // if (useCount < maxUses) {
-        //  useCount++;
+         if (useCount < maxUses) {
+          useCount++;
         //   tag.putInt(USE_COUNT_TAG, useCount);
         //   applyEffectToEntity(level, target, attacker);
         //    level.playSound(null, target.getX(), target.getY(), target.getZ(), SoundEvents.PLAYER_ATTACK_STRONG, SoundSource.PLAYERS, 1.0F, 1.0F);

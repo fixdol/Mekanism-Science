@@ -1,16 +1,13 @@
 package com.fxd927.mekanismscience.client;
 
-import com.fxd927.mekanismscience.client.jei.MSRecipeRegistryHelper;
-import com.fxd927.mekanismscience.client.jei.machine.RadiationIrradiatorRecipeCategory;
-import com.fxd927.mekanismscience.client.recipe_viewer.jei.MSCatalystRegistryHelper;
-import com.fxd927.mekanismscience.client.recipe_viewer.type.IMSRecipeViewerRecipeType;
+import com.fxd927.mekanismscience.client.recipe_viewer.jei.MSRecipeRegistryHelper;
+import com.fxd927.mekanismscience.client.recipe_viewer.jei.machine.RadiationIrradiatorRecipeCategory;
 import com.fxd927.mekanismscience.client.recipe_viewer.type.MSRecipeViewerRecipeType;
 import com.fxd927.mekanismscience.common.MekanismScience;
 import com.fxd927.mekanismscience.common.recipe.MSRecipeType;
 import mekanism.client.recipe_viewer.jei.CatalystRegistryHelper;
 import mekanism.client.recipe_viewer.jei.MekanismSubtypeInterpreter;
 import mekanism.client.recipe_viewer.type.IRecipeViewerRecipeType;
-import mekanism.client.recipe_viewer.type.RecipeViewerRecipeType;
 import mekanism.common.capabilities.Capabilities;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
@@ -47,7 +44,7 @@ public class MSJEI implements IModPlugin {
         return MekanismScience.rl("jei_plugin");
     }
     private static final ISubtypeInterpreter<ItemStack> MEKANISMSCIENCE_DATA_INTERPRETER = new MekanismSubtypeInterpreter();
-    private static final Map<IMSRecipeViewerRecipeType<?>, RecipeType<?>> recipeTypeInstanceCache = new HashMap<>();
+    private static final Map<IRecipeViewerRecipeType<?>, RecipeType<?>> recipeTypeInstanceCache = new HashMap<>();
 
     public static void registerItemSubtypes(ISubtypeRegistration registry, Collection<? extends Holder<? extends ItemLike>> itemProviders) {
         for (Holder<? extends ItemLike> itemProvider : itemProviders) {
@@ -58,25 +55,25 @@ public class MSJEI implements IModPlugin {
         }
     }
 
-    public static <TYPE> RecipeType<TYPE> recipeType(IMSRecipeViewerRecipeType<TYPE> recipeType) {
+    public static <TYPE> RecipeType<TYPE> recipeType(IRecipeViewerRecipeType<TYPE> recipeType) {
         if (recipeType.requiresHolder()) {
             throw new IllegalStateException("Basic recipe type requested for a recipe that uses holders");
         }
         return (RecipeType<TYPE>) genericRecipeType(recipeType);
     }
 
-    public static <TYPE extends Recipe<?>> RecipeType<RecipeHolder<TYPE>> holderRecipeType(IMSRecipeViewerRecipeType<TYPE> recipeType) {
+    public static <TYPE extends Recipe<?>> RecipeType<RecipeHolder<TYPE>> holderRecipeType(IRecipeViewerRecipeType<TYPE> recipeType) {
         if (!recipeType.requiresHolder()) {
             throw new IllegalStateException("Holder recipe type requested for a recipe that doesn't use holders");
         }
         return (RecipeType<RecipeHolder<TYPE>>) genericRecipeType(recipeType);
     }
 
-    public static RecipeType<?>[] recipeType(IMSRecipeViewerRecipeType<?>... recipeTypes) {
+    public static RecipeType<?>[] recipeType(IRecipeViewerRecipeType<?>... recipeTypes) {
             return Arrays.stream(recipeTypes).map(MSJEI::genericRecipeType).toArray(RecipeType[]::new);
         }
 
-    public static RecipeType<?> genericRecipeType(IMSRecipeViewerRecipeType<?> recipeType) {
+    public static RecipeType<?> genericRecipeType(IRecipeViewerRecipeType<?> recipeType) {
         return recipeTypeInstanceCache.computeIfAbsent(recipeType, r -> {
             if (r.requiresHolder()) {
                 return new RecipeType<>(r.id(), RecipeHolder.class);
@@ -96,7 +93,7 @@ public class MSJEI implements IModPlugin {
 
     @Override
     public void registerRecipeCatalysts(@Nonnull IRecipeCatalystRegistration registry) {
-        MSCatalystRegistryHelper.register(registry, MSRecipeViewerRecipeType.RADIATION_IRRADIATING);
+        CatalystRegistryHelper.register(registry, MSRecipeViewerRecipeType.RADIATION_IRRADIATING);
     }
 
     @Override

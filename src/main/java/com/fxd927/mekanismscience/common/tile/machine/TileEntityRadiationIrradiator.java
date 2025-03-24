@@ -3,7 +3,6 @@ package com.fxd927.mekanismscience.common.tile.machine;
 import com.fxd927.mekanismscience.api.recipes.RadiationIrradiatingRecipe;
 import com.fxd927.mekanismscience.api.recipes.cache.MSItemStackConstantChemicalToObjectCachedRecipe;
 import com.fxd927.mekanismscience.api.recipes.cache.MSTwoInputCachedRecipe;
-import com.fxd927.mekanismscience.client.recipe_viewer.type.IMSRecipeViewerRecipeType;
 import com.fxd927.mekanismscience.client.recipe_viewer.type.MSRecipeViewerRecipeType;
 import com.fxd927.mekanismscience.common.recipe.IMSRecipeTypeProvider;
 import com.fxd927.mekanismscience.common.recipe.MSRecipeType;
@@ -19,6 +18,7 @@ import mekanism.api.Upgrade;
 import mekanism.api.chemical.BasicChemicalTank;
 import mekanism.api.chemical.ChemicalStack;
 import mekanism.api.chemical.IChemicalTank;
+import mekanism.api.chemical.attribute.ChemicalAttributeValidator;
 import mekanism.api.recipes.cache.CachedRecipe;
 import mekanism.api.recipes.cache.ItemStackConstantChemicalToObjectCachedRecipe;
 import mekanism.api.recipes.inputs.IInputHandler;
@@ -27,6 +27,7 @@ import mekanism.api.recipes.inputs.InputHelper;
 import mekanism.api.recipes.outputs.IOutputHandler;
 import mekanism.api.recipes.outputs.OutputHelper;
 import mekanism.api.recipes.vanilla_input.SingleItemChemicalRecipeInput;
+import mekanism.client.recipe_viewer.type.IRecipeViewerRecipeType;
 import mekanism.common.capabilities.energy.MachineEnergyContainer;
 import mekanism.common.capabilities.holder.chemical.ChemicalTankHelper;
 import mekanism.common.capabilities.holder.chemical.IChemicalTankHolder;
@@ -93,7 +94,7 @@ public class TileEntityRadiationIrradiator extends MSTileEntityProgressMachine<R
     EnergyInventorySlot energySlot;
 
     public TileEntityRadiationIrradiator(BlockPos pos, BlockState state) {
-        super(null, pos, state, TRACKED_ERROR_TYPES, BASE_TICKS_REQUIRED);
+        super(MSBlocks.RADIATION_IRRADIATOR, pos, state, TRACKED_ERROR_TYPES, BASE_TICKS_REQUIRED);
         configComponent.setupItemIOExtraConfig(inputSlot, outputSlot, gasInputSlot, energySlot);
         configComponent.setupIOConfig(TransmissionType.CHEMICAL, injectTank, outputTank, RelativeSide.RIGHT);
         configComponent.setupInputConfig(TransmissionType.ENERGY, energyContainer);
@@ -112,7 +113,8 @@ public class TileEntityRadiationIrradiator extends MSTileEntityProgressMachine<R
     @Override
     public IChemicalTankHolder getInitialChemicalTanks(IContentsListener listener, IContentsListener recipeCacheListener, IContentsListener recipeCacheUnpauseListener) {
         ChemicalTankHelper builder = ChemicalTankHelper.forSideWithConfig(this);
-        builder.addTank(injectTank = BasicChemicalTank.input(MAX_CHEMICAL, gas -> containsRecipeBA(inputSlot.getStack(), gas), this::containsRecipeB, recipeCacheListener));
+        builder.addTank(injectTank = BasicChemicalTank.create(MAX_CHEMICAL, ChemicalTankHelper.radioactiveInputTankPredicate(() -> outputTank),
+                BasicChemicalTank.alwaysTrueBi, this::containsRecipeB, ChemicalAttributeValidator.ALWAYS_ALLOW, recipeCacheListener));
         builder.addTank(outputTank = BasicChemicalTank.output(MAX_CHEMICAL, recipeCacheUnpauseListener));
         return builder.build();
     }
@@ -130,8 +132,8 @@ public class TileEntityRadiationIrradiator extends MSTileEntityProgressMachine<R
     @Override
     protected IInventorySlotHolder getInitialInventory(IContentsListener listener, IContentsListener recipeCacheListener, IContentsListener recipeCacheUnpauseListener) {
         InventorySlotHelper builder = InventorySlotHelper.forSideWithConfig(this);
-        builder.addSlot(gasInputSlot = ChemicalInventorySlot.fillOrConvert(injectTank, this::getLevel, listener, 8, 65));
-        builder.addSlot(inputSlot = InputInventorySlot.at(item -> containsRecipeAB(item, injectTank.getStack()), this::containsRecipeA, recipeCacheListener, 28, 36))
+        builder.addSlot(gasInputSlot = ChemicalInventorySlot.fillOrConvert(injectTank, this::getLevel, listener, 7, 55));
+        builder.addSlot(inputSlot = InputInventorySlot.at(item -> containsRecipeAB(item, injectTank.getStack()), this::containsRecipeA, recipeCacheListener, 7, 36))
                 .tracksWarnings(slot -> slot.warning(WarningTracker.WarningType.NO_MATCHING_RECIPE, getWarningCheck(CachedRecipe.OperationTracker.RecipeError.NOT_ENOUGH_INPUT)));
         builder.addSlot(outputSlot = ChemicalInventorySlot.drain(outputTank, listener, 152, 55));
         builder.addSlot(energySlot = EnergyInventorySlot.fillOrConvert(energyContainer, this::getLevel, listener, 152, 14));
@@ -157,7 +159,7 @@ public class TileEntityRadiationIrradiator extends MSTileEntityProgressMachine<R
     }
 
     @Override
-    public IMSRecipeViewerRecipeType<RadiationIrradiatingRecipe> recipeViewerType() {
+    public IRecipeViewerRecipeType<RadiationIrradiatingRecipe> recipeViewerType() {
         return MSRecipeViewerRecipeType.RADIATION_IRRADIATING;
     }
 

@@ -14,12 +14,12 @@ public class MSTileEntityTypes {
 
     //public static final TileEntityTypeRegistryObject<TileEntityAdsorptionSeparator> ADSORPTION_SEPARATOR;
     //public static final TileEntityTypeRegistryObject<TileEntityAirCompressor> AIR_COMPRESSOR;
-    //public static final TileEntityTypeRegistryObject<TileEntityRadiationIrradiator> RADIATION_IRRADIATOR = TILE_ENTITY_TYPES
-            //.mekBuilder(MSBlocks.RADIATION_IRRADIATOR, TileEntityRadiationIrradiator::new)
-            //.clientTicker(TileEntityMekanism::tickClient)
-            //.serverTicker(TileEntityMekanism::tickServer)
-            //.withSimple(Capabilities.CONFIG_CARD)
-    //.build();
+    public static final TileEntityTypeRegistryObject<TileEntityRadiationIrradiator> RADIATION_IRRADIATOR = TILE_ENTITY_TYPES
+            .mekBuilder(MSBlocks.RADIATION_IRRADIATOR, TileEntityRadiationIrradiator::new)
+            .clientTicker(TileEntityMekanism::tickClient)
+            .serverTicker(TileEntityMekanism::tickServer)
+            .withSimple(Capabilities.CONFIG_CARD)
+    .build();
     //public static final TileEntityTypeRegistryObject<TileEntitySeawaterPump> SEAWATER_PUMP;
 
 

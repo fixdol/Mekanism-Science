@@ -4,6 +4,7 @@ import com.fxd927.mekanismscience.common.recipe.IMSRecipeTypeProvider;
 import com.fxd927.mekanismscience.common.recipe.MSRecipeType;
 import mekanism.api.providers.IItemProvider;
 import mekanism.api.recipes.MekanismRecipe;
+import mekanism.client.recipe_viewer.type.IRecipeViewerRecipeType;
 import mekanism.common.recipe.lookup.cache.IInputRecipeCache;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -18,7 +19,7 @@ public record MSRVRecipeTypeWrapper <VANILLA_INPUT extends RecipeInput, RECIPE e
 
         ResourceLocation id, IItemProvider item, Class<? extends RECIPE> recipeClass, IMSRecipeTypeProvider<VANILLA_INPUT, RECIPE, INPUT_CACHE> vanillaProvider,
         int xOffset, int yOffset, int width, int height, List<IItemProvider> workstations
-) implements IMSRecipeViewerRecipeType<RECIPE>, IMSRecipeTypeProvider<VANILLA_INPUT, RECIPE, INPUT_CACHE> {
+) implements IRecipeViewerRecipeType<RECIPE>, IMSRecipeTypeProvider<VANILLA_INPUT, RECIPE, INPUT_CACHE> {
     public MSRVRecipeTypeWrapper(IMSRecipeTypeProvider<VANILLA_INPUT, RECIPE, INPUT_CACHE> vanillaProvider, Class<? extends RECIPE> recipeClass,
                                  int xOffset, int yOffset, int width, int height, IItemProvider icon, IItemProvider... altWorkstations) {
         this(vanillaProvider.getRegistryName(), icon, recipeClass, vanillaProvider, xOffset, yOffset, width, height, List.of(altWorkstations));
@@ -50,7 +51,6 @@ public record MSRVRecipeTypeWrapper <VANILLA_INPUT extends RecipeInput, RECIPE e
     @Nullable
     @Override
     public ResourceLocation icon() {
-        //Handled by the icon stack
         return null;
     }
 

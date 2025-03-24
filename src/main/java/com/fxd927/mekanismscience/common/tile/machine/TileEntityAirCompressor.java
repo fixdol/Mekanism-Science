@@ -17,7 +17,7 @@ import net.minecraft.world.level.block.state.BlockState;
 
 public class TileEntityAirCompressor extends TileEntityConfigurableMachine implements IConfigurable {
     private static final int BASE_TICKS_REQUIRED = 19;
-    public static final ChemicalStack COMPRESSED_AIR_STACK = new ChemicalStack(MSChemicals.YTTRIUM, 100);
+    public static final ChemicalStack COMPRESSED_AIR_STACK = new ChemicalStack(MSChemicals.COMPRESSED_AIR, 100);
 
     @WrappingComputerMethod(wrapper = SpecialComputerMethodWrapper.ComputerChemicalTankWrapper.class, methodNames = {"getGas", "getGasCapacity", "getGasNeeded", "getGasFilledPercentage"}, docPlaceholder = "buffer tank")
     public IChemicalTank gasTank;

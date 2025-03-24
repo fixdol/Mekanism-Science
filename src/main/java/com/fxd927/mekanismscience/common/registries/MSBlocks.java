@@ -3,6 +3,7 @@ package com.fxd927.mekanismscience.common.registries;
 import com.fxd927.mekanismscience.common.MekanismScience;
 import com.fxd927.mekanismscience.common.attachments.containers.chemical.MSChemicalTanksBuilder;
 import com.fxd927.mekanismscience.common.attachments.containers.item.MSItemSlotsBuilder;
+import com.fxd927.mekanismscience.common.content.blocktype.MSMachine;
 import com.fxd927.mekanismscience.common.recipe.MSRecipeType;
 import com.fxd927.mekanismscience.common.recipe.lookup.cache.MSInputRecipeCache;
 import com.fxd927.mekanismscience.common.tile.machine.*;
@@ -28,24 +29,24 @@ public class MSBlocks {
 
     //public static final BlockRegistryObject<BlockTile.BlockTileModel<TileEntityAdsorptionSeparator,MSMachine<TileEntityAdsorptionSeparator>>,ItemBlockMachine> ADSORPTION_SEPARATOR;
     //public static final BlockRegistryObject<BlockTile.BlockTileModel<TileEntityAirCompressor,MSMachine<TileEntityAirCompressor>>,ItemBlockMachine> AIR_COMPRESSOR;
-    //public static final BlockRegistryObject<BlockTile.BlockTileModel<TileEntityRadiationIrradiator, Machine<TileEntityRadiationIrradiator>>, ItemBlockTooltip<BlockTile.BlockTileModel<TileEntityRadiationIrradiator, Machine<TileEntityRadiationIrradiator>>>> RADIATION_IRRADIATOR =
-            //BLOCKS.register("radiation_irradiator", () -> new BlockTile.BlockTileModel<>(MSBlockTypes.RADIATION_IRRADIATOR, properties -> properties.mapColor(BlockResourceInfo.STEEL.getMapColor())),
-    // (block, properties) -> new ItemBlockTooltip<>(block, true, properties
-    // .component(MekanismDataComponents.EJECTOR, AttachedEjector.DEFAULT)
-    // .component(MekanismDataComponents.SIDE_CONFIG, AttachedSideConfig.DISSOLUTION)
-    //  )
-    //   ).forItemHolder(holder -> holder.addAttachmentOnlyContainers(ContainerType.CHEMICAL, () -> MSChemicalTanksBuilder.builder()
-    //      .addBasic(TileEntityRadiationIrradiator.MAX_CHEMICAL, MSRecipeType.RADIATION_IRRADIATING, MSInputRecipeCache.ItemChemical::containsInputB)
-    //           .addBasic(() -> TileEntityRadiationIrradiator.MAX_CHEMICAL)
-    //             .build()
-    //       ).addAttachmentOnlyContainers(ContainerType.ITEM, () -> MSItemSlotsBuilder.builder()
-    //               .addChemicalFillOrConvertSlot(0)
-    //               .addInput(MSRecipeType.RADIATION_IRRADIATING, MSInputRecipeCache.ItemChemical::containsInputA)
-    //               .addChemicalDrainSlot(1)
-    //               .addEnergy()
-    //               .build()
-    //       ));
-    //public static final BlockRegistryObject<BlockTile.BlockTileModel<TileEntitySeawaterPump,MSMachine<TileEntitySeawaterPump>>,ItemBlockMachine> SEAWATER_PUMP;
+    public static final BlockRegistryObject<BlockTile.BlockTileModel<TileEntityRadiationIrradiator, Machine<TileEntityRadiationIrradiator>>, ItemBlockTooltip<BlockTile.BlockTileModel<TileEntityRadiationIrradiator, Machine<TileEntityRadiationIrradiator>>>> RADIATION_IRRADIATOR =
+            BLOCKS.register("radiation_irradiator", () -> new BlockTile.BlockTileModel<>(MSBlockTypes.RADIATION_IRRADIATOR, properties -> properties.mapColor(BlockResourceInfo.STEEL.getMapColor())),
+     (block, properties) -> new ItemBlockTooltip<>(block, true, properties
+     .component(MekanismDataComponents.EJECTOR, AttachedEjector.DEFAULT)
+     .component(MekanismDataComponents.SIDE_CONFIG, AttachedSideConfig.DISSOLUTION)
+      )
+       ).forItemHolder(holder -> holder.addAttachmentOnlyContainers(ContainerType.CHEMICAL, () -> MSChemicalTanksBuilder.builder()
+          .addBasic(TileEntityRadiationIrradiator.MAX_CHEMICAL, MSRecipeType.RADIATION_IRRADIATING, MSInputRecipeCache.ItemChemical::containsInputB)
+               .addBasic(() -> TileEntityRadiationIrradiator.MAX_CHEMICAL)
+                            .build()
+           ).addAttachmentOnlyContainers(ContainerType.ITEM, () -> MSItemSlotsBuilder.builder()
+                   .addChemicalFillOrConvertSlot(0)
+                   .addInput(MSRecipeType.RADIATION_IRRADIATING, MSInputRecipeCache.ItemChemical::containsInputA)
+                   .addChemicalDrainSlot(1)
+                   .addEnergy()
+                   .build()
+           ));
+    //public static final BlockRegistryObject<BlockTile.BlockTileModel<TileEntitySeawaterPump, MSMachine<TileEntitySeawaterPump>>,ItemBlockMachine> SEAWATER_PUMP;
 
     public static final BlockRegistryObject<Block,BlockItem> HIGH_QUALITY_CONCRETE ;
     public static final BlockRegistryObject<Block,BlockItem> AQUA_HIGH_QUALITY_CONCRETE;

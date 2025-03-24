@@ -1,7 +1,8 @@
 package com.fxd927.mekanismscience.client.recipe_viewer.jei;
 
 import com.fxd927.mekanismscience.client.MSJEI;
-import com.fxd927.mekanismscience.client.recipe_viewer.type.IMSRecipeViewerRecipeType;
+import com.fxd927.mekanismscience.client.gui.element.progress.MSGuiProgress;
+import com.fxd927.mekanismscience.client.recipe_viewer.MSRecipeViewerUtils;
 import com.mojang.blaze3d.vertex.PoseStack;
 import mekanism.api.chemical.ChemicalStack;
 import mekanism.client.gui.IGuiWrapper;
@@ -9,16 +10,15 @@ import mekanism.client.gui.element.GuiElement;
 import mekanism.client.gui.element.bar.GuiBar;
 import mekanism.client.gui.element.gauge.GaugeOverlay;
 import mekanism.client.gui.element.gauge.GuiGauge;
-import mekanism.client.gui.element.progress.GuiProgress;
 import mekanism.client.gui.element.progress.IProgressInfoHandler;
 import mekanism.client.gui.element.progress.ProgressType;
 import mekanism.client.gui.element.slot.GuiSlot;
 import mekanism.client.gui.element.slot.SlotType;
-import mekanism.client.recipe_viewer.RecipeViewerUtils;
 import mekanism.client.recipe_viewer.jei.ChemicalStackRenderer;
 import mekanism.client.recipe_viewer.jei.MekJeiWidget;
 import mekanism.client.recipe_viewer.jei.MekanismJEI;
 import mekanism.client.recipe_viewer.jei.NOOPDrawable;
+import mekanism.client.recipe_viewer.type.IRecipeViewerRecipeType;
 import mekanism.common.MekanismLang;
 import mekanism.common.util.text.TextUtils;
 import mezz.jei.api.constants.VanillaTypes;
@@ -51,7 +51,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.*;
 
 public abstract class MSBaseRecipeCategory <RECIPE> extends AbstractContainerEventHandler implements IRecipeCategory<RECIPE>, IGuiWrapper {
-    protected static IDrawable createIcon(IGuiHelper helper, IMSRecipeViewerRecipeType<?> recipeType) {
+    protected static IDrawable createIcon(IGuiHelper helper, IRecipeViewerRecipeType<?> recipeType) {
         ItemStack stack = recipeType.iconStack();
         if (stack.isEmpty()) {
             ResourceLocation icon = recipeType.icon();
@@ -76,7 +76,7 @@ public abstract class MSBaseRecipeCategory <RECIPE> extends AbstractContainerEve
     @Nullable
     private ITickTimer timer;
 
-    protected MSBaseRecipeCategory(IGuiHelper helper, IMSRecipeViewerRecipeType<RECIPE> recipeType) {
+    protected MSBaseRecipeCategory(IGuiHelper helper, IRecipeViewerRecipeType<RECIPE> recipeType) {
         this(helper, MSJEI.recipeType(recipeType), recipeType.getTextComponent(), createIcon(helper, recipeType), recipeType.xOffset(), recipeType.yOffset(), recipeType.width(), recipeType.height());
     }
 
@@ -124,12 +124,12 @@ public abstract class MSBaseRecipeCategory <RECIPE> extends AbstractContainerEve
         return addElement(new GuiSlot(type, this, x - 1, y - 1));
     }
 
-    protected GuiProgress addSimpleProgress(ProgressType type, int x, int y) {
-        return addElement(new GuiProgress(getSimpleProgressTimer(), type, this, x, y));
+    protected MSGuiProgress addSimpleProgress(ProgressType type, int x, int y) {
+        return addElement(new MSGuiProgress(getSimpleProgressTimer(), type, this, x, y));
     }
 
-    protected GuiProgress addConstantProgress(ProgressType type, int x, int y) {
-        return addElement(new GuiProgress(RecipeViewerUtils.CONSTANT_PROGRESS, type, this, x, y));
+    protected MSGuiProgress addConstantProgress(ProgressType type, int x, int y) {
+        return addElement(new MSGuiProgress(MSRecipeViewerUtils.CONSTANT_PROGRESS, type, this, x, y));
     }
 
     @Override

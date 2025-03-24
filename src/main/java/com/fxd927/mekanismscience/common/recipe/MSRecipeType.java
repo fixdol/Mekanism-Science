@@ -6,10 +6,14 @@ import com.fxd927.mekanismscience.common.MekanismScience;
 import com.fxd927.mekanismscience.common.recipe.lookup.cache.MSInputRecipeCache;
 import com.fxd927.mekanismscience.common.registration.impl.MSRecipeTypeDeferredRegister;
 import com.fxd927.mekanismscience.common.registration.impl.MSRecipeTypeRegistryObject;
+import mekanism.api.recipes.ItemStackToChemicalRecipe;
 import mekanism.api.recipes.MekanismRecipe;
+import mekanism.api.recipes.MekanismRecipeTypes;
 import mekanism.api.recipes.vanilla_input.SingleItemChemicalRecipeInput;
 import mekanism.client.MekanismClient;
 import mekanism.common.recipe.lookup.cache.IInputRecipeCache;
+import mekanism.common.recipe.lookup.cache.InputRecipeCache;
+import mekanism.common.registration.impl.RecipeTypeRegistryObject;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.*;
@@ -28,7 +32,10 @@ public class MSRecipeType<VANILLA_INPUT extends RecipeInput, RECIPE extends Meka
         implements RecipeType<RECIPE>, IMSRecipeTypeProvider<VANILLA_INPUT, RECIPE, INPUT_CACHE> {
     public static final MSRecipeTypeDeferredRegister RECIPE_TYPES = new MSRecipeTypeDeferredRegister(MekanismScience.MODID);
 
-    public static final MSRecipeTypeRegistryObject<SingleItemChemicalRecipeInput, RadiationIrradiatingRecipe, MSInputRecipeCache.ItemChemical<RadiationIrradiatingRecipe>> RADIATION_IRRADIATING = register(MSRecipeTypes.NAME_RADIATION_IRRADIATING, recipeType -> new MSInputRecipeCache.ItemChemical<>(recipeType, RadiationIrradiatingRecipe::getItemInput, RadiationIrradiatingRecipe::getChemicalInput));
+    public static final MSRecipeTypeRegistryObject<SingleItemChemicalRecipeInput, RadiationIrradiatingRecipe, MSInputRecipeCache.ItemChemical<RadiationIrradiatingRecipe>> RADIATION_IRRADIATING =
+            register(MSRecipeTypes.NAME_RADIATION_IRRADIATING, recipeType -> new MSInputRecipeCache.ItemChemical<>(recipeType, RadiationIrradiatingRecipe::getItemInput, RadiationIrradiatingRecipe::getChemicalInput));
+    public static final MSRecipeTypeRegistryObject<SingleRecipeInput, ItemStackToChemicalRecipe, MSInputRecipeCache.SingleItem<ItemStackToChemicalRecipe>> CHEMICAL_CONVERSION =
+            register(MSRecipeTypes.NAME_CHEMICAL_CONVERSION, recipeType -> new MSInputRecipeCache.SingleItem<>(recipeType, ItemStackToChemicalRecipe::getInput));
 
     private static <VANILLA_INPUT extends RecipeInput, RECIPE extends MekanismRecipe<VANILLA_INPUT>, INPUT_CACHE extends IInputRecipeCache>
     MSRecipeTypeRegistryObject<VANILLA_INPUT, RECIPE, INPUT_CACHE> register(
