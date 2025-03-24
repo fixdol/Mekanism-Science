@@ -9,6 +9,7 @@ import com.fxd927.mekanismscience.common.registration.MSRecipeTypeDeferredRegist
 import com.fxd927.mekanismscience.common.registration.impl.MSRecipeTypeRegistryObject;
 import mekanism.api.chemical.gas.Gas;
 import mekanism.api.chemical.gas.GasStack;
+import mekanism.api.recipes.FluidToFluidRecipe;
 import mekanism.api.recipes.MekanismRecipe;
 import mekanism.client.MekanismClient;
 import mekanism.common.recipe.lookup.cache.IInputRecipeCache;
@@ -16,8 +17,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.Container;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.material.Fluid;
-import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.loading.FMLEnvironment;
 import net.minecraftforge.server.ServerLifecycleHooks;
 import org.jetbrains.annotations.NotNull;
@@ -36,6 +35,8 @@ public class MSRecipeType<RECIPE extends MekanismRecipe, INPUT_CACHE extends IIn
             register("radiation_irradiating", recipeType -> new MSInputRecipeCache.ItemChemical<>(recipeType, RadiationIrradiatingRecipe::getItemInput, RadiationIrradiatingRecipe::getGasInput));
     public static final MSRecipeTypeRegistryObject<AdsorptionRecipe, MSInputRecipeCache.ItemChemical<Gas, GasStack, AdsorptionRecipe>> ADSORPTION =
             register("adsorption", recipeType -> new MSInputRecipeCache.ItemChemical<>(recipeType, AdsorptionRecipe::getItemInput, AdsorptionRecipe::getGasInput));
+    public static final MSRecipeTypeRegistryObject<FluidToFluidRecipe, MSInputRecipeCache.SingleFluid<FluidToFluidRecipe>> ADVANCED_EVAPORATING =
+            register("evaporating", recipeType -> new MSInputRecipeCache.SingleFluid<>(recipeType, FluidToFluidRecipe::getInput));
     public static final MSRecipeTypeRegistryObject<ChemicalDemolitionRecipe, MSInputRecipeCache.ItemChemical<Gas, GasStack, ChemicalDemolitionRecipe>> CHEMICAL_DEMOLITION =
             register("chemical_demolition", recipeType -> new MSInputRecipeCache.ItemChemical<>(recipeType, ChemicalDemolitionRecipe::getItemInput, ChemicalDemolitionRecipe::getGasInput));
    public static <RECIPE extends MekanismRecipe, INPUT_CACHE extends IInputRecipeCache> MSRecipeTypeRegistryObject<RECIPE, INPUT_CACHE> register(String name,

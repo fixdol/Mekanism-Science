@@ -3,16 +3,23 @@ package com.fxd927.mekanismscience.common.registries;
 import com.fxd927.mekanismscience.common.MekanismScience;
 import com.fxd927.mekanismscience.common.content.blocktype.MSMachine;
 import com.fxd927.mekanismscience.common.tile.machine.*;
+import mekanism.common.block.interfaces.IHasDescription;
 import mekanism.common.block.prefab.BlockTile;
+import mekanism.common.item.block.ItemBlockTooltip;
 import mekanism.common.item.block.machine.ItemBlockMachine;
 import mekanism.common.registration.impl.BlockDeferredRegister;
 import mekanism.common.registration.impl.BlockRegistryObject;
 import mekanism.common.resource.BlockResourceInfo;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
+
+import java.util.function.Supplier;
+
+import static net.minecraft.world.item.Items.registerBlock;
 
 public class MSBlocks {
     public static final BlockDeferredRegister BLOCKS = new BlockDeferredRegister(MekanismScience.MODID);
@@ -157,5 +164,15 @@ public class MSBlocks {
     //public static final BlockRegistryObject<BlockTile.BlockTileModel<TileEntitySeawaterPump, MSMachine<TileEntitySeawaterPump>>, ItemBlockMachine> SEAWATER_PUMP = BLOCKS.register("seawater_pump", () -> new BlockTile.BlockTileModel<>(MSBlockTypes.SEAWATER_PUMP, properties -> properties.mapColor(BlockResourceInfo.STEEL.getMapColor())), ItemBlockMachine::new);
 
     private MSBlocks(){
+    }
+
+    private static <BLOCK extends Block & IHasDescription> BlockRegistryObject<BLOCK, ItemBlockTooltip<BLOCK>> registerBlock(String name,
+                                                                                                                             Supplier<? extends BLOCK> blockSupplier) {
+        return BLOCKS.registerDefaultProperties(name, blockSupplier, ItemBlockTooltip::new);
+    }
+
+    private static <BLOCK extends Block & IHasDescription> BlockRegistryObject<BLOCK, ItemBlockTooltip<BLOCK>> registerBlock(String name,
+                                                                                                                             Supplier<? extends BLOCK> blockSupplier, Rarity rarity) {
+        return BLOCKS.registerDefaultProperties(name, blockSupplier, (block, props) -> new ItemBlockTooltip<>(block, props.rarity(rarity)));
     }
 }

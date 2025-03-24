@@ -10,6 +10,8 @@ import com.fxd927.mekanismscience.common.registries.MSBlocks;
 import mekanism.client.jei.CatalystRegistryHelper;
 import mekanism.client.jei.MekanismJEI;
 import mekanism.client.jei.MekanismJEIRecipeType;
+import mekanism.client.jei.machine.FluidToFluidRecipeCategory;
+import mekanism.common.recipe.MekanismRecipeType;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.helpers.IGuiHelper;

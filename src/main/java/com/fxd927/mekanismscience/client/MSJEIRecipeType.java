@@ -4,7 +4,9 @@ import com.fxd927.mekanismscience.api.recipes.AdsorptionRecipe;
 import com.fxd927.mekanismscience.api.recipes.ChemicalDemolitionRecipe;
 import com.fxd927.mekanismscience.api.recipes.RadiationIrradiatingRecipe;
 import com.fxd927.mekanismscience.common.registries.MSBlocks;
+import mekanism.api.recipes.FluidToFluidRecipe;
 import mekanism.client.jei.MekanismJEIRecipeType;
+import mekanism.common.registries.MekanismBlocks;
 
 public class MSJEIRecipeType {
     public static final MekanismJEIRecipeType<AdsorptionRecipe> ADSORPTION_SEPARATOR = new MekanismJEIRecipeType<>(MSBlocks.ADSORPTION_SEPARATOR, AdsorptionRecipe.class);

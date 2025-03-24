@@ -1,9 +1,15 @@
 package com.fxd927.mekanismscience.common;
 
 import com.fxd927.mekanismscience.common.config.MSConfig;
+import com.fxd927.mekanismscience.common.content.evaporation.AdvancedEvaporationMultiblockData;
+import com.fxd927.mekanismscience.common.content.evaporation.AdvancedEvaporationValidator;
 import com.fxd927.mekanismscience.common.recipe.MSRecipeType;
 import com.fxd927.mekanismscience.common.registries.*;
 import com.mojang.logging.LogUtils;
+import mekanism.common.content.evaporation.EvaporationMultiblockData;
+import mekanism.common.content.evaporation.EvaporationValidator;
+import mekanism.common.lib.multiblock.MultiblockCache;
+import mekanism.common.lib.multiblock.MultiblockManager;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
@@ -23,6 +29,7 @@ public class MekanismScience
 {
     public static final String MODID = "mekanismscience";
     private static final Logger LOGGER = LogUtils.getLogger();
+    public static final MultiblockManager<AdvancedEvaporationMultiblockData> advancedEvaporationManager = new MultiblockManager<>("advanced_evaporation", MultiblockCache::new, AdvancedEvaporationValidator::new);
 
     public MekanismScience()
     {
