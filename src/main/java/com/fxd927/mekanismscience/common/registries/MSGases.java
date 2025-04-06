@@ -82,8 +82,8 @@ public class MSGases {
             setSuperheatedHeliumCoolantConductivity();
         }
 
-        public static final GasAttributes.CooledCoolant HELIUM_COOLANT = new GasAttributes.CooledCoolant(SUPERHEATED_HELIUM::get, 100, 1.0);
-        public static final GasAttributes.HeatedCoolant HEATED_HELIUM_COOLANT = new GasAttributes.HeatedCoolant(HELIUM::get, 100, 1.0);
+        public static final GasAttributes.CooledCoolant HELIUM_COOLANT = new GasAttributes.CooledCoolant(() -> SUPERHEATED_HELIUM.get(), 100, 1.0);
+        public static final GasAttributes.HeatedCoolant HEATED_HELIUM_COOLANT = new GasAttributes.HeatedCoolant(() -> HELIUM.get(), 100, 1.0);
 
         public static void setHeliumCoolantConductivity() {
             ((CoolantAccessor) HELIUM_COOLANT).setConductivity(1.5);

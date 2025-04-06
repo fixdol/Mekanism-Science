@@ -1,5 +1,4 @@
 {
-  {
 "advancements.mekanismscience.californium.description": "Refina el Californium, el elemento con el número atómico más alto que tiene aplicaciones prácticas",
 "advancements.mekanismscience.californium.title": "El Alcance de la Ciencia",
 "advancements.mekanismscience.radiation_irradiator.description": "Crea un Irradiador de Radiación",
@@ -218,5 +217,4 @@
 "item.mekanismscience.xenon_bucket": "Balde de Xenón Líquido",
 "item.mekanismscience.yttrium_bucket": "Balde de Ytrio Líquido",
 "sound_event.mekanismscience.tile.machine.air_compressor": "Hacer girar las aspas del compresor de aire"
-}
 }
