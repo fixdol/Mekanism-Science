@@ -1,6 +1,7 @@
 package com.fxd927.mekanismscience.common.item.syringe;
 
 import com.fxd927.mekanismscience.common.registries.MSEffects;
+import net.minecraft.core.Holder;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
@@ -13,17 +14,17 @@ public class AnestheticSyringe extends DrugSyringe {
         super(properties,4);
     }
 
-    //@Override
-    //protected MobEffect getEffectType() {
-        //return MSEffects.SENSORY_PARALYSIS.get();
-    //}
+    @Override
+    protected Holder<MobEffect> getEffectType() {
+        return MSEffects.SENSORY_PARALYSIS;
+    }
 
-    //@Override
+    @Override
     protected int getBaseDuration() {
         return 20 * 20;
     }
 
-    //@Override
+    @Override
     protected int getEffectAmplifier() {
         return 0;
     }

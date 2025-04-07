@@ -17,8 +17,8 @@ public class MSItems {
     public static final ItemDeferredRegister BUILDING_ITEMS = new ItemDeferredRegister(MekanismScience.MODID);
 
     public static final ItemRegistryObject<Item> SYRINGE;
-    //public static final ItemRegistryObject<Item> ANESTHETIC_SYRINGE;
-    //public static final ItemRegistryObject<Item> FLAME_RETARDANT_SYRINGE;
+    public static final ItemRegistryObject<Item> ANESTHETIC_SYRINGE;
+    public static final ItemRegistryObject<Item> FLAME_RETARDANT_SYRINGE;
     public static final ItemRegistryObject<Item> LEVITATION_SYRINGE;
     //public static final ItemRegistryObject<Item> HIGH_PERFORMANCE_ADSORBENT;
     //public static final ItemRegistryObject<Item> HIGH_PERFORMANCE_ADSORBENT_BERYLLIUM;
@@ -37,7 +37,7 @@ public class MSItems {
     //public static final ItemRegistryObject<Item> DUST_YTTRIUM = ITEMS.register("dust_yttrium");
     //public static final ItemRegistryObject<Item> UNSTABLE_CALIFORNIUM_MIXTURE;
     //public static final ItemRegistryObject<Item> REFINED_CALIFORNIUM_INGOT;
-    //public static final ItemRegistryObject<Item> TABLET_IODINE;
+    public static final ItemRegistryObject<Item> TABLET_IODINE;
 
     public static final ItemRegistryObject<Item> HIGH_QUALITY_CONCRETE_CLUMP;
     public static final ItemRegistryObject<Item> HIGH_QUALITY_CONCRETE_CLUMP_AQUA;
@@ -84,8 +84,8 @@ public class MSItems {
 
     static {
         SYRINGE = ITEMS.register("syringe");
-        //ANESTHETIC_SYRINGE = ITEMS.register("syringe_anesthetic", () -> new AnestheticSyringe(new Item.Properties()));
-        //FLAME_RETARDANT_SYRINGE = ITEMS.register("syringe_flame_retardant", () -> new FlameRetardantSyringe(new Item.Properties()));
+        ANESTHETIC_SYRINGE = ITEMS.register("syringe_anesthetic", () -> new AnestheticSyringe(new Item.Properties()));
+        FLAME_RETARDANT_SYRINGE = ITEMS.register("syringe_flame_retardant", () -> new FlameRetardantSyringe(new Item.Properties()));
         LEVITATION_SYRINGE = ITEMS.register("syringe_levitation", () -> new LevitationSyringe(new Item.Properties()));
         //HIGH_PERFORMANCE_ADSORBENT = ITEMS.register("high_performance_adsorbent");
         //HIGH_PERFORMANCE_ADSORBENT_BERYLLIUM = ITEMS.register("high_performance_adsorbent_beryllium");
@@ -104,7 +104,7 @@ public class MSItems {
         HIGH_QUALITY_CONCRETE_POWDER = ITEMS.register("powder_high_quality_concrete");
         //UNSTABLE_CALIFORNIUM_MIXTURE = ITEMS.register("unstable_californium_mixture", ()-> new UnstableCaliforniumMixture(new Item.Properties(), EnumColor.ORANGE));
         //REFINED_CALIFORNIUM_INGOT = ITEMS.register("ingot_refined_californium", ()-> new RefinedCaliforniumIngot(new Item.Properties(), EnumColor.ORANGE));
-        //TABLET_IODINE = ITEMS.register("tablet_iodine", () -> new IodineTablet(new Item.Properties().food(new FoodProperties.Builder().nutrition(0).saturationModifier(0.0F).alwaysEdible().build())));
+        TABLET_IODINE = ITEMS.register("tablet_iodine", () -> new IodineTablet(new Item.Properties().food(new FoodProperties.Builder().nutrition(0).saturationModifier(0.0F).alwaysEdible().build())));
 
         HIGH_QUALITY_CONCRETE_CLUMP_AQUA = BUILDING_ITEMS.register("clump_high_quality_concrete_aqua");
         HIGH_QUALITY_CONCRETE_CLUMP_BLACK = BUILDING_ITEMS.register("clump_high_quality_concrete_black");
