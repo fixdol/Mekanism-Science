@@ -2,6 +2,7 @@ package com.fxd927.mekanismscience.common.tile.machine;
 
 import com.fxd927.mekanismscience.api.recipes.AdsorptionRecipe;
 import com.fxd927.mekanismscience.api.recipes.cache.AdsorptionCachedRecipe;
+import com.fxd927.mekanismscience.common.inventory.slot.MSInputInventorySlot;
 import com.fxd927.mekanismscience.common.recipe.IMSRecipeTypeProvider;
 import com.fxd927.mekanismscience.common.recipe.MSRecipeType;
 import com.fxd927.mekanismscience.common.recipe.lookup.IMSDoubleRecipeLookupHandler;
@@ -44,7 +45,6 @@ import mekanism.common.integration.computer.annotation.WrappingComputerMethod;
 import mekanism.common.integration.computer.computercraft.ComputerConstants;
 import mekanism.common.inventory.container.slot.SlotOverlay;
 import mekanism.common.inventory.slot.EnergyInventorySlot;
-import mekanism.common.inventory.slot.InputInventorySlot;
 import mekanism.common.inventory.slot.chemical.GasInventorySlot;
 import mekanism.common.inventory.slot.chemical.MergedChemicalInventorySlot;
 import mekanism.common.inventory.warning.WarningTracker;
@@ -73,7 +73,7 @@ public class TileEntityAdsorptionSeparator extends MSTileEntityProgressMachine<A
                 CachedRecipe.OperationTracker.RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT
         );
         private static final long MAX_CHEMICAL = 10_000;
-        public static final int BASE_TICKS_REQUIRED = 100;
+        public static final int BASE_TICKS_REQUIRED = 20;
 
         @WrappingComputerMethod(wrapper = SpecialComputerMethodWrapper.ComputerChemicalTankWrapper.class, methodNames = {"getGasInput", "getGasInputCapacity", "getGasInputNeeded",
                 "getGasInputFilledPercentage"}, docPlaceholder = "gas input tank")
@@ -89,7 +89,7 @@ public class TileEntityAdsorptionSeparator extends MSTileEntityProgressMachine<A
         @WrappingComputerMethod(wrapper = SpecialComputerMethodWrapper.ComputerIInventorySlotWrapper.class, methodNames = "getInputGasItem", docPlaceholder = "gas input item slot")
         GasInventorySlot gasInputSlot;
         @WrappingComputerMethod(wrapper = SpecialComputerMethodWrapper.ComputerIInventorySlotWrapper.class, methodNames = "getInputItem", docPlaceholder = "input slot")
-        InputInventorySlot inputSlot;
+        MSInputInventorySlot inputSlot;
         @WrappingComputerMethod(wrapper = SpecialComputerMethodWrapper.ComputerIInventorySlotWrapper.class, methodNames = "getOutputItem", docPlaceholder = "output slot")
         MergedChemicalInventorySlot<MergedChemicalTank> outputSlot;
         @WrappingComputerMethod(wrapper = SpecialComputerMethodWrapper.ComputerIInventorySlotWrapper.class, methodNames = "getEnergyItem", docPlaceholder = "energy slot")
@@ -175,7 +175,7 @@ public class TileEntityAdsorptionSeparator extends MSTileEntityProgressMachine<A
         protected IInventorySlotHolder getInitialInventory(IContentsListener listener, IContentsListener recipeCacheListener) {
             InventorySlotHelper builder = InventorySlotHelper.forSideWithConfig(this::getDirection, this::getConfig);
             builder.addSlot(gasInputSlot = GasInventorySlot.fillOrConvert(injectTank, this::getLevel, listener, 44, 55));
-            builder.addSlot(inputSlot = InputInventorySlot.at(item -> containsRecipeAB(item, injectTank.getStack()), this::containsRecipeA, recipeCacheListener, 80, 22))
+            builder.addSlot(inputSlot = MSInputInventorySlot.at(item -> containsRecipeAB(item, injectTank.getStack()), this::containsRecipeA, recipeCacheListener, 80, 22))
                     .tracksWarnings(slot -> slot.warning(WarningTracker.WarningType.NO_MATCHING_RECIPE, getWarningCheck(CachedRecipe.OperationTracker.RecipeError.NOT_ENOUGH_INPUT)));
             builder.addSlot(outputSlot = MergedChemicalInventorySlot.drain(outputTank, listener, 152, 55));
             builder.addSlot(energySlot = EnergyInventorySlot.fillOrConvert(energyContainer, this::getLevel, listener, 152, 14));

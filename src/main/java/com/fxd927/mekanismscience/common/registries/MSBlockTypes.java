@@ -31,14 +31,14 @@ public class MSBlockTypes {
             .withComputerSupport("airCompressor")
             .replace(Attributes.ACTIVE_LIGHT)
             .build();
-    public static final MSMachine<TileEntityChemicalDemolitionMachine> CHEMICAL_DEMOLITION_MACHINE = MSMachine.MSMachineBuilder
-            .createMSMachine(() -> MSTileEntityTypes.CHEMICAL_DEMOLITION_MACHINE, MSLang.DESCRIPTION_ADSORPTION_SEPARATOR)
-            .withGui(() -> MSContainerTypes.CHEMICAL_DEMOLITION_MACHINE)
-            .withEnergyConfig(MSConfig.usageConfig.adsorptionSeparator, MSConfig.storageConfig.adsorptionSeparator)
-            .withSupportedUpgrades(EnumSet.of(Upgrade.SPEED, Upgrade.ENERGY, Upgrade.MUFFLING))
-            .withComputerSupport("chemicalDemolitionMachine")
-            .replace(Attributes.ACTIVE_LIGHT)
-            .build();
+    //public static final MSMachine<TileEntityChemicalDemolitionMachine> CHEMICAL_DEMOLITION_MACHINE = MSMachine.MSMachineBuilder
+    // .createMSMachine(() -> MSTileEntityTypes.CHEMICAL_DEMOLITION_MACHINE, MSLang.DESCRIPTION_ADSORPTION_SEPARATOR)
+    // .withGui(() -> MSContainerTypes.CHEMICAL_DEMOLITION_MACHINE)
+    // .withEnergyConfig(MSConfig.usageConfig.adsorptionSeparator, MSConfig.storageConfig.adsorptionSeparator)
+    //.withSupportedUpgrades(EnumSet.of(Upgrade.SPEED, Upgrade.ENERGY, Upgrade.MUFFLING))
+    // .withComputerSupport("chemicalDemolitionMachine")
+    //  .replace(Attributes.ACTIVE_LIGHT)
+    //  .build();
     public static final MSMachine<TileEntityRadiationIrradiator> RADIATION_IRRADIATOR = MSMachine.MSMachineBuilder
             .createMSMachine(() -> MSTileEntityTypes.RADIATION_IRRADIATOR, MSLang.DESCRIPTION_RADIATION_IRRADIATOR)
             .withGui(() -> MSContainerTypes.RADIATION_IRRADIATOR)

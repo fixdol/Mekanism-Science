@@ -2,7 +2,7 @@
   "type":"mekanismscience:adsorption",
   "gasInput":
   {
-    "amount":4,
+    "amount":50,
     "gas":"mekanismscience:seawater"
   },
   "itemInput":
@@ -14,7 +14,7 @@
   },
   "output":
   {
-    "amount":1,
+    "amount":400,
     "chemicalType":"gas",
     "gas":"mekanismscience:beryllium"
   }

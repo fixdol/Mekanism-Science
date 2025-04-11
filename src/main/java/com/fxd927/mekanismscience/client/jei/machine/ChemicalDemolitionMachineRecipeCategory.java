@@ -31,7 +31,7 @@ public class ChemicalDemolitionMachineRecipeCategory extends BaseRecipeCategory<
     private final GuiSlot inputSlot;
 
     public ChemicalDemolitionMachineRecipeCategory(IGuiHelper helper, MekanismJEIRecipeType<ChemicalDemolitionRecipe> recipeType) {
-        super(helper, recipeType, MSBlocks.CHEMICAL_DEMOLITION_MACHINE, 3, 3, 170, 79);
+        super(helper, recipeType, null, 3, 3, 170, 79);
         inputGauge = addElement(GuiGasGauge.getDummy(GaugeType.STANDARD.with(DataType.INPUT), this, 7, 4));
         outputSlot = addSlot(SlotType.OUTPUT_WIDE, 112, 31);
         inputSlot = addSlot(SlotType.INPUT, 28, 36);

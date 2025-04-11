@@ -22,7 +22,7 @@ public class MSClientRegistration {
         event.register(Registries.MENU, helper -> {
             ClientRegistrationUtil.registerScreen(MSContainerTypes.ADSORPTION_SEPARATOR, GuiAdsorptionSeparator::new);
             ClientRegistrationUtil.registerScreen(MSContainerTypes.AIR_COMPRESSOR, GuiAirCompressor::new);
-            ClientRegistrationUtil.registerScreen(MSContainerTypes.CHEMICAL_DEMOLITION_MACHINE, GuiChemicalDemolitionMachine::new);
+            //ClientRegistrationUtil.registerScreen(MSContainerTypes.CHEMICAL_DEMOLITION_MACHINE, GuiChemicalDemolitionMachine::new);
             ClientRegistrationUtil.registerScreen(MSContainerTypes.RADIATION_IRRADIATOR, GuiRadiationIrradiator::new);
 
             //ClientRegistrationUtil.registerScreen(MSContainerTypes.ADSORPTION_TYPE_SEAWATER_METAL_EXTRACTOR, GuiAdsorptionTypeSeawaterMetalExtractor::new);

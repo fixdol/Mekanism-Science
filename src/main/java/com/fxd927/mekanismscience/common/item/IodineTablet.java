@@ -24,7 +24,7 @@ public class IodineTablet extends Item {
         if (!level.isClientSide && entity instanceof Player player) {
 
             MobEffectInstance currentEffect = player.getEffect(MSEffects.RADIATION_RESISTANCE.get());
-            player.getCooldowns().addCooldown(this, 3600);
+            //player.getCooldowns().addCooldown(this, 3600);
 
             int newDuration;
             if (currentEffect != null) {

@@ -43,21 +43,21 @@ public class MSJEI implements IModPlugin {
     public void registerCategories(IRecipeCategoryRegistration registry) {
         IGuiHelper guiHelper = registry.getJeiHelpers().getGuiHelper();
         registry.addRecipeCategories(new AdsorptionSeparatorRecipeCategory(guiHelper, MSJEIRecipeType.ADSORPTION_SEPARATOR));
-        registry.addRecipeCategories(new ChemicalDemolitionMachineRecipeCategory(guiHelper, MSJEIRecipeType.CHEMICAL_DEMOLITION_MACHINE));
+        //registry.addRecipeCategories(new ChemicalDemolitionMachineRecipeCategory(guiHelper, MSJEIRecipeType.CHEMICAL_DEMOLITION_MACHINE));
         registry.addRecipeCategories(new RadiationIrradiatorRecipeCategory(guiHelper, MSJEIRecipeType.RADIATION_IRRADIATOR));
     }
 
     @Override
     public void registerRecipeCatalysts(@Nonnull IRecipeCatalystRegistration registry) {
         CatalystRegistryHelper.register(registry, MSBlocks.ADSORPTION_SEPARATOR, MekanismJEIRecipeType.GAS_CONVERSION);
-        CatalystRegistryHelper.register(registry, MSBlocks.CHEMICAL_DEMOLITION_MACHINE, MekanismJEIRecipeType.GAS_CONVERSION);
+        //CatalystRegistryHelper.register(registry, MSBlocks.CHEMICAL_DEMOLITION_MACHINE, MekanismJEIRecipeType.GAS_CONVERSION);
         CatalystRegistryHelper.register(registry, MSBlocks.RADIATION_IRRADIATOR, MekanismJEIRecipeType.GAS_CONVERSION);
     }
 
     @Override
     public void registerRecipes(@NotNull IRecipeRegistration registry) {
         MSRecipeRegistryHelper.register(registry, ADSORPTION_SEPARATOR, MSRecipeType.ADSORPTION);
-        MSRecipeRegistryHelper.register(registry, CHEMICAL_DEMOLITION_MACHINE, MSRecipeType.CHEMICAL_DEMOLITION);
+        //MSRecipeRegistryHelper.register(registry, CHEMICAL_DEMOLITION_MACHINE, MSRecipeType.CHEMICAL_DEMOLITION);
         MSRecipeRegistryHelper.register(registry, RADIATION_IRRADIATOR, MSRecipeType.RADIATION_IRRADIATING);
     }
 }

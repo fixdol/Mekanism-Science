@@ -8,6 +8,7 @@ import mekanism.api.chemical.gas.Gas;
 import mekanism.api.chemical.gas.GasStack;
 import mekanism.api.chemical.gas.IGasTank;
 import mekanism.api.math.FloatingLong;
+import mekanism.api.security.SecurityMode;
 import mekanism.common.capabilities.Capabilities;
 import mekanism.common.capabilities.energy.MachineEnergyContainer;
 import mekanism.common.capabilities.holder.chemical.ChemicalTankHelper;
@@ -38,6 +39,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.block.state.BlockState;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.annotation.Nonnull;
@@ -46,7 +48,7 @@ import java.util.List;
 
 public class TileEntityAirCompressor extends TileEntityConfigurableMachine implements IConfigurable {
     private static final int BASE_TICKS_REQUIRED = 19;
-    public static final GasStack COMPRESSED_AIR_STACK = new GasStack(MSGases.COMPRESSED_AIR, 100);
+    public static final GasStack COMPRESSED_AIR_STACK = new GasStack(MSGases.COMPRESSED_AIR, 500);
 
     @WrappingComputerMethod(wrapper = SpecialComputerMethodWrapper.ComputerChemicalTankWrapper.class, methodNames = {"getGas", "getGasCapacity", "getGasNeeded", "getGasFilledPercentage"}, docPlaceholder = "buffer tank")
     public IGasTank gasTank;

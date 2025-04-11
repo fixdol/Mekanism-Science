@@ -2,7 +2,7 @@
   "type":"mekanismscience:adsorption",
   "gasInput":
   {
-    "amount":1,
+    "amount":50,
     "gas":"mekanismscience:compressed_air"
   },
   "itemInput":
@@ -14,7 +14,7 @@
   },
   "output":
   {
-    "amount":80,
+    "amount":800,
     "chemicalType":"gas",
     "gas":"mekanismscience:nitrogen"
   }

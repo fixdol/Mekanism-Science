@@ -11,7 +11,7 @@ public class MSTileEntityTypes {
 
     public static final TileEntityTypeRegistryObject<TileEntityAdsorptionSeparator> ADSORPTION_SEPARATOR;
     public static final TileEntityTypeRegistryObject<TileEntityAirCompressor> AIR_COMPRESSOR;
-    public static final TileEntityTypeRegistryObject<TileEntityChemicalDemolitionMachine> CHEMICAL_DEMOLITION_MACHINE;
+    //public static final TileEntityTypeRegistryObject<TileEntityChemicalDemolitionMachine> CHEMICAL_DEMOLITION_MACHINE;
     public static final TileEntityTypeRegistryObject<TileEntityRadiationIrradiator> RADIATION_IRRADIATOR;
     public static final TileEntityTypeRegistryObject<TileEntitySeawaterPump> SEAWATER_PUMP;
 
@@ -23,7 +23,7 @@ public class MSTileEntityTypes {
     static {
         ADSORPTION_SEPARATOR = TILE_ENTITY_TYPES.register(MSBlocks.ADSORPTION_SEPARATOR, TileEntityAdsorptionSeparator::new, TileEntityMekanism::tickServer, TileEntityMekanism::tickClient);
         AIR_COMPRESSOR = TILE_ENTITY_TYPES.register(MSBlocks.AIR_COMPRESSOR, TileEntityAirCompressor::new, TileEntityMekanism::tickServer, TileEntityMekanism::tickClient);
-        CHEMICAL_DEMOLITION_MACHINE = TILE_ENTITY_TYPES.register(MSBlocks.CHEMICAL_DEMOLITION_MACHINE, TileEntityChemicalDemolitionMachine::new, TileEntityMekanism::tickServer, TileEntityMekanism::tickClient);
+        //CHEMICAL_DEMOLITION_MACHINE = TILE_ENTITY_TYPES.register(MSBlocks.CHEMICAL_DEMOLITION_MACHINE, TileEntityChemicalDemolitionMachine::new, TileEntityMekanism::tickServer, TileEntityMekanism::tickClient);
         RADIATION_IRRADIATOR = TILE_ENTITY_TYPES.register(MSBlocks.RADIATION_IRRADIATOR, TileEntityRadiationIrradiator::new, TileEntityMekanism::tickServer, TileEntityMekanism::tickClient);
         SEAWATER_PUMP = TILE_ENTITY_TYPES.register(MSBlocks.SEAWATER_PUMP, TileEntitySeawaterPump::new, TileEntityMekanism::tickServer, TileEntityMekanism::tickClient);
     }

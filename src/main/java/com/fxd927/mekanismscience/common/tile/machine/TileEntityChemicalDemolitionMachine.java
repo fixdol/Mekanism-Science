@@ -100,7 +100,7 @@ public class TileEntityChemicalDemolitionMachine extends MSTileEntityProgressMac
     EnergyInventorySlot energySlot;
 
     public TileEntityChemicalDemolitionMachine(BlockPos pos, BlockState state) {
-        super(MSBlocks.CHEMICAL_DEMOLITION_MACHINE, pos, state, TRACKED_ERROR_TYPES, BASE_TICKS_REQUIRED);
+        super(null, pos, state, TRACKED_ERROR_TYPES, BASE_TICKS_REQUIRED);
         configComponent = new TileComponentConfig(this, TransmissionType.ITEM, TransmissionType.GAS, TransmissionType.INFUSION, TransmissionType.PIGMENT,
                 TransmissionType.SLURRY, TransmissionType.ENERGY);
         configComponent.setupItemIOExtraConfig(inputSlot, firstOutputSlot, gasInputSlot, energySlot);

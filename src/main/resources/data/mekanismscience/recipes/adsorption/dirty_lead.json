@@ -2,7 +2,7 @@
   "type":"mekanismscience:adsorption",
   "gasInput":
   {
-    "amount":2,
+    "amount":50,
     "gas":"mekanismscience:seawater"
   },
   "itemInput":
@@ -14,7 +14,7 @@
   },
   "output":
   {
-    "amount":5,
+    "amount":400,
     "chemicalType":"slurry",
     "slurry":"mekanism:dirty_lead"
   }
