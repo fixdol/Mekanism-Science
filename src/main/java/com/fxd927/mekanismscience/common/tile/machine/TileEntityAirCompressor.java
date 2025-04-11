@@ -48,7 +48,7 @@ import java.util.List;
 
 public class TileEntityAirCompressor extends TileEntityConfigurableMachine implements IConfigurable {
     private static final int BASE_TICKS_REQUIRED = 19;
-    public static final GasStack COMPRESSED_AIR_STACK = new GasStack(MSGases.COMPRESSED_AIR, 500);
+    public static final GasStack COMPRESSED_AIR_STACK = new GasStack(MSGases.COMPRESSED_AIR, 200);
 
     @WrappingComputerMethod(wrapper = SpecialComputerMethodWrapper.ComputerChemicalTankWrapper.class, methodNames = {"getGas", "getGasCapacity", "getGasNeeded", "getGasFilledPercentage"}, docPlaceholder = "buffer tank")
     public IGasTank gasTank;
