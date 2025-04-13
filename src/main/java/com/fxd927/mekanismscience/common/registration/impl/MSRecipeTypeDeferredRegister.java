@@ -1,8 +1,7 @@
-package com.fxd927.mekanismscience.common.registration;
+package com.fxd927.mekanismscience.common.registration.impl;
 
 import com.fxd927.mekanismscience.common.recipe.IMSRecipeTypeProvider;
 import com.fxd927.mekanismscience.common.recipe.MSRecipeType;
-import com.fxd927.mekanismscience.common.registration.impl.MSRecipeTypeRegistryObject;
 import mekanism.api.recipes.MekanismRecipe;
 import mekanism.common.recipe.lookup.cache.IInputRecipeCache;
 import mekanism.common.registration.WrappedDeferredRegister;

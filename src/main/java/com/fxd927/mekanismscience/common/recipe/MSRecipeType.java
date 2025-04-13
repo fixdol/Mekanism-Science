@@ -5,7 +5,7 @@ import com.fxd927.mekanismscience.api.recipes.ChemicalDemolitionRecipe;
 import com.fxd927.mekanismscience.api.recipes.RadiationIrradiatingRecipe;
 import com.fxd927.mekanismscience.common.MekanismScience;
 import com.fxd927.mekanismscience.common.recipe.lookup.cache.MSInputRecipeCache;
-import com.fxd927.mekanismscience.common.registration.MSRecipeTypeDeferredRegister;
+import com.fxd927.mekanismscience.common.registration.impl.MSRecipeTypeDeferredRegister;
 import com.fxd927.mekanismscience.common.registration.impl.MSRecipeTypeRegistryObject;
 import mekanism.api.chemical.gas.Gas;
 import mekanism.api.chemical.gas.GasStack;
