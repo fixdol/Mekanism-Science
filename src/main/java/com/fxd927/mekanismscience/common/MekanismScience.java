@@ -21,7 +21,7 @@ import org.slf4j.Logger;
 @Mod(MekanismScience.MODID)
 public class MekanismScience
 {
-    public static final String MODID = "mekanismscience";
+    public static final String MODID = "mekanismelements";
     private static final Logger LOGGER = LogUtils.getLogger();
 
     public MekanismScience(){
@@ -74,7 +74,7 @@ public class MekanismScience
         public static void onClientSetup(FMLClientSetupEvent event)
         {
             LOGGER.info("HELLO FROM CLIENT SETUP");
-            LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
+            LOGGER.info("MINECRAFT NICK >> {}", Minecraft.getInstance().getUser().getName());
         }
     }
 }
