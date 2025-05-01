@@ -21,7 +21,7 @@ import org.slf4j.Logger;
 @Mod(MekanismScience.MODID)
 public class MekanismScience
 {
-    public static final String MODID = "mekanismscience";
+    public static final String MODID = "mekanismelements";
     private static final Logger LOGGER = LogUtils.getLogger();
 
     public MekanismScience(){
