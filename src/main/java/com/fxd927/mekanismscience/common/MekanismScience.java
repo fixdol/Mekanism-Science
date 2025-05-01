@@ -74,7 +74,7 @@ public class MekanismScience
         public static void onClientSetup(FMLClientSetupEvent event)
         {
             LOGGER.info("HELLO FROM CLIENT SETUP");
-            LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
+            LOGGER.info("MINECRAFT NICK >> {}", Minecraft.getInstance().getUser().getName());
         }
     }
 }
