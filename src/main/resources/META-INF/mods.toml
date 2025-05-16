@@ -4,7 +4,7 @@ license="${mod_license}"
 
 [[mods]]
 modId="mekanismscience"
-version="2.1"
+version="2.2"
 displayName="Mekanism: Science"
 authors="FixedDolphin927"
 

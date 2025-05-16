@@ -102,6 +102,10 @@ public interface IMSDoubleRecipeLookupHandler <INPUT_A, INPUT_B, RECIPE extends 
             IMSDoubleRecipeLookupHandler<ItemStack, ItemStack, RECIPE, MSInputRecipeCache.DoubleItem<RECIPE>> {
     }
 
+    interface ItemFluidRecipeLookupHandler<RECIPE extends MekanismRecipe & BiPredicate<ItemStack, FluidStack>> extends
+            IMSDoubleRecipeLookupHandler<ItemStack, FluidStack, RECIPE, MSInputRecipeCache.ItemFluid<RECIPE>> {
+    }
+
     /**
      * Helper interface to make the generics that we have to pass to {@link IMSDoubleRecipeLookupHandler} not as messy, and reduce the duplicate code in the other chemical
      * based helper interfaces.

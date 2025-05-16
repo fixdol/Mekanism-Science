@@ -8,21 +8,23 @@ import mekanism.api.recipes.inputs.IInputHandler;
 import mekanism.api.recipes.inputs.ILongInputHandler;
 import mekanism.api.recipes.outputs.BoxedChemicalOutputHandler;
 import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.fluids.FluidStack;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 import java.util.function.BooleanSupplier;
+import java.util.function.IntSupplier;
 import java.util.function.LongSupplier;
 
 public class AdsorptionCachedRecipe extends CachedRecipe<AdsorptionRecipe> {
     private final BoxedChemicalOutputHandler outputHandler;
     private final IInputHandler<@NotNull ItemStack> itemInputHandler;
-    private final ILongInputHandler<@NotNull GasStack> fluidInputHandler;
-    private final LongSupplier fluidUsage;
-    private long fluidUsageMultiplier;
+    private final IInputHandler<@NotNull FluidStack> fluidInputHandler;
+    private final IntSupplier fluidUsage;
+    private int fluidUsageMultiplier;
 
     private ItemStack recipeItem = ItemStack.EMPTY;
-    private GasStack recipeFluid = GasStack.EMPTY;
+    private FluidStack recipeFluid = FluidStack.EMPTY;
     private BoxedChemicalStack output = BoxedChemicalStack.EMPTY;
 
     /**
@@ -35,7 +37,7 @@ public class AdsorptionCachedRecipe extends CachedRecipe<AdsorptionRecipe> {
      * @param outputHandler     Output handler.
      */
     public AdsorptionCachedRecipe(AdsorptionRecipe recipe, BooleanSupplier recheckAllErrors, IInputHandler<@NotNull ItemStack> itemInputHandler,
-                                  ILongInputHandler<@NotNull GasStack> fluidInputHandler, LongSupplier fluidUsage, BoxedChemicalOutputHandler outputHandler) {
+                                  IInputHandler<@NotNull FluidStack> fluidInputHandler, IntSupplier fluidUsage, BoxedChemicalOutputHandler outputHandler) {
         super(recipe, recheckAllErrors);
         this.itemInputHandler = Objects.requireNonNull(itemInputHandler, "Item input handler cannot be null.");
         this.fluidInputHandler = Objects.requireNonNull(fluidInputHandler, "Gas input handler cannot be null.");
@@ -45,7 +47,7 @@ public class AdsorptionCachedRecipe extends CachedRecipe<AdsorptionRecipe> {
 
     @Override
     protected void setupVariableValues() {
-        fluidUsageMultiplier = Math.max(fluidUsage.getAsLong(), 0);
+        fluidUsageMultiplier = Math.max(fluidUsage.getAsInt(), 0);
     }
 
     @Override
@@ -56,7 +58,7 @@ public class AdsorptionCachedRecipe extends CachedRecipe<AdsorptionRecipe> {
             if (recipeItem.isEmpty()) {
                 tracker.mismatchedRecipe();
             } else {
-                recipeFluid = fluidInputHandler.getRecipeInput(recipe.getGasInput());
+                recipeFluid = fluidInputHandler.getRecipeInput(recipe.getFluidInput());
                 if (recipeFluid.isEmpty()) {
                     tracker.updateOperations(0);
                     if (!tracker.shouldContinueChecking()) {
@@ -79,9 +81,9 @@ public class AdsorptionCachedRecipe extends CachedRecipe<AdsorptionRecipe> {
     public boolean isInputValid() {
         ItemStack itemInput = itemInputHandler.getInput();
         if (!itemInput.isEmpty()) {
-            GasStack fluidStack = fluidInputHandler.getInput();
+            FluidStack fluidStack = fluidInputHandler.getInput();
             if (!fluidStack.isEmpty() && recipe.test(itemInput, fluidStack)) {
-                GasStack recipeFluid = fluidInputHandler.getRecipeInput(recipe.getGasInput());
+                FluidStack recipeFluid = fluidInputHandler.getRecipeInput(recipe.getFluidInput());
                 return !recipeFluid.isEmpty() && fluidStack.getAmount() >= recipeFluid.getAmount();
             }
         }

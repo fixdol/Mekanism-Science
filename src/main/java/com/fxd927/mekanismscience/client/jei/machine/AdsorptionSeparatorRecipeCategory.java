@@ -25,6 +25,7 @@ import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.ingredients.IIngredientType;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
+import net.minecraftforge.fluids.FluidStack;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
@@ -36,10 +37,9 @@ public class AdsorptionSeparatorRecipeCategory extends BaseRecipeCategory<Adsorp
 
     public AdsorptionSeparatorRecipeCategory(IGuiHelper helper, MekanismJEIRecipeType<AdsorptionRecipe> recipeType) {
         super(helper, recipeType, MSBlocks.ADSORPTION_SEPARATOR, 3, 3, 170, 79);
-        inputGauge = addElement(GuiGasGauge.getDummy(GaugeType.MEDIUM.with(DataType.INPUT), this, 7, 13));
+        inputGauge = addElement(GuiGasGauge.getDummy(GaugeType.MEDIUM.with(DataType.INPUT), this, 17, 13));
         outputGauge = addElement(GuiGasGauge.getDummy(GaugeType.STANDARD.with(DataType.OUTPUT), this, 131, 13));
         inputSlot = addSlot(SlotType.INPUT, 80, 22);
-        addSlot(SlotType.EXTRA, 44, 55).with(SlotOverlay.MINUS);
         addSlot(SlotType.OUTPUT, 152, 55).with(SlotOverlay.PLUS);
         addSlot(SlotType.POWER, 152, 14).with(SlotOverlay.POWER);
         addSimpleProgress(ProgressType.LARGE_RIGHT, 64, 40);
@@ -49,10 +49,10 @@ public class AdsorptionSeparatorRecipeCategory extends BaseRecipeCategory<Adsorp
     @Override
     public void setRecipe(@NotNull IRecipeLayoutBuilder builder, AdsorptionRecipe recipe, @NotNull IFocusGroup focusGroup) {
         initItem(builder, RecipeIngredientRole.INPUT, inputSlot, recipe.getItemInput().getRepresentations());
-        List<@NotNull GasStack> gasInputs = recipe.getGasInput().getRepresentations();
-        List<GasStack> scaledGases = gasInputs.stream().map(gas -> new GasStack(gas, gas.getAmount() * TileEntityAdsorptionSeparator.BASE_TICKS_REQUIRED))
+        List<@NotNull FluidStack> fluidInputs = recipe.getFluidInput().getRepresentations();
+        List<FluidStack> scaledFluids = fluidInputs.stream().map(fluid -> new FluidStack(fluid, fluid.getAmount() * TileEntityAdsorptionSeparator.BASE_TICKS_REQUIRED))
                 .toList();
-        initChemical(builder, MekanismJEI.TYPE_GAS, RecipeIngredientRole.INPUT, inputGauge, scaledGases);
+        initFluid(builder, RecipeIngredientRole.INPUT, inputGauge, scaledFluids);
         List<BoxedChemicalStack> outputDefinition = recipe.getOutputDefinition();
         if (outputDefinition.size() == 1) {
             BoxedChemicalStack output = outputDefinition.get(0);

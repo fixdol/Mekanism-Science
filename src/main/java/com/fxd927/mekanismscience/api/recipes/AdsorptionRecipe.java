@@ -1,14 +1,14 @@
 package com.fxd927.mekanismscience.api.recipes;
 
 import mekanism.api.chemical.ChemicalStack;
-import mekanism.api.chemical.gas.GasStack;
 import mekanism.api.chemical.merged.BoxedChemicalStack;
 import mekanism.api.recipes.MekanismRecipe;
-import mekanism.api.recipes.ingredients.ChemicalStackIngredient;
+import mekanism.api.recipes.ingredients.FluidStackIngredient;
 import mekanism.api.recipes.ingredients.ItemStackIngredient;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.fluids.FluidStack;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
@@ -17,21 +17,21 @@ import java.util.List;
 import java.util.Objects;
 import java.util.function.BiPredicate;
 
-public abstract class AdsorptionRecipe extends MekanismRecipe implements BiPredicate<@NotNull ItemStack, @NotNull GasStack> {
+public abstract class AdsorptionRecipe extends MekanismRecipe implements BiPredicate<@NotNull ItemStack, @NotNull FluidStack> {
     private final ItemStackIngredient itemInput;
-    private final ChemicalStackIngredient.GasStackIngredient gasInput;
+    private final FluidStackIngredient fluidInput;
     private final BoxedChemicalStack output;
 
     /**
      * @param id        Recipe name.
      * @param itemInput Item input.
-     * @param gasInput  Gas input.
+     * @param fluidInput  Gas input.
      * @param output    Output.
      */
-    public AdsorptionRecipe(ResourceLocation id, ItemStackIngredient itemInput, ChemicalStackIngredient.GasStackIngredient gasInput, ChemicalStack<?> output) {
+    public AdsorptionRecipe(ResourceLocation id, ItemStackIngredient itemInput, FluidStackIngredient fluidInput, ChemicalStack<?> output) {
         super(id);
         this.itemInput = Objects.requireNonNull(itemInput, "Item input cannot be null.");
-        this.gasInput = Objects.requireNonNull(gasInput, "Gas input cannot be null.");
+        this.fluidInput = Objects.requireNonNull(fluidInput, "Fluid input cannot be null.");
         Objects.requireNonNull(output, "Output cannot be null.");
         if (output.isEmpty()) {
             throw new IllegalArgumentException("Output cannot be empty.");
@@ -49,8 +49,8 @@ public abstract class AdsorptionRecipe extends MekanismRecipe implements BiPredi
     /**
      * Gets the input gas ingredient.
      */
-    public ChemicalStackIngredient.GasStackIngredient getGasInput() {
-        return gasInput;
+    public FluidStackIngredient getFluidInput() {
+        return fluidInput;
     }
 
     /**
@@ -64,13 +64,13 @@ public abstract class AdsorptionRecipe extends MekanismRecipe implements BiPredi
      * @implNote The passed in inputs should <strong>NOT</strong> be modified.
      */
     @Contract(value = "_, _ -> new", pure = true)
-    public BoxedChemicalStack getOutput(ItemStack inputItem, GasStack inputGas) {
+    public BoxedChemicalStack getOutput(ItemStack inputItem, FluidStack inputGas) {
         return output.copy();
     }
 
     @Override
-    public boolean test(ItemStack itemStack, GasStack gasStack) {
-        return itemInput.test(itemStack) && gasInput.test(gasStack);
+    public boolean test(ItemStack itemStack, FluidStack fluidStack) {
+        return itemInput.test(itemStack) && fluidInput.test(fluidStack);
     }
 
     /**
@@ -84,13 +84,13 @@ public abstract class AdsorptionRecipe extends MekanismRecipe implements BiPredi
 
     @Override
     public boolean isIncomplete() {
-        return itemInput.hasNoMatchingInstances() || gasInput.hasNoMatchingInstances();
+        return itemInput.hasNoMatchingInstances() || fluidInput.hasNoMatchingInstances();
     }
 
     @Override
     public void write(FriendlyByteBuf buffer) {
         itemInput.write(buffer);
-        gasInput.write(buffer);
+        fluidInput.write(buffer);
         buffer.writeEnum(output.getChemicalType());
         output.getChemicalStack().writeToPacket(buffer);
     }

@@ -1,9 +1,9 @@
 {
   "type":"mekanismscience:adsorption",
-  "gasInput":
+  "fluidInput":
   {
     "amount":50,
-    "gas":"mekanismscience:seawater"
+    "fluid":"mekanismscience:seawater"
   },
   "itemInput":
   {

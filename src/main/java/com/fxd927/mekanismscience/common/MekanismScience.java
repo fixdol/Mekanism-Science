@@ -3,35 +3,39 @@ package com.fxd927.mekanismscience.common;
 import com.fxd927.mekanismscience.common.config.MSConfig;
 import com.fxd927.mekanismscience.common.recipe.MSRecipeType;
 import com.fxd927.mekanismscience.common.registries.*;
-import com.mojang.logging.LogUtils;
-import net.minecraft.client.Minecraft;
+import mekanism.common.lib.Version;
+import mekanism.common.tile.component.TileComponentChunkLoader;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.server.ServerStartingEvent;
+import net.minecraftforge.common.world.ForgeChunkManager;
+import net.minecraftforge.event.AddReloadListenerEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import org.slf4j.Logger;
+
+import static mekanism.api.MekanismAPI.logger;
 
 @Mod(MekanismScience.MODID)
 public class MekanismScience
 {
     public static final String MODID = "mekanismscience";
-    private static final Logger LOGGER = LogUtils.getLogger();
 
     public MekanismScience(){
         this(FMLJavaModLoadingContext.get());
     }
 
+    public final Version versionNumber;
+    private MSReloadListener recipeCacheManager;
+
     public MekanismScience(FMLJavaModLoadingContext context)
     {
+        MinecraftForge.EVENT_BUS.addListener(EventPriority.LOWEST, this::addReloadListenersLowest);
         IEventBus modEventBus = context.getModEventBus();
         MSConfig.registerConfigs(ModLoadingContext.get());
+        modEventBus.addListener(this::commonSetup);
         MSCreativeTab.CREATIVE_TABS.register(modEventBus);
         MSFluids.FLUIDS.register(modEventBus);
         MSGases.GASES.register(modEventBus);
@@ -48,7 +52,7 @@ public class MekanismScience
 
         MSGases.Coolants.init();
 
-        modEventBus.addListener(this::commonSetup);
+        versionNumber = new Version(ModLoadingContext.get().getActiveContainer());
         MinecraftForge.EVENT_BUS.register(this);
     }
 
@@ -56,25 +60,29 @@ public class MekanismScience
         return new ResourceLocation(MekanismScience.MODID, path);
     }
 
-    private void commonSetup(final FMLCommonSetupEvent event)
-    {
-        LOGGER.info("HELLO FROM COMMON SETUP");
-    }
-
-    @SubscribeEvent
-    public void onServerStarting(ServerStartingEvent event)
-    {
-        LOGGER.info("HELLO from server starting");
-    }
-
-    @Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
-    public static class ClientModEvents
-    {
-        @SubscribeEvent
-        public static void onClientSetup(FMLClientSetupEvent event)
-        {
-            LOGGER.info("HELLO FROM CLIENT SETUP");
-            LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
+    private void setRecipeCacheManager(MSReloadListener manager) {
+        if (recipeCacheManager == null) {
+            recipeCacheManager = manager;
+        } else {
+            logger.warn("Recipe cache manager has already been set.");
         }
+    }
+
+    public MSReloadListener getRecipeCacheManager() {
+        return recipeCacheManager;
+    }
+
+    private void addReloadListenersLowest(AddReloadListenerEvent event) {
+        event.addListener(getRecipeCacheManager());
+    }
+
+    private void commonSetup(FMLCommonSetupEvent event) {
+        logger.info("Version {} initializing...", versionNumber);
+        setRecipeCacheManager(new MSReloadListener());
+
+        event.enqueueWork(() -> {
+            ForgeChunkManager.setForcedChunkLoadingCallback(MekanismScience.MODID, TileComponentChunkLoader.ChunkValidationCallback.INSTANCE);
+            MSFluids.FLUIDS.registerBucketDispenserBehavior();
+        });
     }
 }

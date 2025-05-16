@@ -56,6 +56,16 @@ public class MSInputRecipeCache {
         }
     }
 
+    public static class ItemFluid<RECIPE extends MekanismRecipe &
+            BiPredicate<ItemStack, FluidStack>> extends MSDoubleInputRecipeCache<ItemStack, ItemStackIngredient, FluidStack, FluidStackIngredient, RECIPE,
+            ItemInputCache<RECIPE>, FluidInputCache<RECIPE>> {
+
+        public ItemFluid(MSRecipeType<RECIPE, ?> recipeType, Function<RECIPE, ItemStackIngredient> inputAExtractor,
+                         Function<RECIPE, FluidStackIngredient> inputBExtractor) {
+            super(recipeType, inputAExtractor, new ItemInputCache<>(), inputBExtractor, new FluidInputCache<>());
+        }
+    }
+
     public static class ItemChemical<CHEMICAL extends Chemical<CHEMICAL>, STACK extends ChemicalStack<CHEMICAL>, RECIPE extends MekanismRecipe &
             BiPredicate<ItemStack, STACK>> extends MSDoubleInputRecipeCache<ItemStack, ItemStackIngredient, STACK, ChemicalStackIngredient<CHEMICAL, STACK>, RECIPE,
             ItemInputCache<RECIPE>, ChemicalInputCache<CHEMICAL, STACK, RECIPE>> {
@@ -92,6 +102,16 @@ public class MSInputRecipeCache {
         public ItemFluidChemical(MSRecipeType<RECIPE, ?> recipeType, Function<RECIPE, ItemStackIngredient> inputAExtractor,
                                  Function<RECIPE, FluidStackIngredient> inputBExtractor, Function<RECIPE, ChemicalStackIngredient<CHEMICAL, STACK>> inputCExtractor) {
             super(recipeType, inputAExtractor, new ItemInputCache<>(), inputBExtractor, new FluidInputCache<>(), inputCExtractor, new ChemicalInputCache<>());
+        }
+    }
+
+    public static class TripleChemical<CHEMICAL extends Chemical<CHEMICAL>, STACK extends ChemicalStack<CHEMICAL>, RECIPE extends MekanismRecipe &
+            TriPredicate<STACK, STACK, STACK>> extends MSTripleInputRecipeCache<STACK, ChemicalStackIngredient<CHEMICAL, STACK>, STACK, ChemicalStackIngredient<CHEMICAL, STACK>, STACK,
+            ChemicalStackIngredient<CHEMICAL, STACK>, RECIPE, ChemicalInputCache<CHEMICAL, STACK, RECIPE>, ChemicalInputCache<CHEMICAL, STACK, RECIPE>, ChemicalInputCache<CHEMICAL, STACK, RECIPE>> {
+
+        public TripleChemical(MSRecipeType<RECIPE, ?> recipeType, Function<RECIPE, ChemicalStackIngredient<CHEMICAL, STACK>> inputAExtractor,
+                           Function<RECIPE, ChemicalStackIngredient<CHEMICAL, STACK>> inputBExtractor, Function<RECIPE, ChemicalStackIngredient<CHEMICAL, STACK>> inputCExtractor) {
+            super(recipeType, inputAExtractor, new ChemicalInputCache<>(), inputBExtractor, new ChemicalInputCache<>(), inputCExtractor, new ChemicalInputCache<>());
         }
     }
 }

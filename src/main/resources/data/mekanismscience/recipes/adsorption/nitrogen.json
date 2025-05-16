@@ -1,9 +1,9 @@
 {
   "type":"mekanismscience:adsorption",
-  "gasInput":
+  "fluidInput":
   {
     "amount":50,
-    "gas":"mekanismscience:compressed_air"
+    "fluid":"mekanismscience:compressed_air"
   },
   "itemInput":
   {

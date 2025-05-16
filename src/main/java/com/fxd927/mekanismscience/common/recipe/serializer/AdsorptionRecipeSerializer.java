@@ -36,9 +36,9 @@ public class AdsorptionRecipeSerializer <RECIPE extends AdsorptionRecipe> implem
         JsonElement itemInput = GsonHelper.isArrayNode(json, JsonConstants.ITEM_INPUT) ? GsonHelper.getAsJsonArray(json, JsonConstants.ITEM_INPUT) :
                 GsonHelper.getAsJsonObject(json, JsonConstants.ITEM_INPUT);
         ItemStackIngredient itemIngredient = IngredientCreatorAccess.item().deserialize(itemInput);
-        JsonElement fluidInput = GsonHelper.isArrayNode(json, JsonConstants.GAS_INPUT) ? GsonHelper.getAsJsonArray(json, JsonConstants.GAS_INPUT) :
-                GsonHelper.getAsJsonObject(json, JsonConstants.GAS_INPUT);
-        ChemicalStackIngredient.GasStackIngredient fluidIngredient = IngredientCreatorAccess.gas().deserialize(fluidInput);
+        JsonElement fluidInput = GsonHelper.isArrayNode(json, JsonConstants.FLUID_INPUT) ? GsonHelper.getAsJsonArray(json, JsonConstants.GAS_INPUT) :
+                GsonHelper.getAsJsonObject(json, JsonConstants.FLUID_INPUT);
+        FluidStackIngredient fluidIngredient = IngredientCreatorAccess.fluid().deserialize(fluidInput);
         ChemicalStack<?> output = SerializerHelper.getBoxedChemicalStack(json, JsonConstants.OUTPUT);
         if (output.isEmpty()) {
             throw new JsonSyntaxException("Recipe output must not be empty.");
@@ -50,7 +50,7 @@ public class AdsorptionRecipeSerializer <RECIPE extends AdsorptionRecipe> implem
     public RECIPE fromNetwork(@NotNull ResourceLocation recipeId, @NotNull FriendlyByteBuf buffer) {
         try {
             ItemStackIngredient itemInput = IngredientCreatorAccess.item().read(buffer);
-            ChemicalStackIngredient.GasStackIngredient fluidInput = IngredientCreatorAccess.gas().read(buffer);
+            FluidStackIngredient fluidInput = IngredientCreatorAccess.fluid().read(buffer);
             ChemicalType chemicalType = buffer.readEnum(ChemicalType.class);
             ChemicalStack<?> output = switch (chemicalType) {
                 case GAS -> GasStack.readFromPacket(buffer);
@@ -78,6 +78,6 @@ public class AdsorptionRecipeSerializer <RECIPE extends AdsorptionRecipe> implem
     @FunctionalInterface
     public interface IFactory<RECIPE extends AdsorptionRecipe> {
 
-        RECIPE create(ResourceLocation id, ItemStackIngredient itemInput, ChemicalStackIngredient.GasStackIngredient gasInput, ChemicalStack<?> output);
+        RECIPE create(ResourceLocation id, ItemStackIngredient itemInput, FluidStackIngredient fluidInput, ChemicalStack<?> output);
     }
 }

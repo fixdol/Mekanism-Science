@@ -33,8 +33,8 @@ public class MSRecipeType<RECIPE extends MekanismRecipe, INPUT_CACHE extends IIn
 
     public static final MSRecipeTypeRegistryObject<RadiationIrradiatingRecipe, MSInputRecipeCache.ItemChemical<Gas, GasStack, RadiationIrradiatingRecipe>> RADIATION_IRRADIATING =
             register("radiation_irradiating", recipeType -> new MSInputRecipeCache.ItemChemical<>(recipeType, RadiationIrradiatingRecipe::getItemInput, RadiationIrradiatingRecipe::getGasInput));
-    public static final MSRecipeTypeRegistryObject<AdsorptionRecipe, MSInputRecipeCache.ItemChemical<Gas, GasStack, AdsorptionRecipe>> ADSORPTION =
-            register("adsorption", recipeType -> new MSInputRecipeCache.ItemChemical<>(recipeType, AdsorptionRecipe::getItemInput, AdsorptionRecipe::getGasInput));
+    public static final MSRecipeTypeRegistryObject<AdsorptionRecipe, MSInputRecipeCache.ItemFluid<AdsorptionRecipe>> ADSORPTION =
+            register("adsorption", recipeType -> new MSInputRecipeCache.ItemFluid<>(recipeType, AdsorptionRecipe::getItemInput, AdsorptionRecipe::getFluidInput));
     public static final MSRecipeTypeRegistryObject<FluidToFluidRecipe, MSInputRecipeCache.SingleFluid<FluidToFluidRecipe>> ADVANCED_EVAPORATING =
             register("evaporating", recipeType -> new MSInputRecipeCache.SingleFluid<>(recipeType, FluidToFluidRecipe::getInput));
     public static final MSRecipeTypeRegistryObject<ChemicalDemolitionRecipe, MSInputRecipeCache.ItemChemical<Gas, GasStack, ChemicalDemolitionRecipe>> CHEMICAL_DEMOLITION =
