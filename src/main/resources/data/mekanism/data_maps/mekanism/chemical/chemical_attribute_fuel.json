@@ -1,0 +1,10 @@
+{
+  "values":
+  {
+    "mekanismscience:ethene":
+    {
+      "burn_time":100,
+      "energy":600000
+    }
+  }
+}

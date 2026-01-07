@@ -2,10 +2,7 @@ package com.fxd927.mekanismscience.common.registries;
 
 import com.fxd927.mekanismscience.common.MekanismScience;
 import com.fxd927.mekanismscience.common.gas.MSChemicalConstants;
-import com.fxd927.mekanismscience.mixin.CoolantAccessor;
 import mekanism.api.chemical.Chemical;
-import mekanism.api.chemical.attribute.ChemicalAttributes;
-import mekanism.api.providers.IChemicalProvider;
 import mekanism.common.registration.impl.ChemicalDeferredRegister;
 import mekanism.common.registration.impl.DeferredChemical;
 
@@ -42,19 +39,19 @@ public class MSChemicals {
     public static DeferredChemical<Chemical> YTTRIUM;
 
     static {
-        AMERICIUM = CHEMICALS.register("americium", 13983840, new ChemicalAttributes.Radiation(0.05));
+        AMERICIUM = CHEMICALS.register("americium", 13983840);
         //AMMONIA = CHEMICALS.register(MSChemicalConstants.AMMONIA, new ChemicalAttributes.Fuel(()-> 100, ()-> 600000));
         //AMMONIUM_NITRATE = CHEMICALS.register(MSChemicalConstants.AMMONIUM_NITRATE);
         // AQUA_REGIA = CHEMICALS.register(MSChemicalConstants.AQUA_REGIA);
         //BROMINE = CHEMICALS.register(MSChemicalConstants.BROMINE);
         BERYLLIUM = CHEMICALS.register(MSChemicalConstants.BERYLLIUM);
-        //CALIFORNIUM = CHEMICALS.register("californium", 0xFFF08B00, new GasAttributes.Radiation(0.1));
+        //CALIFORNIUM = CHEMICALS.register("californium", 0xFFF08B00);
         COMPRESSED_AIR = CHEMICALS.register(MSChemicalConstants.COMPRESSED_AIR);
-        //CURIUM = CHEMICALS.register("curium",15725501,new GasAttributes.Radiation(0.07));
+        //CURIUM = CHEMICALS.register("curium",15725501);
         //DISSOLVED_SPENT_NUCLEAR_WASTE = CHEMICALS.register("dissolved_spent_nuclear_waste",0x8588b1);
-        HELIUM = CHEMICALS.register(MSChemicalConstants.HELIUM, Coolants.HELIUM_COOLANT);
+        HELIUM = CHEMICALS.register(MSChemicalConstants.HELIUM);
         //HYDROGEN_CYANIDE = CHEMICALS.register(MSChemicalConstants.HYDROGEN_CYANIDE);
-        SUPERHEATED_HELIUM = CHEMICALS.register(MSChemicalConstants.SUPERHEATED_HELIUM, Coolants.HEATED_HELIUM_COOLANT);
+        SUPERHEATED_HELIUM = CHEMICALS.register(MSChemicalConstants.SUPERHEATED_HELIUM);
         //IODINE = CHEMICALS.register(MSChemicalConstants.IODINE);
         //METHANE = CHEMICALS.register(MSChemicalConstants.METHANE);
         //NETHERITE_ACID = CHEMICALS.register(MSChemicalConstants.NETHERITE_ACID);
@@ -73,22 +70,5 @@ public class MSChemicals {
     }
 
     private MSChemicals() {
-    }
-
-    public static class Coolants{
-
-        public static final ChemicalAttributes.CooledCoolant HELIUM_COOLANT = makeCoolant(ChemicalAttributes.CooledCoolant::new, () -> SUPERHEATED_HELIUM.get(), 100, 1.5);
-        public static final ChemicalAttributes.HeatedCoolant HEATED_HELIUM_COOLANT = makeCoolant(ChemicalAttributes.HeatedCoolant::new, () -> HELIUM.get(), 100, 1.5);
-
-        @FunctionalInterface
-        private interface CoolantFactory<C extends ChemicalAttributes.Coolant> {
-            C create(IChemicalProvider heatedGas, double thermalEnthalpy, double conductivity);
-        }
-
-        private static <C extends ChemicalAttributes.Coolant> C makeCoolant(CoolantFactory<C> factory, IChemicalProvider heatedGas, double thermalEnthalpy, double conductivity) {
-            var coolant = factory.create(heatedGas, thermalEnthalpy, 1.0);
-            ((CoolantAccessor) coolant).setConductivity(conductivity);
-            return coolant;
-        }
     }
 }

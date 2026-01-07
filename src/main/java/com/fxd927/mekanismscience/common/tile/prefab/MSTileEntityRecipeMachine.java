@@ -17,6 +17,8 @@ import mekanism.common.tile.base.TileEntityMekanism;
 import mekanism.common.tile.prefab.TileEntityConfigurableMachine;
 import net.minecraft.SharedConstants;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 
@@ -41,7 +43,7 @@ public abstract class MSTileEntityRecipeMachine<RECIPE extends MekanismRecipe<?>
     @Nullable
     private IContentsListener recipeCacheUnpauseSaveOnlyListener;
 
-    protected MSTileEntityRecipeMachine(IBlockProvider blockProvider, BlockPos pos, BlockState state, List<CachedRecipe.OperationTracker.RecipeError> errorTypes) {
+    protected MSTileEntityRecipeMachine(Holder<Block> blockProvider, BlockPos pos, BlockState state, List<CachedRecipe.OperationTracker.RecipeError> errorTypes) {
         super(blockProvider, pos, state);
         //Copy the list if it is mutable to ensure it doesn't get changed, otherwise just use the list
         this.errorTypes = List.copyOf(errorTypes);

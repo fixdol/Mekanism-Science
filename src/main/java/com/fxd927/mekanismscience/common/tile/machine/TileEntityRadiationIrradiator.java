@@ -18,7 +18,6 @@ import mekanism.api.Upgrade;
 import mekanism.api.chemical.BasicChemicalTank;
 import mekanism.api.chemical.ChemicalStack;
 import mekanism.api.chemical.IChemicalTank;
-import mekanism.api.chemical.attribute.ChemicalAttributeValidator;
 import mekanism.api.recipes.cache.CachedRecipe;
 import mekanism.api.recipes.cache.ItemStackConstantChemicalToObjectCachedRecipe;
 import mekanism.api.recipes.inputs.IInputHandler;
@@ -48,14 +47,18 @@ import mekanism.common.lib.transmitter.TransmissionType;
 import mekanism.common.tile.component.TileComponentEjector;
 import mekanism.common.util.MekanismUtils;
 import mekanism.common.util.StatUtils;
+import net.minecraft.SharedConstants;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
+import net.neoforged.neoforge.fluids.FluidType;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.math.BigInteger;
+import java.util.Collections;
 import java.util.List;
 
 public class TileEntityRadiationIrradiator extends MSTileEntityProgressMachine<RadiationIrradiatingRecipe> implements IMSRecipeLookupHandler.ConstantUsageRecipeLookupHandler,
@@ -68,15 +71,15 @@ public class TileEntityRadiationIrradiator extends MSTileEntityProgressMachine<R
             CachedRecipe.OperationTracker.RecipeError.NOT_ENOUGH_OUTPUT_SPACE,
             CachedRecipe.OperationTracker.RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT
     );
-    public static final long MAX_CHEMICAL = 10_000;
-    public static final int BASE_TICKS_REQUIRED = 25;
-    private final ItemStackConstantChemicalToObjectCachedRecipe.ChemicalUsageMultiplier injectUsageMultiplier;
+    public static final long MAX_CHEMICAL = 10L * FluidType.BUCKET_VOLUME;
+    public static final int BASE_TICKS_REQUIRED = 5 * SharedConstants.TICKS_PER_SECOND;
 
     @WrappingComputerMethod(wrapper = SpecialComputerMethodWrapper.ComputerChemicalTankWrapper.class, methodNames = {"getGasInput", "getGasInputCapacity", "getGasInputNeeded",
-            "getChemicalInputFilledPercentage"}, docPlaceholder = "chemical input tank")
+            "getGasInputFilledPercentage"}, docPlaceholder = "gas input tank")
     public IChemicalTank injectTank;
     public IChemicalTank outputTank;
-    public double injectUsage = 1;
+    private final ItemStackConstantChemicalToObjectCachedRecipe.ChemicalUsageMultiplier injectUsageMultiplier;
+    private double injectUsage = 1;
     private long usedSoFar;
 
     private final IOutputHandler<ChemicalStack> outputHandler;
@@ -106,6 +109,9 @@ public class TileEntityRadiationIrradiator extends MSTileEntityProgressMachine<R
         itemInputHandler = InputHelper.getInputHandler(inputSlot, CachedRecipe.OperationTracker.RecipeError.NOT_ENOUGH_INPUT);
         gasInputHandler = InputHelper.getConstantInputHandler(injectTank);
         outputHandler = OutputHelper.getOutputHandler(outputTank, CachedRecipe.OperationTracker.RecipeError.NOT_ENOUGH_OUTPUT_SPACE);
+
+        //Note: Statistical mechanics works best by just using the mean gas usage we want to target
+        // rather than adjusting the mean each time to try and reach a given target
         injectUsageMultiplier = (usedSoFar, operatingTicks) -> StatUtils.inversePoisson(injectUsage);
     }
 
@@ -113,8 +119,7 @@ public class TileEntityRadiationIrradiator extends MSTileEntityProgressMachine<R
     @Override
     public IChemicalTankHolder getInitialChemicalTanks(IContentsListener listener, IContentsListener recipeCacheListener, IContentsListener recipeCacheUnpauseListener) {
         ChemicalTankHelper builder = ChemicalTankHelper.forSideWithConfig(this);
-        builder.addTank(injectTank = BasicChemicalTank.create(MAX_CHEMICAL, ChemicalTankHelper.radioactiveInputTankPredicate(() -> outputTank),
-                BasicChemicalTank.alwaysTrueBi, this::containsRecipeB, ChemicalAttributeValidator.ALWAYS_ALLOW, recipeCacheListener));
+        builder.addTank(injectTank = BasicChemicalTank.inputModern(MAX_CHEMICAL, gas -> containsRecipeBA(inputSlot.getStack(), gas), this::containsRecipeB, recipeCacheListener));
         builder.addTank(outputTank = BasicChemicalTank.output(MAX_CHEMICAL, recipeCacheUnpauseListener));
         return builder.build();
     }
@@ -127,13 +132,12 @@ public class TileEntityRadiationIrradiator extends MSTileEntityProgressMachine<R
         return builder.build();
     }
 
-
     @NotNull
     @Override
     protected IInventorySlotHolder getInitialInventory(IContentsListener listener, IContentsListener recipeCacheListener, IContentsListener recipeCacheUnpauseListener) {
         InventorySlotHelper builder = InventorySlotHelper.forSideWithConfig(this);
-        builder.addSlot(gasInputSlot = ChemicalInventorySlot.fillOrConvert(injectTank, this::getLevel, listener, 7, 55));
-        builder.addSlot(inputSlot = InputInventorySlot.at(item -> containsRecipeAB(item, injectTank.getStack()), this::containsRecipeA, recipeCacheListener, 7, 36))
+        builder.addSlot(gasInputSlot = ChemicalInventorySlot.fillOrConvert(injectTank, this::getLevel, listener, 8, 65));
+        builder.addSlot(inputSlot = InputInventorySlot.at(item -> containsRecipeAB(item, injectTank.getStack()), this::containsRecipeA, recipeCacheListener, 28, 36))
                 .tracksWarnings(slot -> slot.warning(WarningTracker.WarningType.NO_MATCHING_RECIPE, getWarningCheck(CachedRecipe.OperationTracker.RecipeError.NOT_ENOUGH_INPUT)));
         builder.addSlot(outputSlot = ChemicalInventorySlot.drain(outputTank, listener, 152, 55));
         builder.addSlot(energySlot = EnergyInventorySlot.fillOrConvert(energyContainer, this::getLevel, listener, 152, 14));
@@ -228,5 +232,20 @@ public class TileEntityRadiationIrradiator extends MSTileEntityProgressMachine<R
             "getOutputFilledPercentage"}, docPlaceholder = "output tank")
     IChemicalTank getOutputTank() {
         return outputTank;
+    }
+    //End methods IComputerTile
+
+    @Override
+    @SuppressWarnings("removal")
+    @Deprecated(forRemoval = true, since = "10.7.0")
+    public List<IChemicalTank> getLegacyGasTanks() {
+        return Collections.singletonList(injectTank);
+    }
+
+    @Override
+    @SuppressWarnings("removal")
+    @Deprecated(forRemoval = true, since = "10.7.0")
+    public List<IChemicalTank> getLegacySlurryTanks() {
+        return Collections.singletonList(outputTank);
     }
 }

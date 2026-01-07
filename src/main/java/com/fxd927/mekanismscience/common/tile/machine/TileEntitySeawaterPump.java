@@ -26,7 +26,7 @@ import javax.annotation.Nonnull;
 
 public class TileEntitySeawaterPump extends TileEntityConfigurableMachine implements IConfigurable {
     private static final int BASE_TICKS_REQUIRED = 19;
-    public static final FluidStack SEAWATER_STACK = new FluidStack(MSFluids.YTTRIUM.getFluid(), 100);
+    public static final FluidStack SEAWATER_STACK = new FluidStack(MSFluids.YTTRIUM, 100);
 
     @WrappingComputerMethod(wrapper = SpecialComputerMethodWrapper.ComputerFluidTankWrapper.class, methodNames = {"getFluid", "getFluidCapacity", "getFluidNeeded", "getFluidFilledPercentage"}, docPlaceholder = "buffer tank")
     public BasicFluidTank fluidTank;

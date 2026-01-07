@@ -4,15 +4,19 @@ import mekanism.api.IContentsListener;
 import mekanism.api.chemical.BasicChemicalTank;
 import mekanism.api.chemical.IChemicalTank;
 import mekanism.api.chemical.attribute.ChemicalAttributeValidator;
+import mekanism.api.functions.ConstantPredicates;
 import mekanism.api.providers.IBlockProvider;
 import mekanism.api.recipes.ChemicalChemicalToChemicalRecipe;
 import mekanism.api.recipes.cache.CachedRecipe;
 import mekanism.common.capabilities.holder.chemical.ChemicalTankHelper;
 import mekanism.common.capabilities.holder.chemical.IChemicalTankHolder;
 import mekanism.common.recipe.lookup.IEitherSideRecipeLookupHandler;
+import mekanism.common.registries.MekanismBlocks;
 import mekanism.common.tile.machine.TileEntityChemicalInfuser;
 import mekanism.common.tile.prefab.TileEntityRecipeMachine;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -33,17 +37,17 @@ public abstract class MixinTileEntityChemicalInfuser extends TileEntityRecipeMac
     @Shadow
     public IChemicalTank centerTank;
 
-    protected MixinTileEntityChemicalInfuser(IBlockProvider blockProvider, BlockPos pos, BlockState state, List<CachedRecipe.OperationTracker.RecipeError> errorTypes) {
+    protected MixinTileEntityChemicalInfuser(Holder<Block> blockProvider, BlockPos pos, BlockState state, List<CachedRecipe.OperationTracker.RecipeError> errorTypes) {
         super(blockProvider, pos, state, errorTypes);
     }
 
     @Redirect(method = "getInitialChemicalTanks", at = @At(value = "INVOKE", target = "Lmekanism/common/capabilities/holder/chemical/ChemicalTankHelper;build()Lmekanism/common/capabilities/holder/chemical/IChemicalTankHolder;"))
     public IChemicalTankHolder getInitialChemicalTanksRedirect(ChemicalTankHelper instance, IContentsListener listener, IContentsListener recipeCacheListener, IContentsListener recipeCacheUnpauseListener) {
         ChemicalTankHelper builder = ChemicalTankHelper.forSideWithConfig(this);
-        builder.addTank(leftTank = BasicChemicalTank.create(MAX_GAS, ChemicalTankHelper.radioactiveInputTankPredicate(() -> centerTank),
-                BasicChemicalTank.alwaysTrueBi, this::containsRecipe, ChemicalAttributeValidator.ALWAYS_ALLOW, recipeCacheListener));
-        builder.addTank(rightTank = BasicChemicalTank.create(MAX_GAS, ChemicalTankHelper.radioactiveInputTankPredicate(() -> centerTank),
-                BasicChemicalTank.alwaysTrueBi, this::containsRecipe, ChemicalAttributeValidator.ALWAYS_ALLOW, recipeCacheListener));
+        builder.addTank(rightTank = BasicChemicalTank.createModern(MAX_GAS, ChemicalTankHelper.radioactiveInputTankPredicate(() -> centerTank),
+                ConstantPredicates.alwaysTrueBi(), this::containsRecipe, ChemicalAttributeValidator.ALWAYS_ALLOW, recipeCacheListener));
+        builder.addTank(leftTank = BasicChemicalTank.createModern(MAX_GAS, ChemicalTankHelper.radioactiveInputTankPredicate(() -> centerTank),
+                ConstantPredicates.alwaysTrueBi(), this::containsRecipe, ChemicalAttributeValidator.ALWAYS_ALLOW, recipeCacheListener));
         builder.addTank(centerTank = BasicChemicalTank.output(MAX_GAS, recipeCacheUnpauseListener));
         return builder.build();
     }

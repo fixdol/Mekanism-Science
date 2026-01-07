@@ -1,0 +1,10 @@
+{
+  "values":
+  {
+    "mekanismscience:superheated_helium":
+    {
+      "cool_variant":"mekanismscience:helium",
+      "thermal_enthalpy":100.0
+    }
+  }
+}

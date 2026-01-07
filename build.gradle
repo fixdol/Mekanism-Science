@@ -26,6 +26,10 @@ repositories {
         name = "ModMaven"
         url = "https://modmaven.dev"
     }
+    maven {
+        name = "Dogforce-Games' maven"
+        url = "https://dogforce-games.com/maven/"
+    }
 }
 
 base {
@@ -122,6 +126,7 @@ configurations {
 dependencies {
     compileOnly("mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}")
     runtimeOnly("mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}")
+    compileOnly("dev.gigaherz.jsonthings:JsonThings-${minecraft_version}:${json_things_version}")
 
     implementation("mekanism:Mekanism:${minecraft_version}-${mekanism_version}")
     runtimeOnly("mekanism:Mekanism:${minecraft_version}-${mekanism_version}:generators")

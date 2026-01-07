@@ -1,6 +1,7 @@
 package com.fxd927.mekanismscience.common.attachments.containers.item;
 
 import com.fxd927.mekanismscience.common.recipe.IMSRecipeTypeProvider;
+import mekanism.api.functions.ConstantPredicates;
 import mekanism.common.attachments.containers.item.AttachedItems;
 import mekanism.common.attachments.containers.item.ComponentBackedInventorySlot;
 import java.util.ArrayList;
@@ -50,17 +51,17 @@ import org.jetbrains.annotations.NotNull;
 public class MSItemSlotsBuilder {
 
     private static final IBasicContainerCreator<ComponentBackedInventorySlot> BASIC_SLOT_CREATOR = (type, attachedTo, containerIndex) -> new ComponentBackedInventorySlot(attachedTo,
-            containerIndex, BasicInventorySlot.alwaysTrueBi, BasicInventorySlot.alwaysTrueBi, BasicInventorySlot.alwaysTrue);
+            containerIndex, ConstantPredicates.alwaysTrueBi(), ConstantPredicates.alwaysTrueBi(), ConstantPredicates.alwaysTrue());
     private static final IBasicContainerCreator<ComponentBackedInventorySlot> BASIC_INPUT_SLOT_CREATOR = (type, attachedTo, containerIndex) -> new ComponentBackedInventorySlot(attachedTo,
-            containerIndex, BasicInventorySlot.notExternal, BasicInventorySlot.alwaysTrueBi, BasicInventorySlot.alwaysTrue);
+            containerIndex, ConstantPredicates.notExternal(), ConstantPredicates.alwaysTrueBi(), ConstantPredicates.alwaysTrue());
     private static final IBasicContainerCreator<ComponentBackedInventorySlot> OUTPUT_SLOT_CREATOR = (type, attachedTo, containerIndex) -> new ComponentBackedInventorySlot(attachedTo,
-            containerIndex, BasicInventorySlot.alwaysTrueBi, BasicInventorySlot.internalOnly, BasicInventorySlot.alwaysTrue);
+            containerIndex, ConstantPredicates.alwaysTrueBi(), ConstantPredicates.internalOnly(), ConstantPredicates.alwaysTrue());
 
     //Copy of predicates from FuelInventorySlot
     private static final BiPredicate<@NotNull ItemStack, @NotNull AutomationType> FUEL_CAN_EXTRACT = (stack, automationType) -> automationType == AutomationType.MANUAL || stack.getBurnTime(null) == 0;
     private static final BiPredicate<@NotNull ItemStack, @NotNull AutomationType> FUEL_CAN_INSERT = (stack, automationType) -> stack.getBurnTime(null) != 0;
     private static final IBasicContainerCreator<ComponentBackedInventorySlot> FUEL_SLOT_CREATOR = (type, attachedTo, containerIndex) -> new ComponentBackedInventorySlot(attachedTo,
-            containerIndex, FUEL_CAN_EXTRACT, FUEL_CAN_INSERT, BasicInventorySlot.alwaysTrue);
+            containerIndex, FUEL_CAN_EXTRACT, FUEL_CAN_INSERT, ConstantPredicates.alwaysTrue());
 
     //Security Inventory Slot
     private static final BiPredicate<@NotNull ItemStack, @NotNull AutomationType> SECURITY_LOCK_CAN_EXTRACT = (stack, automationType) -> automationType == AutomationType.MANUAL || SecurityInventorySlot.LOCK_EXTRACT_PREDICATE.test(stack);
@@ -71,20 +72,20 @@ public class MSItemSlotsBuilder {
     //FormulaInventorySlot
     //Note: We skip making the extra checks based on the formula and just allow all items
     private static final IBasicContainerCreator<ComponentBackedInventorySlot> FORMULA_SLOT_CREATOR = (type, attachedTo, containerIndex) -> new ComponentBackedInventorySlot(attachedTo,
-            containerIndex, BasicInventorySlot.alwaysTrueBi, BasicInventorySlot.alwaysTrueBi, TileEntityFormulaicAssemblicator.FORMULA_SLOT_VALIDATOR);
+            containerIndex, ConstantPredicates.alwaysTrueBi(), ConstantPredicates.alwaysTrueBi(), TileEntityFormulaicAssemblicator.FORMULA_SLOT_VALIDATOR);
 
     //QIO drive slot
     //Note: As we don't have to update the presence of a drive or remove it from the frequency we can make do with just using a basic slot
     //TODO - 1.20.4: Evaluate if copy the notExternal is correct or do we want this to have some other checks
     private static final IBasicContainerCreator<ComponentBackedInventorySlot> QIO_DRIVE_SLOT_CREATOR = (type, attachedTo, containerIndex) -> new ComponentBackedInventorySlot(attachedTo,
-            containerIndex, BasicInventorySlot.notExternal, BasicInventorySlot.notExternal, QIODriveSlot.IS_QIO_ITEM);
+            containerIndex, ConstantPredicates.notExternal(), ConstantPredicates.notExternal(), QIODriveSlot.IS_QIO_ITEM);
 
     //QIO Dashboard Crafting WINDOW
     private static final IBasicContainerCreator<ComponentBackedInventorySlot> QIO_DASHBOARD_INPUT_SLOT_CREATOR = (type, attachedTo, containerIndex) -> new ComponentBackedInventorySlot(attachedTo,
-            containerIndex, BasicInventorySlot.notExternal, BasicInventorySlot.alwaysTrueBi, BasicInventorySlot.alwaysTrue);
+            containerIndex, ConstantPredicates.notExternal(), ConstantPredicates.alwaysTrueBi(), ConstantPredicates.alwaysTrue());
     //Note: We don't allow external means to modify this slot as it truthfully only exists to make logic easier
     private static final IBasicContainerCreator<ComponentBackedInventorySlot> QIO_DASHBOARD_OUTPUT_SLOT_CREATOR = (type, attachedTo, containerIndex) -> new ComponentBackedInventorySlot(attachedTo,
-            containerIndex, BasicInventorySlot.internalOnly, BasicInventorySlot.internalOnly, BasicInventorySlot.alwaysTrue);
+            containerIndex, ConstantPredicates.internalOnly(), ConstantPredicates.internalOnly(), ConstantPredicates.alwaysTrue());
 
     //EnergyInventorySlot
     //Note: As energy is untyped we don't have to do extra checks about what is currently stored or not on the attached stack
@@ -141,7 +142,7 @@ public class MSItemSlotsBuilder {
 
     public MSItemSlotsBuilder addBasicFactorySlots(int process, Predicate<ItemStack> recipeInputPredicate, boolean secondaryOutput) {
         IBasicContainerCreator<ComponentBackedInventorySlot> inputSlotCreator = (type, attachedTo, containerIndex) -> new ComponentBackedInventorySlot(attachedTo, containerIndex,
-                BasicInventorySlot.notExternal, BasicInventorySlot.alwaysTrueBi, recipeInputPredicate);
+                ConstantPredicates.notExternal(), ConstantPredicates.alwaysTrueBi(), recipeInputPredicate);
         for (int i = 0; i < process; i++) {
             //Note: We can just get away with using a simple input instead of a factory input slot and skip checking insert based on producing output
             addSlot(inputSlotCreator)
@@ -178,7 +179,7 @@ public class MSItemSlotsBuilder {
                 //Note: We don't currently use internal for extraction anywhere here as we just shrink replace stacks directly
                 (stack, automationType) -> automationType != AutomationType.EXTERNAL || !TileEntityDigitalMiner.isSavedReplaceTarget(attachedTo, stack.getItem()),
                 (stack, automationType) -> automationType != AutomationType.EXTERNAL || TileEntityDigitalMiner.isSavedReplaceTarget(attachedTo, stack.getItem()),
-                BasicInventorySlot.alwaysTrue));
+                ConstantPredicates.alwaysTrue()));
     }
 
     public MSItemSlotsBuilder addFormulaSlot() {
@@ -186,8 +187,8 @@ public class MSItemSlotsBuilder {
     }
 
     public MSItemSlotsBuilder addFormulaCraftingSlot(int count) {
-        return addSlots(count, (type, attachedTo, containerIndex) -> new ComponentBackedInventorySlot(attachedTo, containerIndex, BasicInventorySlot.alwaysTrueBi,
-                (stack, automationType) -> automationType == AutomationType.INTERNAL || !attachedTo.getOrDefault(MekanismDataComponents.AUTO, false), BasicInventorySlot.alwaysFalse));
+        return addSlots(count, (type, attachedTo, containerIndex) -> new ComponentBackedInventorySlot(attachedTo, containerIndex, ConstantPredicates.alwaysTrueBi(),
+                (stack, automationType) -> automationType == AutomationType.INTERNAL || !attachedTo.getOrDefault(MekanismDataComponents.AUTO, false), ConstantPredicates.alwaysFalse()));
     }
 
     public MSItemSlotsBuilder addLockSlot() {
@@ -211,7 +212,7 @@ public class MSItemSlotsBuilder {
     }
 
     public MSItemSlotsBuilder addOredictionificatorInput() {
-        return addSlot((type, attachedTo, containerIndex) -> new ComponentBackedInventorySlot(attachedTo, containerIndex, BasicInventorySlot.notExternal, BasicInventorySlot.alwaysTrueBi,
+        return addSlot((type, attachedTo, containerIndex) -> new ComponentBackedInventorySlot(attachedTo, containerIndex, ConstantPredicates.notExternal(), ConstantPredicates.alwaysTrueBi(),
                 stack -> TileEntityOredictionificator.hasResult(attachedTo.getOrDefault(MekanismDataComponents.FILTER_AWARE, FilterAware.EMPTY).getEnabled(OredictionificatorItemFilter.class), stack)));
     }
 
@@ -232,7 +233,7 @@ public class MSItemSlotsBuilder {
     }
 
     public MSItemSlotsBuilder addInput(Predicate<@NotNull ItemStack> isItemValid) {
-        return addSlot((type, attachedTo, containerIndex) -> new ComponentBackedInventorySlot(attachedTo, containerIndex, BasicInventorySlot.notExternal, BasicInventorySlot.alwaysTrueBi, isItemValid));
+        return addSlot((type, attachedTo, containerIndex) -> new ComponentBackedInventorySlot(attachedTo, containerIndex, ConstantPredicates.notExternal(), ConstantPredicates.alwaysTrueBi(), isItemValid));
     }
 
     public <VANILLA_INPUT extends RecipeInput, RECIPE extends MekanismRecipe<VANILLA_INPUT>, INPUT_CACHE extends IInputRecipeCache> MSItemSlotsBuilder addInput(
@@ -267,12 +268,12 @@ public class MSItemSlotsBuilder {
     }
 
     public MSItemSlotsBuilder addFluidFillSlot(int tankIndex) {
-        return addSlot(((type, attachedTo, containerIndex) -> new ComponentBackedInventorySlot(attachedTo, containerIndex, BasicInventorySlot.manualOnly,
-                (stack, automationType) -> canFluidFill(attachedTo, tankIndex, stack), BasicInventorySlot.alwaysTrue)));
+        return addSlot(((type, attachedTo, containerIndex) -> new ComponentBackedInventorySlot(attachedTo, containerIndex, ConstantPredicates.manualOnly(),
+                (stack, automationType) -> canFluidFill(attachedTo, tankIndex, stack), ConstantPredicates.alwaysTrue())));
     }
 
     public MSItemSlotsBuilder addFluidDrainSlot(int tankIndex) {
-        return addSlot(((type, attachedTo, containerIndex) -> new ComponentBackedInventorySlot(attachedTo, containerIndex, BasicInventorySlot.manualOnly, (stack, automationType) -> {
+        return addSlot(((type, attachedTo, containerIndex) -> new ComponentBackedInventorySlot(attachedTo, containerIndex, ConstantPredicates.manualOnly(), (stack, automationType) -> {
             //Copy of FluidInventorySlot's drain insert predicate
             IFluidHandlerItem itemFluidHandler = FluidInventorySlot.tryGetFluidHandlerUnstacked(stack);
             if (itemFluidHandler != null) {
@@ -286,11 +287,11 @@ public class MSItemSlotsBuilder {
                 return itemFluidHandler.fill(fluidInTank, FluidAction.SIMULATE) > 0;
             }
             return false;
-        }, BasicInventorySlot.alwaysTrue)));
+        }, ConstantPredicates.alwaysTrue())));
     }
 
     public MSItemSlotsBuilder addFluidInputSlot(int tankIndex) {
-        return addSlot(((type, attachedTo, containerIndex) -> new ComponentBackedInventorySlot(attachedTo, containerIndex, BasicInventorySlot.manualOnly, (stack, automationType) -> {
+        return addSlot(((type, attachedTo, containerIndex) -> new ComponentBackedInventorySlot(attachedTo, containerIndex, ConstantPredicates.manualOnly(), (stack, automationType) -> {
             //Copy of FluidInventorySlot#getInputPredicate
             IFluidHandlerItem fluidHandlerItem = FluidInventorySlot.tryGetFluidHandlerUnstacked(stack);
             if (fluidHandlerItem != null) {
@@ -318,11 +319,11 @@ public class MSItemSlotsBuilder {
                 return fluidHandlerItem.fill(fluid, FluidAction.SIMULATE) > 0;
             }
             return false;
-        }, BasicInventorySlot.alwaysTrue)));
+        }, ConstantPredicates.alwaysTrue())));
     }
 
     public MSItemSlotsBuilder addFluidRotarySlot(int tankIndex) {
-        return addSlot(((type, attachedTo, containerIndex) -> new ComponentBackedInventorySlot(attachedTo, containerIndex, BasicInventorySlot.manualOnly, (stack, automationType) -> {
+        return addSlot(((type, attachedTo, containerIndex) -> new ComponentBackedInventorySlot(attachedTo, containerIndex, ConstantPredicates.manualOnly(), (stack, automationType) -> {
             //Copy of FluidInventorySlot's rotary insert predicate
             IFluidHandlerItem fluidHandlerItem = Capabilities.FLUID.getCapability(stack);
             if (fluidHandlerItem != null) {
@@ -348,7 +349,7 @@ public class MSItemSlotsBuilder {
                 return allEmpty && !mode;
             }
             return false;
-        }, BasicInventorySlot.alwaysTrue)));
+        }, ConstantPredicates.alwaysTrue())));
     }
 
     public MSItemSlotsBuilder addFluidFuelSlot(int tankIndex, Predicate<@NotNull ItemStack> hasFuelValue) {
@@ -371,7 +372,7 @@ public class MSItemSlotsBuilder {
             //Always allow extraction if something went horribly wrong, and we are not a fluid item AND we can't provide a valid type of chemical
             // This might happen after a reload for example
             return !hasFuelValue.test(stack);
-        }, (stack, automationType) -> hasFuelValue.test(stack) || canFluidFill(attachedTo, tankIndex, stack), BasicInventorySlot.alwaysTrue)));
+        }, (stack, automationType) -> hasFuelValue.test(stack) || canFluidFill(attachedTo, tankIndex, stack), ConstantPredicates.alwaysTrue())));
     }
 
     private boolean canChemicalDrainInsert(ItemStack attachedTo, int tankIndex, ItemStack stack) {
@@ -512,19 +513,19 @@ public class MSItemSlotsBuilder {
     public MSItemSlotsBuilder addChemicalFillSlot(int tankIndex) {
         return addSlot(((type, attachedTo, containerIndex) -> new ComponentBackedInventorySlot(attachedTo, containerIndex,
                 (stack, automationType) -> automationType == AutomationType.MANUAL || canChemicalFillExtract(attachedTo, tankIndex, stack),
-                (stack, automationType) -> canChemicalFillInsert(attachedTo, tankIndex, stack), BasicInventorySlot.alwaysTrue)));
+                (stack, automationType) -> canChemicalFillInsert(attachedTo, tankIndex, stack), ConstantPredicates.alwaysTrue())));
     }
 
     public MSItemSlotsBuilder addChemicalFillOrConvertSlot(int tankIndex) {
         return addSlot(((type, attachedTo, containerIndex) -> new ComponentBackedInventorySlot(attachedTo, containerIndex,
                 (stack, automationType) -> automationType == AutomationType.MANUAL || canChemicalFillOrConvertExtract(attachedTo, tankIndex, stack),
-                (stack, automationType) -> canChemicalFillOrConvertInsert(attachedTo, tankIndex, stack), BasicInventorySlot.alwaysTrue)));
+                (stack, automationType) -> canChemicalFillOrConvertInsert(attachedTo, tankIndex, stack), ConstantPredicates.alwaysTrue())));
     }
 
     public MSItemSlotsBuilder addChemicalDrainSlot(int tankIndex) {
         return addSlot(((type, attachedTo, containerIndex) -> new ComponentBackedInventorySlot(attachedTo, containerIndex,
                 (stack, automationType) -> automationType == AutomationType.MANUAL || !canChemicalDrainInsert(attachedTo, tankIndex, stack),
-                (stack, automationType) -> canChemicalDrainInsert(attachedTo, tankIndex, stack), BasicInventorySlot.alwaysTrue)));
+                (stack, automationType) -> canChemicalDrainInsert(attachedTo, tankIndex, stack), ConstantPredicates.alwaysTrue())));
     }
 
     public MSItemSlotsBuilder addChemicalRotaryDrainSlot(int tankIndex) {
@@ -540,7 +541,7 @@ public class MSItemSlotsBuilder {
                 },
                 (stack, automationType) -> attachedTo.getOrDefault(MekanismDataComponents.ROTARY_MODE, false) &&
                         canChemicalDrainInsert(attachedTo, tankIndex, stack),
-                BasicInventorySlot.alwaysTrue)));
+                ConstantPredicates.alwaysTrue())));
     }
 
     public MSItemSlotsBuilder addChemicalRotaryFillSlot(int tankIndex) {
@@ -549,13 +550,13 @@ public class MSItemSlotsBuilder {
                 (stack, automationType) -> automationType == AutomationType.MANUAL || canChemicalFillExtract(attachedTo, tankIndex, stack),
                 (stack, automationType) -> !attachedTo.getOrDefault(MekanismDataComponents.ROTARY_MODE, false) &&
                         canChemicalFillInsert(attachedTo, tankIndex, stack),
-                BasicInventorySlot.alwaysTrue)));
+                ConstantPredicates.alwaysTrue())));
     }
 
     public MSItemSlotsBuilder addInfusionFillOrConvertSlot(int tankIndex) {
         return addSlot(((type, attachedTo, containerIndex) -> new ComponentBackedInventorySlot(attachedTo, containerIndex,
                 (stack, automationType) -> automationType == AutomationType.MANUAL || canChemicalFillOrConvertExtract(attachedTo, tankIndex, stack),
-                (stack, automationType) -> canChemicalFillOrConvertInsert(attachedTo, tankIndex, stack), BasicInventorySlot.alwaysTrue)));
+                (stack, automationType) -> canChemicalFillOrConvertInsert(attachedTo, tankIndex, stack), ConstantPredicates.alwaysTrue())));
     }
 
     private static class BaseInventorySlotCreator extends BaseContainerCreator<AttachedItems, ComponentBackedInventorySlot> {

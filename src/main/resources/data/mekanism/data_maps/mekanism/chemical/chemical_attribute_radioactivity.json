@@ -1,0 +1,17 @@
+{
+  "values":
+  {
+    "mekanismscience:americium":
+    {
+      "radioactivity":0.05
+    },
+    "mekanismscience:californium":
+    {
+      "radioactivity":0.1
+    },
+    "mekanismscience:curium":
+    {
+      "radioactivity":0.07
+    }
+  }
+}

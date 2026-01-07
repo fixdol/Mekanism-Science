@@ -7,9 +7,11 @@ import mekanism.api.chemical.Chemical;
 import mekanism.api.chemical.ChemicalStack;
 import mekanism.api.recipes.ItemStackToChemicalRecipe;
 import mekanism.api.recipes.ItemStackToFluidOptionalItemRecipe;
+import mekanism.api.recipes.basic.BasicItemStackToFluidOptionalItemRecipe;
 import mekanism.api.recipes.ingredients.ChemicalStackIngredient;
 import mekanism.client.gui.element.bar.GuiBar;
 import mekanism.client.gui.element.progress.IProgressInfoHandler;
+import mekanism.client.recipe_viewer.RecipeViewerUtils;
 import mekanism.common.Mekanism;
 import mekanism.common.MekanismLang;
 import mekanism.common.recipe.MekanismRecipeType;
@@ -18,9 +20,11 @@ import mekanism.common.tile.machine.TileEntityNutritionalLiquifier;
 import mekanism.common.util.ChemicalUtil;
 import mekanism.common.util.RegistryUtils;
 import net.minecraft.SharedConstants;
+import net.minecraft.core.Holder;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.TimeUtil;
@@ -89,15 +93,17 @@ public class MSRecipeViewerUtils {
     }
 
     public static List<ItemStack> getStacksFor(ChemicalStackIngredient ingredient, boolean displayConversions) {
-        Set<Chemical> chemicals = ingredient.getRepresentations().stream().map(ChemicalStack::getChemical).collect(Collectors.toSet());
+        Set<Holder<Chemical>> chemicals = ingredient.getRepresentations().stream().map(ChemicalStack::getChemicalHolder).collect(Collectors.toSet());
         return getStacksFor(chemicals, displayConversions ? MSRecipeType.CHEMICAL_CONVERSION : null);
     }
 
-    private static List<ItemStack> getStacksFor(Set<Chemical> supportedTypes, @Nullable IMSRecipeTypeProvider<?, ? extends ItemStackToChemicalRecipe, ?> recipeType) {
+    private static List<ItemStack> getStacksFor(Set<Holder<Chemical>> supportedTypes, @Nullable IMSRecipeTypeProvider<?, ? extends ItemStackToChemicalRecipe, ?> recipeType) {
         List<ItemStack> stacks = new ArrayList<>();
-        for (Chemical type : supportedTypes) {
+        //Always include the chemical tank of the type to portray that we accept items
+        for (Holder<Chemical> type : supportedTypes) {
             stacks.add(ChemicalUtil.getFullChemicalTank(ChemicalTankTier.BASIC, type));
         }
+        //See if there are any chemical to item mappings
         if (recipeType != null) {
             for (RecipeHolder<? extends ItemStackToChemicalRecipe> recipeHolder : recipeType.getRecipes(null)) {
                 ItemStackToChemicalRecipe recipe = recipeHolder.value();
@@ -112,17 +118,17 @@ public class MSRecipeViewerUtils {
         return stacks;
     }
 
-    public static Map<ResourceLocation, ItemStackToFluidOptionalItemRecipe> getLiquificationRecipes() {
-        Map<ResourceLocation, ItemStackToFluidOptionalItemRecipe> liquification = new HashMap<>();
+    public static Map<ResourceLocation, BasicItemStackToFluidOptionalItemRecipe> getLiquificationRecipes() {
+        Map<ResourceLocation, BasicItemStackToFluidOptionalItemRecipe> liquification = new HashMap<>();
         //TODO: Do we want to loop creative tabs or something instead?
         // In theory recipe loaders should init the creative tabs before we are called so we wouldn't need to call
         // CreativeModeTab#buildContents, and in theory we only need to care about things in search so could use:
         // CreativeModeTabs.searchTab().getDisplayItems(). The bigger issue is how to come up with unique synthetic
         // names for the recipes as EMI requires they be unique. (Maybe index them?)
-        for (Item item : BuiltInRegistries.ITEM) {
-            ItemStackToFluidOptionalItemRecipe recipe = TileEntityNutritionalLiquifier.getRecipe(item.getDefaultInstance());
+        for (Map.Entry<ResourceKey<Item>, Item> entry : BuiltInRegistries.ITEM.entrySet()) {
+            BasicItemStackToFluidOptionalItemRecipe recipe = TileEntityNutritionalLiquifier.getRecipe(entry.getValue().getDefaultInstance());
             if (recipe != null) {
-                liquification.put(MSRecipeViewerUtils.synthetic(RegistryUtils.getName(item), "liquification", Mekanism.MODID), recipe);
+                liquification.put(RecipeViewerUtils.synthetic(entry.getKey().location(), "liquification", Mekanism.MODID), recipe);
             }
         }
         return liquification;
