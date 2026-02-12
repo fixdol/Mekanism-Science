@@ -3,7 +3,7 @@
   "input":
   {
     "amount":1000,
-    "chemical":"mekanismscience:yttrium"
+    "chemical":"mekanismelements:yttrium"
   },
   "output":
   {

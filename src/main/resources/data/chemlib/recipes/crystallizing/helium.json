@@ -3,7 +3,7 @@
   "input":
   {
     "amount":1000,
-    "chemical":"mekanismscience:helium"
+    "chemical":"mekanismelements:helium"
   },
   "output":
   {

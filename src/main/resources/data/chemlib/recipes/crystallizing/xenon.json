@@ -3,7 +3,7 @@
   "input":
   {
     "amount":1000,
-    "chemical":"mekanismscience:xenon"
+    "chemical":"mekanismelements:xenon"
   },
   "output":
   {

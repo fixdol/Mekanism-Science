@@ -3,7 +3,7 @@
   "input":
   {
     "amount":1000,
-    "chemical":"mekanismscience:nitric_oxide"
+    "chemical":"mekanismelements:nitric_oxide"
   },
   "output":
   {

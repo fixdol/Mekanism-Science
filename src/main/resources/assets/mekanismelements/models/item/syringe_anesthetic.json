@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "mekanismelements:item/syringe_anesthetic_0"
+  },
+  "overrides": [
+    { "predicate": { "mekanismscience:use_count": 1 }, "model": "mekanismscience:item/syringe_anesthetic_1" },
+    { "predicate": { "mekanismscience:use_count": 2 }, "model": "mekanismscience:item/syringe_anesthetic_2" },
+    { "predicate": { "mekanismscience:use_count": 3 }, "model": "mekanismscience:item/syringe_anesthetic_3" },
+    { "predicate": { "mekanismscience:use_count": 4 }, "model": "mekanismscience:item/syringe_anesthetic_4" }
+  ]
+}
