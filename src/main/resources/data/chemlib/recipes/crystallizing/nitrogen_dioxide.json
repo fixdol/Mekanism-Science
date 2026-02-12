@@ -3,7 +3,7 @@
   "input":
   {
     "amount":1000,
-    "chemical":"mekanismscience:nitrogen_dioxide"
+    "chemical":"mekanismelements:nitrogen_dioxide"
   },
   "output":
   {

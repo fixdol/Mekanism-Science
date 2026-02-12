@@ -3,7 +3,7 @@
   "input":
   {
     "amount":1000,
-    "chemical":"mekanismscience:bromine"
+    "chemical":"mekanismelements:bromine"
   },
   "output":
   {

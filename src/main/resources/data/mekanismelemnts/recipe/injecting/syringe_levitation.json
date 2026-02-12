@@ -1,0 +1,19 @@
+{
+  "type":"mekanism:injecting",
+  "chemical_input":
+  {
+    "amount":1,
+    "chemical":"mekanismelements:helium"
+  },
+  "item_input":
+  {
+    "count": 1,
+    "item":"mekanismscience:syringe"
+  },
+  "output":
+  {
+    "count": 1,
+    "id":"mekanismelements:syringe_levitation"
+  },
+  "per_tick_usage":true
+}

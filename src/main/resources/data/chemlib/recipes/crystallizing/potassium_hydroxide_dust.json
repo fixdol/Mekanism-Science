@@ -3,7 +3,7 @@
   "input":
   {
     "amount":1000,
-    "chemical":"mekanismscience:potassium_hydroxide"
+    "chemical":"mekanismelements:potassium_hydroxide"
   },
   "output":
   {

@@ -3,7 +3,7 @@
   "input":
   {
     "amount":1000,
-    "chemical":"mekanismscience:potassium_chloride"
+    "chemical":"mekanismelements:potassium_chloride"
   },
   "output":
   {
