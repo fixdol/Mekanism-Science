@@ -1,18 +1,15 @@
 {
-  "type":"mekanism:chemical_infusing",
-  "leftInput":
-  {
-    "amount":1,
-    "chemical":"mekanismelements:ammonia"
+  "type": "mekanism:chemical_infusing",
+  "output": {
+    "amount": 1,
+    "id": "mekanismelements:hydrogen_cyanide"
   },
-  "output":
-  {
-    "amount":1,
-    "id":"mekanismelements:hydrogen_cyanide"
+  "left_input": {
+    "amount": 1,
+    "chemical": "mekanismelements:ammonia"
   },
-  "rightInput":
-  {
-    "amount":1,
-    "chemical":"mekanismelements:methane"
+  "right_input": {
+    "amount": 1,
+    "chemical": "mekanismelements:methane"
   }
 }

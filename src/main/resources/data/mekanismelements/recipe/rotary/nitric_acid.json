@@ -1,19 +1,19 @@
 {
   "type": "mekanism:rotary",
   "fluid_input": {
-    "fluid": "mekanismscience:nitric_acid",
+    "amount": 1,
+    "fluid": "mekanismelements:nitric_acid"
+  },
+  "chemical_output": {
+    "id": "mekanismelements:nitric_acid",
     "amount": 1
   },
-  "gasOutput": {
-    "gas": "mekanismscience:nitric_acid",
-    "amount": 1
+  "chemical_input": {
+    "amount": 1,
+    "chemical": "mekanismelements:nitric_acid"
   },
-  "gasInput": {
-    "gas": "mekanismscience:nitric_acid",
-    "amount": 1
-  },
-  "fluidOutput": {
-    "fluid": "mekanismscience:nitric_acid",
+  "fluid_output": {
+    "id": "mekanismelements:nitric_acid",
     "amount": 1
   }
 }

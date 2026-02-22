@@ -1,21 +1,14 @@
 {
-  "type":"mekanismscience:adsorption",
-  "gasInput":
-  {
-    "amount":1,
-    "gas":"mekanismscience:compressed_air"
+  "type": "mekanismelements:adsorption",
+  "fluid_input": {
+    "amount": 50,
+    "fluid": "mekanismelements:compressed_air"
   },
-  "itemInput":
-  {
-    "ingredient":
-    {
-      "tag":"forge:dusts/charcoal"
-    }
+  "item_input": {
+    "tag": "c:dusts/charcoal"
   },
-  "output":
-  {
-    "amount":80,
-    "chemicalType":"gas",
-    "gas":"mekanismscience:nitrogen"
+  "output": {
+    "amount": 800,
+    "id": "mekanismelements:nitrogen"
   }
 }

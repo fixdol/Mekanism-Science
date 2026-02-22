@@ -1,19 +1,19 @@
 {
-"type": "mekanism:rotary",
+  "type": "mekanism:rotary",
   "fluid_input": {
-"fluid": "mekanismscience:ammonium_nitrate",
-"amount": 1
-},
-"gasOutput": {
-"gas": "mekanismscience:ammonium_nitrate",
-"amount": 1
-},
-"gasInput": {
-"gas": "mekanismscience:ammonium_nitrate",
-"amount": 1
-},
-"fluidOutput": {
-"fluid": "mekanismscience:ammonium_nitrate",
-"amount": 1
-}
+    "amount": 1,
+    "fluid": "mekanismelements:ammonium_nitrate"
+  },
+  "chemical_output": {
+    "id": "mekanismelements:ammonium_nitrate",
+    "amount": 1
+  },
+  "chemical_input": {
+    "amount": 1,
+    "chemical": "mekanismelements:ammonium_nitrate"
+  },
+  "fluid_output": {
+    "id": "mekanismelements:ammonium_nitrate",
+    "amount": 1
+  }
 }

@@ -1,18 +1,15 @@
 {
-  "type":"mekanism:chemical_infusing",
-  "leftInput":
-  {
-    "amount":10,
-    "chemical":"mekanismelements:seawater"
+  "type": "mekanism:chemical_infusing",
+  "output": {
+    "amount": 1,
+    "id": "mekanismelements:bromine"
   },
-  "output":
-  {
-    "amount":1,
-    "chemical":"mekanismelements:bromine"
+  "left_input": {
+    "amount": 10,
+    "chemical": "mekanismelements:seawater"
   },
-  "rightInput":
-  {
-    "amount":10,
-    "chemical":"mekanism:chlorine"
+  "right_input": {
+    "amount": 10,
+    "chemical": "mekanism:chlorine"
   }
 }

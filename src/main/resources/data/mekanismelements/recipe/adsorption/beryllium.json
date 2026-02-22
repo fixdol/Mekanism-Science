@@ -1,20 +1,14 @@
 {
-  "type":"mekanismscience:adsorption",
-  "chemical_input":
-  {
-    "amount":4,
-    "chemical":"mekanismelements:seawater"
+  "type": "mekanismelements:adsorption",
+  "fluid_input": {
+    "amount": 50,
+    "fluid": "mekanismelements:seawater"
   },
-  "item_input":
-  {
-    "ingredient":
-    {
-      "item":"mekanismscience:high_performance_adsorbent_beryllium"
-    }
+  "item_input": {
+    "item": "mekanismelements:high_performance_adsorbent_beryllium"
   },
-  "output":
-  {
-    "amount":1,
-    "chemical":"mekanismelements:beryllium"
+  "output": {
+    "amount": 400,
+    "id": "mekanismelements:beryllium"
   }
 }

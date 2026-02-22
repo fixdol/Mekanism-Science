@@ -24,3 +24,4 @@ public class LevitationSyringe extends DrugSyringe{
         return 0;
     }
 }
+

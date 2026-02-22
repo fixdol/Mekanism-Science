@@ -1,23 +1,37 @@
 package com.fxd927.mekanismelements.common.registration.impl;
 
+import com.fxd927.mekanismelements.common.recipe.IMSRecipeTypeProvider;
 import com.fxd927.mekanismelements.common.recipe.MSRecipeType;
 import mekanism.api.recipes.MekanismRecipe;
 import mekanism.common.recipe.lookup.cache.IInputRecipeCache;
 import mekanism.common.registration.MekanismDeferredRegister;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.crafting.RecipeInput;
+import mekanism.common.registration.MekanismDeferredHolder;
 import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
 
-import java.util.function.Function;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.function.Supplier;
 
 public class MSRecipeTypeDeferredRegister extends MekanismDeferredRegister<RecipeType<?>> {
+    private final List<IMSRecipeTypeProvider<?, ?>> recipeTypes = new ArrayList<>();
+
     public MSRecipeTypeDeferredRegister(String modid) {
-        super(Registries.RECIPE_TYPE, modid, MSRecipeTypeRegistryObject::new);
+        super(Registries.RECIPE_TYPE, modid);
     }
 
-    public <VANILLA_INPUT extends RecipeInput, RECIPE extends MekanismRecipe<VANILLA_INPUT>, INPUT_CACHE extends IInputRecipeCache>
-    MSRecipeTypeRegistryObject<VANILLA_INPUT, RECIPE, INPUT_CACHE> registerMek(String name, Function<ResourceLocation, ? extends MSRecipeType<VANILLA_INPUT, RECIPE, INPUT_CACHE>> func) {
-        return (MSRecipeTypeRegistryObject<VANILLA_INPUT, RECIPE, INPUT_CACHE>) super.register(name, func);
+    public <RECIPE extends MekanismRecipe<?>, MS_INPUT_CACHE extends IInputRecipeCache> MSRecipeTypeRegistryObject<RECIPE, MS_INPUT_CACHE> registerRecipeType(String name,
+                                                                                                                                              Supplier<? extends MSRecipeType<RECIPE, MS_INPUT_CACHE>> sup) {
+        MekanismDeferredHolder<RecipeType<?>, MSRecipeType<RECIPE, MS_INPUT_CACHE>> holder = register(name, () -> sup.get());
+        MSRecipeTypeRegistryObject<RECIPE, MS_INPUT_CACHE> registeredRecipeType = new MSRecipeTypeRegistryObject<>(holder);
+        recipeTypes.add(registeredRecipeType);
+        return registeredRecipeType;
+    }
+
+    public List<IMSRecipeTypeProvider<?, ?>> getAllRecipeTypes() {
+        return Collections.unmodifiableList(recipeTypes);
     }
 }
+

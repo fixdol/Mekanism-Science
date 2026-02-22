@@ -1,19 +1,13 @@
 {
-  "type":"mekanism:painting",
-  "chemical_input":
-  {
-    "amount":256,
-    "chemical":"mekanism:dark_red"
+  "type": "mekanism:painting",
+  "chemical_input": {
+    "amount": 256,
+    "pigment": "mekanism:dark_red"
   },
-  "item_input":
-  {
-    "ingredient":
-    {
-      "item":"mekanismscience:powder_high_quality_concrete"
-    }
+  "item_input": {
+    "item": "mekanismelements:powder_high_quality_concrete"
   },
-  "output":
-  {
-    "item":"mekanismscience:powder_high_quality_concrete_dark_red"
+  "output": {
+    "id": "mekanismelements:powder_high_quality_concrete_dark_red"
   }
 }

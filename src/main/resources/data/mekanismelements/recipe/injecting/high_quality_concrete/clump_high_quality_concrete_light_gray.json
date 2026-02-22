@@ -1,19 +1,14 @@
 {
-  "type":"mekanism:injecting",
-  "chemical_input":
-  {
-    "amount":1,
-    "tag":"mekanism:water_vapor"
+  "type": "mekanism:injecting",
+  "chemical_input": {
+    "amount": 1,
+    "chemical": "mekanism:water_vapor"
   },
-  "item_input":
-  {
-    "count":1,
-    "item":"mekanismscience:powder_high_quality_concrete_light_gray"
+  "item_input": {
+    "item": "mekanismelements:powder_high_quality_concrete_light_gray"
   },
-  "output":
-  {
-    "count":1,
-    "id":"mekanismelements:clump_high_quality_concrete_light_gray"
+  "output": {
+    "id": "mekanismelements:clump_high_quality_concrete_light_gray"
   },
-  "per_tick_usage":true
+  "per_tick_usage": false
 }

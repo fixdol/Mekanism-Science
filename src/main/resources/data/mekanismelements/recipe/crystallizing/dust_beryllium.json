@@ -1,12 +1,10 @@
 {
-  "type":"mekanism:crystallizing",
-  "input":
-  {
-    "amount":1000,
-    "chemical":"mekanismelements:beryllium"
+  "type": "mekanism:crystallizing",
+  "input": {
+    "amount": 1000,
+    "chemical": "mekanismelements:beryllium"
   },
-  "output":
-  {
-    "id":"mekanismelements:dust_beryllium"
+  "output": {
+    "id": "mekanismelements:dust_beryllium"
   }
 }

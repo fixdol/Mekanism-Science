@@ -1,21 +1,14 @@
 {
-  "type":"mekanismscience:adsorption",
-  "gasInput":
-  {
-    "amount":4,
-    "gas":"mekanismscience:seawater"
+  "type": "mekanismelements:adsorption",
+  "fluid_input": {
+    "amount": 50,
+    "fluid": "mekanismelements:seawater"
   },
-  "itemInput":
-  {
-    "ingredient":
-    {
-      "item":"mekanismscience:high_performance_adsorbent_gold"
-    }
+  "item_input": {
+    "item": "mekanismelements:high_performance_adsorbent_gold"
   },
-  "output":
-  {
-    "amount":5,
-    "chemicalType":"slurry",
-    "slurry":"mekanism:dirty_gold"
+  "output": {
+    "amount": 400,
+    "id": "mekanism:dirty_gold"
   }
 }

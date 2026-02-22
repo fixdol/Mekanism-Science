@@ -1,13 +1,11 @@
 {
-  "type":"mekanism:activating",
-  "input":
-  {
-    "amount":2,
-    "chemical":"mekanism:uranium_hexafluoride"
+  "type": "mekanism:activating",
+  "input": {
+    "id": "mekanism:uranium_hexafluoride",
+    "amount": 2
   },
-  "output":
-  {
-    "amount":1,
-    "id":"mekanismelements:strontium"
+  "output": {
+    "id": "mekanismelements:strontium",
+    "amount": 1
   }
 }

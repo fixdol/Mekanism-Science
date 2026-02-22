@@ -5,12 +5,10 @@
     "chemical": "mekanism:sulfuric_acid"
   },
   "item_input": {
-    "count": 1,
     "tag": "c:ores/emerald"
   },
   "output": {
     "amount": 1000,
-    "id": "mekanismscience:beryllium"
-  },
-  "per_tick_usage": true
+    "id": "mekanismelements:beryllium"
+  }
 }

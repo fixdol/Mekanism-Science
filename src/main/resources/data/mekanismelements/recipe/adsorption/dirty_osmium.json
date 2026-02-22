@@ -1,21 +1,14 @@
 {
-  "type":"mekanismscience:adsorption",
-  "gasInput":
-  {
-    "amount":4,
-    "gas":"mekanismscience:seawater"
+  "type": "mekanismelements:adsorption",
+  "fluid_input": {
+    "amount": 50,
+    "fluid": "mekanismelements:seawater"
   },
-  "itemInput":
-  {
-    "ingredient":
-    {
-      "item":"mekanismscience:high_performance_adsorbent_osmium"
-    }
+  "item_input": {
+    "item": "mekanismelements:high_performance_adsorbent_osmium"
   },
-  "output":
-  {
-    "amount":5,
-    "chemicalType":"slurry",
-    "slurry":"mekanism:dirty_osmium"
+  "output": {
+    "amount": 400,
+    "id": "mekanism:dirty_osmium"
   }
 }
