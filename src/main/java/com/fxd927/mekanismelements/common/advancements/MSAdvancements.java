@@ -1,7 +1,6 @@
 package com.fxd927.mekanismelements.common.advancements;
 
 import com.fxd927.mekanismelements.common.MekanismElements;
-import mekanism.common.Mekanism;
 import mekanism.common.advancements.MekanismAdvancement;
 import org.jetbrains.annotations.Nullable;
 
@@ -20,3 +19,4 @@ public class MSAdvancements {
     private MSAdvancements(){
     }
 }
+

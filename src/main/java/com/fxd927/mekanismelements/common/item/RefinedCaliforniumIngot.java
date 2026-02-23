@@ -9,7 +9,7 @@ import net.minecraft.world.item.ItemStack;
 public class RefinedCaliforniumIngot extends Item {
     protected EnumColor color;
 
-    public RefinedCaliforniumIngot(Properties properties, EnumColor color) {
+    public RefinedCaliforniumIngot(Item.Properties properties, EnumColor color) {
         super(properties);
         this.color = color;
     }
@@ -24,4 +24,5 @@ public class RefinedCaliforniumIngot extends Item {
         return TextComponentUtil.build(this.color, super.getName(stack));
     }
 }
+
 

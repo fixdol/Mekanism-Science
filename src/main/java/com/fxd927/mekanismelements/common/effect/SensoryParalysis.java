@@ -9,26 +9,15 @@ import net.neoforged.neoforge.common.NeoForge;
 public class SensoryParalysis extends MobEffect {
     public SensoryParalysis(MobEffectCategory mobEffectCategory, int color) {
         super(mobEffectCategory, color);
-        //NeoForge.EVENT_BUS.register(this);
+        // Events should be registered via addListener() if needed, not via register(this)
     }
 
-    //@Override
-    //public void applyEffectTick(LivingEntity entity, int amplifier) {
-        //if (!entity.isInvulnerable()) {
-            //entity.setInvulnerable(true);
-        //}
-    //}
-
-    //@Override
-    //public void removeAttributeModifiers(LivingEntity entity, AttributeMap attributeMap, int amplifier) {
-        //super.removeAttributeModifiers(entity, attributeMap, amplifier);
-        //if (entity.isInvulnerable()) {
-            //entity.setInvulnerable(false);
-        //}
-    //}
-
-    //@Override
-    //public boolean isDurationEffectTick(int duration, int amplifier) {
-        //return true;
-    //}
+    // applyEffectTick replaced with tick() in 1.21.1
+    public boolean tick(LivingEntity entity, int amplifier) {
+        if (!entity.isInvulnerable()) {
+            entity.setInvulnerable(true);
+        }
+        return true;
+    }
 }
+

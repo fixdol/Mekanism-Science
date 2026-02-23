@@ -4,29 +4,32 @@ import com.fxd927.mekanismelements.common.recipe.IMSRecipeTypeProvider;
 import mekanism.api.IContentsListener;
 import mekanism.api.recipes.MekanismRecipe;
 import mekanism.api.recipes.cache.CachedRecipe;
-import mekanism.client.recipe_viewer.type.IRecipeViewerRecipeType;
 import mekanism.common.recipe.lookup.cache.IInputRecipeCache;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public interface IMSRecipeLookupHandler<RECIPE extends MekanismRecipe<?>> extends IContentsListener{
+public interface IMSRecipeLookupHandler <RECIPE extends MekanismRecipe<?>> extends IContentsListener {
     /**
      * @return The world for this {@link IMSRecipeLookupHandler}.
      */
     @Nullable
-    Level getLevel();
+    default Level getHandlerWorld() {
+        if (this instanceof BlockEntity tile) {
+            return tile.getLevel();
+        } else if (this instanceof Entity entity) {
+            return entity.level();
+        }
+        return null;
+    }
 
     /**
      * @return The recipe type this {@link IMSRecipeLookupHandler} handles.
      */
     @NotNull
-    IMSRecipeTypeProvider<?, RECIPE, ?> getMSRecipeType();
-
-    @Nullable
-    default IRecipeViewerRecipeType<RECIPE> recipeViewerType() {
-        return null;
-    }
+    IMSRecipeTypeProvider<RECIPE, ?> getMSRecipeType();
 
     /**
      * Returns how many operating ticks were saved for purposes of persisting through saves how far a cached recipe is through processing.
@@ -79,7 +82,7 @@ public interface IMSRecipeLookupHandler<RECIPE extends MekanismRecipe<?>> extend
     }
 
     /**
-     * Helper class that specifies the input cache's type for the recipe type. The reason it isn't defined in the main {@link IMSRecipeLookupHandler} is it isn't needed and
+     * Helper class that specifies the input cache's type for the recipe type. The reason it isn't defined in the main {@link IMSRecipeTypeProvider} is it isn't needed and
      * would just make the class definitions a lot messier with very long generics that can be folded away into the helper interfaces we use anyway ofr actual lookup
      * purposes.
      */
@@ -87,7 +90,7 @@ public interface IMSRecipeLookupHandler<RECIPE extends MekanismRecipe<?>> extend
 
         @NotNull
         @Override
-        IMSRecipeTypeProvider<?, RECIPE, INPUT_CACHE> getMSRecipeType();
+        IMSRecipeTypeProvider<RECIPE, INPUT_CACHE> getMSRecipeType();
     }
 
     interface ConstantUsageRecipeLookupHandler {
@@ -103,4 +106,6 @@ public interface IMSRecipeLookupHandler<RECIPE extends MekanismRecipe<?>> extend
             return 0;
         }
     }
+
 }
+

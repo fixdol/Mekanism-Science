@@ -20,20 +20,20 @@ public class MSItems {
     public static final ItemRegistryObject<Item> ANESTHETIC_SYRINGE;
     public static final ItemRegistryObject<Item> FLAME_RETARDANT_SYRINGE;
     public static final ItemRegistryObject<Item> LEVITATION_SYRINGE;
-    //public static final ItemRegistryObject<Item> HIGH_PERFORMANCE_ADSORBENT;
-    //public static final ItemRegistryObject<Item> HIGH_PERFORMANCE_ADSORBENT_BERYLLIUM;
-    //public static final ItemRegistryObject<Item> HIGH_PERFORMANCE_ADSORBENT_COPPER;
-    //public static final ItemRegistryObject<Item> HIGH_PERFORMANCE_ADSORBENT_GOLD;
-    //public static final ItemRegistryObject<Item> HIGH_PERFORMANCE_ADSORBENT_IRON;
-    //public static final ItemRegistryObject<Item> HIGH_PERFORMANCE_ADSORBENT_LEAD;
-    //public static final ItemRegistryObject<Item> HIGH_PERFORMANCE_ADSORBENT_OSMIUM;
-    //public static final ItemRegistryObject<Item> HIGH_PERFORMANCE_ADSORBENT_TIN;
-    //public static final ItemRegistryObject<Item> HIGH_PERFORMANCE_ADSORBENT_URANIUM;
+    public static final ItemRegistryObject<Item> HIGH_PERFORMANCE_ADSORBENT;
+    public static final ItemRegistryObject<Item> HIGH_PERFORMANCE_ADSORBENT_BERYLLIUM;
+    public static final ItemRegistryObject<Item> HIGH_PERFORMANCE_ADSORBENT_COPPER;
+    public static final ItemRegistryObject<Item> HIGH_PERFORMANCE_ADSORBENT_GOLD;
+    public static final ItemRegistryObject<Item> HIGH_PERFORMANCE_ADSORBENT_IRON;
+    public static final ItemRegistryObject<Item> HIGH_PERFORMANCE_ADSORBENT_LEAD;
+    public static final ItemRegistryObject<Item> HIGH_PERFORMANCE_ADSORBENT_OSMIUM;
+    public static final ItemRegistryObject<Item> HIGH_PERFORMANCE_ADSORBENT_TIN;
+    public static final ItemRegistryObject<Item> HIGH_PERFORMANCE_ADSORBENT_URANIUM;
 
     public static final ItemRegistryObject<Item> NEUTRON_SOURCE_PELLET;
-    //public static final ItemRegistryObject<Item> DUST_BERYLLIUM;
+    public static final ItemRegistryObject<Item> DUST_BERYLLIUM;
     public static final ItemRegistryObject<Item> DUST_CALCIUM_OXIDE;
-    //public static final ItemRegistryObject<Item> INGOT_BERYLLIUM;
+    public static final ItemRegistryObject<Item> INGOT_BERYLLIUM;
     //public static final ItemRegistryObject<Item> DUST_YTTRIUM = ITEMS.register("dust_yttrium");
     //public static final ItemRegistryObject<Item> UNSTABLE_CALIFORNIUM_MIXTURE;
     //public static final ItemRegistryObject<Item> REFINED_CALIFORNIUM_INGOT;
@@ -87,24 +87,24 @@ public class MSItems {
         ANESTHETIC_SYRINGE = ITEMS.register("syringe_anesthetic", () -> new AnestheticSyringe(new Item.Properties()));
         FLAME_RETARDANT_SYRINGE = ITEMS.register("syringe_flame_retardant", () -> new FlameRetardantSyringe(new Item.Properties()));
         LEVITATION_SYRINGE = ITEMS.register("syringe_levitation", () -> new LevitationSyringe(new Item.Properties()));
-        //HIGH_PERFORMANCE_ADSORBENT = ITEMS.register("high_performance_adsorbent");
-        //HIGH_PERFORMANCE_ADSORBENT_BERYLLIUM = ITEMS.register("high_performance_adsorbent_beryllium");
-        //HIGH_PERFORMANCE_ADSORBENT_COPPER = ITEMS.register("high_performance_adsorbent_copper");
-        //HIGH_PERFORMANCE_ADSORBENT_GOLD = ITEMS.register("high_performance_adsorbent_gold");
-        //HIGH_PERFORMANCE_ADSORBENT_IRON = ITEMS.register("high_performance_adsorbent_iron");
-        //HIGH_PERFORMANCE_ADSORBENT_LEAD = ITEMS.register("high_performance_adsorbent_lead");
-        //HIGH_PERFORMANCE_ADSORBENT_OSMIUM = ITEMS.register("high_performance_adsorbent_osmium");
-        //HIGH_PERFORMANCE_ADSORBENT_TIN = ITEMS.register("high_performance_adsorbent_tin");
-        //HIGH_PERFORMANCE_ADSORBENT_URANIUM = ITEMS.register("high_performance_adsorbent_uranium");
+        HIGH_PERFORMANCE_ADSORBENT = ITEMS.register("high_performance_adsorbent");
+        HIGH_PERFORMANCE_ADSORBENT_BERYLLIUM = ITEMS.register("high_performance_adsorbent_beryllium");
+        HIGH_PERFORMANCE_ADSORBENT_COPPER = ITEMS.register("high_performance_adsorbent_copper");
+        HIGH_PERFORMANCE_ADSORBENT_GOLD = ITEMS.register("high_performance_adsorbent_gold");
+        HIGH_PERFORMANCE_ADSORBENT_IRON = ITEMS.register("high_performance_adsorbent_iron");
+        HIGH_PERFORMANCE_ADSORBENT_LEAD = ITEMS.register("high_performance_adsorbent_lead");
+        HIGH_PERFORMANCE_ADSORBENT_OSMIUM = ITEMS.register("high_performance_adsorbent_osmium");
+        HIGH_PERFORMANCE_ADSORBENT_TIN = ITEMS.register("high_performance_adsorbent_tin");
+        HIGH_PERFORMANCE_ADSORBENT_URANIUM = ITEMS.register("high_performance_adsorbent_uranium");
         NEUTRON_SOURCE_PELLET = ITEMS.register("pellet_neutron_source", () -> new NeutronSourcePellet(new Item.Properties(), EnumColor.YELLOW));
         DUST_CALCIUM_OXIDE = ITEMS.register("dust_calcium_oxide");
-        //DUST_BERYLLIUM = ITEMS.register("dust_beryllium");
-        //INGOT_BERYLLIUM = ITEMS.register("ingot_beryllium");
+        DUST_BERYLLIUM = ITEMS.register("dust_beryllium");
+        INGOT_BERYLLIUM = ITEMS.register("ingot_beryllium");
         HIGH_QUALITY_CONCRETE_CLUMP = ITEMS.register("clump_high_quality_concrete");
         HIGH_QUALITY_CONCRETE_POWDER = ITEMS.register("powder_high_quality_concrete");
         //UNSTABLE_CALIFORNIUM_MIXTURE = ITEMS.register("unstable_californium_mixture", ()-> new UnstableCaliforniumMixture(new Item.Properties(), EnumColor.ORANGE));
         //REFINED_CALIFORNIUM_INGOT = ITEMS.register("ingot_refined_californium", ()-> new RefinedCaliforniumIngot(new Item.Properties(), EnumColor.ORANGE));
-        TABLET_IODINE = ITEMS.register("tablet_iodine", () -> new IodineTablet(new Item.Properties().food(new FoodProperties.Builder().nutrition(0).saturationModifier(0.0F).alwaysEdible().build())));
+        TABLET_IODINE = ITEMS.register("tablet_iodine", () -> new IodineTablet(new Item.Properties().food(new FoodProperties.Builder().nutrition(0).build())));
 
         HIGH_QUALITY_CONCRETE_CLUMP_AQUA = BUILDING_ITEMS.register("clump_high_quality_concrete_aqua");
         HIGH_QUALITY_CONCRETE_CLUMP_BLACK = BUILDING_ITEMS.register("clump_high_quality_concrete_black");
@@ -147,3 +147,4 @@ public class MSItems {
     private MSItems(){
     }
 }
+

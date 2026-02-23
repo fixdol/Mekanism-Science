@@ -5,25 +5,25 @@ import mekanism.api.recipes.MekanismRecipe;
 import mekanism.api.recipes.ingredients.InputIngredient;
 import mekanism.common.recipe.lookup.cache.IInputRecipeCache;
 import mekanism.common.recipe.lookup.cache.type.IInputCache;
-import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 public abstract class MSAbstractInputRecipeCache<RECIPE extends MekanismRecipe<?>> implements IInputRecipeCache {
-    protected final MSRecipeType<?, RECIPE, ?> recipeType;
+    protected final MSRecipeType<RECIPE, ?> recipeType;
     protected boolean initialized;
 
-    protected MSAbstractInputRecipeCache(MSRecipeType<?, RECIPE, ?> recipeType) {
+    protected MSAbstractInputRecipeCache(MSRecipeType<RECIPE, ?> recipeType) {
         this.recipeType = recipeType;
     }
 
     @Override
     public void clear() {
-        //Mark the cache as no longer being initialized
         initialized = false;
     }
 
@@ -42,7 +42,15 @@ public abstract class MSAbstractInputRecipeCache<RECIPE extends MekanismRecipe<?
      *
      * @param recipes Recipes to build the cache for.
      */
-    protected abstract void initCache(List<RecipeHolder<RECIPE>> recipes);
+    protected abstract void initCache(List<RECIPE> recipes);
+
+    /**
+     * Helper to filter a potentially null collection of recipes by a given predicate.
+     */
+    @Nullable
+    protected RECIPE findFirstRecipe(@Nullable Collection<RECIPE> recipes, Predicate<RECIPE> matchCriteria) {
+        return recipes == null ? null : recipes.stream().filter(matchCriteria).findFirst().orElse(null);
+    }
 
     /**
      * Helper to check if a cache contains a given input, or if not, if the complex recipe fallback set contains a matching recipe.
@@ -50,19 +58,10 @@ public abstract class MSAbstractInputRecipeCache<RECIPE extends MekanismRecipe<?
     protected <INPUT, INGREDIENT extends InputIngredient<INPUT>, CACHE extends IInputCache<INPUT, INGREDIENT, RECIPE>> boolean containsInput(
             @Nullable Level world, INPUT input, Function<RECIPE, INGREDIENT> inputExtractor, CACHE cache, Set<RECIPE> complexRecipes) {
         if (cache.isEmpty(input)) {
-            //Don't allow empty inputs
             return false;
         }
         initCacheIfNeeded(world);
-        if (cache.contains(input)) {
-            return true;
-        }
-        for (RECIPE recipe : complexRecipes) {
-            if (inputExtractor.apply(recipe).testType(input)) {
-                return true;
-            }
-        }
-        return false;
+        return cache.contains(input) || complexRecipes.stream().anyMatch(recipe -> inputExtractor.apply(recipe).testType(input));
     }
 
     /**
@@ -86,17 +85,11 @@ public abstract class MSAbstractInputRecipeCache<RECIPE extends MekanismRecipe<?
         }
         initCacheIfNeeded(world);
         //Note: If cache 1 contains input 1 then we only need to test the type of input 2 as we already know input 1 matches
-        for (RECIPE recipe : cache1.getRecipes(input1)) {
-            if (input2Extractor.apply(recipe).testType(input2)) {
-                return true;
-            }
+        if (cache1.contains(input1, recipe -> input2Extractor.apply(recipe).testType(input2))) {
+            return true;
         }
         //Our quick lookup 1 cache does not contain it, check any recipes where the 1 ingredient was complex
-        for (RECIPE recipe : complexIngredients1) {
-            if (input1Extractor.apply(recipe).testType(input1) && input2Extractor.apply(recipe).testType(input2)) {
-                return true;
-            }
-        }
-        return false;
+        return complexIngredients1.stream().anyMatch(recipe -> input1Extractor.apply(recipe).testType(input1) && input2Extractor.apply(recipe).testType(input2));
     }
 }
+

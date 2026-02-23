@@ -1,10 +1,10 @@
 package com.fxd927.mekanismelements.common.config;
 
 import mekanism.common.config.BaseMekanismConfig;
-import mekanism.common.config.MekanismConfigTranslations;
+import mekanism.common.config.IConfigTranslation;
 import mekanism.common.config.value.CachedLongValue;
-import net.neoforged.fml.config.ModConfig;
 import net.neoforged.neoforge.common.ModConfigSpec;
+import net.neoforged.fml.config.ModConfig;
 
 public class MSUsageConfig extends BaseMekanismConfig {
 
@@ -20,11 +20,11 @@ public class MSUsageConfig extends BaseMekanismConfig {
         ModConfigSpec.Builder builder = new ModConfigSpec.Builder();
         builder.comment("MS Energy Usage Config. This config is synced from server to client.").push("storage");
 
-        airCompressor = CachedLongValue.definePositive(this, builder, MekanismConfigTranslations.ENERGY_USAGE_COMPRESSOR, "airCompressor",100);
-        radiationIrradiator = CachedLongValue.definePositive(this, builder,  MekanismConfigTranslations.ENERGY_USAGE_COMPRESSOR, "radiationIrradiator", 1_000);
-        adsorptionSeparator = CachedLongValue.definePositive(this, builder,  MekanismConfigTranslations.ENERGY_USAGE_COMPRESSOR, "adsorptionTypeSeawaterMetalExtractor", 500);
-        organicLiquidExtractor = CachedLongValue.definePositive(this, builder,  MekanismConfigTranslations.ENERGY_USAGE_COMPRESSOR, "organicLiquidExtractor", 100);
-        seawaterPump = CachedLongValue.definePositive(this, builder,  MekanismConfigTranslations.ENERGY_USAGE_COMPRESSOR, "seawaterPump", 100);
+        airCompressor = CachedLongValue.define(this, builder, new IConfigTranslation.ConfigTranslation("config.mekanismelements.usage.airCompressor", "Air Compressor", "Energy usage per tick (Joules)."), "airCompressor", 100L, 0L, Long.MAX_VALUE);
+        radiationIrradiator = CachedLongValue.define(this, builder, new IConfigTranslation.ConfigTranslation("config.mekanismelements.usage.radiationIrradiator", "Radiation Irradiator", "Energy usage per tick (Joules)."), "radiationIrradiator", 1_000L, 0L, Long.MAX_VALUE);
+        adsorptionSeparator = CachedLongValue.define(this, builder, new IConfigTranslation.ConfigTranslation("config.mekanismelements.usage.adsorptionSeparator", "Adsorption Separator", "Energy usage per tick (Joules)."), "adsorptionSeparator", 500L, 0L, Long.MAX_VALUE);
+        organicLiquidExtractor = CachedLongValue.define(this, builder, new IConfigTranslation.ConfigTranslation("config.mekanismelements.usage.organicLiquidExtractor", "Organic Liquid Extractor", "Energy usage per tick (Joules)."), "organicLiquidExtractor", 100L, 0L, Long.MAX_VALUE);
+        seawaterPump = CachedLongValue.define(this, builder, new IConfigTranslation.ConfigTranslation("config.mekanismelements.usage.seawaterPump", "Seawater Pump", "Energy usage per tick (Joules)."), "seawaterPump", 100L, 0L, Long.MAX_VALUE);
 
         builder.pop();
         configSpec = builder.build();
@@ -36,11 +36,6 @@ public class MSUsageConfig extends BaseMekanismConfig {
     }
 
     @Override
-    public String getTranslation() {
-        return "Usage Config";
-    }
-
-    @Override
     public ModConfigSpec getConfigSpec() {
         return configSpec;
     }
@@ -49,4 +44,10 @@ public class MSUsageConfig extends BaseMekanismConfig {
     public ModConfig.Type getConfigType() {
         return ModConfig.Type.SERVER;
     }
+
+    @Override
+    public String getTranslation() {
+        return "config.mekanismelements.usage";
+    }
 }
+

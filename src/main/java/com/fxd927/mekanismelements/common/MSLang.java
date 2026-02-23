@@ -3,9 +3,6 @@ package com.fxd927.mekanismelements.common;
 import mekanism.api.text.ILangEntry;
 import net.minecraft.Util;
 
-import mekanism.api.text.ILangEntry;
-import net.minecraft.Util;
-
 public enum MSLang implements ILangEntry {
     DESCRIPTION_ADSORPTION_SEPARATOR("description", "adsorption_separator"),
     DESCRIPTION_AIR_COMPRESSOR("description", "air_compressor"),
@@ -13,7 +10,6 @@ public enum MSLang implements ILangEntry {
     ADSORPTION_TYPE_SEAWATER_METAL_EXTRACTOR("description", "adsorption_type_seawater_metal_extractor"),
     DESCRIPTION_ORGANIC_LIQUID_EXTRACTOR("description","organic_liquid_extractor"),
     DESCRIPTION_SEAWATER_PUMP("description", "seawater_pump"),
-    MEKANISM_ELEMENTS("itemGroup." + MekanismElements.MODID),
     MEKANISM_SCIENCE("constants","mod_name"),
     MEKANISM_SCIENCE_BUILDING("constants","building");
 
@@ -32,3 +28,4 @@ public enum MSLang implements ILangEntry {
         return key;
     }
 }
+

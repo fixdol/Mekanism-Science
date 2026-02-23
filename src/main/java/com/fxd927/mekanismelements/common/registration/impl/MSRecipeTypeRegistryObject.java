@@ -5,18 +5,20 @@ import com.fxd927.mekanismelements.common.recipe.MSRecipeType;
 import mekanism.api.recipes.MekanismRecipe;
 import mekanism.common.recipe.lookup.cache.IInputRecipeCache;
 import mekanism.common.registration.MekanismDeferredHolder;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.crafting.RecipeInput;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.RecipeType;
 
-public class MSRecipeTypeRegistryObject <VANILLA_INPUT extends RecipeInput, RECIPE extends MekanismRecipe<VANILLA_INPUT>, INPUT_CACHE extends IInputRecipeCache> extends
-        MekanismDeferredHolder<RecipeType<?>, MSRecipeType<VANILLA_INPUT, RECIPE, INPUT_CACHE>> implements IMSRecipeTypeProvider<VANILLA_INPUT, RECIPE, INPUT_CACHE> {
-    public MSRecipeTypeRegistryObject(ResourceKey<RecipeType<?>> key) {
-        super(key);
+public class MSRecipeTypeRegistryObject <RECIPE extends MekanismRecipe<?>, MS_INPUT_CACHE extends IInputRecipeCache> extends
+        MekanismDeferredHolder<RecipeType<?>, MSRecipeType<RECIPE, MS_INPUT_CACHE>> implements IMSRecipeTypeProvider<RECIPE, MS_INPUT_CACHE> {
+    public MSRecipeTypeRegistryObject(MekanismDeferredHolder<RecipeType<?>, MSRecipeType<RECIPE, MS_INPUT_CACHE>> holder) {
+        super(Registries.RECIPE_TYPE, holder.getId());
     }
 
     @Override
-    public MSRecipeType<VANILLA_INPUT, RECIPE, INPUT_CACHE> getMSRecipeType() {
-        return value();
+    public MSRecipeType<RECIPE, MS_INPUT_CACHE> getMSRecipeType() {
+        return get();
     }
 }
+

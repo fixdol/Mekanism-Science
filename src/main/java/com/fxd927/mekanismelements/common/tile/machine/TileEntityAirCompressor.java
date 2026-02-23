@@ -1,11 +1,16 @@
 package com.fxd927.mekanismelements.common.tile.machine;
 
 import com.fxd927.mekanismelements.common.registries.MSBlocks;
-import com.fxd927.mekanismelements.common.registries.MSChemicals;
-import mekanism.api.*;
-import mekanism.api.chemical.BasicChemicalTank;
+import com.fxd927.mekanismelements.common.registries.MSGases;
+import mekanism.api.Action;
+import mekanism.api.AutomationType;
+import mekanism.api.IContentsListener;
+import mekanism.api.Upgrade;
+import mekanism.api.chemical.Chemical;
 import mekanism.api.chemical.ChemicalStack;
 import mekanism.api.chemical.IChemicalTank;
+import mekanism.api.chemical.BasicChemicalTank;
+import mekanism.common.capabilities.Capabilities;
 import mekanism.common.capabilities.energy.MachineEnergyContainer;
 import mekanism.common.capabilities.holder.chemical.ChemicalTankHelper;
 import mekanism.common.capabilities.holder.chemical.IChemicalTankHolder;
@@ -13,15 +18,22 @@ import mekanism.common.capabilities.holder.energy.EnergyContainerHelper;
 import mekanism.common.capabilities.holder.energy.IEnergyContainerHolder;
 import mekanism.common.capabilities.holder.slot.IInventorySlotHolder;
 import mekanism.common.capabilities.holder.slot.InventorySlotHelper;
+import mekanism.api.chemical.IChemicalHandler;
+import net.neoforged.neoforge.capabilities.BlockCapabilityCache;
 import mekanism.common.integration.computer.SpecialComputerMethodWrapper;
 import mekanism.common.integration.computer.annotation.WrappingComputerMethod;
 import mekanism.common.inventory.container.slot.ContainerSlotType;
 import mekanism.common.inventory.container.slot.SlotOverlay;
 import mekanism.common.inventory.slot.EnergyInventorySlot;
 import mekanism.common.inventory.slot.chemical.ChemicalInventorySlot;
+import mekanism.api.RelativeSide;
 import mekanism.common.lib.transmitter.TransmissionType;
+import mekanism.common.tile.component.TileComponentConfig;
 import mekanism.common.tile.component.TileComponentEjector;
+import mekanism.common.tile.component.config.ConfigInfo;
+import mekanism.common.tile.component.config.DataType;
 import mekanism.common.tile.prefab.TileEntityConfigurableMachine;
+import mekanism.common.util.ChemicalUtil;
 import mekanism.common.util.MekanismUtils;
 import mekanism.common.util.UpgradeUtils;
 import net.minecraft.core.BlockPos;
@@ -32,17 +44,21 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.block.state.BlockState;
-import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
+import javax.annotation.Nonnull;
+import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 
-public class TileEntityAirCompressor extends TileEntityConfigurableMachine implements IConfigurable {
+public class TileEntityAirCompressor extends TileEntityConfigurableMachine {
     private static final int BASE_TICKS_REQUIRED = 19;
-    public static final ChemicalStack COMPRESSED_AIR_STACK = new ChemicalStack(MSChemicals.COMPRESSED_AIR, 200);
+    public static final ChemicalStack COMPRESSED_AIR_STACK = new ChemicalStack((Chemical) MSGases.COMPRESSED_AIR.get(), 200);
 
     @WrappingComputerMethod(wrapper = SpecialComputerMethodWrapper.ComputerChemicalTankWrapper.class, methodNames = {"getGas", "getGasCapacity", "getGasNeeded", "getGasFilledPercentage"}, docPlaceholder = "buffer tank")
-    public IChemicalTank gasTank;
+    public IChemicalTank chemicalTank;
     public int ticksRequired = BASE_TICKS_REQUIRED;
+
     public int operatingTicks;
 
     private MachineEnergyContainer<TileEntityAirCompressor> energyContainer;
@@ -56,38 +72,71 @@ public class TileEntityAirCompressor extends TileEntityConfigurableMachine imple
     @WrappingComputerMethod(wrapper = SpecialComputerMethodWrapper.ComputerIInventorySlotWrapper.class, methodNames = "getEnergyItem", docPlaceholder = "")
     private EnergyInventorySlot energySlot;
 
+
     public TileEntityAirCompressor(BlockPos pos, BlockState state) {
         super(MSBlocks.AIR_COMPRESSOR, pos, state);
-        configComponent.setupItemIOConfig(List.of(inputSlot), List.of(outputSlot), energySlot, true);
-        configComponent.setupOutputConfig(TransmissionType.CHEMICAL, gasTank);
-        configComponent.setupInputConfig(TransmissionType.ENERGY, energyContainer);
+        // Config is created from block attributes in parent constructor
+        // Capabilities are added via tile entity type builder
+        getConfig().setupItemIOConfig(List.of(inputSlot),List.of(outputSlot),energySlot,true);
+        
+        // Chemical Output Config - TOP/RIGHT/FRONT sides
+        ConfigInfo chemicalConfig = getConfig().setupOutputConfig(TransmissionType.CHEMICAL , chemicalTank);
+        if (chemicalConfig != null) {
+            chemicalConfig.setDataType(DataType.OUTPUT, mekanism.api.RelativeSide.TOP);
+            chemicalConfig.setDataType(DataType.OUTPUT, mekanism.api.RelativeSide.RIGHT);
+            chemicalConfig.setDataType(DataType.OUTPUT, mekanism.api.RelativeSide.FRONT);
+        }
+        
+        // Energy Config - all sides accept input by default
+        ConfigInfo energyConfig = getConfig().setupInputConfig(TransmissionType.ENERGY , energyContainer);
+        if (energyConfig != null) {
+            for (mekanism.api.RelativeSide side : mekanism.common.util.EnumUtils.SIDES) {
+                energyConfig.setDataType(DataType.INPUT, side);
+            }
+        }
+
         ejectorComponent = new TileComponentEjector(this);
-        ejectorComponent.setOutputData(configComponent, TransmissionType.ITEM);
-        ejectorComponent.setOutputData(configComponent, TransmissionType.CHEMICAL);
+        ejectorComponent.setOutputData(getConfig(),TransmissionType.ITEM)
+                .setCanEject(type -> canFunction());
+        ejectorComponent.setOutputData(getConfig(),TransmissionType.CHEMICAL)
+                .setCanEject(type -> canFunction());
     }
 
-    @NotNull
+    @Override
+    protected void presetVariables() {
+        super.presetVariables();
+        chemicalTank = BasicChemicalTank.output(10_000, this::markForSave);
+        energyContainer = MachineEnergyContainer.input(this, this::markForSave);
+    }
+
+    @Nonnull
     @Override
     public IChemicalTankHolder getInitialChemicalTanks(IContentsListener listener) {
-        ChemicalTankHelper builder = ChemicalTankHelper.forSideWithConfig(this);
-        builder.addTank(gasTank = BasicChemicalTank.output(10_000, listener));
+        ChemicalTankHelper builder = ChemicalTankHelper.forSide(this::getDirection);
+        builder.addTank(chemicalTank);
         return builder.build();
     }
 
-    @NotNull
+    @Nonnull
     @Override
     protected IEnergyContainerHolder getInitialEnergyContainers(IContentsListener listener) {
-        EnergyContainerHelper builder = EnergyContainerHelper.forSideWithConfig(this);
-        builder.addContainer(energyContainer = MachineEnergyContainer.input(this, listener));
+        EnergyContainerHelper builder = EnergyContainerHelper.forSide(this::getDirection);
+        builder.addContainer(energyContainer);
         return builder.build();
     }
 
-    @NotNull
+    @Override
+    public boolean getActive() {
+        return super.getActive();
+    }
+
+
+    @Nonnull
     @Override
     protected IInventorySlotHolder getInitialInventory(IContentsListener listener) {
-        InventorySlotHelper builder = InventorySlotHelper.forSideWithConfig(this);
-        builder.addSlot(inputSlot = ChemicalInventorySlot.drain(gasTank, listener, 28, 20));
-        builder.addSlot(outputSlot = ChemicalInventorySlot.drain(gasTank, listener, 28, 51));
+        InventorySlotHelper builder = InventorySlotHelper.forSide(this::getDirection);
+        builder.addSlot(inputSlot = ChemicalInventorySlot.drain(chemicalTank, listener, 28, 20));
+        builder.addSlot(outputSlot = ChemicalInventorySlot.drain(chemicalTank, listener, 28, 51));
         builder.addSlot(energySlot = EnergyInventorySlot.fillOrConvert(energyContainer, this::getLevel, listener, 143, 35));
         outputSlot.setSlotType(ContainerSlotType.OUTPUT);
         inputSlot.setSlotOverlay(SlotOverlay.MINUS);
@@ -97,51 +146,65 @@ public class TileEntityAirCompressor extends TileEntityConfigurableMachine imple
 
     @Override
     protected boolean onUpdateServer() {
-        boolean sendUpdatePacket = super.onUpdateServer();
+        boolean needsUpdate = super.onUpdateServer();
         energySlot.fillContainerOrConvert();
         outputSlot.drainTank();
 
         boolean isGeneratingCompressedAir = false;
 
-        Direction frontDirection = RelativeSide.FRONT.getDirection(getDirection());
+        Direction frontDirection = mekanism.api.RelativeSide.FRONT.getDirection(getDirection());
         BlockPos frontPos = getBlockPos().relative(frontDirection);
         boolean isBlocked = !level.isEmptyBlock(frontPos);
 
-        if (!isBlocked && COMPRESSED_AIR_STACK.getAmount() <= gasTank.getNeeded()) {
+        if (!isBlocked && canFunction() && COMPRESSED_AIR_STACK.getAmount() <= chemicalTank.getNeeded()) {
             long energyPerTick = energyContainer.getEnergyPerTick();
             if (energyContainer.extract(energyPerTick, Action.SIMULATE, AutomationType.INTERNAL) == energyPerTick) {
+                // Extract energy every tick
+                energyContainer.extract(energyPerTick, Action.EXECUTE, AutomationType.INTERNAL);
                 operatingTicks++;
                 if (operatingTicks >= ticksRequired) {
                     operatingTicks = 0;
-                    energyContainer.extract(energyPerTick, Action.EXECUTE, AutomationType.INTERNAL);
-                    gasTank.insert(COMPRESSED_AIR_STACK, Action.EXECUTE, AutomationType.INTERNAL);
+                    chemicalTank.insert(COMPRESSED_AIR_STACK, Action.EXECUTE, AutomationType.INTERNAL);
                     isGeneratingCompressedAir = true;
                 }
+            } else {
+                // Not enough energy, reset progress
+                operatingTicks = 0;
+            }
+        } else {
+            // Can't function, reset progress
+            operatingTicks = 0;
+        }
+
+        if (!chemicalTank.isEmpty()) {
+            long emitRate = 256L * (1 + upgradeComponent.getUpgrades(Upgrade.SPEED));
+            if (level instanceof net.minecraft.server.level.ServerLevel serverLevel) {
+                BlockCapabilityCache<IChemicalHandler, net.minecraft.core.Direction> cache = 
+                    Capabilities.CHEMICAL.createCache(serverLevel, getBlockPos().relative(Direction.UP), Direction.DOWN);
+                ChemicalUtil.emit(Collections.singletonList(cache), chemicalTank, emitRate);
             }
         }
 
-        setActive(isGeneratingCompressedAir);
-        return sendUpdatePacket;
+        setActive(!isBlocked && canFunction() && COMPRESSED_AIR_STACK.getAmount() <= chemicalTank.getNeeded() && energyContainer.getEnergy() >= energyContainer.getEnergyPerTick());
+        return needsUpdate;
     }
 
     @Override
-    public void saveAdditional(@NotNull CompoundTag nbtTags, @NotNull HolderLookup.Provider provider) {
+    public void saveAdditional(@Nonnull CompoundTag nbtTags, @Nonnull HolderLookup.Provider provider) {
         super.saveAdditional(nbtTags, provider);
-        nbtTags.putInt(SerializationConstants.PROGRESS, operatingTicks);
+        nbtTags.putInt("progress", operatingTicks);
     }
 
     @Override
-    public void loadAdditional(@NotNull CompoundTag nbt, @NotNull HolderLookup.Provider provider) {
+    public void loadAdditional(@Nonnull CompoundTag nbt, @Nonnull HolderLookup.Provider provider) {
         super.loadAdditional(nbt, provider);
-        operatingTicks = nbt.getInt(SerializationConstants.PROGRESS);
+        operatingTicks = nbt.getInt("progress");
     }
 
-    @Override
     public InteractionResult onSneakRightClick(Player player) {
         return InteractionResult.PASS;
     }
 
-    @Override
     public InteractionResult onRightClick(Player player) {
         return InteractionResult.PASS;
     }
@@ -158,12 +221,14 @@ public class TileEntityAirCompressor extends TileEntityConfigurableMachine imple
         }
     }
 
-    @Override
     public int getRedstoneLevel() {
-        return MekanismUtils.redstoneLevelFromContents(gasTank.getStored(), gasTank.getCapacity());
+        return MekanismUtils.redstoneLevelFromContents(chemicalTank.getStored(), chemicalTank.getCapacity());
     }
 
-    @Override
+    protected boolean makesComparatorDirty(@Nullable TransmissionType type) {
+        return type == TransmissionType.CHEMICAL;
+    }
+
     public List<Component> getInfo(Upgrade upgrade) {
         return UpgradeUtils.getMultScaledInfo(this, upgrade);
     }
@@ -172,3 +237,4 @@ public class TileEntityAirCompressor extends TileEntityConfigurableMachine imple
         return energyContainer;
     }
 }
+
