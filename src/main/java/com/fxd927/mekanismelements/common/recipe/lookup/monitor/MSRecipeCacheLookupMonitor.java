@@ -16,6 +16,7 @@ public class MSRecipeCacheLookupMonitor<RECIPE extends MekanismRecipe<?>> implem
     protected final int cacheIndex;
     protected CachedRecipe<RECIPE> cachedRecipe;
     protected boolean hasNoRecipe;
+    protected boolean shouldUnpause;
 
     public MSRecipeCacheLookupMonitor(IMSRecipeLookupHandler<RECIPE> handler) {
         this(handler, 0);
@@ -39,6 +40,11 @@ public class MSRecipeCacheLookupMonitor<RECIPE extends MekanismRecipe<?>> implem
     public void onChange() {
         //Mark that we may have a recipe again
         hasNoRecipe = false;
+        unpause();
+    }
+
+    public void unpause() {
+        shouldUnpause = true;
     }
 
     /**
@@ -62,6 +68,10 @@ public class MSRecipeCacheLookupMonitor<RECIPE extends MekanismRecipe<?>> implem
             handler.onCachedRecipeChanged(cachedRecipe, cacheIndex);
         }
         if (cachedRecipe != null) {
+            if (shouldUnpause) {
+                shouldUnpause = false;
+                cachedRecipe.unpauseErrors();
+            }
             cachedRecipe.process();
             return true;
         }
@@ -72,11 +82,6 @@ public class MSRecipeCacheLookupMonitor<RECIPE extends MekanismRecipe<?>> implem
     public void loadSavedData(@NotNull CachedRecipe<RECIPE> cached, int cacheIndex) {
         if (cachedIndexMatches(cacheIndex)) {
             ICachedRecipeHolder.super.loadSavedData(cached, cacheIndex);
-            // ItemStackConstantChemicalToItemStackCachedRecipe no longer exists in unified chemical system
-            // if (cached instanceof ItemStackConstantChemicalToItemStackCachedRecipe<?, ?, ?, ?> c &&
-            //         handler instanceof IRecipeLookupHandler.ConstantUsageRecipeLookupHandler handler) {
-            //     c.loadSavedUsageSoFar(handler.getSavedUsedSoFar(cacheIndex));
-            // }
         }
     }
 
@@ -120,4 +125,3 @@ public class MSRecipeCacheLookupMonitor<RECIPE extends MekanismRecipe<?>> implem
         return cachedIndexMatches(cacheIndex) ? hasNoRecipe : ICachedRecipeHolder.super.hasNoRecipe(cacheIndex);
     }
 }
-

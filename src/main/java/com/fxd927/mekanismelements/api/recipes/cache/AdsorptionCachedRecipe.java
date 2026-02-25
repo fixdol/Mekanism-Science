@@ -7,7 +7,6 @@ import mekanism.api.recipes.inputs.IInputHandler;
 import mekanism.api.recipes.outputs.IOutputHandler;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.fluids.FluidStack;
-import com.fxd927.mekanismelements.common.MekanismElements;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
@@ -15,6 +14,7 @@ import java.util.function.BooleanSupplier;
 import java.util.function.IntSupplier;
 
 public class AdsorptionCachedRecipe extends CachedRecipe<AdsorptionRecipe> {
+    private static int diagCounter = 0;
     private final IOutputHandler<ChemicalStack> outputHandler;
     private final IInputHandler<@NotNull ItemStack> itemInputHandler;
     private final IInputHandler<@NotNull FluidStack> fluidInputHandler;
@@ -57,15 +57,18 @@ public class AdsorptionCachedRecipe extends CachedRecipe<AdsorptionRecipe> {
                 tracker.mismatchedRecipe();
             } else {
                 recipeFluid = fluidInputHandler.getRecipeInput(recipe.getFluidInput());
+                if (recipeFluid.isEmpty()) {
+                    tracker.updateOperations(0);
+                    if (!tracker.shouldContinueChecking()) {
+                        return;
+                    }
+                }
                 itemInputHandler.calculateOperationsCanSupport(tracker, recipeItem);
-                if (tracker.shouldContinueChecking()) {
+                if (!recipeFluid.isEmpty() && tracker.shouldContinueChecking()) {
                     fluidInputHandler.calculateOperationsCanSupport(tracker, recipeFluid, fluidUsageMultiplier);
                     if (tracker.shouldContinueChecking()) {
                         output = recipe.getOutput(recipeItem, recipeFluid);
                         outputHandler.calculateOperationsCanSupport(tracker, output);
-                        if (!tracker.shouldContinueChecking()) {
-                             MekanismElements.logger.info("AdsorptionCachedRecipe: Output Check Failed. Output Calculated: {}.", output);
-                        }
                     }
                 }
             }
@@ -98,13 +101,8 @@ public class AdsorptionCachedRecipe extends CachedRecipe<AdsorptionRecipe> {
 
     @Override
     protected void finishProcessing(int operations) {
-        // DEBUG LOGGING
         if (!output.isEmpty()) {
             outputHandler.handleOutput(output, operations);
-             MekanismElements.logger.info("AdsorptionCachedRecipe: Implemented Output: {} x {}. Resulting tank: {}", output, operations, outputHandler.toString());
-        } else {
-             MekanismElements.logger.info("AdsorptionCachedRecipe: finishProcessing called but OUTPUT IS EMPTY! Operations: {}", operations);
         }
     }
 }
-

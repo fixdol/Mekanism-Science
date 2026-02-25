@@ -17,5 +17,7 @@ public class DataGenerators {
         PackOutput output = generator.getPackOutput();
 
         generator.addProvider(event.includeServer(), new ModRecipeProvider(output, event.getLookupProvider()));
+        generator.addProvider(event.includeServer(), new ModLootTableProvider(output, event.getLookupProvider()));
+        generator.addProvider(event.includeServer(), new MSBlockTagsProvider(output, event.getLookupProvider(), event.getExistingFileHelper()));
     }
 }

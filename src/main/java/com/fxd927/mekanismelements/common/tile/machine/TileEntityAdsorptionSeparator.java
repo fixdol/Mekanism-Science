@@ -183,11 +183,6 @@ public class TileEntityAdsorptionSeparator extends MSTileEntityProgressMachine<A
             needsUpdate = true;
         }
         
-        if (level.getGameTime() % 40 == 0) {
-             com.fxd927.mekanismelements.common.MekanismElements.logger.info("DEBUG: AdsorptionSeparator Tick | Energy: {}/{} | InputItem: {} | InputFluid: {} | Output: {} ({}/{}) | Active: {}", 
-                 energyContainer.getEnergy(), energyContainer.getMaxEnergy(),
-                 inputSlot.getStack(), inputTank.getFluid(), chemicalOutputTank.getStack(), chemicalOutputTank.getStored(), chemicalOutputTank.getCapacity(), getActive());
-        }
         return needsUpdate;
     }
 
@@ -199,12 +194,7 @@ public class TileEntityAdsorptionSeparator extends MSTileEntityProgressMachine<A
         @Nullable
         @Override
         public AdsorptionRecipe getRecipe(int cacheIndex) {
-            AdsorptionRecipe recipe = findFirstRecipe(itemInputHandler, fluidInputHandler);
-            if (level.getGameTime() % 100 == 0) {
-                 com.fxd927.mekanismelements.common.MekanismElements.logger.info("DEBUG: getRecipe result: {} | Inputs: Item={}, Fluid={}", 
-                     recipe != null ? recipe.getId() : "null", itemInputHandler.getInput(), fluidInputHandler.getInput());
-            }
-            return recipe;
+            return findFirstRecipe(itemInputHandler, fluidInputHandler);
         }
 
         @NotNull
@@ -235,4 +225,3 @@ public class TileEntityAdsorptionSeparator extends MSTileEntityProgressMachine<A
             return chemicalOutputTank;
         }
 }
-
