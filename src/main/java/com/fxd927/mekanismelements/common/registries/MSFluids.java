@@ -45,7 +45,7 @@ public class MSFluids {
                 .viscosity(Math.round(MSChemicalConstants.SEAWATER.getDensity()))
                 .lightLevel(MSChemicalConstants.SEAWATER.getLightLevel()),
           renderProperties -> renderProperties
-                .texture(rl("block/liquid/seawater_still"), rl("block/liquid/seawater_flow"))
+                .texture(rl("block/seawater_still"), rl("block/seawater_flow"))
                 .tint(MSChemicalConstants.SEAWATER.getColor()));
     public static final FluidRegistryObject<FluidDeferredRegister.MekanismFluidType, ?, ?, LiquidBlock, BucketItem> STRONTIUM = FLUIDS.registerLiquidChemical(MSChemicalConstants.STRONTIUM);
     public static final FluidRegistryObject<FluidDeferredRegister.MekanismFluidType, ?, ?, LiquidBlock, BucketItem> XENON = FLUIDS.registerLiquidChemical(MSChemicalConstants.XENON);

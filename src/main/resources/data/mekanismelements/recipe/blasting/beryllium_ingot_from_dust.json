@@ -5,7 +5,7 @@
     "experience": 0.7,
     "group": "beryllium_ingot",
     "ingredient": {
-        "tag": "c:dusts/beryllium"
+        "item": "mekanismelements:dust_beryllium"
     },
     "result": {
         "id": "mekanismelements:ingot_beryllium"
