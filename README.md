@@ -63,6 +63,7 @@ Feature
 See JEI for a detailed recipe.
 
 Translator
+
 ・Spanish: SrNadien
 ・Japanese: Fixdol
 
