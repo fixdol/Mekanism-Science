@@ -32,12 +32,6 @@ public class MSFluids {
     public static final FluidRegistryObject<FluidDeferredRegister.MekanismFluidType, ?, ?, LiquidBlock, BucketItem> POTASSIUM_CYANIDE = FLUIDS.registerLiquidChemical(MSChemicalConstants.POTASSIUM_CYANIDE);
     public static final FluidRegistryObject<FluidDeferredRegister.MekanismFluidType, ?, ?, LiquidBlock, BucketItem> POTASSIUM_HYDROXIDE = FLUIDS.registerLiquidChemical(MSChemicalConstants.POTASSIUM_HYDROXIDE);
     public static final FluidRegistryObject<FluidDeferredRegister.MekanismFluidType, ?, ?, LiquidBlock, BucketItem> POTASSIUM_IODIDE = FLUIDS.registerLiquidChemical(MSChemicalConstants.POTASSIUM_IODIDE);
-    /**
-     * Seawater uses custom still/flow textures.
-     *
-     * IMPORTANT: Fluid sprites must be stitched into the vanilla blocks atlas. The most reliable way
-     * is keeping the textures under textures/block/... (like 1.20.x-era conventions).
-     */
     public static final FluidRegistryObject<FluidDeferredRegister.MekanismFluidType, ?, ?, LiquidBlock, BucketItem> SEAWATER = FLUIDS.register("seawater",
           properties -> properties
                 .temperature(Math.round(MSChemicalConstants.SEAWATER.getTemperature()))
@@ -45,7 +39,7 @@ public class MSFluids {
                 .viscosity(Math.round(MSChemicalConstants.SEAWATER.getDensity()))
                 .lightLevel(MSChemicalConstants.SEAWATER.getLightLevel()),
           renderProperties -> renderProperties
-                .texture(rl("block/seawater_still"), rl("block/seawater_flow"))
+                .texture(rl("block/liquid/seawater_still"), rl("block/liquid/seawater_flow"))
                 .tint(MSChemicalConstants.SEAWATER.getColor()));
     public static final FluidRegistryObject<FluidDeferredRegister.MekanismFluidType, ?, ?, LiquidBlock, BucketItem> STRONTIUM = FLUIDS.registerLiquidChemical(MSChemicalConstants.STRONTIUM);
     public static final FluidRegistryObject<FluidDeferredRegister.MekanismFluidType, ?, ?, LiquidBlock, BucketItem> XENON = FLUIDS.registerLiquidChemical(MSChemicalConstants.XENON);
