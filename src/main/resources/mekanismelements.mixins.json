@@ -5,7 +5,6 @@
   "refmap": "mekanismelements.refmap.json",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "CoolantAccessor",
     "MixinTileEntityChemicalInfuser"
   ],
   "client": [

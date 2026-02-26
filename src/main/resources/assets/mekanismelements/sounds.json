@@ -3,8 +3,8 @@
   {
     "sounds":
     [
-      "mekanismscience:tile/air_compressor"
+      "mekanismelements:tile/air_compressor"
     ],
-    "subtitle":"sound_event.mekanismscience.tile.machine.air_compressor"
+    "subtitle":"sound_event.mekanismelements.tile.machine.air_compressor"
   }
 }
