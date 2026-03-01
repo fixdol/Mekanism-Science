@@ -16,7 +16,7 @@ public class MSJEIRecipeType {
             new com.fxd927.mekanismelements.client.jei.MSJEIRecipeViewerRecipeType<>(
                     MSRecipeType.ADSORPTION,
                     AdsorptionRecipe.class,
-                    MSLang.DESCRIPTION_ADSORPTION_SEPARATOR,
+                    MSLang.NAME_ADSORPTION_SEPARATOR,
                     MekanismElements.rl("textures/gui/jei/adsorption_separator.png"),
                     3, 3, 170, 79,
                     MSBlocks.ADSORPTION_SEPARATOR
@@ -26,7 +26,7 @@ public class MSJEIRecipeType {
             new com.fxd927.mekanismelements.client.jei.MSJEIRecipeViewerRecipeType<>(
                     MSRecipeType.RADIATION_IRRADIATING,
                     RadiationIrradiatingRecipe.class,
-                    MSLang.DESCRIPTION_RADIATION_IRRADIATOR,
+                    MSLang.NAME_RADIATION_IRRADIATOR,
                     MekanismElements.rl("textures/gui/jei/radiation_irradiator.png"),
                     3, 3, 170, 79,
                     MSBlocks.RADIATION_IRRADIATOR

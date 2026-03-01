@@ -9,6 +9,7 @@ import mekanism.common.registration.impl.CreativeTabDeferredRegister;
 import mekanism.common.registries.MekanismBlocks;
 import mekanism.common.registries.MekanismCreativeTabs;
 import mekanism.common.util.ChemicalUtil;
+import mekanism.generators.common.MekanismGenerators;
 import net.minecraft.world.item.CreativeModeTab;
 
 public class MSCreativeTab {
@@ -16,6 +17,7 @@ public class MSCreativeTab {
 
     public static final MekanismDeferredHolder<CreativeModeTab, CreativeModeTab> MEKANISM_SCIENCE = CREATIVE_TABS.registerMain(MSLang.MEKANISM_SCIENCE, MSItems.NEUTRON_SOURCE_PELLET, builder ->
               builder.withSearchBar(65)
+                      .backgroundTexture(MekanismElements.rl("textures/gui/creative_tab.png"))
                       .withTabsBefore(MekanismCreativeTabs.MEKANISM.getId())
                       .displayItems((displayParameters, output) -> {
                           CreativeTabDeferredRegister.addToDisplay(MSItems.ITEMS, output);

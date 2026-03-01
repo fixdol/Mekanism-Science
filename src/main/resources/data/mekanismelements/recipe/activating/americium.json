@@ -3,7 +3,7 @@
   "input":
   {
     "amount":2,
-    "id":"mekanism:plutonium"
+    "chemical":"mekanism:plutonium"
   },
   "output":
   {
