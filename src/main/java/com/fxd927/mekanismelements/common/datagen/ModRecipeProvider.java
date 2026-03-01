@@ -61,8 +61,8 @@ public class ModRecipeProvider extends RecipeProvider {
         ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, MSItems.HIGH_QUALITY_CONCRETE_POWDER.get(), 3)
                 .requires(net.minecraft.tags.ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "dusts/lead")))
                 .requires(Items.SAND)
-                .requires(net.minecraft.tags.ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "dusts/culcium_oxide")))
-                .unlockedBy("has_calcium_oxide", has(net.minecraft.tags.ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "dusts/culcium_oxide"))))
+                .requires(net.minecraft.tags.ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "dusts/calcium_oxide")))
+                .unlockedBy("has_calcium_oxide", has(net.minecraft.tags.ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "dusts/calcium_oxide"))))
                 .save(recipeOutput);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MSItems.HIGH_PERFORMANCE_ADSORBENT.get().asItem())
